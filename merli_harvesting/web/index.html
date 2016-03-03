@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-15">
+  <head>
+  <title>MeRLí - Harvesting</title>
+	  
+  <STYLE>
+	  body{padding:20px;}
+  </STYLE>	  
+  <SCRIPT src="js/prototype.js" type="text/javascript"></SCRIPT>
+  <SCRIPT type="text/javascript">
+	  function setVerb(verb){
+		  hideAll();
+		  if ($(verb+'Layer')!=null) {
+			  Element.show($(verb+'Layer'));
+		  }
+	  }
+	  
+	  function hideAll(){
+		Element.hide($('IdentifyLayer'));
+		Element.hide($('ListMetadataFormatsLayer'));	  
+		Element.hide($('ListIdentifiersLayer'));
+		Element.hide($('ListRecordsLayer'));
+		Element.hide($('ListSetsLayer'));
+		Element.hide($('GetRecordLayer'));	  
+	  }
+  </SCRIPT>
+	  
+  </head>
+  <body>
+  <FORM method="POST">
+    Verb: 
+    <SELECT name="verb" onchange="setVerb(this.value);">
+      <OPTION value=""></OPTION>
+      <OPTION value="Identify">Identify</OPTION>
+      <OPTION value="ListMetadataFormats">ListMetadataFormats</OPTION>
+      <OPTION value="ListIdentifiers">ListIdentifiers</OPTION>
+      <OPTION value="ListRecords">ListRecords</OPTION>
+      <OPTION value="GetRecord">GetRecord</OPTION>
+      <OPTION value="ListSets">ListSets</OPTION>
+	</SELECT><br/>
+  </FORM>
+
+	<DIV id="IdentifyLayer">
+	  <FORM id="IdentifyForm" method="POST" action="MerliHarvestingServlet" target="_blank">
+	  <INPUT type="hidden" name="verb" value="Identify"/>
+		<br/>
+		<INPUT type="submit" value="Envia"/>
+	  </FORM>
+	</DIV>	  
+		  
+	<DIV id="ListIdentifiersLayer">
+	  <FORM id="ListIdentifiersForm" method="POST" action="MerliHarvestingServlet" target="_blank">
+	  <INPUT type="hidden" name="verb" value="ListIdentifiers"/>
+		* Metadata Prefix: <INPUT type="text" name="metadataPrefix" value="oai_lom"/><br/>
+		From: <INPUT type="text" name="from"/><br/>
+		Until: <INPUT type="text" name="until"/><br/>
+		
+		<br/>
+		<INPUT type="submit" value="Envia"/>
+	  </FORM>
+	  <FORM id="ListIdentifiersForm2" method="POST" action="MerliHarvestingServlet" target="_blank">
+	  <INPUT type="hidden" name="verb" value="ListIdentifiers"/>
+		(E)ResumptionToken: <INPUT type="text" name="resumptionToken" size="40"/><br/>
+		<br/>
+		<INPUT type="submit" value="Envia"/>
+	  </FORM>
+	</DIV>
+		  
+	<DIV id="ListRecordsLayer">
+	  <FORM id="ListRecordsForm" method="POST" action="MerliHarvestingServlet" target="_blank">
+	  <INPUT type="hidden" name="verb" value="ListRecords"/>
+		* Metadata Prefix: <INPUT type="text" name="metadataPrefix" value="oai_lom"/><br/>
+		From: <INPUT type="text" name="from"/><br/>
+		Until: <INPUT type="text" name="until"/><br/>
+		<br/>
+		<INPUT type="submit" value="Envia"/><br/>
+	  </FORM>
+	  <FORM id="ListRecordsForm2" method="POST" action="MerliHarvestingServlet" target="_blank">
+	  <INPUT type="hidden" name="verb" value="ListRecords"/>
+		(E)ResumptionToken: <INPUT type="text" name="resumptionToken" size="40"/><br/>
+		<br/>
+		<INPUT type="submit" value="Envia"/>
+	  </FORM>
+	</DIV>
+		  
+	<DIV id="GetRecordLayer">
+	  <FORM id="GetRecordForm" method="POST" action="MerliHarvestingServlet" target="_blank">
+	  <INPUT type="hidden" name="verb" value="GetRecord"/>
+		* Identifier: <INPUT type="text" name="identifier" size="28"/><br/>
+		* Metadata Prefix: <INPUT type="text" name="metadataPrefix" value="oai_lom"/><br/>	
+		<br/>
+		<INPUT type="submit" value="Envia"/>
+	  </FORM>
+	</DIV>
+
+	<DIV id="ListMetadataFormatsLayer">
+	  <FORM id="ListMetadataFormatsForm" method="POST" action="MerliHarvestingServlet" target="_blank">
+	  <INPUT type="hidden" name="verb" value="ListMetadataFormats"/>
+		Identifier: <INPUT type="text" name="identifier" size="28"/><br/>
+		<br/>
+		<INPUT type="submit" value="Envia"/>
+	  </FORM>
+	</DIV>
+	
+	<DIV id="ListSetsLayer">
+	  <FORM id="ListSetsForm" method="POST" action="MerliHarvestingServlet" target="_blank">
+	  <INPUT type="hidden" name="verb" value="ListSets"/>
+		<INPUT type="submit" value="Envia"/>
+	  </FORM>
+	  <br>
+	  <FORM id="ListSetsForm2" method="POST" action="MerliHarvestingServlet" target="_blank">
+	  <INPUT type="hidden" name="verb" value="ListSets"/>
+		(E) ResumptionToken: <INPUT type="text" name="resumptionToken" size="40"/><br/>
+		<br/>
+		<INPUT type="submit" value="Envia"/>
+	  </FORM>
+	</DIV>	  		  
+  <script>
+	hideAll();
+  </script>		  
+	  
+  </body>
+</html>

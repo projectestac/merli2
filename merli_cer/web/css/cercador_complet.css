@@ -1,0 +1,854 @@
+/* Full d'estil del cercador XTEC
+	
+	Colors XTEC:
+		blau: #284e8f
+		blau fosc: #052c71
+		blau clar: #507dce
+		blau +clar: #749fcb
+		taronja fort: #fb8c3d
+
+*/
+
+html
+{
+height: 100%;
+}
+
+body
+{
+height: 100%;
+}
+
+#non-footer
+{
+position: relative;
+min-height: 100%;
+}
+
+* {
+	margin:0px;
+	padding:0px;
+}
+
+* html #non-footer {
+	height: 100%;
+}
+
+body {
+	background-color:white;
+	padding: 0px;
+	font-family : Verdana, Helvetica, Univers, Sans-serif;
+	font-size: 10pt;
+	margin: 0px;
+}
+
+.espai {
+  width:100%;
+  position:relative;
+  height:20px;	
+}
+
+
+#profileSection {
+	position:relative;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;    
+}
+
+#profileSection table {
+	border:0;
+    }
+
+.profileSection {
+	position:relative;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;    
+}
+
+#profileSection li {
+	display: inline;
+}
+
+
+#profileSection input {
+	margin-left:0px;
+	width:15px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    display:inline;
+}
+
+#profileSection td {
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  }
+  
+#profileSection ul {
+  }  
+  
+#profileSection li {
+  font-size: 8pt;
+  }  
+
+
+
+p.rss {
+	background-image: url(../imatges/rss2.png);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left:20px;
+}
+
+
+
+/* =tipografia */
+
+#noticies h1 {
+	font-size:13pt;
+	margin-bottom:5px;
+	color:#284e8f;
+}
+
+#titol h2 {
+	color:white;
+	font-size:10pt;
+}
+
+#noti h2, #primera_noti h2 {
+	display:inline;
+	font-size:10pt;
+	padding-bottom:3px;
+	color:#ff6004;
+	padding-left:10px;
+}
+
+#noti h3, #primera_noti h3 {
+	display:inline;
+	padding-left:10px;
+	font-size:10pt;
+	color: #aaa;
+}
+
+#noti p, #primera_noti p {
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+#taula h1, #left h2 {
+	display:inline;
+	font-size:10pt;
+	font-weight:bold;
+	color:#ff6004;
+}
+
+#taula h2 {
+	display:inline;
+	padding-left:10px;
+	font-size:10pt;
+	font-weight:normal;
+	color: #aaa;
+}
+
+#left h1 {
+	font-size:13pt;
+	margin-bottom:5px;
+	color:#284e8f;
+}
+
+#resultat p, #resultat a, #resultat h2 {
+	display:inline;
+}
+
+#resultat a {
+	color:#608fbb;
+	font-weight:bold;
+}
+
+#resultat h2, #resultat h3, #resultat h5 {
+	font-size:10pt;
+	font-weight:normal;
+	color:#7f8180;
+}
+
+#resultat h4 {
+	font-size:10pt;
+	font-weight:normal;
+}
+
+#login {
+	color:white;
+	font-size:8pt;
+}
+
+#header_formulari_left h1 {
+	color:white;
+	padding:0px;
+	font-size:12pt; }
+
+#ajuda h1 {
+	font-size:10pt;
+	padding-bottom:5px;
+}
+
+#code {
+	color:red;
+	display:inline;
+}
+
+#fitxa h1 {
+	display:inline;
+	font-size:13pt;
+	margin-bottom:5px;
+	color:#ff6004;
+}
+
+#comentaris {
+	display:inline;
+}
+
+#container_fitxa h2 {
+	font-size:11pt;
+	margin-top:20px;
+	margin-bottom:5px;
+	color:#ff6004;
+}
+
+#comentari_senar h2, #comentari_parell h2 {
+	float:left;
+	font-size:10pt;
+	color:black;
+	margin:0px;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+}
+
+#comentari_senar h3, #comentari_parell h3 {
+	float:right;
+	font-size:10pt;
+	font-weight:normal;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-right:10px;
+}
+
+#comentari_senar h4, #comentari_parell h4 {
+	font-size:10pt;
+	font-weight:normal;
+	padding-top:5px;
+	padding-bottom:10px;
+	border-top: 1px solid #d2e7fa;
+}
+
+#header_formulari_right h1 {
+  color: #fff;
+  font-size:8pt;
+}
+
+/* =enllaços */
+
+a:link, a:visited {
+	color:#284e8f;
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+#header_merli a, #header_cercador a, #login a {
+	color:white;
+	font-size:8pt;
+}
+
+#header_merli, #header_cercador {
+	color:white;
+}
+
+#top_menu a {
+	color:white;
+	font-weight:bold;
+}
+
+#top_menu a.selected {
+	color:#284e8f;
+	font-weight:bold;
+}
+
+#top_menu a:hover {
+	text-decoration: none;
+	color:#284e8f;
+}
+
+#resultats_right a, #bottom_left a, #bottom_right a {
+	color:#ff8b04;
+}
+
+#header_formulari a {
+	font-size:8pt;
+	color:white;
+}
+
+/* formulari de cerca */
+
+form * { 
+	vertical-align: middle;
+}
+
+#header_merli fieldset {
+	width:535px;
+	display:inline;
+	border-top: 2px solid #052c71;
+	padding-top: 5px;
+	border-left: 2px solid #052c71;
+	padding-left:5px;
+	border-bottom: 2px solid #507dce;
+	padding-bottom: 5px;
+	border-right: 2px solid #507dce;
+	padding-right: 5px;
+}
+
+input {
+	width:200px;
+}
+
+input.button {
+	width:75px;
+	background: #fb8c3d;
+	font-weight:bold;
+	border-bottom: 2px solid #c98755;
+	border-right: 2px solid #c98755;
+	border-top: 2px solid #ffb37c;
+	border-left: 2px solid #ffb37c;
+}
+
+select {
+	width:120px;
+}
+
+#header_cercador fieldset {
+	width:735px;
+	display:inline;
+	border-top: 2px solid #052c71;
+	padding-top: 5px;
+	border-left: 2px solid #052c71;
+	padding-left:5px;
+	border-bottom: 2px solid #507dce;
+	padding-bottom: 5px;
+	border-right: 2px solid #507dce;
+	padding-right: 5px;
+}
+
+#form_comentari label {
+	float:left;
+	width:100px;
+	text-align:left;
+	display:block;
+}
+
+#form_comentari input {
+	width:400px;
+	color: #709dc9;
+	border: 1px solid #709dc9;
+}
+
+#form_comentari textarea {
+	width:400px;
+	color: #709dc9;
+	border: 1px solid #709dc9;
+}
+
+#form_comentari input.button {
+	width:100px;
+	background:#2c5291;
+	color:white;
+}
+
+/* =taules */
+
+table {
+	border: 1px solid #ccc;
+}
+
+caption {
+	background: #FF7B00;
+	background-image: url(../imatges/ribbon_infantil.png);
+	background-repeat: no-repeat;
+	background-position: left;
+	color: white;
+	font-weight:bold;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	padding:3px;
+}
+
+td {
+	padding:2px;
+}
+
+/* =llistes */
+
+ul {
+	padding-top:5px;
+	padding-left:20px;
+}
+
+li {
+	padding-left:10px;
+	line-height:20px;
+}
+
+#top_menu ul {
+	list-style:none;
+	text-align:center;
+}
+
+#top_menu ul li {
+	display:inline;
+}
+
+#arees ul {
+	list-style:none;
+	padding-left:5px;
+}
+
+#ajuda ol {
+	padding-top:16px;
+	list-style:none;
+	padding-bottom:30px;
+}
+
+#ajuda ol li {
+	padding-left:0px;
+}
+
+#cos_blau ul {
+	list-style:none;
+	padding-left:0px;
+}
+
+/* formularis de cerca */
+
+#cercador_complet form {
+  padding-top:20px;
+	width:780px;
+	margin: 0 auto;
+}
+
+#cercador_complet label {
+	float:left;
+	text-align:right;
+	font-weight:bold;
+	font-size:9pt;
+}
+
+#cercador_complet_left input, #cercador_complet_left select {
+	margin-left:215px;
+	width:170px;
+	display:block;
+}
+
+#cercador_complet_right input, #cercador_complet_right select {
+	margin-left:180px;
+	width:170px;
+	display:block;
+}
+
+#cercador_complet input.text_lliure {
+	width:170px;
+}
+
+#cercador_complet input.data {
+	width:100px;
+}
+
+#cercador_complet button {
+	position:relative;
+	top:-21px;   
+	left:370px;
+	height:20px;
+}
+
+#cercador_complet input.etb {
+	width:170px;
+}
+
+#cercador_complet input.durada {
+	width:20px;
+}
+
+#cercador_complet input.submit {
+	margin-left:70%;
+	width:100px;
+	background: #fb8c3d;
+	font-weight:bold;
+	border-bottom: 2px solid #c98755;
+	border-right: 2px solid #c98755;
+	border-top: 2px solid #ffb37c;
+	border-left: 2px solid #ffb37c;
+}
+
+#cercador_titol {
+	display:inline;
+}
+
+#cercador_input {
+	display:inline;
+}
+
+#cercador_boto {
+	padding-left:5px;
+	display:inline;
+}
+
+#cercador_nivell_educatiu {
+	padding-left:5px;
+	display: inline;
+}
+
+#cercador_area_curricular {
+	padding-left:5px;
+	display: inline;
+}
+
+/* =layout */
+
+#header_merli {
+	background: #2c5291;
+	text-align:center;
+	padding-top:5px;
+	padding-bottom:20px;
+}
+
+#header_cercador {
+	background: #2c5291;
+	text-align:center;
+	padding-top:2px;
+	padding-bottom:5px;
+}
+
+#header_formulari {
+	background: #2c5291;
+	margin: 0 auto;
+    height:62px;
+}
+	
+#header_formulari_left {
+	float:left;
+    padding: 0px 0px 10px 20px;
+}
+
+#header_formulari_right{
+	float:right;
+	padding-top:40px;
+	padding-right:10px;
+}
+
+#help {
+	padding-left:535px;
+	padding-bottom:2px;
+}
+
+#help_cercador {
+	text-align:right;
+	padding-right:175px;
+	padding-bottom:2px;
+}
+
+#top_menu {
+	background-image:url(../imatges/banda.png);
+	background-repeat: repeat-x;
+	height:38px;
+}
+
+#header_merli_primaria {
+	border: 1px solid #eee;
+	background-image: url(../imatges/merli_header_background_primaria.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	height:80px;
+}
+
+#main {
+	width:800px;
+	margin: 0px auto;
+}
+
+#left {
+	width:380px;
+	float:left;
+	padding-top:10px;
+	padding-right:20px;
+	margin-top:10px;
+	background-image: url(../imatges/background_left.png);
+	background-repeat: repeat-y;
+	background-position: center right;
+}
+
+#right {
+	width:380px;
+	float:right;
+	padding-top:10px;
+	margin-top:10px;
+}
+
+#presentacio {
+	border:1px solid #ccc;
+	background: #ff6004;
+	background-image: url(../imatges/background_presentacio.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	padding:10px;
+	color:white;
+	font-weight:bold;
+	line-height:1.5em;
+}
+
+#noticies {
+	padding-top:10px;
+	text-align:justify;
+}
+
+#primera_noti {
+	background:#f6fafd;
+	background-image: url(../imatges/background_primera_noti.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	border-bottom: 1px solid #e1e6ec;
+	padding-top:5px;
+}
+
+#noti {
+	border-bottom: 1px solid #e1e6ec;
+	padding-top:5px;
+}
+
+#taula {
+	padding-bottom:10px;
+}
+
+#primera_fila {
+	background:#f6fafd;
+	background-image: url(../imatges/background_primera_noti.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	border-bottom: 1px solid #e1e6ec;
+	padding:5px;
+	margin-top:5px;
+}
+
+#fila {
+	background:#f6fafd;
+	border-bottom: 1px solid #e1e6ec;
+	padding:5px;
+}
+
+#fila_left {
+	float:left;
+}
+
+#fila_right {
+	float:right;
+}
+
+#arees {
+	background:#ffc8a6;
+	background-image: url(../imatges/background_arees.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	border-bottom: 1px solid #e1e6ec;
+	padding:5px;
+	margin-top:5px;
+}
+
+#barra_resultats {
+	background-image: url(../imatges/background_barra_right.png);
+	background-repeat: repeat-x;
+}
+
+#barra_resultats_left {
+	height:37px;
+	float:left;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:5px;
+	background-image: url(../imatges/background_barra_left.png);
+	background-repeat: repeat-x;
+	color:white;
+}
+	
+#barra_resultats_right{
+	height:37px;
+	float:right;
+	padding-right:10px;
+	padding-top:5px;
+	color:white;
+}
+
+#resultats_left {
+	width:70%;
+	float:left;
+	padding-top:10px;
+	padding-left:40px;
+	padding-right:20px;
+	margin-top:10px;
+}
+
+#resultat {
+	padding:10px;
+	background:#f6fafd;
+	margin-bottom:10px;
+}
+
+#bottom {
+	background-image: url(../imatges/background_bottom.png);
+	background-repeat: repeat-x;
+	background-position: top;
+	margin-left:40px;
+	margin-right:40px;
+	padding-top:15px;
+}
+
+#bottom_left {
+	float:left;
+}
+
+#bottom_right{
+	float:right;
+}
+
+#footer {
+
+	position:relative;
+	height:53px;
+	clear: both;
+	background:#0f3983;
+	background-repeat: repeat-x;
+	background-position: top center;
+	padding-top:0px;
+	padding-right: 10px;
+	margin: -53px auto auto; 
+}
+
+#footer img {
+	margin-top:18px;
+	background:#0f3983;
+    float:right;
+    border:0;
+}
+
+.img_no_border {
+    border:0;	
+}
+
+
+#footer_cercador {
+	height:40px;
+	clear: both;
+	background:#0f3983;
+	background-image: url(../imatges/background_footer.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	padding-top:30px;
+	padding-right:50px;
+}
+
+#login {
+	background: #2c5291;
+	text-align:right;
+	padding-right:10px;
+    padding-bottom:10px;
+}
+
+#ajuda {
+	width:800px;
+	margin: 0px auto;
+}
+
+#consell {
+	padding:10px;
+	background:#f6fafd;
+	margin-bottom:10px;
+}
+
+#link_up {
+	text-align:right;
+	margin-bottom:20px;
+}
+
+#container_fitxa {
+	width:800px;
+	margin: 0px auto;
+	padding-top:10px;
+}
+
+#cos_blau {
+	background:#f6fafd;
+	background-image: url(../imatges/background_primera_noti.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	border-bottom: 1px solid #e1e6ec;
+	padding:15px;
+	margin-top:5px;
+}
+
+#comentari_senar {
+	border-top: 1px solid #d2e7fa;
+}
+
+#comentari_parell {
+	border-top: 1px solid #d2e7fa;
+	background:#f6fafd;
+}
+
+#cercador_complet_left {
+  float:left;
+  padding-top:15px;
+  padding-right: 19px;
+  border-right: 2px solid #d1e6fb;
+}
+
+#cercador_complet_right {
+  float:right;
+  padding-top:15px;
+}
+
+#cercador_complet input.durada {
+	width:40px;
+}
+
+#profileSection input {
+	margin-left:0px;
+	width:15px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    display:inline;
+}
+
+
+#comentarisSuspesos {
+  display:inline;
+  color:#ff9933; 
+}
+
+#comentarisSuspesos a {
+  color:#ff9933; 
+  text-decoration:underline;
+}
+
+.clear {
+	clear:both;
+}

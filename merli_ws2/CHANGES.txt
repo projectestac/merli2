@@ -1,0 +1,17 @@
+Release notes for MeRLi WS implementation (MELT version) (https://projectes.lafarga.cat/projects/merli)
+
+More information on each of the fixes can be found in the project 
+development home at https://projectes.lafarga.cat/projects/merli
+
+
+Changes in v8.X (not yet released)
+---------------------------------------------------------------------------------------
+
+
+Changes in v8.05.29 (2008/05/29)
+---------------------------------------------------------------------------------------
+- Added General.Keyword (same information of Classification.ETB taxon path)
+- Revised General.Language (because it wasn't returning the correct information)
+- Revised Classification (if it hasn't taxon entries, it won't appear).
+
+

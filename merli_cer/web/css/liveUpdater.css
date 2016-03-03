@@ -1,0 +1,37 @@
+﻿/*styles for liveUpdater.css*/
+
+.autocomplete-reference {
+  
+  }
+
+.autocomplete {
+  position:absolute;
+  z-index:10;
+  margin-left: 260px;
+  margin-top: 0px; 
+  color: #000000;
+  background-color: #d4d0c8;
+  border-top: 1px solid #000;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #000;  
+  visibility: hidden;
+  padding:0px;
+}
+
+.autocomplete ul {
+  padding: 0;
+  margin: 0;
+}
+ 
+.autocomplete li {
+  display: block;
+  cursor: pointer;
+  margin: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.autocomplete li.selected {
+ background-color: #B6C5F2;
+}

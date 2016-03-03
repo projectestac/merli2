@@ -1,0 +1,317 @@
+/*General*/
+body{
+	font-family:verdana;
+	font-size:12px;
+	margin:10px 0px 0px 0px;
+	padding:0px;
+}
+
+font.merli{
+	font-family:verdana;
+	color: #d75007;
+}
+div#logo{
+text-align:center;
+}
+
+.rightInfo{
+padding: 10px;
+}  
+div#errors{
+width:145px;
+}
+div#operacions,
+div#validTrad,
+div#modes,
+div#username,
+.rightInfo
+{
+	border-bottom: 1px solid #bbb;
+	border-right: 1px solid #bbb;
+}
+
+div.esquerra{
+	position:relative;
+	float:left;	
+	width: 180px;
+	margin-left: 5px;
+}
+
+
+div#dreta{
+	position:absolute;
+	left: 200px;
+	padding-right:10px;
+}
+
+
+.right{
+	position:relative;
+	float:right;
+}
+
+.left{
+	position:relative;
+	float:left;
+}
+
+.rightInfo, div#operacions,div#validTrad{
+	margin-top: 17px;
+	background-color:#e8e8e8;
+}
+.rightInfo ul, div#operacions ul,div#validTrad ul{
+	margin-left:0px;
+	padding-left:20px;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+.error, .error:link, .error:visited {
+	text-decoration: none; color:red;}      
+.error:hover {color: red;
+	font-weight: bold;
+cursor:pointer;
+}
+div#operacions,
+div#validTrad{
+	width:165px;}
+	
+div#operacions img{
+	padding-right:3px;
+}
+
+div#operacions li,
+div#validTrad li{
+	padding-top:4px;
+	list-style-type:none;
+}
+div#operacions li.title,
+div#validTrad li.title{
+	color:#d75007;
+	font-weight:bold;
+	margin-left:-5px;
+}
+
+div#lisrec{
+	width:60%;
+	}
+
+div#operacions a, div#operacions a:link, div#operacions a:visited {
+	text-decoration: none; color:#000000;}      
+div#operacions a:hover {color: #ffffff;
+	font-weight: bold;
+	background-color:#D75008;}     
+
+   
+
+
+/*Cap?alera*/
+
+div.inferior{
+	height:24px;
+}
+
+#titleHeader div{
+	padding-top: 5px;
+	margin-bottom: 10px;
+	font-size:19px;
+	font-family: garamond,"Trebuchet MS", Verdana;
+}
+
+	#modes{
+		position:relative;
+		float:left;
+		width:77%;
+		padding-left:10px;
+		height:24px;
+		background-color:#e8e8e8;
+		color: #707070;
+		font-size:14px;
+		font-weight:bold;
+		text-align:left;
+	}
+	
+		#modes a, #modes a:link, #modes a:visited {
+			text-decoration: none; 
+			color:#707070;
+		}      
+		#modes a:hover {text-decoration: underline;}     
+
+
+	#username{
+		position:relative;
+		float:right;
+		width: 20%;
+		height:24px;
+		font-size:14px;
+		font-weight:bold;
+		background-color:#d65007;
+		text-align:center;
+	}
+		#username a, #username a:link, #username a:visited {
+			text-decoration: none; color:#ffffff;}      
+		#username a:hover {text-decoration: underline;}     
+
+
+	#entorns{
+		font-size:15px;
+		font-weight:bold;
+		text-align:right;
+		color:#d65007;
+	}
+		#entorns span{padding:10px;}
+		
+		#entorns a, #entorns a:link, #entorns a:visited {
+			text-decoration: underline; color:#d65007;}      
+		#entorns a:hover {color: #ffffff;
+			font-weight: bold;
+			text-decoration: none;
+			background-color:#D75008;}     
+
+
+/*Cos*/
+	#cos{
+		margin-top:5px;
+		margin-left:10px;
+		color:#707070;
+	}
+		/*Aquí es marca el tamany del cos.*/
+		#titleContent{
+			text-align:left;
+			font-size:2.3em;
+			font-family: garamond, times;			
+			height:40px;
+			width:750px;
+		}
+		
+		#content{padding-left:10px;
+			background-color:#f9f9f9;
+		}
+
+	div#content a, div#content a:link, div#content a:visited {
+		text-decoration: none; color:#d75007}      
+	div#content a:hover {
+		text-decoration: underline;}  
+
+	div#content p.comentari{
+		line-height:1.2em;
+		font-size:1.5em;
+		font-weight:bold;
+		color:#d75007;
+		font-family:garamond;
+	}
+/*	span.user{
+		font-weight:bold;
+		padding:3px;
+	}
+	span.url{
+		line-height:1.2em;
+			font-size:0.9em;
+			font-style:italic;
+		padding:3px;
+	}
+*/
+	span.title{
+		font-weight:bold;
+		padding:5px;
+	}
+	span.description{
+		line-height:1.2em;
+			font-size:0.9em;
+			font-style:italic;
+		padding:3px;
+	}
+	span.attribute{
+		line-height:1.2em;
+			font-size:0.9em;
+			font-style:italic;
+		padding:3px;
+	}
+	span.url{
+		line-height:1.2em;
+			font-size:0.9em;
+			font-style:italic;
+		padding:3px;
+	}
+
+	span.camp{
+		float:left;
+		width:150px;
+	}
+
+	p#nouuser{
+		position:absolute;
+		top: 155px;
+		left: 300px;
+		line-height:1.8em;
+		margin-left: 22px;
+		background-color:#eeeeee;	
+		padding:5px 0px 5px 15px;
+		border-right: 1px solid #bbbbbb;
+		border-bottom:1px solid #bbbbbb;
+		display:none;
+}
+	p#nouuser input{
+		margin-right:22px;
+		margin-bottom: 5px;
+	}
+	input{
+		border-right: 1px solid #bbbbbb;
+		border-bottom: 1px solid #bbbbbb;
+		border-left: 1px solid #ddd;
+		border-top: 1px solid #ddd;
+	}
+
+	input.buto{
+			margin-top: 5px;
+			font-size:1.0em;
+			font-weight:bold;
+			background-color:#d75007;
+			color:#fff;
+	}
+
+/*Extres*/
+img.operacio{
+	height: 20px;
+	border:none;
+}
+div.listItemalert .estat, .alert{
+margin-left: 10px;
+color: #FF5800;
+font-size: 10px;
+}
+div.listIteminform .estat, .inform{
+margin-left: 10px;
+color: #0A9800;
+font-size: 10px;
+}
+div.listItemnotice .estat, .notice{
+margin-left: 10px;
+color: #FFAB00;
+font-size: 10px;
+}
+
+div.listItemmessage .estat, .message{
+margin-left: 10px;
+color: #909090;
+font-size: 10px;
+}
+/*Login*/
+table#login {
+margin-top:50px;
+}
+
+
+/* Nou disseny */
+body{ background-image:url(../images/fons.jpg); background-repeat:repeat-y; background-position:top left; margin-left:25px; margin-right:20px;}
+
+#login{width:400px;margin: 5% 30%;}  
+#login-header-logo{float:left;}  
+#login-header-text{float:right;padding-top:30px;padding-right:5px}  
+#login-content-text{float:left;}
+#login-content-form{float:right}
+
+#login-box{ background-image:url(../images/login_box1.png); height:144px; background-repeat:no-repeat; width:100%; float:left; clear:both;}
+#login-content{padding-left:70px; padding-top:20px; float:left;}
+#login-bg{ height:144px; background-repeat:no-repeat; width:18px; background-image:url(../images/login_box2.png); float:right;}
+
+.login-text{color:#707070}

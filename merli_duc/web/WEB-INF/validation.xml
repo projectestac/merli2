@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<form-validation>
+    <!-- ========== Default Language Form Definitions ===================== -->
+    <formset>   
+        <form name="loginForm">       
+            <field property="userName"
+                   depends="required">
+                <arg0   key="error.username.required"/>
+            </field>
+
+            <field property="password"
+                   depends="required,minlength">
+                <arg0   key="error.password.required"/>
+                <arg1   key="${var:minlength}" name="minlength" resource="false"/>
+                <var>
+                    <var-name>minlength</var-name>
+                    <var-value>5</var-value>
+                </var>
+            </field>
+
+            <field property="password"
+                   depends="maxlength">
+                <arg0   key="error.password.required"/>
+                <arg1   key="${var:maxlength}" name="maxlength" resource="false"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>8</var-value>
+                </var>
+            </field>
+        </form>
+         
+    </formset>
+
+</form-validation>

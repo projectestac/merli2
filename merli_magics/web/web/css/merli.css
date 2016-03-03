@@ -1,0 +1,263 @@
+/*General*/
+body{
+	font-family:verdana;
+	font-size:12px;
+	margin:10px 0px 0px 0px;
+	padding:0px;
+}
+
+div#logo{
+text-align:center;
+}
+
+div#operacions,
+div#modes,
+div#username
+{
+	border-bottom: 1px solid #bbb;
+	border-right: 1px solid #bbb;
+}
+
+div.esquerra{
+	position:relative;
+	float:left;	
+	width: 180px;
+	margin-left: 5px;
+}
+
+
+div#dreta{
+	position:absolute;
+	left: 200px;
+	padding-right:10px;
+}
+
+
+.right{
+	position:relative;
+	float:right;
+}
+
+.left{
+	position:relative;
+	float:left;
+}
+
+li.title{
+	color:#d75007;
+	font-weight:bold;
+	margin-left:-5px;	
+}
+div#operacions{
+	margin-top: 17px;
+	background-color:#e8e8e8;
+}
+div#operacions ul{
+	margin-left:0px;
+	padding-left:20px;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+div#operacions img{
+	padding-right:3px;
+}
+
+div#operacions li{
+	padding-top:4px;
+	list-style-type:none;
+}
+
+
+div#operacions a, div#operacions a:link, div#operacions a:visited {
+	text-decoration: none; color:#000000;}      
+div#operacions a:hover {color: #ffffff;
+	font-weight: bold;
+	background-color:#D75008;}     
+
+
+/*Cap?alera*/
+
+div.inferior{
+	height:24px;
+}
+
+#titleHeader div{
+	padding-top: 5px;
+	margin-bottom: 10px;
+	font-size:19px;
+	font-family: garamond,"Trebuchet MS", Verdana;
+}
+
+	#modes{
+		position:relative;
+		float:left;
+		width:77%;
+		padding-left:10px;
+		height:24px;
+		background-color:#e8e8e8;
+		color: #707070;
+		font-size:14px;
+		font-weight:bold;
+		text-align:left;
+	}
+	
+		#modes a, #modes a:link, #modes a:visited {
+			text-decoration: none; 
+			color:#707070;
+		}      
+		#modes a:hover {text-decoration: underline;}     
+
+
+	#username{
+		position:relative;
+		float:right;
+		width: 20%;
+		height:24px;
+		font-size:14px;
+		font-weight:bold;
+		background-color:#d65007;
+		text-align:center;
+	}
+		#username a, #username a:link, #username a:visited {
+			text-decoration: none; color:#ffffff;}      
+		#username a:hover {text-decoration: underline;}     
+
+
+	#entorns{
+		font-size:15px;
+		font-weight:bold;
+		text-align:right;
+		color:#d65007;
+	}
+		#entorns span{padding:10px;}
+		
+		#entorns a, #entorns a:link, #entorns a:visited {
+			text-decoration: underline; color:#d65007;}      
+		#entorns a:hover {color: #ffffff;
+			font-weight: bold;
+			text-decoration: none;
+			background-color:#D75008;}     
+
+
+/*Cos*/
+	#cos{
+		margin-top:5px;
+		margin-left:10px;
+		color:#707070;
+	}
+		
+		#titleContent{
+			text-align:left;
+			font-size:2.3em;
+			font-family: garamond, times;			
+			height:50px;
+			width:750px;
+		}
+		
+		#content{padding-left:10px;
+			background-color:#f9f9f9;
+		}
+
+	div#content a, div#content a:link, div#content a:visited {
+		text-decoration: none; color:#d75007}      
+	div#content a:hover {
+		text-decoration: underline;}  
+
+	div#content p.comentari{
+		line-height:1.2em;
+		font-size:1.5em;
+		font-weight:bold;
+		color:#d75007;
+		font-family:garamond;
+	}
+/*	span.user{
+		font-weight:bold;
+		padding:3px;
+	}
+	span.url{
+		line-height:1.2em;
+			font-size:0.9em;
+			font-style:italic;
+		padding:3px;
+	}
+*/
+	span.title{
+		font-weight:bold;
+		padding:3px;
+	}
+	span.description{
+		line-height:1.2em;
+			font-size:0.9em;
+			font-style:italic;
+		padding:3px;
+	}
+	span.attribute{
+		line-height:1.2em;
+			font-size:0.9em;
+			font-style:italic;
+		padding:3px;
+	}
+	span.url{
+		line-height:1.2em;
+			font-size:0.9em;
+			font-style:italic;
+		padding:3px;
+	}	
+	p#nouuser{
+		position:absolute;
+		top: 155px;
+		left: 300px;
+		line-height:1.8em;
+		margin-left: 22px;
+		background-color:#eeeeee;	
+		padding:5px 0px 5px 15px;
+		border-right: 1px solid #bbbbbb;
+		border-bottom:1px solid #bbbbbb;
+		display:none;
+}
+	p#nouuser input{
+		margin-right:22px;
+		margin-bottom: 5px;
+	}
+	input{
+		border-right: 1px solid #bbbbbb;
+		border-bottom: 1px solid #bbbbbb;
+		border-left: 1px solid #ddd;
+		border-top: 1px solid #ddd;
+	}
+
+	input.buto{
+			margin-top: 5px;
+			font-size:1.0em;
+			font-weight:bold;
+			background-color:#d75007;
+			color:#fff;
+	}
+
+/*Extres*/
+img.operacio{
+	height: 20px;
+	border:none;
+}
+
+.alert{
+margin-left: 10px;
+color: red;
+font-size: 10px;
+}
+.inform{
+margin-left: 10px;
+color: green;
+font-size: 10px;
+}
+.notice{
+margin-left: 10px;
+color: orange;
+font-size: 10px;
+}
+
+/*Login*/
+table#login {
+margin-top:50px;
+}

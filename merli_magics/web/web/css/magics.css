@@ -1,0 +1,60 @@
+
+div.operPerm{
+margin: 10px 20px 10px 0px;
+border: 1px solid #aaa;
+width:450px;
+}
+
+div.operTitle{
+color: #d75007;
+}
+div.opers{
+font-size:10px;
+text-align:right;
+}
+div.opers input{ width: 15px;
+margin-left: 15px;}
+
+
+div#content img.operacio{
+height: 15px;
+}
+
+div.element{
+	padding-top:10px;
+	}
+
+div.modifperm{
+	padding: 10px 10px 10px 40px;
+	margin-right:10px;
+	margin-top:5px;
+	width:550px;
+	border-left: 1px solid #fdcdb3;
+	border-top: 1px solid #fdcdb3;
+	border-bottom: 1px solid #d75007;
+	border-right: 1px solid #d75007;
+	display:none;
+}
+
+div.modifperm span{
+	color: #d75007;
+}
+
+
+div#nouperm div.modifperm{
+border: 0px;
+}	
+
+div#nouperm{
+		position:absolute;
+		top: 165px;
+		left: 10px;
+		width: 550px;
+		line-height:1.8em;
+		margin-left: 22px;
+		background-color:#eeeeee;	
+		padding:5px 0px 5px 15px;
+		border-right: 1px solid #bbbbbb;
+		border-bottom:1px solid #bbbbbb;
+		display:none;
+}

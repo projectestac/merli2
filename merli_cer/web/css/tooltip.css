@@ -1,0 +1,29 @@
+.tooltip {
+	position: relative;
+}
+
+.tooltip dfn { 
+	display: none;
+}
+.tooltip:hover dfn, .tooltiph dfn { 
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 1.5em;
+		
+	padding: 4px 10px;
+	
+	border: 1px dotted;
+	background: #FFFFFF;
+	color: #000;
+	width: 600px;
+	font-style: normal;
+	font-size: 0.8em;
+	line-height: 100%;
+	text-decoration: none;
+}
+
+.tooltip dfn span {
+	display: block;
+	width: 600px;
+}

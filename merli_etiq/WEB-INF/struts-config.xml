@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<!-- This is the Struts configuration file for the Login example application -->
+
+
+<struts-config>
+	<!-- ========== Form Bean Definitions =================================== -->   
+	<form-beans>
+    	<form-bean	name="etiqForm" 
+    				type="edu.xtec.merli.etiquetador.EtiqForm"/>
+    	<form-bean	name="gestorForm" 
+    				type="edu.xtec.merli.gestorrec.GestorForm"/>
+    	<form-bean	name="loginForm" 
+    				type="edu.xtec.merli.segur.login.LoginForm"/>
+    	<form-bean  name="responderForm"
+    				type="edu.xtec.merli.etiquetador.ajax.ResponderForm"/>
+    	<form-bean name="curriculumForm"
+					type="org.apache.struts.validator.DynaValidatorForm">
+				<form-property 	name="type"
+								type="java.lang.String"
+								initial="level"/>
+				<form-property 	name="content"
+								type="java.lang.String"
+								initial="0"/>
+				<form-property 	name="level"
+								type="java.lang.String"
+								initial="0"/>
+				<form-property 	name="area"
+								type="java.lang.String"
+								initial="0"/>
+				<form-property 	name="curriculum"
+								type="java.lang.String"
+								initial=""/>
+		</form-bean>
+    	<form-bean name="extraForm"
+					type="org.apache.struts.validator.DynaValidatorForm">
+				<form-property 	name="operation"
+								type="java.lang.String"/>
+				<form-property 	name="cerca"
+								type="java.lang.String"/>
+				<form-property 	name="id"
+								type="java.lang.String"/>
+				<form-property 	name="value"
+								type="java.lang.String"/>
+				<form-property 	name="estat"
+								type="java.lang.String"/>
+				<form-property 	name="estatsDisponibles"
+								type="java.lang.String"/>								
+				<form-property 	name="data_i"
+								type="java.lang.String"/>
+				<form-property 	name="data_f"
+								type="java.lang.String"/>
+				<form-property 	name="fisic"
+								type="java.lang.String"/>
+				<form-property 	name="id_unitat"
+								type="java.lang.String"/>		
+				<form-property 	name="id_catalogador"
+								type="java.lang.String"/>	
+				<form-property 	name="despl"
+								type="java.lang.String"/>	
+				<form-property 	name="descripcioC"
+								type="java.lang.String"/>	
+				<form-property 	name="ord"
+								type="java.lang.String"/>											
+		</form-bean>
+
+    	<form-bean name="veuRecForm"
+					type="edu.xtec.merli.gestorrec.VeuRecursForm">
+		</form-bean>
+	</form-beans> 
+   		
+	<!-- ========== Action Mapping Definitions ============================== -->   
+	<action-mappings>     
+    	<action	path="/gesrecurs"
+               	type="edu.xtec.merli.gestorrec.GestorAction"
+               	name="gestorForm"
+				scope="request"
+              	input="/gesrec.jsp"
+              	validate="true">
+			<forward name="inserit" path="/gesrec.jsp"/>
+			<forward name="editrec" path="/etiquetar.do"/>
+			<forward name="veurec" path="/veurecurs.do"/>
+			<forward name="error" path="/gesrec.jsp"/>
+    	</action>   
+    	<action	path="/etiquetar"
+               	type="edu.xtec.merli.etiquetador.EtiqAction"
+               	name="etiqForm"
+				scope="request"
+              	input="/etiquetador.jsp"
+              	validate="true">
+			<forward name="inserit" path="/gesrec.jsp"/>
+			<forward name="nou" path="/etiquetador.jsp"/>
+			<forward name="error" path="/etiquetador.jsp"/>
+			<forward name="cancel" path="/gesrec.jsp"/>
+    	</action>
+    	<action path="/login"
+			type="edu.xtec.merli.segur.login.LoginAction"
+			name="loginForm"
+			scope="session"
+			input="/login.jsp"
+			validate="true">
+		 <forward name="success" path="/gesrecurs.do"/>
+		 <forward name="failure" path="/login.jsp"/> 
+		</action>
+		<action path="/logout"
+				type="edu.xtec.merli.segur.login.LogOutAction"
+				scope="request"
+				input="/login.jsp"
+				validate="true">
+		</action>
+    	<action path="/responder"
+			type="edu.xtec.merli.etiquetador.ajax.Responder"
+			name="responderForm"
+			scope="request"
+			validate="false">
+		</action>	
+    	<action path="/curriculum"
+			type="edu.xtec.merli.etiquetador.ajax.CurriculumResponder"
+			name="curriculumForm"
+			scope="request"
+			validate="false">
+		</action>		
+    	<action path="/extra"
+			type="edu.xtec.merli.etiquetador.ajax.ExtraResponder"
+			name="extraForm"
+			scope="request"
+			validate="false">
+		</action>		
+    	<action path="/ajaxrec"
+				type="edu.xtec.merli.gestorrec.ajax.RecursResponder"
+				name="extraForm"
+				scope="request"
+				validate="false">
+		</action>	
+		<action path="/export"
+				type="edu.xtec.merli.gestorrec.ajax.RecursResponder"
+				name="extraForm"
+				scope="request"
+				validate="false">
+		</action>	
+    	<action	path="/veurecurs"
+               	type="edu.xtec.merli.gestorrec.VeuRecursAction"
+               	name="veuRecForm"
+				scope="request"
+              	input="/recurs.jsp"
+              	validate="true">
+			<forward name="error" path="/gesrecurs.do"/>
+			<forward name="" path="/gesrecurs.do"/>
+			<forward name="editar" path="/etiquetar.do"/>
+    	</action>  		 
+ 	</action-mappings> 
+
+ 	<!-- ========== Controller Definition ===========================-->
+ 	<controller processorClass="edu.xtec.merli.segur.CustomRequestProcessor" />
+ 	<!-- ========== Message Resources Definitions =========================== -->
+	<message-resources	null="false"
+    					parameter="ApplicationResources"/>
+    
+</struts-config>

@@ -1,0 +1,206 @@
+div.textTraduccio{
+background-color:#F79060;
+padding:3px;
+}
+
+div.botoTraduir{
+margin-top:10px;
+margin-bottom:10px;
+}
+
+div.botoTraduir a{
+	color: white;
+	padding : 2px;
+	margin-right:3px;
+	}
+
+div.botoOcultarTraduct{
+	margin-top:10px;
+	margin-bottom:10px;
+	}
+	
+div.botoOcultarTraduct a{
+	color:white;
+	padding:2px;
+	margin-right:3px;
+	}
+
+#idiomesT a.noselec,
+#idiomesDG a.noselec,
+#idiomesDD a.noselec,
+#idiomesTraduct a.noselec{
+	color: white;
+	background-color:#AAA;
+	padding : 2px;
+	margin-right:3px;
+	text-decoration:none;
+	-moz-border-radius:0px 0px 5px 5px; 
+	-webkit-border-radius:0px 0px 5px 5px; 
+	
+	}
+
+#idiomesT a.selec,
+#idiomesDG a.selec,
+#idiomesDD a.selec,
+#idiomesTraduct a.selec{
+	color: #AD2114;
+	background-color:white;
+	padding : 2px;
+	margin-right:3px;
+	text-decoration:none;
+	cursor:default;
+	font-weight:bold;
+	-moz-border-radius:0px 0px 3px 3px; 
+	-webkit-border-radius:0px 0px 3px 3px; 
+	}
+	
+
+
+div.title{
+font-size:13px;
+font-weight:bold;
+margin-top:5px;
+margin-bottom:5px;
+}
+
+.opcions .title{
+color: #AD2114;
+margin-top:15px;
+margin-bottom:10px;
+width:165px;
+text-align:right;
+}
+
+span.camp{
+color:#999;
+text-align:right;
+}
+
+span.valor{
+color: #616161;
+padding-left:35px;
+display:table;
+}
+div.opcions div{
+margin:5px;
+clear:both;
+}
+
+#negar{
+height:385px;
+-moz-border-radius:5px 5px 5px 5px; 	
+-webkit-border-radius:5px 5px 5px 5px;
+}
+#assignar{
+height:180px;
+}
+
+div#assignar,
+div#rights,
+div#descripcio,
+div#titolRec,
+div#titolRecTrad,
+div#descripcioTrad,
+div#rightsTrad{
+width:355px;
+position:absolute;
+display:none;
+top:200px;
+left:190px;
+border-top:1px solid #e8e8e8;
+border-left:1px solid #e8e8e8;
+border-bottom:1px solid #999999;
+border-right:1px solid #999999;
+color:white!important;
+background-color:#D2D2D2;
+-moz-border-radius: 5px 5px 5px 5px;
+-webkit-border-radius: 5px 5px 5px 5px;
+}
+
+div#negar{
+width:355px;
+position:absolute;
+display:none;
+top:180px;
+left:150px;
+border-top:1px solid #e8e8e8;
+border-left:1px solid #e8e8e8;
+border-bottom:1px solid #999999;
+border-right:1px solid #999999;
+color:white!important;
+background-color:#D2D2D2;
+}
+
+
+
+table.usuaris{
+margin-top:5px;
+border:1px solid;
+margin-left:10px;
+border-collapse: collapse;
+}
+table.usuaris td{
+text-align: center;
+cursor:pointer;
+}
+table.usuaris tr:hover{
+text-align: center;
+border:0px solid;
+color:black;
+}
+
+table.usuaris th{
+width:30px;
+text-align: center;
+padding-left:7px;
+padding-right:7px;
+color:white;
+}
+
+.missatgeUser p{
+margin-left:25px;
+color:#4D4D4D;
+font-weight:bold;
+}
+
+div.usuarisList{
+height:135px;
+overflow:auto;
+}
+
+
+.itemOperacions a{
+color:white!important;
+font-weight:bold;
+}
+
+#negar .itemOperacions{
+bottom:20px;
+}
+
+.parell{
+color:black;
+background:#FFC2A1;
+}
+
+.senar{
+color:black;
+background:#FFFFFF;
+}
+div#validTrad  div.titOperacions{
+	background-color:	#AD2114;
+	color:white;
+	padding:2px;
+	font-weight:bold;
+	border:1px solid;
+}
+div#sendAgrega  div.titOperacions{
+	background-color:#AD2114;
+	color:white;
+	padding:2px;
+	font-weight:bold;
+	border:1px solid;
+}
+font.infoAgrega{
+	color:#AD2114;
+}

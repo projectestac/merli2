@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WSDLMerli"
+   targetNamespace="http://preproduccio.merli.xtec.cat/merli_ws2/WSDLMerli.wsdl"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:tns="http://preproduccio.merli.xtec.cat/merli_ws2/WSDLMerli.wsdl"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:types="http://preproduccio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5"
+   >
+ 
+   <types>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+		 <xsd:import namespace="http://preproduccio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5.xsd" schemaLocation="http://preproduccio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5.xsd"/>
+      </xsd:schema>
+   </types>
+ 
+   
+   <message name="WSMIdResource">
+      <part name="idResource" element="types:idResource"/>
+   </message>
+   
+   <message name="WSMLom">
+      <part name="lom" element="types:lom"/>
+   </message>
+   
+   <message name="WSMListDUC">
+	<part name="body" element="types:listDUC"/>
+	</message>
+	
+	<message name="WSMElementDUC">
+    	<part name="body" element="types:elementDUC"></part>
+	</message>
+ 
+   <portType name="WSDLMerliPortType">
+      <operation name="getResource">
+         <input message="tns:WSMIdResource"/>
+         <output message="tns:WSMLom"/>
+      </operation>
+	  <operation name="addResource">
+         <input message="tns:WSMLom"/>
+         <output message="tns:WSMIdResource"/>
+      </operation>
+	  <operation name="setResource">
+         <input message="tns:WSMLom"/>
+         <output message="tns:WSMIdResource"/>
+      </operation>
+	  <operation name="delResource">
+         <input message="tns:WSMIdResource"/>
+         <output message="tns:WSMIdResource"/>
+      </operation>
+	  <operation name="editResource">
+         <input message="tns:WSMLom"/>
+         <output message="tns:WSMIdResource"/>
+      </operation>
+
+   </portType>
+   
+   <portType name="WSDLDUCPortType">
+    	<operation name="GetElement">
+    		<input message="tns:WSMIdElement"></input>
+    		<output message="tns:WSMElementDUC"></output>
+    	</operation>
+    	<operation name="GetDUC">
+    		<output message="tns:WSMListDUC"></output>
+    	</operation>
+    	<operation name="GetLevels">
+    		<output message="tns:WSMListDUC"></output>
+    	</operation>
+	</portType>
+ 
+   <binding name="WSDLMerliBinding" type="tns:WSDLMerliPortType">
+   <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="getResource">
+		<soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+         <input>
+            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+         </input>
+         <output>
+            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+         </output>
+      </operation>
+	   <operation name="addResource">
+		 <soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+         <input>
+            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+         </input>
+         <output>
+            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+         </output>
+      </operation>
+	  <operation name="setResource">
+		 <soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+         <input>
+            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+         </input>
+         <output>
+            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+         </output>
+      </operation>
+	  <operation name="delResource">
+		 <soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+         <input>
+            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+         </input>
+         <output>
+            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+         </output>
+      </operation>
+	  <operation name="editResource">
+		 <soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+         <input>
+            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+         </input>
+         <output>
+            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+         </output>
+      </operation>
+   </binding>
+   
+   <binding name="WSDLDUCBinding" type="tns:WSDLDUCPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="GetElement">
+			<soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/duc"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetDUC">
+			<soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/duc"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+				<operation name="GetLevels">
+			<soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/duc"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+   
+   <service name="WSDLMerliService">
+      <port name="WSDLMerliPort" binding="tns:WSDLMerliBinding">
+         <soap:address location="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+      </port>
+   </service>
+   
+   <service name="WSDLDUCService">
+	<port binding="tns:WSDLDUCBinding" name="WSDLDUCPort">
+		<soap:address location="http://preproduccio.merli.xtec.cat/merli_ws2/duc"/>
+	</port>
+	</service>
+</definitions>

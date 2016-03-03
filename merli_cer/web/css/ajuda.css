@@ -1,0 +1,300 @@
+body
+{
+	font-family: "Segoe UI", "verdana", "arial";
+	margin-top: 20px;
+	margin-left: 20px;
+	color: #575757;
+}
+
+body, html {
+    width:100%;
+    height: 99%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body.securityError
+{
+	font-family: "Segoe UI", "verdana" , "Arial";
+	background-image: url(../imatges/background_gradient_red.jpg);
+	background-repeat: repeat-x;
+	background-color: #E8EAEF;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+body.tabInfo
+{
+	background-image: none;
+	background-color: #F4F4F4;
+}
+       
+a
+{
+	color: rgb(19,112,171);	font-size: 1em;
+	font-weight: normal;
+	text-decoration: none;
+	margin-left: 0px;
+	vertical-align: top;
+}
+
+a:link, a:visited
+{
+	color: rgb(19,112,171);
+	text-decoration: none;
+	vertical-align: top;
+}
+
+a:hover
+{
+	color: rgb(7,74,229);
+	text-decoration: underline;
+}
+
+p
+{
+	font-size: 0.9em;
+}
+	
+h1 /* used for Title */
+{
+	color: #4465A2;
+	font-size: 1.1em;
+	font-weight: normal;
+	vertical-align:bottom;
+	margin-top: 7px;
+	margin-bottom: 4px;
+}
+
+h2 /* used for Heading in Main Body */
+{
+	font-size: 0.9em;
+	font-weight: normal;
+	margin-top: 20px;	
+	margin-bottom: 1px;
+}
+
+h3 /* used for text in main body */
+{
+	font-size: 0.9em;
+	font-weight: normal;
+	margin-top: 10px;	
+	margin-bottom: 1px;
+}
+
+h4 /* used for task links*/
+{
+	font-size: 0.9em;
+	font-weight: normal;
+	margin-top: 12px;
+	margin-bottom: 1px;
+}
+
+h5 /* used for Heading in InfoBlock */
+{
+	font-size: 1em;
+	font-weight: normal;
+	margin-bottom: 0px;
+	margin-top: 1px;	
+	font-size: 0.9em;
+	color: #575757;
+}
+
+
+.actionIcon /* used for task link icons */
+{
+	vertical-align: middle;
+	margin-top: 0px;
+	margin-right: 6px;
+}
+
+.infoBlock
+{
+	padding-left: 25px;
+	font-size: 0.9em;
+	display: block;
+	line-height: 1.1em;
+	color: #575757;
+}
+
+.errorCodeAndDivider
+{
+	font-size: 0.7em;
+	font-weight: normal;
+	color: #787878;
+}
+
+ul, ol
+{
+	font-size: 0.9em;
+	list-style-position: outside;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	line-height: 1.3em;
+}
+
+.divider
+{
+	border-bottom: #B6BCC6 1px solid;
+}
+
+#page {
+	min-height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+* html #page {
+	height: 100%;
+}
+
+#footer {
+	margin: -40px 0 0 0; 
+	padding: 0 0 0 0;
+}
+
+a img {
+	border: none;
+}
+
+
+.maxWidth {
+   width: 100%;  
+}
+
+.rightAlign {
+	text-align: right;
+}
+
+.headerMainTableFullPublic {
+    background: url( "../imatges/css-images/header_blue.png" ) transparent repeat-x bottom left;
+    background-color: #2f5292;
+    border-top: 1px solid #0f3983;
+}
+
+.titol1HeaderFullPublic {
+    background: url( "../imatges/css-images/header_dark_orange.png" ) transparent repeat-x bottom left;
+    background-color: #fc5800;
+    border-right: 1px solid #ff9e51;
+    height: 29px;
+    width: 40%;
+    padding-left: 10px;
+}
+
+.titol2HeaderFullPublic {
+    background: url( "../imatges/css-images/header_clay_orange.png" ) transparent repeat-x bottom left;
+    background-color: #fe8800;
+    height: 29px;
+    padding-right: 20px;
+}
+
+.headerTitleFullPublic, .headerSubTitleFullPublic {
+    padding-left: 10px;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+}
+.headerSubTitleFullPublic {
+    font-size: 12px;
+}
+.headerTitleFullPublic {
+    font-size: 16px;
+		padding: 0px;
+}
+
+.blueLine {
+  background: url( "../imatges/css-images/top_blue.png" ) transparent repeat-x top left;
+  background-color: #3c74ad;
+  height: 10px;
+}
+
+.breadCrumb {
+	padding: 5px 0px 3px 10px;
+}
+
+.headerTableFullPublic {
+	text-align: left;
+	border: none;
+	color:#4C7EA7;
+	padding-bottom: 20px;
+}
+
+.tableFullPublic {
+	margin: 10px 40px 10px 40px;
+}
+
+.iconCell {
+	width: 10px;
+	text-align: center;
+	padding: 0px 15px 0px 10px;
+}
+
+.blueResource {
+	border-top: 2px solid #e3ecf3;
+	background-color: #f6fafd;
+	padding: 5px 0px 5px 0px;
+}
+
+.tableRow {
+	padding-bottom: 10px;
+}
+
+/* footer styles  */
+.footerMainTable {
+    background: url( "../imatges/css-images/footer.png" ) transparent repeat-x top left;
+    height: 52px;
+    border-top: 1px solid #0f3983;
+    padding-right: 10px;
+}
+/* footer styles  */
+
+.propertyLabel {
+   font-weight: bold
+}
+
+/* Common links */
+a.navLinkBlue, a.navLinkOrange {
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+a.navLinkBlueNoUnderline, .navLinkBlueNoUnderline  {
+    color: #8fb3d3;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+a.navLinkBlue, .navLinkBlue {
+    color: #8fb3d3;
+    font-weight: bold;
+}
+
+a.navLinkBlue:hover {
+    color: #F78208;
+    text-decoration: underline;
+}
+
+a.navLinkBlueNoUnderline:hover {
+    color: #F78208;
+    text-decoration: none;
+}
+
+a.navLinkOrange, .navLinkOrange {
+    color: #F78208;
+}
+
+a.navLinkOrange:hover {
+    color: #4C7EA7;
+    text-decoration: none;
+}
+
+.blueText {
+	color: #20498b;
+}
+
+.softBlueText {
+	color: #8fb3d3;
+}

@@ -1,0 +1,15 @@
+
+<script language="Javascript">
+  function hideUrl() {
+     window.status='sdsds';
+     return true;
+     }
+     
+</script>
+<table border="1">
+  <tr>
+    <td>
+      <a href="http://www.guiarte.com" onmouseover="window.status='Guiarte, sitio de turismo y arte';return true" onmouseout="window.status='';return true"> Guiarte.com </a>
+    </td>
+  </tr>  
+</table>    

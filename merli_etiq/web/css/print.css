@@ -1,0 +1,283 @@
+div#header,div#operacions{
+
+display:none;
+
+}
+
+
+
+#titol{
+
+font-size:18px;
+
+margin-left:10px;
+
+font-weight:bold;
+
+}
+
+
+
+div.title{
+
+font-size:13px;
+
+font-weight:bold;
+
+margin-top:5px;
+
+margin-bottom:5px;
+
+}
+
+
+
+.opcions .title{
+
+border-top:1px solid #CCC!important;
+
+color:  #AD2114;
+
+margin-top:10px;
+
+margin-bottom:10px;
+
+padding-top:10px;
+
+}
+
+
+
+
+
+
+span.camp:after{
+
+ content: ":";
+
+  }
+
+
+
+span.valor{
+
+color: #444;
+font-weight:bold;
+
+
+}
+
+div.opcions div{
+
+margin:5px;
+
+margin-left:10px;
+
+}
+
+
+
+#negar{
+
+height:340px;
+
+}
+
+#assignar{
+
+height:180px;
+
+}
+
+
+
+div#assignar,
+
+div#negar,
+
+div#rights,
+
+div#descripcio,
+
+div#titolRec{
+
+width:355px;
+
+position:absolute;
+
+display:none;
+
+top:120px;
+
+left:-50px;
+
+padding:10px;
+
+/*border-top:1px solid #e8e8e8;
+
+border-left:1px solid #e8e8e8;
+
+border-bottom:1px solid #999999;
+
+border-right:1px solid #999999;
+*/
+color:white!important;
+
+background-color:#AD2114;
+
+}
+
+
+
+
+
+
+
+table.usuaris{
+
+margin-top:5px;
+
+/*border:1px solid;
+*/
+margin-left:10px;
+
+/*border-collapse: collapse;
+*/
+}
+
+table.usuaris td{
+
+text-align: center;
+
+cursor:pointer;
+
+}
+
+table.usuaris tr:hover{
+
+text-align: center;
+
+border:0px solid;
+
+color:black;
+
+}
+
+
+
+table.usuaris th{
+
+width:30px;
+
+text-align: center;
+
+padding-left:7px;
+
+padding-right:7px;
+
+color:white;
+
+}
+
+
+
+.missatgeUser p{
+
+margin-left:25px;
+
+}
+
+
+
+div.usuarisList{
+
+height:135px;
+
+overflow:auto;
+
+}
+
+
+
+
+
+.itemOperacions a{
+
+color:white!important;
+
+font-weight:bold;
+
+}
+
+
+
+#negar .itemOperacions{
+
+bottom:20px;
+
+}
+
+
+
+.parell{
+
+color:black;
+
+background:#FFC2A1;
+
+}
+
+
+
+.senar{
+
+color:black;
+
+background:#FFFFFF;
+
+}
+
+
+
+body{
+
+font-family:Arial;
+
+font-size:12px;
+
+}
+
+
+
+img{
+
+border:none;
+
+}
+
+
+
+.esquerra, .missatgeUser{
+
+display: none;
+
+}
+
+.banner{
+
+visibility:hidden;
+
+}
+
+a{color:#000;}
+
+/*div#unav_gcc_capcalera img{-moz-transform:  scale(0.80);border:0px;}*/
+div#unav_gcc_peu{display:none;visibility:hidden;}
+
+span.camp{
+color:rgb(121,121,121)!important;
+padding-right: 10px;
+font-style:italic;
+
+}
+

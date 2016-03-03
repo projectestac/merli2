@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<!-- This is the Struts configuration file for the Login example application -->
+
+
+<struts-config>
+	<!-- ========== Form Bean Definitions =================================== -->   
+	<form-beans>
+   		<form-bean name="NodeForm"
+   					type="edu.xtec.gescurriculum.gestorcurriculum.NodeForm">
+   		</form-bean> 
+   		<form-bean name="loginForm"
+   					type="edu.xtec.merli.segur.login.LoginForm">
+   		</form-bean> 
+    	<form-bean	name="responderForm" 
+    				type="edu.xtec.merli.ajax.ResponderForm"/>
+	</form-beans> 
+	
+	<!-- ========== Action Mapping Definitions ============================== -->   
+	<action-mappings>         
+		<!-- gestió de nodes -->
+		<action path="/gesNodes"
+				type="edu.xtec.gescurriculum.gestorcurriculum.NodeAction"
+				name="NodeForm"
+				scope="request"
+				input="/gesCur.jsp"
+				validate="true">
+			<forward name="success" path="/gesCur.jsp"/>
+			<forward name="failure" path="/gesCur.jsp"/>
+		</action>     
+		<!-- validació d'usuaris. -->
+		<action path="/login"
+				type="edu.xtec.merli.segur.login.LoginAction"
+				name="loginForm"
+				scope="request"
+				input="/login.jsp"
+				validate="true">
+			<forward name="success" path="/gesNodes.do"/>
+			<forward name="failure" path="/login.jsp"/>
+		</action>
+		<action path="/logout"
+				type="edu.xtec.merli.segur.login.LogOutAction"
+				scope="request"
+				input="/login.jsp"
+				validate="true">
+		</action>
+    	<action path="/Responder"
+			type="edu.xtec.merli.ajax.Responder"
+			name="responderForm"
+			scope="request"
+			validate="false">
+		</action>
+ 	</action-mappings> 
+
+ 	<!-- ========== Controller Definition ===========================-->
+ 	<controller processorClass="edu.xtec.merli.segur.CustomRequestProcessor" />
+ 	 
+ 	<!-- ========== Message Resources Definitions =========================== -->
+  	<message-resources	null="false" parameter="ApplicationResources"/>
+    
+ 	<!-- ========== Plugin Definitions =========================== 
+ 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+ 		<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+ 	</plug-in> --> 
+ 	
+</struts-config>

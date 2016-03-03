@@ -1,0 +1,556 @@
+﻿/* Full d'estil del cercador XTEC
+	
+	Colors XTEC:
+		blau fosc: #0f3982
+		blau +clar: #749fcb
+		taronja: #FF7B00
+
+*/
+
+* {
+	margin:0px;
+	padding:0px;
+}
+
+body {
+	background-color:white;
+	padding: 0px;
+	font-family : Verdana, Helvetica, Univers, Sans-serif;
+	font-size: 10pt;
+	margin: 0px;
+}
+
+a:link, a:visited {
+	color:#FF7B00;
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+/* Tipografia */
+
+h1 {
+	font-size:16pt;
+	color:#ff7b00;
+	margin-bottom:10px;
+}
+
+#fitxa h1 {
+	display:inline;
+	color:#749fcb;
+	font-size: 12pt;
+}
+
+h1.header_llista {
+	width:99%;
+	font-size:10pt;
+	font-weight:bold;
+	color:white;
+	background: #ff7b00;
+	padding:5px;
+	margin:0px;
+}
+
+#header_complet h1 {
+	color:#0f3982;
+	font-size:18pt;
+	margin-bottom:0px;
+}
+
+#titol h1 {
+	color:#0f3982;
+	font-size:18pt;
+	margin-bottom:0px;
+	padding-top:10px;
+}
+
+#cercador_complet h1 {
+	float:left;
+	font-size:10pt;
+ 	display:inline;
+	color:black;
+}
+	
+#fitxa {
+	line-height:1.5em;
+}
+
+#fitxa h2 {
+	display:inline;
+	font-size: 10pt;
+}
+
+#llista_comentaris h2 {
+	float:left;
+	background:white;
+	color:black;
+	font-size:10pt;
+	font-weight:bold;
+	margin-top:5px;
+	margin-bottom:5px;
+	padding-left:5px;
+}
+
+#header_complet h2, #titol h2 {
+	font-size:10pt;
+ 	display:inline;
+}
+
+#cercador_complet h2 {
+	text-align:right;
+	font-size:8pt;
+	font-weight:normal;
+	color:#FF7B00;
+}
+
+#fitxa h3 {
+	display:inline;
+	font-weight:normal;
+	font-size: 10pt;
+}
+
+#llista_comentaris h3 {
+	float:right;
+	background:white;
+	color:black;
+	font-size:10pt;
+	font-weight:normal;
+	margin-top:5px;
+	margin-bottom:5px;
+	padding-right:5px;
+}
+
+#llista_comentaris h4 {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	font-size:10pt;
+	font-weight:normal;
+}
+
+/* Enllaos */
+
+#resultat a:link, #resultat a:visited {
+	color:#749fcb;
+	font-weight:bold;
+}
+
+#fitxa a:link, #fitxa a:visited {
+	color:#749fcb;
+	font-weight:bold;
+}
+
+#afegirOrganitzador a:link, #afegirOrganitzador a:visited {
+	color:#FF7B00;
+	font-size:11px;
+}
+
+#afegir_comentari a:link, #afegir_comentari a:visited {
+	font-weight:bold;
+	color:white;
+}
+
+#afegir_comentari a:hover {
+	text-decoration:none;
+	color:black;
+}
+
+#rss a:link, #rss a:visited {
+	color:#749fcb;
+	font-weight:normal;
+}
+
+#suggeriments a:link, #suggeriments a:visited {
+	color:#749fcb;
+	font-weight:bold;
+}
+
+/* imatges */
+ 
+#header_complet img {
+ 	display:inline;
+}
+
+/* taules */
+table.ordenacio {
+	width:130px;
+	border-spacing:1px;
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+}
+
+table.ordenacio caption {
+	margin:0px;
+	border: 1px solid #ccc;
+	margin-left:-1px;
+	background: #eee;
+}
+
+table.ordenacio td {
+	text-align:center;
+}
+
+/* formularis de cerca */
+
+#cercador {
+	width:330px;
+	float:right;
+}
+form * { vertical-align: middle; }
+
+#fila0 {
+	padding-top:5px;
+	padding-bottom:3px;
+	width:350px;
+}
+
+#fila1 {
+	width:350px;
+}
+
+#fila2 {
+	width:244px;
+}
+
+#fila2_left {
+	float:left;
+}
+
+#fila2_right{
+	float:right;
+}
+
+input {
+	width:240px;
+}
+
+input.button {
+	width:75px;
+}
+
+select {
+	width:120px;
+}
+
+#cercador_complet form {
+	width:100%;
+}
+
+#cercador_complet legend {
+	font-size:12pt;
+	font-weight:bold;
+	color:#0f3982;
+	margin-left:10px;
+	padding-left:3px;
+	padding-right:3px;
+}
+	
+#cercador_complet fieldset{
+	border: 1px solid #ddd;
+}
+
+#cercador_complet label {
+	float:left;
+	margin-left:20px;
+	text-align:right;
+	font-weight:bold;
+}
+
+#cercador_complet input, #cercador_complet select {
+	margin-left:260px;
+	display:block;
+}
+
+#cercador_complet select {
+	width:200px;
+}
+
+#cercador_complet input.text_lliure {
+	width:300px;
+}
+
+#cercador_complet input.data {
+	width:100px;
+}
+
+#cercador_complet button {
+	position:relative;
+	top:-21px;
+	left:370px;
+	height:20px;
+}
+
+#cercador_complet input.etb {
+	width:200px;
+}
+
+#cercador_complet input.durada {
+	width:20px;
+}
+
+#cercador_complet input.submit {
+	width:100px;
+}
+
+#cercador_titol {
+	display:inline;
+}
+
+#cercador_input {
+	display:inline;
+}
+
+#cercador_boto {
+	padding-left:5px;
+	display:inline;
+}
+
+#cercador_nivell_educatiu {
+	padding-left:5px;
+	display: inline;
+}
+
+#cercador_area_curricular {
+	padding-left:5px;
+	display: inline;
+}
+
+/* barra de resultats */
+
+#barra {
+	height:20px;
+	margin:0px;
+	padding:0px;
+	background-image: url(../imatges/barra.gif);
+	background-repeat: repeat;
+}
+
+#barra_left {
+	float:left;
+	padding-left:5px;
+	color: white;
+	font-weight:bold;
+}
+
+#barra_right {
+	float:right;
+	padding-right:5px;
+	color: white;
+	font-weight:bold;
+}
+
+/* resultats */
+#resultat {
+	padding:0px;
+	margin-bottom:10px;
+	width:500px;
+}
+
+#resultat #rating {
+	display:inline;
+}
+
+#resultat #comentaris {
+	display:inline;
+	color:grey;
+}
+
+#resultat #autor {
+	color:grey;
+}
+
+#resultat #descripcio {
+}
+
+#resultat #data {
+	color:grey;
+}
+
+#rss {
+	background: url(../imatges/rss2.png) no-repeat 0 10%;
+	margin-bottom:5px;
+	padding-left:20px;
+	padding-bottom:10px;
+	border-bottom: 1px solid #ccc;
+	font-weight:bold;
+}
+
+.paginacio {
+	text-align:center;
+}
+
+/* =layout */
+
+#top {
+	background: #0f3982;
+	background-image: url(../imatges/xtec_int.gif);
+	background-repeat: no-repeat;
+	width:100%;
+}
+
+#container_llistat {
+	width: 95%;
+	margin: 10px auto;
+	background-color: #fff;
+	color: #333;
+	line-height: 130%;
+}
+
+#container_complet {
+	width: 600px;
+	margin: 10px auto;
+}
+
+#container_fitxa {
+	width: 80%;
+	margin: 10px auto;
+	background-color: #fff;
+	color: #333;
+	margin: 20px auto;
+}
+
+#header {
+	height:35px;
+	padding: .5em;
+	text-indent: 1em;
+}
+
+#header_complet {
+	height:55px;
+	padding-left:50px;
+	padding-top: 10px;
+	background-image: url(../imatges/merli.png);
+	background-repeat: no-repeat;
+	background-position: left;
+}
+	
+#titol {
+	width:400px;
+	height:60px;
+	float:left;
+	margin-left:10px;
+	padding-left:60px;
+	padding-top:10px;
+	background-image: url(../imatges/merli.png);
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+#rightnav {
+	float: right;
+	width: 150px;
+	margin: 0;
+	padding-top:12px;
+	padding-right:20px;
+}
+	
+#content {
+	margin-left: 20px;
+	padding: 1em;
+}
+	
+#footer {
+	height:30px;
+	width: 100%;
+	margin-top:10px;
+	padding-top:10px;
+	clear: both;
+	background-image: url(../imatges/departament.png);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#fitxa {
+	padding:10px;
+	border-left:10px solid #eee;
+	border-right:2px solid #eee;
+	border-top:2px solid #eee;
+	border-bottom:2px solid #eee;
+	width:97%;
+	margin: 0px auto;
+	margin-bottom:10px;
+}
+
+#fitxa #comentaris {
+	display:inline;
+}
+
+#url {
+	float:left;
+}
+
+#afegirOrganitzador {
+	float:right;
+}
+
+#afegir_comentari {
+	width:99%;
+	background:#ff7b00;
+	padding:5px;
+	margin-bottom:10px;
+    position: relative;
+}
+
+#llista_comentaris {
+	width:100%;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	margin-bottom:10px;
+    position: relative;	
+}
+
+#suggeriments {
+	width:100%;
+	border: 1px solid #ccc;
+	padding-top:5px;
+	padding-bottom:5px;
+	line-height:1.5em;
+}
+
+.clear {
+	clear:both;
+}
+
+#afegir_comentari_ocult a:link, #afegir_comentari_ocult a:visited {
+	font-weight:bold;
+	color:white;
+}
+
+#afegir_comentari_ocult a:hover {
+	text-decoration:none;
+	color:black;
+}
+
+#afegir_comentari_ocult {
+	width:99%;
+	background:#ff7b00;
+	padding:5px;	
+	display: none;
+    position: relative;		
+}
+
+#formulari_comentari_ocult {
+	width:100%;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	margin-bottom:10px;
+	display: none;
+    position: relative;			
+}
+
+#formulari_comentari_ocult h4 {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	font-size:10pt;
+	font-weight:bold;
+}
+

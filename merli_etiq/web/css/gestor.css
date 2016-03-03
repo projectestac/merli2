@@ -1,0 +1,212 @@
+	#waiting {
+			padding-top: 15px;
+			padding-left: 15px;
+            display: none; 
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+           }
+
+ul a.selected {
+	font-weight: bold;
+	color:#D75008;
+	}	
+
+ul a.selected:hover{
+	background-color:#FFE2D2!important;
+}
+
+
+div#formCerca{
+	padding:10px;
+	font-weight:bold;
+	font-size:0.9em;
+	color:#707070;
+}
+div#formCerca input{
+	margin:2px;
+}
+
+.rightInfo {
+padding:0px;
+}
+.infoOK{
+color:white;
+background-color:green;
+padding:2px;
+}
+.infoFAIL{
+color:white;
+background-color:red;
+padding:2px;
+}
+#missatgeResultat{
+	position:absolute;
+	top:57px;
+	right:10px;
+	width:30%;
+	text-align:center;
+}
+div#operacions div.titOperacions,
+.rightInfo div.titOperacions{
+	background-color:#AD2114;
+	color:white;
+	padding:2px;
+	font-weight:bold;
+	border:1px solid;
+}
+div#operacions ul li{
+	margin-left:-20px;
+	padding-left:20px;
+	padding-top:0px;
+	padding-bottom:
+	background-color:#E8E8E8;
+	font-weight:bold;
+	list-style-position:inside;
+	list-style-image:url(web/images/tri.gif);
+}
+
+div#operacions ul,
+.rightInfo ul{
+	margin:0px;
+	padding-bottom:0px;
+	padding-left:20px;
+	padding-top:0px;
+}
+div#operacions li,
+.rightInfo li{
+	border:1px solid;
+	border-right-color:#BBBBBB;
+	border-bottom-color:#BBBBBB;
+	border-left-color:#FFFFFF;
+	border-top-color:#FFFFFF;
+
+}
+
+div#operacions ul ul li{
+	margin-left:-40px;
+	padding-left:20px;
+	padding-top:0px;
+	padding-bottom:0px;
+	background-color:#F4F4F4;
+	border-right:0px;
+	border-left:0px;
+	font-weight:normal;
+	list-style-position:inside;
+	list-style-image:url(web/images/rodo.gif);
+}
+div#operacions a, div#operacions a:link, div#operacions a:visited {
+	text-decoration: none; color:#707070;}   
+   
+div#operacions li:hover {color: #AB5D34;
+	font-weight: bold;
+	background-color:#FFE2D2;
+	list-style-position:inside;
+	list-style-image:url(web/images/triSel.gif);
+}       
+div#operacions ul ul li:hover {color: #AB5D34;
+	font-weight: bold;
+	background-color:#FFE2D2;
+	list-style-position:inside;
+	list-style-image:url(web/images/rodoSel.gif);
+}    
+
+
+div#operacions a:hover {color: #AB5D34;
+	font-weight: bold;
+	background-color:#FFE2D2;}
+
+a.totesOp{
+	color:#D65007!important;
+}
+
+
+div.list{
+	position:relative;
+	float:left;
+	margin-top: 5px;
+margin-bottom:2px;
+width:100%;
+}
+
+div.listSelecButton{
+	position:relative;
+	float:left;
+	width:25px;
+	}
+
+div.listItemalert, 
+div.listItemmessage, 
+div.listItemnotice, 
+div.listIteminform {
+	position:relative;
+	float:left;
+	width:80%;
+}
+/*
+div.list a:hover{
+	font-weight:bold;
+text-decoration:none!important;
+}
+div.listItemalert a:hover{
+	background-color:#FFF0F0;
+}
+div.listItemmessage a:hover{
+	background-color:#F3F3F3;
+}
+div.listItemnotice a:hover{
+	background-color:#FFF6DF;
+}
+div.listIteminform a:hover{
+	background-color:#F0FFF3;
+}*/
+
+span.user{	
+	font-style: italic;
+	}
+
+div.itemInfo{
+	font-size: 11px;
+	display:none;
+	margin-left:3px;
+	padding-top:5px;
+	padding-left:5px;
+	padding-right:5px;
+	padding-bottom:5px;
+	}
+	
+div.itemInfo img{
+	margin-right: 5px;
+	}
+div.itemOperacions a{
+	margin-left: 10px;
+	}
+
+div.listItemalert div.itemInfo{
+	/*vermell*/
+	margin-top:1px;
+}
+div.listItemmessage div.itemInfo{
+	/*gris*/
+	margin-top:1px;
+}
+div.listItemnotice div.itemInfo{
+	/*groc*/
+	margin-top:1px;
+}
+div.listIteminform div.itemInfo{
+	/*verd*/
+	margin-top:1px;
+}
+.itemOperacions{
+margin-top:10px;
+	position:relative; 
+	padding-right:15px;
+	text-align:right;
+}
+.itemOperacions a{
+color:black!important;
+font-size:1.1em;
+}
+#paginacio{
+clear:both;
+padding-top:15px;
+}

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<!-- This is the Struts configuration file for the Login example application -->
+
+
+<struts-config>
+	<!-- ========== Form Bean Definitions =================================== -->   
+	<form-beans>
+    	<form-bean	name="userForm" 
+    				type="edu.xtec.merli.gestorusuaris.UserForm"/>
+    	<form-bean	name="permForm" 
+    				type="edu.xtec.merli.gestorpermisos.PermForm"/>
+    	<form-bean	name="loginForm" 
+    				type="edu.xtec.merli.segur.login.LoginForm"/>
+    	<form-bean name="permUserForm"
+					type="org.apache.struts.validator.DynaValidatorForm">
+				<form-property 	name="username"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="email"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="us_merli"
+								type="java.lang.Boolean"
+								initial=""/>
+				<form-property 	name="pw"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="repw"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="unitat"
+								type="java.lang.String"
+								initial=""/>
+		</form-bean>
+    	<form-bean name="modifUserForm"
+					type="org.apache.struts.validator.DynaValidatorForm">
+				<form-property 	name="username"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="email"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="unitat"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="us_merli"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="canv_pw"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="pw"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="repw"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="listPermissions"
+								type="java.lang.String"
+								initial=""/>
+		</form-bean>
+    	<form-bean name="operationForm"
+					type="org.apache.struts.validator.DynaValidatorForm">
+				<form-property 	name="idPermission"
+								type="java.lang.Integer"
+								initial=""/>
+				<form-property 	name="permission"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="description"
+								type="java.lang.String"
+								initial=""/>
+		</form-bean>
+    	<form-bean name="modificationForm"
+					type="org.apache.struts.validator.DynaValidatorForm">
+				<form-property 	name="idPermission"
+								type="java.lang.Integer"
+								initial=""/>
+				<form-property 	name="permission"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="description"
+								type="java.lang.String"
+								initial=""/>
+				<form-property 	name="listOperations"
+								type="java.lang.String"
+								initial=""/>
+		</form-bean>
+	</form-beans> 
+   		
+	<!-- ========== Action Mapping Definitions ============================== -->   
+	<action-mappings>     
+    	<action	path="/usuaris"
+               	type="edu.xtec.merli.gestorusuaris.UserAction"
+               	name="userForm"
+				scope="request"
+              	input="/gesuser.jsp"
+              	validate="true">
+			<forward name="inserit" path="/gesuser.jsp"/>
+    	</action>   
+    	<action	path="/permisos"
+               	type="edu.xtec.merli.gestorpermisos.PermAction"
+               	name="permForm"
+				scope="request"
+              	input="/gesperm.jsp"
+              	validate="true">
+			<forward name="inserit" path="/gesperm.jsp"/>
+    	</action>
+    	<action path="/login"
+			type="edu.xtec.merli.segur.login.LoginAction"
+			name="loginForm"
+			scope="session"
+			input="/login.jsp"
+			validate="true">
+		 <forward name="success" path="/usuaris.do"/>
+		 <forward name="failure" path="/login.jsp"/> 
+		</action>
+		<action path="/logout"
+				type="edu.xtec.merli.segur.login.LogOutAction"
+				scope="request"
+				input="/login.jsp"
+				validate="true">
+		</action>			
+    	<action path="/permisosuser"
+			type="edu.xtec.merli.gestorusuaris.PermissionAction"
+			name="permUserForm"
+			scope="request"
+			validate="false">
+		</action>
+    	<action path="/modificaruser"
+			type="edu.xtec.merli.gestorusuaris.ModificationAction"
+			name="modifUserForm"
+			scope="request"
+			validate="false">
+		</action>
+    	<action path="/operacions"
+			type="edu.xtec.merli.gestorpermisos.OperationsAction"
+			name="operationForm"
+			scope="request"
+			validate="false">
+		</action>
+		<action path="/unitats"
+			type="edu.xtec.merli.gestorusuaris.UnitatsAction"
+			scope="request"
+			validate="false">
+		</action>
+    	<action path="/modificarperm"
+			type="edu.xtec.merli.gestorpermisos.ModificationAction"
+			name="modificationForm"
+			scope="request"
+			validate="false">
+		</action>
+ 	</action-mappings> 
+ 	<!-- ========== Controller Definition ===========================-->
+ 	<controller processorClass="edu.xtec.merli.segur.CustomRequestProcessor" />
+ 	
+ 	<!-- ========== Message Resources Definitions =========================== -->
+	<message-resources	null="false"
+    					parameter="ApplicationResources"/>
+    
+</struts-config>

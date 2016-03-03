@@ -1,0 +1,396 @@
+/* Full d'estil de l'aplicació web de gestió del sistema de cerca XTEC.
+	
+	Colors XTEC:
+		blau fosc: #0f3982
+		blau +clar: #749fcb
+		taronja: #FF7B00
+
+*/
+
+html {
+	min-height:101%;
+}
+
+body {
+	background-color:white;
+	background-image: url(../img/fons.gif);
+	padding: 0px;
+	font-family : Verdana, Helvetica, Univers, Sans-serif;
+	font-size: 10pt;
+	margin: 0px;
+	align: center;
+}
+
+a:link, a:visited {
+	color:#FF7B00;
+	text-decoration:none;
+}
+
+/* Menú lateral */
+
+#leftnav ul {
+	list-style-type:none;
+	font-size: 12px;
+	padding:0px;
+	margin:0px;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-left:7px;
+	line-height:2em;
+}
+
+#login {
+	background: #0f3982;
+	text-align:right;
+	padding-right:10px;
+    border-left-width: 0px;		
+    color:white;
+    font-size:8pt;
+}
+
+#login a {
+	color:white;
+	font-size:8pt;
+    border-left-width: 0px;	
+}
+
+#leftnav li {
+}
+
+#leftnav a:link, a:visited {
+	color:#FF7B00;
+	text-decoration:none;
+	padding-left: 7px;
+	border-left: 10px solid white;
+}
+
+
+#leftnav a:link#current, #leftnav a:visited#current,
+#leftnav a:hover {
+	border-left: 10px solid #FF7B00;
+	padding-left: 7px;
+}
+
+/* top */
+a.titol {
+	color:white;
+	border:0px;
+	padding:0px;
+}
+
+/* contingut */
+
+#content a {
+	padding:0px;
+	margin:0px;
+	border:0px;
+}
+
+#content a:hover {
+	text-decoration:underline;
+}
+
+.caixa {
+	padding:5px;
+	padding-left:10px;
+	line-height:1.9em;
+	border: 1px solid #ccc;
+	background: #fffac5;
+}
+
+.subtitol_blau {
+	color:#0f3982;
+	font-weight:bold;
+}
+
+.paginacio {
+	text-align:center;
+}
+
+/* taules */
+
+.taula_admin_cerca {
+	border-spacing:1px;
+	border-collapse: collapse;
+}
+
+.taula_admin_cerca caption {
+	font-size:12px;
+	font-weight: bold;
+	text-transform:uppercase;
+	margin:0px;
+	padding-top:3px;
+	padding-bottom:3px;
+	border: 1px solid #ccc;
+	margin-left:-1px;
+	background-image: url(../img/fons_taronja.gif);
+}
+
+.taula_admin_cerca th {
+	background-color: #eee;
+	border: 1px solid #ccc;
+	text-align:center;
+	padding:1px;
+}
+
+.taula_admin_cerca td {
+        background-color: #fff;
+	border: 1px solid #ccc;	
+	padding:3px;
+}
+
+td.esquerra {
+	text-align:left;
+}
+
+td.centre {
+	text-align:center;
+}
+
+
+td.autor {
+	text-align:left;
+	background:#eee;
+}
+
+.taula_comentaris {
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	margin:0px;
+	padding:0px;
+}
+
+.taula_comentaris caption {
+	font-size:12px;
+	font-weight: bold;
+	text-transform:uppercase;
+	margin:0px;
+	padding-top:3px;
+	padding-bottom:3px;
+	border: 1px solid #ccc;
+	margin-left:-1px;
+	background-image: url(../img/fons_taronja.gif);
+}
+
+.taula_comentaris td {
+	border: 1px solid #ccc;
+}
+
+.taula_comentaris_text {
+	text-align:left;
+	padding:5px;
+	font-size:12px;	
+}
+
+.taula_edicio {
+	margin:0px;
+	padding:0px;
+	border:0px;
+	background:#eee;
+	font-size:12px;
+}
+
+.taula_edicio td {
+	border:0px;
+	padding-left:3px;
+	font-size:12px;	
+}
+
+.taula_edicio_autor {
+	width:400px;
+	text-align:left;
+}
+
+.taula_edicio_edicio {
+	width:100px;
+	text-align:right;
+}
+
+.taula_noticies_titol {
+	font-weight:bold;
+	width:300px;
+}
+
+.taula_noticies_edicio {
+	width:200px;
+	text-align:right;
+}
+
+.taula_usuaris{
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	margin:0px;
+	padding:0px;
+}
+
+.taula_usuaris caption {
+	font-size:12px;
+	font-weight: bold;
+	text-transform:uppercase;
+	margin:0px;
+	padding-top:3px;
+	padding-bottom:3px;
+	border: 1px solid #ccc;
+	margin-left:-1px;
+	background-image: url(../img/fons_taronja.gif);
+}
+
+.taula_usuaris td {
+	border: 1px solid #ccc;
+	padding:3px;
+	font-size:12px;
+}
+
+.taula_usuaris_nom {
+	width:450px;
+	text-align:left
+}
+
+/* formularis */
+
+form {
+	padding:0px;
+	margin:0px;
+	padding-bottom:5px;
+	padding-top:5px;
+}
+
+fieldset {
+	margin 1em 0;
+	padding:10px;
+	border:none;
+	border:1px solid #ccc;
+	border-left:5px solid #FF7B00;
+}
+
+legend {
+	margin 1em 0;
+	padding 0.5em;
+	color:#0f3982;
+	background:transparent;
+	font-weight:bold;
+}
+
+label { 
+	float: left; 
+	padding: 0.1em; 
+	padding-right:5px;
+	text-align: right; 
+}
+
+label.cercador {
+	width:220px;
+}
+
+label.filtrat{
+	width:80px;
+}
+
+fieldset div {
+	margin-bottom:.5em;
+	padding:0px;
+	display:block;
+}
+
+fieldset div input, fieldset div textarea { 
+	width:auto;
+	margin-left:5px;
+} 
+
+.area_form {
+	font-weight:bold;
+	text-align:center;
+}
+
+.anotacio {
+	font-size:9px;
+}
+
+/* formulari accessos */
+
+.label_accessos {
+	text-align:left;
+	float:left;
+	margin:0px;
+	padding:0px;
+}
+
+/* Estructura de la pàgina */
+
+#container {
+	width: 800px;
+	margin: 10px 10%;
+	background-color: #fff;
+	color: #333;
+	border: 1px solid gray;
+	line-height: 130%;
+	align:center;
+}
+
+#container_popup {
+	margin: 10px auto;
+        background-image: url(../img/fons.gif);
+	color: #333;
+	border: 1px solid gray;
+	line-height: 130%;
+	align:center;
+}
+
+	
+#top {
+	height:35px;
+	padding: .5em;
+	text-indent: 1em;
+	background-color: #0f3982;
+	background-image: url(../img/xtec.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+	border-bottom: 1px solid gray;
+}
+	
+#top h1 {
+	line-height: 1.5em;
+	color: white;
+	font-family : Arial, Helvetica, Univers, Sans-serif;
+	font-size: 15pt;
+	padding: 0;
+	margin: 0;
+}
+	
+#leftnav {
+	float: left;
+	width: 150px;
+	margin: 0;
+	border-right: 2px solid #eee;
+}
+	
+#content {
+	margin-left: 200px;
+	padding: 1em;
+	max-width: 36em;
+}
+	
+#footer {
+	height:30px;
+	clear: both;
+	margin: 0;
+	padding: .5em;
+	color: #333;
+	border-top: 2px solid #eee;
+	background-image: url(../img/footer_logos.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#rss a:link, #rss a:visited {
+	color:#749fcb;
+	font-weight:normal;
+}
+
+#rss {
+	background: url(../img/rss2.png) no-repeat 0 50%;
+	margin-bottom:5px;
+	padding-left:20px;
+	font-weight:bold;
+}
+

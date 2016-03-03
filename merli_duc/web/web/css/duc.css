@@ -1,0 +1,292 @@
+
+a, a:link, a:visited {text-decoration: none; color:#000000;}      
+a:hover {text-decoration: underline;}                         
+
+a.selected {
+	color: #ffffff!important;
+	font-weight: bold;
+	background-color:#D75008;
+	}
+
+a.selected2 {
+	color: #ff0000!important;
+	font-style: italic;
+	}
+	
+a#selected {
+	font-weight: bold;
+	}
+
+
+.disabled{
+color: red!important;
+}
+
+.enabled{
+color: green!important;
+}
+
+
+
+
+div.curriculum{
+	height:225px;
+	width:250px;
+	border-right: 1px solid #bbbbbb;
+	border-bottom: 1px solid #bbbbbb;
+	position: absolute;
+}
+
+div.formulari{
+	position: absolute;
+	margin-top: 50px;
+	width:220px;
+	background-color: #e8e8e8;
+	border-right: 1px solid #bbbbbb;
+	border-bottom: 1px solid #bbbbbb;
+}
+
+div.formulari div.title{
+	color: #409;
+	text-align: center;
+	height: 25px;
+	background-color: #D75008;
+	color: #fff;
+	margin-bottom: 10px;
+	font-size: 1.6em;
+	font-weight:bold;
+	font-family: garamond,"Trebuchet MS", Verdana;
+}
+
+
+div.formulari div.content{
+	padding-left: 5px;
+	overflow:auto;
+	padding: 5px;
+}
+
+
+ul {color: #000000;
+	margin-top : 2px;
+}
+ol{ color: #000000;
+	margin-top : 2px;
+	}
+
+/*CAPES BASIQUES DINS CURRICULUM*/
+
+/*title*/
+div.curriculum div.title{
+	color: #409;
+	text-align: center;
+	height: 25px;
+	background-color: #D75008;
+	color: #fff;
+	font-size: 1.6em;
+	font-weight:bold;
+	font-family: garamond,"Trebuchet MS", Verdana;
+
+}
+
+
+
+
+/*content*/
+div.curriculum div.content{
+	height: 175px;
+	overflow:auto;
+	position:absolute;
+	width:250px;
+}
+
+#divlevel div.content, 
+#divarea div.content{
+	background: url(../images/fonsContent.png);
+
+}
+
+	
+	/*FINESTRES DE NAVEGACIO CURRICULUM. totes de la classe DIV.CONTENT*/
+		div#divlevel{
+			margin-left: 100px;
+			margin-top: 50px;
+		}
+	
+		div#divarea{
+			margin-left: 360px;
+			margin-top: 50px;
+		}
+		div#divcontent{
+			margin-left: 100px;
+			margin-top: 300px;
+		}
+	
+		div#divobjective{
+			margin-left: 360px;
+			margin-top: 300px;
+		}
+
+	
+		/*CAPES DINS DE CONTINGUT*/
+			#contCC{
+				visibility: hidden;
+				height: 150px;
+				width: 250px;
+				background-color: #FEE0D0;
+				color: #fff;
+			}
+			#contCP{
+				visibility: hidden;
+				height: 150px;
+				width: 250px;
+				background-color: #FEB289;
+				color: #fff;
+			}
+			#contCA{
+				visibility: hidden;
+				height: 150px;		
+				width: 250px;
+				background-color: #FF8A4B;
+				color: #FF8;
+			}
+		
+				
+		/*CAPES DINS DE OBJECTIUS*/
+			#objOP{
+				visibility: hidden;
+				/*left:-1px;
+				top:-1px;
+				*/height: 150px;
+				width: 250px;
+				background-color: #FEB289;
+				color: #fff;
+			}
+			#objOT{
+				visibility: hidden;
+				height: 150px;
+				width: 250px;
+				/*left:-1px;
+				top:-1px;*/
+				background-color: #FF8A4B;
+				color: #FF8;
+			}
+
+/*pestanya*/
+	div.pestanya div.content{
+		position: absolute;
+		width: 250px;
+	}
+		table {
+			border-collapse:collapse;
+			height: 25px;
+			font-size: 10px;
+			font-weight:bold;
+			width:100%;
+			color: #872000;
+		}
+
+
+	/*PESTANYES DINS LA TAULA*/
+
+		div.pestanya td#pos1{
+			background-color:  #FEE0D0;
+		}
+		div.pestanya td#pos2{
+			background-color:  #FEB289;
+		}
+		div.pestanya td#pos3{
+			background-color:  #FF8A4B;
+		}
+		div.pestanya table{
+			width: 100%;
+			text-align:center;
+		}
+		
+			
+	
+	
+/*PARTICULARITZACI? OPERACIONS */
+	div.operacions{
+		position: absolute;
+		margin-top:175px;
+		width: 250px;
+		height: 25px;
+		background-color: #ddd;
+		}
+	
+	div#divcontent div.operacions, div#divobjective div.operacions{
+		position: absolute;
+		margin-top:150px;
+		width: 250px;
+		height: 25px;
+		background-color: #ddd;
+		}
+
+
+
+
+div#formlevel,
+div#formobjective,
+div#formcontent{
+display: none;
+}
+
+div#formThesaure{ 
+	position: absolute;
+	margin-top: 180px;
+	margin-left: 180px;
+	height: 220px;
+	width: 380px;
+	background-color: #aaa;
+	border-bottom:3px solid;
+	border-right:1px solid;
+	display:none;
+}
+
+div#formThesaure div#path{
+	height: 40px;
+	width: 380px;
+	border-bottom:1px solid;
+	overflow:auto;
+}
+div#formThesaure div#thesaurus{
+	border-bottom:1px solid;
+  	height: 140px;
+	width: 380px;
+	overflow:auto;
+}
+
+div#formThesaure div#keys{
+	height: 40px;
+	width: 380px;
+	background-color: #a97;
+	overflow:auto;
+}
+
+div.formulari div.opcional div.option{
+	background-color: #D75008;
+	color: #fff;
+	margin-top: 5px;
+}
+
+div.formulari div.opcional{
+	overflow:auto;
+}
+
+div.opcional .right{
+	background-color: #FF8A4B;
+	color: #fff;
+	width:10%;
+	text-align:center;
+}
+
+
+div.opcional .left{
+	background-color: #D75008;
+	color: #fff;
+	position:relative;
+	float:left;
+	width:90%;
+}
+div.option a,div.option a:link,div.option a:visited {text-decoration: none; color:#ffffff;}      
+div.option a:hover {color: #D75008;}      

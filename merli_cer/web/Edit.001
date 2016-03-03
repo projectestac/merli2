@@ -1,0 +1,7 @@
+Error: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIXMLHttpRequest.status]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: http://localhost:8080/CercadorEducacio-web/scripts/ajax-visites.js :: processRequest :: line 41"  data: no]
+Source File: http://localhost:8080/CercadorEducacio-web/scripts/ajax-visites.js
+Line: 41
+
+Error: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIXMLHttpRequest.status]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: http://localhost:8080/CercadorEducacio-web/scripts/ajax-visites.js :: processRequest :: line 41"  data: no]
+Source File: http://localhost:8080/CercadorEducacio-web/scripts/ajax-visites.js
+Line: 41

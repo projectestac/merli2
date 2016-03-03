@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by aleix canals (docum) -->
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="semanticNet">
+		<xs:annotation>
+			<xs:documentation>Descripció de les propietats de la xarxa</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Nom identificador de la xarxa</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:sequence minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Pot haver-hi un, cap o diversos DataSource's descrits.</xs:documentation>
+					</xs:annotation>
+					<xs:element ref="dataSource" minOccurs="0"/>
+				</xs:sequence>
+				<xs:element name="relations">
+					<xs:annotation>
+						<xs:documentation>Descripció del tipus de relacions que conté la xarxa</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="relation">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="type" type="xs:string">
+											<xs:annotation>
+												<xs:documentation>Tipus identificador de la relacio.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="description" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Descripció de la relació.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element ref="properties" minOccurs="0"/>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="nodes">
+					<xs:annotation>
+						<xs:documentation>Descripció del tipus de nodes que conté la xarxa</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="node">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="type" type="xs:string"/>
+										<xs:element name="description" type="xs:string" minOccurs="0"/>
+										<xs:element ref="properties" minOccurs="0"/>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="propertiesType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="property">
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="name" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Nom de la propietat.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="value" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>valor de la propietat.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="properties" type="propertiesType"/>
+	<xs:element name="dataSource">
+		<xs:annotation>
+			<xs:documentation>Informació necessaria per inicialitzar el repositori de dades.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="class" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Classe utilitzada per implementar el Repositori de dades.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="properties" minOccurs="0"/>
+				<xs:element name="dynamic" type="xs:boolean" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Indica si la xarxa s'ha de carregar de forma dinàmica o no.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="relations">
+					<xs:complexType>
+						<xs:sequence minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="relationType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="nodes">
+					<xs:complexType>
+						<xs:sequence minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="nodeType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,450 @@
+
+#resourceTitle{
+	color: #ad2114;
+	display:inline;
+	}
+
+#titMicroThes{
+	font-size: 1.2em !important;
+	margin-bottom:5px;
+}
+
+#parClauActual{
+	color:#666;
+	font-weight:bold;
+}
+
+#microThes{
+	position:relative;
+	float:left;
+	font-size: 0.8em;
+	width:250px;
+	height:300px;
+}
+#listThes{
+	width:250px;
+	height:281px;
+	overflow:auto;
+}
+
+#listThes ul{
+	margin-top:2px;
+	padding-left:15px;
+}
+#listThes li{
+	margin-left:15px;
+	margin-bottom:2px;
+}
+
+.select{
+	font-weight:bold;
+	color:#d75007;
+}
+
+
+img.wait{
+	position:absolute;
+	top: 180px;
+	left: 20px;
+}
+
+div#top_menu_varios ul.menuCatalogadorPassos{
+	height:100%;
+	margin-left:20px;
+	color:#727272;
+	cursor:pointer;
+}
+	div#top_menu_varios ul.menuCatalogadorPassos li {
+		background-image:url('../images/fletxeta.png');
+		background-repeat:no-repeat;
+		background-position:right;
+		padding-right:15px;
+		line-height:35px;
+		margin-top:8px;
+	}
+	div#top_menu_varios ul.menuCatalogadorPassos li.lastMenu {
+		background-image:none;
+		margin-right:0px;
+		padding-right:0px;
+	}
+
+		div#top_menu_varios ul.menuCatalogadorPassos li a{
+			color: #727272;
+			text-decoration:underline;
+		}
+		div#top_menu_varios ul.menuCatalogadorPassos li a.selectedMenu {
+			color: #ad2114!important;
+			text-decoration:none;
+		}
+		div#top_menu_varios ul.menuCatalogadorPassos li a.selectedMenu:hover {
+			color: #ad2114!important;
+			text-decoration:none;
+			}
+		div#top_menu_varios ul.menuCatalogadorPassos li a span.numeroMenu{
+			-moz-border-radius:18px 18px 18px 18px;
+			-webkit-border-radius:18px 18px 18px 18px;
+			background-color:#FFFFFF;
+			display:block;
+			float:left;
+			font-size:17px;
+			font-weight:bold;
+			height:35px;
+			padding-right:0;
+			text-align:center;
+			width:35px;
+			margin:0 6px;
+		}
+
+		div#top_menu_varios ul.menuCatalogadorPassos li a.selectedMenu span.numeroMenu{
+			background-color:#ad2114;
+			color:#FFFFFF;
+		}
+
+
+
+		a.selected {
+			color: #ad2114!important;
+		}
+	
+	
+	#cos #titleContent span{
+		display:none;
+	}
+	
+	/*FINESTRES DE NAVEGACIO CURRICULUM. totes de la classe DIV.CONTENT*/
+
+/* VERSION 2-1
+div#divlevel{
+position:relative;
+float:left;
+	width:45%;
+		}
+	
+div#divarea{
+position:relative;
+float:right;
+	width:45%;
+		}
+div#divcontent{
+position:relative;
+float:left;
+padding-left:20%;
+padding-right:20%;
+width:55%;
+		}
+*/
+	
+	/*Versio 3-0*/
+div#divlevel{
+	position:relative;
+	float:left;
+	width:29%;
+	padding:2%;
+		}
+	
+div#divarea{
+	position:relative;
+	float:left;
+	width:29%;
+	padding:2%;
+		}
+div#divcontent{
+	position:relative;
+	float:right;
+	width:30%;
+	padding:2%;
+		}
+
+
+
+
+/*CAPES BASIQUES DINS CURRICULUM*/
+
+/*title
+	height: 25px;*/
+div.curriculum .title{
+	color: #409;
+	background-color: #4d4d4d;
+	color: #fff;
+	font-size: 16px;
+	padding-left:15px;
+	padding-bottom:5px;
+	padding-top:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+	-webkit-border-radius-topleft:5px;
+	-webkit-border-radius-topright:5px;
+	
+	border:1px solid #b9b9b9;
+}
+
+ div#content div.curriculum a, div#content div.curriculum a:link, div#content div.curriculum a:visited{
+	color:#727272;
+}
+
+
+div#seleCur{
+	position:relative;
+	float:left;
+	width:96%;
+	padding:2%;
+		}
+div#thesaurusCurriculum{
+	position:relative;
+	float:right;
+	width:30%;
+	padding:2%;
+		}
+
+table{
+	border-collapse:collapse;
+}
+
+
+.selecLevel{	border-right:1px solid #BBBBBB;}
+.selecArea{	border-right:1px solid #BBBBBB;}
+.selecContent{}
+
+
+#cosDUCETB{
+	background-color:#e6e6e6;
+	border-bottom:1px solid #bbbbbb;
+	border-right:1px solid #bbbbbb;
+	padding-top:2px;
+	margin-top:0px;
+}
+
+
+#seleCur table thead{
+	font-weight:bold;
+}
+
+#seleCur table{
+	overflow:auto;
+	width:100%;
+	border:1px solid #bbbbbb;
+	border-top:0;
+}
+
+#seleCur td{
+	padding-left: 15px; padding-top: 5px; padding-bottom: 5px;
+}
+
+
+#seleCur tr{
+	padding-left: 15px; padding-top: 5px; padding-bottom: 5px;
+	border-bottom:1px solid #BBBBBB
+}
+
+#bodySeleCur .link{
+	cursor:pointer;
+	}
+
+
+
+/*content*/
+div.curriculum div.content{
+	height: 245px;
+	overflow:auto;
+}
+
+#divlevel div.content, 
+#divarea div.content,
+#divcontent div.content
+{
+	background-color:#f8f8f8;
+	border:1px solid #ebebeb;
+	border-top:0;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-radius-bottomleft:5px;
+	-webkit-border-radius-bottomright:5px;
+}
+
+
+
+
+span.keyValue{
+padding-left:5px;
+}
+
+span.keyValue a{
+	padding-right:2px;
+}
+
+#barraEsq {
+	border-color: #b5b5b5;
+    border-width: 0px 0px 0px thin ; 
+	border-style: solid; 
+	margin-left:165px;
+}
+
+#tipusRec {
+	margin-left:165px;
+}
+
+
+/*Capes de titols i de continguts. Tots =*/
+#titdescGenC, #titidentiRec,
+/*#titdescEduC, #titdescTecC, #titedRec , */
+#titparClau,  #titdretsC, #titrelCur{
+		display: none;
+		}
+/*    #descEduC, #descTecC, #edRec ,*/
+   #descGenC, #dretsC, #relCur, #identiRec{
+			padding-top: 15px;
+			padding-left: 15px;
+            display: none; 
+           }
+	/*#descTecC div,  #descEduC div, #edRec div , */
+	#identiRec div, #descGenC div,#dretsC div{
+			padding:3px;
+		}
+
+	#parClau{
+	padding-top: 15px;
+	margin-left: -10px;
+            display: none; 
+           }
+	
+	div#formThesaure div#path{
+		padding-bottom: 5px;
+		border-bottom:1px solid #CCC;
+		padding-left:15px;
+		margin-left:270px;
+	}
+	div#formThesaure{
+		padding-left:15px;
+	}
+	div#thesaurus{
+		border-left: 20px solid white;
+		background-color:#EEE;
+	  	height: 285px;
+		padding-left:15px;
+		overflow:auto;
+	}
+	
+	div#formThesaure div#keys{
+		color:#000;
+		padding:15px;
+		background-color: #EEE;
+		margin-top:20px;
+		margin-bottom: 10px;
+		overflow:auto;
+	}
+	
+	div#keys a, div#keys a:link, div#keys a:visited {
+		text-decoration: none; color:#AD2114}      
+	div#keys a:hover {
+		text-decoration: underline;}  
+
+	div#formThesaure div#paraules{
+		color:#000;
+		padding:15px;
+		background-color: #EEE;
+		overflow:auto;
+	}
+
+	div#paraules a, div#paraules a:link, div#paraules a:visited {
+		text-decoration: none; color:#AD2114;}      
+	div#paraules a:hover {
+		text-decoration: underline;}  
+
+	#buscaTermes{
+		position:relative;
+		top:-15px;
+		height:32px;
+		background-color:#4D4D4D;
+		color:white;
+		font-size:1em;
+		padding-top:4px;
+		padding-left:10px;
+		border:1px solid;
+		vertical-align: middle;
+	}
+	
+	#buscaTermes input{
+		width: 180px;
+		margin-top:2px;
+		margin-left:15px;		
+		color:#AD2114;
+		font-size:1em;
+		background-image:url('../images/lupa.png');
+ 		background-repeat:no-repeat;
+		padding-left:25px;
+		padding-right:120px;
+	}
+	#buscaTermes a{
+		margin-left:10px;
+		color:white;
+	}
+	
+	#buscaTermes a, #buscaTermes a:link, #buscaTermes a:visited {
+		text-decoration: none; 
+		font-size:1em;
+		color:#ffffff;
+	}      
+	#buscaTermes a:hover {
+		font-weight: bold;}  
+	
+	div#content a.a_showGo_off {color:grey; cursor:default;}         
+	
+	div#content a:hover.a_showGo_off {text-decoration:none;}       
+	
+	div#content a.a_showGo_on {color:white; cursor:pointer;}    
+
+#resultTermes{
+	display:none;
+	position:absolute;
+	top:316px;
+	left:86px;
+	width:306px;
+	color:#4D4D4D;
+	background-color:white;
+	font-size:01em;
+	border:1px solid #CCCCCC;
+	padding:5px;
+}
+
+#resultTermes td{
+	color:#4D4D4D;
+	cursor:pointer;
+}
+#resultTermes td:hover{
+	color:#AD2114;
+	background-color:white;
+}
+
+#resultTermes .paraulaoberta td{
+	background-image:;
+}
+#resultTermes .paraulaoberta td:hover{
+	background-image:;
+}
+
+#alertNotTerm{
+	/* display:none; */
+	position:relative;
+	/*left:-75px;*/
+	}
+
+#addGo{
+	display:inline;
+	}
+
+.cercador_thesaurus{position:relative;float:left; margin-top: 7px;}
+	
+#addParaula	{
+	display:none;
+}
+
+
+#buttons-nav{
+	/*display:block;
+	margin:30px 0 10px;
+	padding:0 20px;
+	text-align:right;*/
+	float:right;
+	margin:30px 0 10px;
+	padding:0 20px;
+}
