@@ -64,10 +64,11 @@
     	   encoding="ISO-8859-15"
            debug="${debug}" 
            deprecation="${deprecation}"
-           optimize="${optimize}" >
+           optimize="${optimize}"
+           includeantruntime="false">
       <src path="${src.dir}"/>
       <classpath>
-		<pathelement location="../lib/servlet.jar"/>
+		<pathelement location="${lib.dir}/servlet.jar"/>
         <pathelement location="${lib.dir}/dbconn.jar"/>
         <pathelement location="${lib.dir}/log4j-1.2.13.jar"/>
       	<pathelement location="${lib.dir}/merliBasics.jar"/>

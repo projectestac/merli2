@@ -7,8 +7,8 @@
     <property name="dist.dir"       location="dist" />
 
     <!-- DUC is currently targeted to JVM 1.4 -->
-    <property name="ant.build.javac.source" value="1.4"/>
-    <property name="ant.build.javac.target" value="1.4"/>
+    <property name="ant.build.javac.source" value="1.7"/>
+    <property name="ant.build.javac.target" value="1.7"/>
     <property name="ant.build.javac.encoding" value="ISO-8859-15"/>
 
     <!-- Patterns -->
@@ -35,7 +35,7 @@
     <!-- =================================================================== -->
     <target name="init">
         <!-- Variables -->
-        <property name="src.dir"        location="source" />
+        <property name="src.dir"        location="src" />
 
         <property name="debug"          value="off" />
         <property name="deprecation"    value="off" />
@@ -65,12 +65,13 @@
                optimize="${optimize}"
                encoding="${ant.build.javac.encoding}"
                source="${ant.build.javac.source}"
-               target="${ant.build.javac.target}">
+               target="${ant.build.javac.target}"
+               includeantruntime="false">
             <src path="${src.dir}"/>
             <classpath>
-                <pathelement location="${lib.dir}/libTomcat/servlet.jar"/>
-                <pathelement location="${lib.dir}/libTomcat/junit.jar"/>
-                <pathelement location="${lib.dir}/libTomcat/jsp-api.jar"/>
+                <pathelement location="${lib.dir}/servlet.jar"/>
+                <pathelement location="${lib.dir}/junit.jar"/>
+                <pathelement location="${lib.dir}/jsp-api.jar"/>
                 <pathelement location="${lib.dir}/activation.jar"/>
                 <pathelement location="${lib.dir}/apiSemanticNetv3.1.jar"/>
                 <pathelement location="${lib.dir}/commons-beanutils.jar"/>
@@ -178,7 +179,7 @@
             <fileset dir="${build.dir}/WEB-INF/classes" includes="edu/xtec/merli/**/*.class" excludes="edu/xtec/merli/semanticnet/**" />
         </copy>
     <!-- <copy todir="${build.dir}/utils">
-         <fileset dir="${src.dir}" includes="**/database.properties,**/log4j.properties"/>
+            <fileset dir="${src.dir}" includes="**/database.properties,**/log4j.properties"/>
      </copy>-->
      <jar jarfile="${dist.dir}/merliUtils.jar" basedir="${build.dir}/utils" />
  </target>
@@ -198,6 +199,5 @@
 
         <jar jarfile="${dist.dir}/apiSemanticMerli.jar" basedir="${build.dir}/semanticnet" />
     </target>
-
 </project>
 

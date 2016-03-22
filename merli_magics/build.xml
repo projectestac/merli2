@@ -67,9 +67,9 @@
            target="${ant.build.javac.target}">
       <src path="${src.dir}"/>
       <classpath>
-        <pathelement location="${lib.dir}/libTomcat/servlet.jar"/>
-        <pathelement location="${lib.dir}/libTomcat/junit.jar"/>
-        <pathelement location="${lib.dir}/libTomcat/jsp-api.jar"/>
+        <pathelement location="${lib.dir}/servlet.jar"/>
+        <pathelement location="${lib.dir}/junit.jar"/>
+        <pathelement location="${lib.dir}/jsp-api.jar"/>
         <pathelement location="${lib.dir}/activation.jar"/>
         <pathelement location="${lib.dir}/commons-beanutils.jar"/>
         <pathelement location="${lib.dir}/commons-collections.jar"/>

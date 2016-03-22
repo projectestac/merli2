@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<project name="SemanticNet" basedir="." default="all">
+
+  <property name="lib.dir"        location="lib" />
+  <property name="build.dir"      location="build" />
+  <property name="dist.dir"       location="dist" />
+    
+    <!-- Patterns -->
+    <patternset id="props" >
+      <include name="**/*.properties"/>
+    </patternset>
+    
+  <!-- =================================================================== -->
+  <!-- MAIN                                                                -->
+  <!-- =================================================================== -->
+  <target name="all" depends="semanticNet">
+    <echo message="***SemanticNet creat correctament!"/>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- INIT                                                                -->
+  <!-- =================================================================== -->
+  <target name="init" depends="clean">  
+    <!-- Variables -->
+    <property name="src.dir"        location="source" />
+
+    <property name="debug"          value="off" />    
+    <property name="deprecation"    value="off" />    
+    <property name="optimize"       value="on" />    
+    
+    <!-- Create dirs -->
+    <mkdir dir="${dist.dir}"/>
+    <mkdir dir="${build.dir}"/>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- CLEAN                                                               -->
+  <!-- =================================================================== -->
+  <target name="clean">
+    <delete dir="${build.dir}" />
+    <echo message="*** S'ha esborrat el directori build!"/>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- COMPILE                                                                -->
+  <!-- =================================================================== -->
+  <target name="semanticNet" depends="init">
+    <mkdir dir="${build.dir}"/>
+    <javac destdir="${build.dir}" 
+           debug="${debug}" 
+           deprecation="${deprecation}"
+           optimize="${optimize}" excludes="**/test/**" >
+      <src path="${src.dir}"/>
+      <classpath>
+      	<pathelement location="${lib.dir}/jdom.jar"/>
+        <pathelement location="${lib.dir}/xerces.jar"/>
+      </classpath>
+    </javac>
+    <copy todir="${build.dir}">
+    	<fileset dir="${src.dir}" includes="**/*.properties"/>
+    </copy>
+    <jar jarfile="${dist.dir}/apiSemanticNetv3.1.jar" basedir="${build.dir}" />
+  </target>
+  
+</project>
+

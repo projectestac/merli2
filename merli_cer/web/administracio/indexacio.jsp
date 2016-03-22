@@ -131,5 +131,6 @@
 
 
 </div>
+<%=Configuracio.versionControl%>
 <jsp:include page="bottomAdministracio.jsp" />
 <% }%>

@@ -174,7 +174,7 @@ public class ServletMerli extends ServletMain {
     }
 
 /* NADIM ADDED GET RESOURCE*/
-    private SOAPElement getChildByLocalNameGetResource(SOAPElement sbeRequest, String localName) {
+    private SOAPElement getChildByLocalNameGetResource(SOAPBodyElement sbeRequest, String localName) {
         Node element = null;
         //SOAPBodyElement element = null;
         Iterator it = sbeRequest.getChildElements();
@@ -193,7 +193,7 @@ public class ServletMerli extends ServletMain {
         return null;
     }
 /* END NADIM ADDED GET RESOURCE*/    
-    private SOAPElement getChildByLocalName(SOAPElement sbeRequest, String localName) {
+    private SOAPBodyElement getChildByLocalName(SOAPBodyElement sbeRequest, String localName) {
         Node element = null;
         Iterator it = sbeRequest.getChildElements();
         while (it.hasNext()) {
@@ -201,7 +201,7 @@ public class ServletMerli extends ServletMain {
                 element = (Node) it.next();
                 if (element.getLocalName() != null) {
                     if (element.getLocalName().equals(localName)) {
-                        return (SOAPElement) element;
+                        return (SOAPBodyElement) element;
                     }
                 }
             } catch (Exception ex) {
@@ -464,7 +464,7 @@ public class ServletMerli extends ServletMain {
      * Retorna un Result indicant la operaci� i que l'execuci� ha estat correcte
      * i amb l'objecte sol�licitat en un Lom.
      *
-     * @param  node SOAPBodyElement amb un IdResource
+     * @param  "node  SOAPBodyElement" amb un IdResource
      * @return
      * @throws SOAPException
      * @throws MerliDBException
