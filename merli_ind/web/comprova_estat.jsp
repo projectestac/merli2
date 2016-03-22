@@ -2,13 +2,6 @@
 ﻿<%@ page import="java.sql.*,simpple.xtec.indexador.util.Configuracio, simpple.xtec.indexador.util.Utils, java.io.*" %>
 <%@ page pageEncoding="UTF-8" %>
 <%
-    File file = new File("/serveis/dades/int/w02/dataapps/merli/index");
-    /*file.mkdir();
-    file.setExecutable(true, false);
-    file.setReadable(true, false);
-    file.setWritable(true, false);*/
-    /*File dir = new File("/serveis/log/int/w02/DOM_W02_INT/webapps/merli");
-    FileUtils.cleanDirectory(dir); */
 
     boolean isOk = true;
     Connection myConnection = null;
@@ -63,4 +56,6 @@
 <%
     }
 
-    if (isOk) {%>OK<%}%>    
+    if (isOk) {%>OK<%}%>
+<br>
+<%=Configuracio.versionControl%>

@@ -59,6 +59,7 @@ import edu.xtec.merli.ws.objects.Result;
 public abstract class ServletMain extends HttpServlet {
     
 	protected static final Logger logger = Logger.getRootLogger();
+    public static String versionControl ="v2.0.1";
     
     static
     {
@@ -72,6 +73,7 @@ public abstract class ServletMain extends HttpServlet {
         logger.warn("Get received\n" +req.toString());
         PrintWriter out = resp.getWriter();
         out.println("Only accepted POST request");
+        out.println(versionControl);
         out.flush();        
         out.close();        
     }
@@ -132,8 +134,9 @@ public abstract class ServletMain extends HttpServlet {
             } else {
                 resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
             }
-           
+            resp.flushBuffer();
             logger.info("Response:"+resp.getBufferSize());
+
         } catch (SOAPException se) 
        {
            throw new ServletException("SAAJ POST failed: " + se.getMessage());

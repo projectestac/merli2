@@ -30,7 +30,8 @@ function parseMessage()
 	{
 		//message = req.responseXML.getElementsByTagName("message")[0];
 		mdiv = document.getElementById("thesaurus");
-		mdiv.innerHTML = req.responseText;
+		//Amendez 23/03/2016 https://trello.com/c/bTyrT3wj
+		mdiv.innerHTML = decodeURIComponent(req.responseText);
 	}	
  
  

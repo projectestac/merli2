@@ -6,7 +6,7 @@
   <property name="build.dir"      location="build" />
   <property name="dist.dir"       location="dist" />
 
-  <!-- MAGICS is currently targeted to JVM 1.4 -->
+  <!-- MAGICS is currently targeted to JVM 1.7 -->
   <property name="ant.build.javac.source" value="1.7"/>
   <property name="ant.build.javac.target" value="1.7"/>	
   <property name="ant.build.javac.encoding" value="ISO-8859-15"/>

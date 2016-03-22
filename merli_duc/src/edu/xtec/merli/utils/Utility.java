@@ -31,10 +31,10 @@ public class Utility {
         Properties p = new Properties();
         try {
             p.load(Utility.class.getResourceAsStream(aPath + aFile));
-            logger.error("PROPERTIES: " + p);
+            logger.info("PROPERTIES: " + p);
             File f = new File(System.getProperty("user.home"), aFile);
             if (f.exists()) {
-                logger.error("FiLE_EXISTS: " + f.exists());
+                logger.info("FiLE_EXISTS: " + f.exists());
                 FileInputStream is = new FileInputStream(f);                
                 p.load(is);                
                 is.close();

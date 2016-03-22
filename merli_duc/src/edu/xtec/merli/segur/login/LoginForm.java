@@ -15,6 +15,8 @@ public class LoginForm extends ActionForm
 {
 	private String userName;
 	private String password;
+
+	public static String versionControl ="v2.0.1";
 	
 	/**
 	 * Resets data fields to initial values on loginform
@@ -73,6 +75,11 @@ public class LoginForm extends ActionForm
 	 */
 	public void setUserName(String string) {
 		userName = string;
+	}
+
+	//Amendez 23/03/2016 https://trello.com/c/a5nm65LM
+	public static String getVersionControl(){
+		return versionControl;
 	}
 	
 }

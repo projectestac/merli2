@@ -73,7 +73,7 @@
                                 <html:textarea property="note"  rows="8" cols="20" ></html:textarea>
                                 </div>
                             </div>
-                            <div class="opcional"><div class="option"<span class="left"><bean:message key="application.nodeform.references"/></span><span class="right"><a href="#" onclick="swapDisplay('formReferencia')">+</a></span></div>
+                            <div class="opcional"><div class="option"><span class="left"><bean:message key="application.nodeform.references"/></span><span class="right"><a href="#" onclick="swapDisplay('formReferencia')">+</a></span></div>
                             <div id="formReferencia">
                                 <html:textarea property="references"  rows="8" cols="20" ></html:textarea>
                                 </div>

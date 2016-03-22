@@ -30,7 +30,7 @@
  %>
 <div id="login">
   <div id="login-header">
-	<div id="login-header-logo"><img src="web/images/login_logo_merli2.png" alt="Merlí"/></div>
+	<div id="login-header-logo"><img src="web/images/login_logo_merli2.png" alt="MerlÃ­"/></div>
 	<div id="login-header-text" class="login-text"><bean:message key="login.message" /></div>
   </div>
   <div id="login-box">
@@ -54,8 +54,8 @@
 
 
 	<!-- div class="esquerra">
-	<div id="logo"><img id="img" src="web/images/logo.png" alt="MeRLí"
-		title="MeRLí" /></div>
+	<div id="logo"><img id="img" src="web/images/logo.png" alt="MeRLÃ­"
+		title="MeRLÃ­" /></div>
 	</div>
 	<div id="dreta">
 	<div id="header">

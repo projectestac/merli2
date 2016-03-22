@@ -116,10 +116,10 @@
                     }
                 }
             }
-            /* NADIM 03/07/2015*/
+
             function doSubmit() {
                 var value = document.cerca.textCerca.value;
-                document.cerca.textCerca.value = value.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");
+                document.cerca.textCerca.value = value.toString();
                 document.cerca.submit();
             }
         </script>

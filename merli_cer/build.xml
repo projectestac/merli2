@@ -1,71 +1,200 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- You may freely edit this file. See commented blocks below for -->
-<!-- some examples of how to customize the build. -->
-<!-- (If you delete it and reopen the project it will be recreated.) -->
-<!-- By default, only the Clean and Build commands use this build script. -->
-<!-- Commands such as Run, Debug, and Test only use this build script if -->
-<!-- the Compile on Save feature is turned off for the project. -->
-<!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
-<!-- in the project's Project Properties dialog box.-->
-<project name="merli_cer" default="default" basedir=".">
-    <description>Builds, tests, and runs the project merli_cer.</description>
-    <import file="nbproject/build-impl.xml"/>
-    <!--
+<?xml version="1.0"?>
+<!-- Created by Nadim Aseq A Arman (ITTERIA) Dec 2015 -->
+<!-- This files has been added during transformation process of the application. -->
+<!-- This file was not found when we've recieved this application pacakges for SVN (la farga) -->
 
-    There exist several targets which are by default empty and which can be 
-    used for execution of your tasks. These targets are usually executed 
-    before and after some main targets. They are: 
+<project name="CERCADOR" basedir="." default="all">
 
-      -pre-init:                 called before initialization of project properties 
-      -post-init:                called after initialization of project properties 
-      -pre-compile:              called before javac compilation 
-      -post-compile:             called after javac compilation 
-      -pre-compile-single:       called before javac compilation of single file
-      -post-compile-single:      called after javac compilation of single file
-      -pre-compile-test:         called before javac compilation of JUnit tests
-      -post-compile-test:        called after javac compilation of JUnit tests
-      -pre-compile-test-single:  called before javac compilation of single JUnit test
-      -post-compile-test-single: called after javac compilation of single JUunit test
-      -pre-dist:                 called before archive building 
-      -post-dist:                called after archive building 
-      -post-clean:               called after cleaning build products 
-      -pre-run-deploy:           called before deploying
-      -post-run-deploy:          called after deploying
+    <property name="web.dir"        location="web" />
+    <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
+    <property name="build.dir"      location="build" />
+    <property name="dist.dir"       location="dist" />
 
-    Example of pluging an obfuscator after the compilation could look like 
+    <!-- CERCADOR is currently targeted to JVM 1.7 (Previously it was 1.4) -->
+    <property name="ant.build.javac.source" value="1.7"/>
+    <property name="ant.build.javac.target" value="1.7"/>
+    <property name="ant.build.javac.encoding" value="ISO-8859-1"/>
 
-        <target name="-post-compile">
-            <obfuscate>
-                <fileset dir="${build.classes.dir}"/>
-            </obfuscate>
-        </target>
+    <!-- Patterns -->
+    <patternset id="jsps" >
+        <include name="*.jsp"/>
+        <include name="*.css"/>
+        <include name="*.png"/>
+        <include name="*.js"/>
+    </patternset>
+    <patternset id="props" >
+        <include name="**/*.properties"/>
+    </patternset>
 
-    For list of available properties check the imported 
-    nbproject/build-impl.xml file. 
+    <!-- =================================================================== -->
+    <!-- MAIN                                                                -->
+    <!-- =================================================================== -->
+    <target name="all" depends="deploy">
+        <echo message="***CERCADOR creat correctament!"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- INIT                                                                -->
+    <!-- =================================================================== -->
+    <target name="init" depends="clean">
+        <!-- Variables -->
+        <property name="src.dir"        location="src" />
+
+        <property name="debug"          value="off" />
+        <property name="deprecation"    value="off" />
+        <property name="optimize"       value="on" />
+
+        <!-- Create dirs -->
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${build.dir}"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- CLEAN                                                               -->
+    <!-- =================================================================== -->
+    <target name="clean">
+        <delete dir="${build.dir}" />
+        <echo message="*** S'ha esborrat el directori build!"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- COMPILE                                                                -->
+    <!-- =================================================================== -->
+    <target name="compile" depends="init">
+        <mkdir dir="${build.dir}/WEB-INF/classes"/>
+        <javac destdir="${build.dir}/WEB-INF/classes"
+               debug="${debug}"
+               deprecation="${deprecation}"
+               optimize="${optimize}"
+               encoding="${ant.build.javac.encoding}"
+               source="${ant.build.javac.source}"
+               target="${ant.build.javac.target}">
+            <src path="${src.dir}"/>
+            <classpath>
+                <pathelement location="${lib.dir}/activation.jar"/>
+                <pathelement location="${lib.dir}/apache-commons-lang.jar"/>
+                <pathelement location="${lib.dir}/axis.jar"/>
+                <pathelement location="${lib.dir}/commons-codec-1.3.jar"/>
+                <pathelement location="${lib.dir}/commons-discovery-0.2.jar"/>
+                <pathelement location="${lib.dir}/commons-httpclient-3.0.1.jar"/>
+                <pathelement location="${lib.dir}/commons-io-1.2.jar"/>
+                <pathelement location="${lib.dir}/commons-logging-1.1.jar"/>
+                <pathelement location="${lib.dir}/jakarta-httpcore-4.0-alpha2.jar"/>
+                <pathelement location="${lib.dir}/jaxen-1.1-beta-10.jar"/>
+                <pathelement location="${lib.dir}/jaxm-api.jar"/>
+                <pathelement location="${lib.dir}/jaxrpc.jar"/>
+                <pathelement location="${lib.dir}/jdom.jar"/>
+                <pathelement location="${lib.dir}/jibx-run-1.1.2.jar"/>
+                <pathelement location="${lib.dir}/log4j-1.2.16.jar"/>
+                <pathelement location="${lib.dir}/lucene-core-2.1.0.jar"/>
+                <pathelement location="${lib.dir}/mail-1.4.jar"/>
+                <pathelement location="${lib.dir}/mail.jar"/>
+                <pathelement location="${lib.dir}/merliUtils.jar"/>
+                <pathelement location="${lib.dir}/ojdbc14.jar"/>
+                <pathelement location="${lib.dir}/quartz-2.2.1.jar"/>
+                <pathelement location="${lib.dir}/saaj-impl.jar"/>
+                <pathelement location="${lib.dir}/saaj.jar"/>
+                <pathelement location="${lib.dir}/servlet.jar"/>
+                <pathelement location="${lib.dir}/soap.jar"/>
+                <pathelement location="${lib.dir}/taglibs-i18n.jar"/>
+                <pathelement location="${lib.dir}/urlrewrite-3.0-beta.jar"/>
+                <pathelement location="${lib.dir}/woden-1.0.0M6.jar"/>
+                <pathelement location="${lib.dir}/wsdl4j-1.6.1.jar"/>
+                <pathelement location="${lib.dir}/xalan-2.7.0.jar"/>
+
+            </classpath>
+        </javac>
+    </target>
 
 
-    Other way how to customize the build is by overriding existing main targets.
-    The target of interest are: 
+    <!-- =================================================================== -->
+    <!-- BUILD                                                                -->
+    <!-- =================================================================== -->
+    <target name="build" depends="compile">
+        <copy todir="${build.dir}/WEB-INF/">
+            <fileset dir="${web.dir}/WEB-INF/" includes="*" excludesfile="${web.dir}/WEB-INF/web.xml"/>
+        </copy>
+        <copy todir="${build.dir}/">
+            <fileset dir="${web.dir}" excludes="WEB-INF/** web-inf/**"/>
+        </copy>
+        <copy todir="${build.dir}/WEB-INF/classes">
+            <fileset dir="${src.dir}" includes="**/*.properties"/>
+        </copy>
+    </target>
 
-      init-macrodef-javac:    defines macro for javac compilation
-      init-macrodef-junit:   defines macro for junit execution
-      init-macrodef-debug:    defines macro for class debugging
-      do-dist:                archive building
-      run:                    execution of project 
-      javadoc-build:          javadoc generation 
+    <target name="dist"
+            depends="build">
+        <war destfile="${dist.dir}/merli_cer.war"
+             webxml="${web.dir}/WEB-INF/web.xml">
 
-    Example of overriding the target for project execution could look like 
+            <manifest>
+                <attribute name="Built-By"
+                           value="${user.name}"/>
+            </manifest>
+            <lib dir="${lib.dir}">
+                <include name="activation.jar"/>
+                <include name="apache-commons-lang.jar"/>
+                <include name="axis.jar"/>
+                <include name="commons-codec-1.3.jar"/>
+                <include name="commons-discovery-0.2.jar"/>
+                <include name="commons-httpclient-3.0.1.jar"/>
+                <include name="commons-io-1.2.jar"/>
+                <include name="commons-logging-1.1.jar"/>
+                <include name="jakarta-httpcore-4.0-alpha2.jar"/>
+                <include name="jaxen-1.1-beta-10.jar"/>
+                <include name="jaxm-api.jar"/>
+                <include name="jaxrpc.jar"/>
+                <include name="jdom.jar"/>
+                <include name="jibx-run-1.1.2.jar"/>
+                <include name="log4j-1.2.16.jar"/>
+                <include name="lucene-core-2.1.0.jar"/>
+                <include name="mail-1.4.jar"/>
+                <include name="mail.jar"/>
+                <include name="merliUtils.jar"/>
+                <include name="ojdbc14.jar"/>
+                <include name="quartz-2.2.1.jar"/>
+                <include name="saaj-impl.jar"/>
+                <include name="saaj.jar"/>
+                <include name="servlet.jar"/>
+                <include name="soap.jar"/>
+                <include name="taglibs-i18n.jar"/>
+                <include name="urlrewrite-3.0-beta.jar"/>
+                <include name="woden-1.0.0M6.jar"/>
+                <include name="wsdl4j-1.6.1.jar"/>
+                <include name="xalan-2.7.0.jar"/>
+            </lib>
 
-        <target name="run" depends="<PROJNAME>-impl.jar">
-            <exec dir="bin" executable="launcher.exe">
-                <arg file="${dist.jar}"/>
-            </exec>
-        </target>
 
-    Notice that overridden target depends on jar target and not only on 
-    compile target as regular run target does. Again, for list of available 
-    properties which you can use check the target you are overriding in 
-    nbproject/build-impl.xml file. 
 
-    -->
+            <zipfileset dir="${build.dir}" prefix="" excludes="web-inf/** WEB-INF/** web/js/** ">
+            </zipfileset>
+            <zipfileset dir="${build.dir}/WEB-INF" prefix="WEB-INF">
+            </zipfileset>
+
+
+
+            <!--classes dir="${build.dir}" prefix=""/>
+            <zipfileset dir="${src.dir}" prefix="WEB-INF/classes">
+                <patternset refid="props"/>
+            </zipfileset>
+            <zipfileset dir="" prefix="">
+                <patternset refid="jsps"/>
+            </zipfileset-->
+        </war>
+    </target>
+
+    <target name="deploy"
+            depends="dist">
+        <ear destfile="${dist.dir}/merli_cer.ear"
+             appxml="${web.dir}/WEB-INF/application.xml">
+            <manifest>
+                <attribute name="Built-By"
+                           value="${user.name}"/>
+            </manifest>
+            <fileset dir="${dist.dir}" includes="merli_cer.war"/>
+        </ear>
+        <delete dir="${build.dir}"/>
+        <delete file="${dist.dir}/merli_cer.war"/>
+    </target>
+
 </project>

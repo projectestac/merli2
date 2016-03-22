@@ -181,7 +181,7 @@
 
         function doSubmit() {
             var value = document.cerca.textCerca.value;
-            document.cerca.textCerca.value = value.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");
+            document.cerca.textCerca.value = value.toString();
 
             document.cerca.nivell.value = 0;
             document.cerca.tipus.value = 'simple';

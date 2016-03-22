@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionMapping;
 
 import edu.xtec.merli.semanticnet.SemanticInterface;
 import edu.xtec.merli.utils.Utility;
+import sun.nio.cs.ISO_8859_15;
 
 
 public class Responder extends Action
@@ -22,8 +23,8 @@ public class Responder extends Action
 				HttpServletRequest request,
 				HttpServletResponse response)
 				throws Exception{
-
-			response.setContentType("text/xml");
+//Amendez 23/03/2016 https://trello.com/c/bTyrT3wj
+			response.setContentType("text/xml; charset= ISO_8859_15");
 			response.setHeader("Cache-Control", "no-cache");
 			SemanticInterface si = new SemanticInterface();
 			int valor = ((ResponderForm)form).getId();

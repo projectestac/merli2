@@ -3,6 +3,7 @@
 <%-- Struts provided Taglibs --%>
 <%@ taglib prefix="html" uri="/WEB-INF/struts-html-el.tld"%>
 <%@ include file="/web/taglibs.jsp"%>
+<jsp:useBean id="MagicBean" scope="request" class="edu.xtec.merli.MagicBean"/>
 <html:html locale="true">
 <meta http-equiv="content-type" content="text/html;charset=ISO-8859-15" />
 <link rel="shortcut icon" href="web/images/favicon.ico" type="image/x-icon">
@@ -33,58 +34,15 @@
 		</div>
 	  </div>
 	  <span id="login-bg"></span>
+	  <div style="color: #707070; float: right; padding-top: 125px;">
+		  <jsp:getProperty name="MagicBean" property="versionControl"/>
+	  </div>
   </div>  
 </div>  
 
 
 
-	<!-- div class="esquerra">
-	<div id="logo"><img id="img" src="web/images/logo.png" alt="MeRLí"
-		title="MeRLí" /></div>
-	</div>
-	<div id="dreta">
-	<div id="header">
-	<div id="titleHeader">
-	<div id="entorns"></div>
-	<div class="inferior">
-	<div class="esquerra2" id="modes"><a href="#" title="cerca"><bean:message
-		key="application.title" /></a></div>
-	<div class="dreta2" id="username"><a href="usuaris.do"
-		title="Editar usuari"><bean:message key="login.nonregistred" /></a></div>
-	</div>
-	</div>
-	</div>
-	<DIV id="cos">
-	<div id="titleContent"><bean:message key="login.message" /></div>
-	<div id="content">
-	<table align="center" id="login">
-		<tr align="center">
-			<td>
-			<table align="center">
-				<html:errors property="login" />
-				<tr>
-					<td align="right"><bean:message key="login.username" /></td>
-					<td align="left"><html:text property="userName" size="15"
-						maxlength="15" /> <html:errors property="userName" /></td>
-				</tr>
-				<tr>
-					<td align="right"><bean:message key="login.password" /></td>
-					<td align="left"><html:password property="password" size="15"
-						maxlength="15" redisplay="false" /> <html:errors
-						property="password" /></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><html:submit styleClass="buto">
-						<bean:message key="login.button.signon" />
-					</html:submit></td>
-				</tr>
-			</table>
-			</td>
-		</tr>
-	</table>
-	</div>
-	</DIV>
-	</div-->
+
 </html:form>
 </body>
 </html:html>

@@ -243,7 +243,7 @@
                             <a href="directoriInicialArea.jsp?idLevel=2219" class="linial"><%=XMLCollection.getProperty("cerca.educacio.primaria", sLang)%></a></li><li>
                             <a href="directoriInicialArea.jsp?idLevel=2221" class="linial"><%=XMLCollection.getProperty("cerca.educacio.secundaria", sLang)%></a></li><li>
                             <a href="directoriInicialArea.jsp?idLevel=2234" class="linial"><%=XMLCollection.getProperty("cerca.educacio.batxillerat", sLang)%></a></li><li>
-                            <a href="directoriInicialArea.jsp?idLevel=9302" class="linial"><%=XMLCollection.getProperty("cerca.educacio.fpmitja", sLang)%></a></li><li>  			
+                            <a href="directoriInicialArea.jsp?idLevel=9698" class="linial"><%=XMLCollection.getProperty("cerca.educacio.fpmitja", sLang)%></a></li><li>
                             <a href="directoriInicialArea.jsp?idLevel=9337" class="linial"><%=XMLCollection.getProperty("cerca.educacio.fpsuperior", sLang)%></a></li></ul>  			
                 </div>
             </div> 

@@ -58,6 +58,7 @@ import edu.xtec.merli.ws.objects.Result;
 public abstract class ServletMain extends HttpServlet {
     
 	protected static final Logger logger = Logger.getRootLogger();
+    public static String versionControl ="v2.0.1";
 
     
     static
@@ -74,6 +75,7 @@ public abstract class ServletMain extends HttpServlet {
         logger.warn("Get received\n" +req.toString());
         PrintWriter out = resp.getWriter();
         out.println("Only accepted POST request");
+        out.println(versionControl);
         out.flush();        
         out.close();        
     }

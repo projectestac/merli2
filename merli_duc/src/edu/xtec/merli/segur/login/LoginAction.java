@@ -56,7 +56,8 @@ public class LoginAction extends Action {
                 // Clear old-session attributes
 
                 request.getSession().setAttribute("user", lb.getUser(((LoginForm) form).getUserName()));
-                logger.info((((LoginForm) form).getUserName()) + " ---- " + (((LoginForm) form).getPassword()));
+                //Amendez 23/03/2016 https://trello.com/c/zD0E2Ro8
+                logger.info((((LoginForm) form).getUserName()) );
                 logger.info("user validated.");
                 return (mapping.findForward("success"));
             } catch (Exception e) {

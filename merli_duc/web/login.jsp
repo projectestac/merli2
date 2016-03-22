@@ -3,6 +3,7 @@
 <%-- Struts provided Taglibs --%>
 <%@ taglib prefix="html" uri="/WEB-INF/struts-html-el.tld"%>
 <%@ include file="/web/comu/taglibs.jsp"%>
+<jsp:useBean id="LoginForm" scope="request" class="edu.xtec.merli.segur.login.LoginForm"/>
 <html:html locale="true">
     <meta http-equiv="content-type" content="text/html;charset=ISO-8859-15" />
     <link rel="shortcut icon" href="web/images/favicon_duc.ico" type="image/x-icon">
@@ -35,14 +36,18 @@
                         </div>
                     </div>
                     <span id="login-bg"></span>
+                    <br>
+                    <div style="color: #707070; float: right; padding-top: 125px;">
+                        <jsp:getProperty name="LoginForm" property="versionControl"/>
+                    </div>
                 </div>  
             </div>  
 
 
 
             <!-- div class="esquerra">
-            <div id="logo"><img id="img" src="web/images/logo.png" alt="MeRLí"
-                    title="MeRLí" /></div>
+            <div id="logo"><img id="img" src="web/images/logo.png" alt="MeRLï¿œ"
+                    title="MeRLï¿œ" /></div>
             </div>
             <div id="dreta">
             <div id="header">

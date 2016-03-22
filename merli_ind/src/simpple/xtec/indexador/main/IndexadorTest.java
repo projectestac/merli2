@@ -12,7 +12,7 @@ import simpple.xtec.indexador.util.Utils;
  * Class called from the main script
  * 
  * @author descuer
- *
+ *NO SE USA!!!!!
  */
 
 public class IndexadorTest {

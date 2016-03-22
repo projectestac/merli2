@@ -88,7 +88,7 @@ public class DucBuilder {
             logger.info("Commit...");
             commitStatement.executeUpdate();
             logger.info("Doing call...");
-            SoapManager mySoapManager = new SoapManager();
+            //SoapManager mySoapManager = new SoapManager();
             // bodyXML = mySoapManager.doCallDUC();
 
             String idNivells = doSOAPCallDUCNivells();

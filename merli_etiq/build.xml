@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="merli" basedir="." default="all">
+<project name="merli_etiq" basedir="." default="all">
 
   <property name="lib.dir"        location="WEB-INF/lib" />
   <property name="build.dir"      location="build" />
@@ -185,9 +185,7 @@
 		<zipfileset dir="" prefix="">
 			<patternset refid="jsps"/>
 		</zipfileset>
-		<zipfileset dir="logs" prefix="logs">
-			<patternset refid="logs"/>
-		</zipfileset>
+
     </war>
   </target>
   

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by aleix canals (docum) -->
-<xs:schema targetNamespace="http://preproduccio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5"
-			xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://preproduccio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5">
+<xs:schema targetNamespace="http://integracio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://integracio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5">
 	<xs:element name="idElement">
 		<xs:annotation>
 			<xs:documentation>Identificador d'un element del DUC</xs:documentation>
@@ -233,7 +233,7 @@
 	</xs:element>	
 	<xs:element name="relation">
 		<xs:annotation>
-			<xs:documentation>Defineix la relaci󠥮tre aquest recurs i altres recursos</xs:documentation>
+			<xs:documentation>Defineix la relació entre aquest recurs i altres recursos</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -257,7 +257,7 @@
 	</xs:element>
 	<xs:element name="descripcioFisica">
 		<xs:annotation>
-			<xs:documentation>Descriu les caracteriques pr򰩥s dels recursos fcs</xs:documentation>
+			<xs:documentation>Descriu les característiques pròpies dels recursos físics</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>

@@ -28,6 +28,8 @@ public class MagicBean {
 	
 	private int operation;
 	private static final Logger logger = Logger.getRootLogger();//("xtec.duc");
+	/* ADDED - Nadim --> Have to update when deploying new version --> 25/11/2015 */
+	public static String versionControl = "v2.1.0";
 	
 	public ArrayList getElementList(String tipus){
 		ArrayList list = new ArrayList();
@@ -275,7 +277,10 @@ public class MagicBean {
 		}
 	}
 
+
+	public String getVersionControl(){
+		return versionControl;
+	}
 	
-	
-	
+
 }

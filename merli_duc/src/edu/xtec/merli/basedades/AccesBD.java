@@ -84,7 +84,7 @@ public class AccesBD {
 					pstInsert.close();
 				}
 			} catch (SQLException e1) {
-				logger.warn("Error connecting to DDBB:" + e1.getMessage());
+				logger.error("Error connecting to DDBB:" + e1.getMessage());
 				logger.error("SQL Insert-> " + "INSERT INTO " + taula + " VALUES (" + valors + ")");
 				e1.printStackTrace();
 				throw new MerliDBException(MerliDBException.ERROR_CONNEXIO);

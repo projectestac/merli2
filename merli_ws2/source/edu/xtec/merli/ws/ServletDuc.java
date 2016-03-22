@@ -67,7 +67,6 @@ public class ServletDuc extends ServletMain {
 			if (GETELEMENTDUC.equals(sQuery)){
 				logger.debug("IN>>>ServletDuc.processMessage-> action="+sQuery);
 				//OLD -> Naseq [casting problem]
-				//smResponse = getElementDUC((SOAPBodyElement)sbeRequest.getChildElements(sf.createName("idElement")).next());
 				smResponse = getElementDUC((SOAPElement)sbeRequest.getChildElements(sf.createName("idElement")).next());
 				logger.debug("OUT>>>ServletDuc.processMessage-> action="+sQuery);
 				//smResponse.writeTo(System.out);
@@ -77,7 +76,6 @@ public class ServletDuc extends ServletMain {
 				logger.debug("IN>>>ServletDuc.processMessage-> action="+sQuery);
 				logger.debug(sbeRequest.getChildElements(sf.createName("idElement")).next());
 				//OLD -> Naseq [casting problem]
-				//smResponse = getLevelElementsDUC((SOAPBodyElement)sbeRequest.getChildElements(sf.createName("idElement")).next());
 				smResponse = getLevelElementsDUC((SOAPElement)sbeRequest.getChildElements(sf.createName("idElement")).next());
 				logger.debug("OUT>>>ServletDuc.processMessage-> action="+sQuery);
 				//smResponse.writeTo(System.out);
@@ -120,7 +118,6 @@ public class ServletDuc extends ServletMain {
 
 	
 	//OLD -> Naseq [casting problem]
-	//private SOAPMessage getElementDUC(SOAPBodyElement sbeRequest) throws SOAPException, MerliDBException, SQLException, SemanticException {
 	private SOAPMessage getElementDUC(SOAPElement sbeRequest) throws SOAPException, MerliDBException, SQLException, SemanticException {
 		logger.debug("getElementDUC");
 		WSMerliBD wsdbd = new WSMerliBD();
@@ -138,7 +135,6 @@ public class ServletDuc extends ServletMain {
 	}
 	
 	//OLD -> Naseq [casting problem]
-	//private SOAPMessage getLevelElementsDUC(SOAPBodyElement sbeRequest) throws SOAPException, MerliDBException, SQLException, SemanticException {
 	private SOAPMessage getLevelElementsDUC(SOAPElement sbeRequest) throws SOAPException, MerliDBException, SQLException, SemanticException {
 		logger.debug("getLevelElementsDUC");
 		WSMerliBD wsdbd = new WSMerliBD();

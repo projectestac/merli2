@@ -523,7 +523,8 @@ public class ServletCerca extends HttpServlet {
             
             usuari = (String) session.getAttribute("nomUsuari");
             if (usuari == null) {
-                usuari = (String) request.getRemoteUser();
+                // Amendez 23-03-2016 https://trello.com/c/KGRG9QBR
+                usuari= (String) session.getAttribute("user");
             }
             
             userGeneric = (String) session.getAttribute("userGeneric");
@@ -609,6 +610,7 @@ public class ServletCerca extends HttpServlet {
             logger.debug("novaCerca: " + novaCerca);
             
             textCerca = request.getParameter("textCerca");
+
             if (textCerca != null && !"".equals(textCerca)) {
                 // textCerca = new
                 // String(request.getParameter("textCerca").getBytes(),
@@ -616,6 +618,7 @@ public class ServletCerca extends HttpServlet {
             } else {
                 textCerca = "";
             }
+
             logger.debug("textCerca: " + textCerca);
 
             // If nobody clicked in the text field

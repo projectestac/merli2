@@ -67,7 +67,7 @@ public class SoapManager {
             SOAPElement message = body.addBodyElement(envelope.createName("getResource"));
             logger.debug("doCall 10");
             SOAPElement idResource = message.addChildElement(envelope.createName("idResource"));
-            logger.debug("doCall 11");
+            logger.debug("doCall 11 " + idContingut);
             SOAPElement identifier = idResource.addChildElement(envelope.createName("identifier"));
             logger.debug("doCall 12");
             identifier.addTextNode(idContingut);
@@ -81,7 +81,7 @@ public class SoapManager {
             logger.debug(msg.getSOAPPart().getEnvelope().getBody());
 	        //  provider.send(msg, url);  
             //provider.send(msg);
-            logger.debug("See the result at the server console.");
+            //logger.debug("See the result at the server console.");
             SOAPMessage response = soapConnection.call(msg, myUrl);
             logger.debug("doCall 14");
             SOAPEnvelope envelopeResponse = response.getSOAPPart().getEnvelope();

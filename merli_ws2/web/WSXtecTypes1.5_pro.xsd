@@ -233,7 +233,7 @@
 	</xs:element>	
 	<xs:element name="relation">
 		<xs:annotation>
-			<xs:documentation>Defineix la relaci󠥮tre aquest recurs i altres recursos</xs:documentation>
+			<xs:documentation>Defineix la relació entre aquest recurs i altres recursos</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -257,7 +257,7 @@
 	</xs:element>
 	<xs:element name="descripcioFisica">
 		<xs:annotation>
-			<xs:documentation>Descriu les caracteriques pr򰩥s dels recursos fcs</xs:documentation>
+			<xs:documentation>Descriu les característiques pròpies dels recursos físics</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>

@@ -225,12 +225,11 @@ public class Utils {
             //logger.info("Getting connection....");
             try {
                 Class.forName("oracle.jdbc.OracleDriver").newInstance();
-                //ORACLE
-                //ds = (DataSource)initContext.lookup("jdbc/pool/IndexadorConnectionPoolDS");
-                //logger.info("WebLogic");
+
+
                 ds = (DataSource) initContext.lookup("jdbc/pool/CercadorConnectionPoolDS");
                 myConnection = ds.getConnection();
-                //myConnection = ds.getConnection();
+
             } catch (Exception e3) {
                 logger.info(e3);
                 DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
@@ -238,14 +237,7 @@ public class Utils {
                 myConnection = DriverManager.getConnection(
                         Configuracio.cadenaConnexioBDOracle, Configuracio.userBDOracle, Configuracio.passwordBDOracle
                 );
-                if (myConnection == null) {
-                    myConnection = DriverManager.getConnection(
-                            "jdbc:oracle:thin:@OraDB12c:1521:OR01",
-                            "e13_merli_cer",
-                            "e13_merli_cer"
-                    //Configuracio.cadenaConnexioBDOracle, Configuracio.userBDOracle, Configuracio.passwordBDOracle
-                    );
-                }
+
             }
             //logger.info("Connection get....");
         } catch (Exception e) {

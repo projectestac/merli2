@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions name="WSDLMerli"
-   targetNamespace="http://aplitic.xtec.cat/e13_merli_ws2/WSDLMerli.wsdl"
+    targetNamespace="http://integracio.merli.xtec.cat/merli_ws2/WSDLMerli.wsdl"
    xmlns="http://schemas.xmlsoap.org/wsdl/"
    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-   xmlns:tns="http://aplitic.xtec.cat/e13_merli_ws2/WSDLMerli.wsdl"
+   xmlns:tns="http://integracio.merli.xtec.cat/merli_ws2/WSDLMerli.wsdl"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-   xmlns:types="http://aplitic.xtec.cat/e13_merli_ws2/WSXtecTypes1.5"
+   xmlns:types="http://integracio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5"
    >
  
    <types>

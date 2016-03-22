@@ -5,9 +5,9 @@
 	<Image width="16" height="16">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAxElEQVQ4jbWSURHDIBBEVwISIgEJSIgEJGwdxAESKiESIqESIiESth+5dsgNSZjOlBl+9vYeewDwryUiiFhFjL8Csh7QYffCREQRWwMQepqHZnMvoErwagByF+CbZG/aRBQRWUS8il1ELLaLaZOloYjZak8RycdtXdgmIjVHqccRMTcNH8hVjQhoiMtJokXE6rTkAclSjU4vpocD3AOqe0kOMFW15RZgxvqkeAIY/QihMg72CtGBXYLdNB3e9u6D7f4MAG/2MUgbptGOiQAAAABJRU5ErkJggg==</Image>
 	<InputEncoding>UTF-8</InputEncoding>
 	<UpdateInterval>3</UpdateInterval>
-	<UpdateUrl>http://aplitic.xtec.cat/merli/merli-browser-search.xml</UpdateUrl>
-	<IconUpdateUrl>http://aplitic.xtec.cat/merli/imatges/merli.png</IconUpdateUrl>
-	<SearchForm>http://merli.xtec.cat/</SearchForm>	
-	<Url type="text/html" method="GET" template="http://aplitic.xtec.cat/merli/ServletCerca?tipus=simple&amp;nivell=0&amp;ordenacio=&amp;novaCerca=si&amp;usuari=null&amp;userGeneric=&amp;nomUsuari=null&amp;cataleg=si&amp;textCerca={searchTerms}"/>
+	<UpdateUrl>http://integracio.merli.xtec.cat//merli-browser-search.xml</UpdateUrl>
+	<IconUpdateUrl>http://integracio.merli.xtec.cat//merli/imatges/merli.png</IconUpdateUrl>
+	<SearchForm>http://integracio.merli.xtec.cat/</SearchForm>
+	<Url type="text/html" method="GET" template="http://integracio.merli.xtec.cat//merli/ServletCerca?tipus=simple&amp;nivell=0&amp;ordenacio=&amp;novaCerca=si&amp;usuari=null&amp;userGeneric=&amp;nomUsuari=null&amp;cataleg=si&amp;textCerca={searchTerms}"/>
 </OpenSearchDescription>
 

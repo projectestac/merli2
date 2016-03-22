@@ -284,7 +284,7 @@ public class MerliHarvester implements Job {
                 Element idElement = (Element) oneHeader.getChild("identifier", myNamespace);
                 String id = idElement.getText();
                 // ID RECURS
-                id = id.replaceAll("oai:merli.xtec.cat:merli/", "");
+                id = id.replaceAll("oai:integracio.merli.xtec.cat:merli/", "");
                 allIds.add(id);
             }
 

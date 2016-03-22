@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions name="WSDLMerli"
-   targetNamespace="http://preproduccio.merli.xtec.cat/merli_ws2/WSDLMerli.wsdl"
-   xmlns="http://schemas.xmlsoap.org/wsdl/"
-   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-   xmlns:tns="http://preproduccio.merli.xtec.cat/merli_ws2/WSDLMerli.wsdl"
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-   xmlns:types="http://preproduccio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5"
-   >
+             targetNamespace="http://integracio.merli.xtec.cat/merli_ws2/WSDLMerli.wsdl"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://integracio.merli.xtec.cat/merli_ws2/WSDLMerli.wsdl"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:types="http://integracio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5"
+>
  
    <types>
       <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-		 <xsd:import namespace="http://preproduccio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5.xsd" schemaLocation="http://preproduccio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5.xsd"/>
+		 <xsd:import namespace="http://integracio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5.xsd" schemaLocation="http://integracio.merli.xtec.cat/merli_ws2/WSXtecTypes1.5.xsd"/>
       </xsd:schema>
    </types>
  
@@ -71,48 +71,48 @@
    <binding name="WSDLMerliBinding" type="tns:WSDLMerliPortType">
    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
       <operation name="getResource">
-		<soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+		<soap:operation soapAction="http://integracio.merli.xtec.cat/merli_ws2/merli"/>
          <input>
-            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+            <soap:body namespace="http://integracio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
          </input>
          <output>
-            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+            <soap:body namespace="http://integracio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
          </output>
       </operation>
 	   <operation name="addResource">
-		 <soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+		 <soap:operation soapAction="http://integracio.merli.xtec.cat/merli_ws2/merli"/>
          <input>
-            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+            <soap:body namespace="http://integracio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
          </input>
          <output>
-            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+            <soap:body namespace="http://integracio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
          </output>
       </operation>
 	  <operation name="setResource">
-		 <soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+		 <soap:operation soapAction="http://integracio.merli.xtec.cat/merli_ws2/merli"/>
          <input>
-            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+            <soap:body namespace="http://integracio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
          </input>
          <output>
-            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+            <soap:body namespace="http://integracio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
          </output>
       </operation>
 	  <operation name="delResource">
-		 <soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+		 <soap:operation soapAction="http://integracio.merli.xtec.cat/merli_ws2/merli"/>
          <input>
-            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+            <soap:body namespace="http://integracio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
          </input>
          <output>
-            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+            <soap:body namespace="http://integracio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
          </output>
       </operation>
 	  <operation name="editResource">
-		 <soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+		 <soap:operation soapAction="http://integracio.merli.xtec.cat/merli_ws2/merli"/>
          <input>
-            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+            <soap:body namespace="http://integracio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
          </input>
          <output>
-            <soap:body namespace="http://preproduccio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
+            <soap:body namespace="http://integracio.merli.xtec.cat/merli_ws2/merli" use="literal"/>
          </output>
       </operation>
    </binding>
@@ -120,7 +120,7 @@
    <binding name="WSDLDUCBinding" type="tns:WSDLDUCPortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="GetElement">
-			<soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/duc"/>
+			<soap:operation soapAction="http://integracio.merli.xtec.cat/merli_ws2/duc"/>
 			<input>
 				<soap:body use="literal"/>
 			</input>
@@ -129,7 +129,7 @@
 			</output>
 		</operation>
 		<operation name="GetDUC">
-			<soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/duc"/>
+			<soap:operation soapAction="http://integracio.merli.xtec.cat/merli_ws2/duc"/>
 			<input>
 				<soap:body use="literal"/>
 			</input>
@@ -138,7 +138,7 @@
 			</output>
 		</operation>
 				<operation name="GetLevels">
-			<soap:operation soapAction="http://preproduccio.merli.xtec.cat/merli_ws2/duc"/>
+			<soap:operation soapAction="http://integracio.merli.xtec.cat/merli_ws2/duc"/>
 			<input>
 				<soap:body use="literal"/>
 			</input>
@@ -150,13 +150,13 @@
    
    <service name="WSDLMerliService">
       <port name="WSDLMerliPort" binding="tns:WSDLMerliBinding">
-         <soap:address location="http://preproduccio.merli.xtec.cat/merli_ws2/merli"/>
+         <soap:address location="http://integracio.merli.xtec.cat/merli_ws2/merli"/>
       </port>
    </service>
    
    <service name="WSDLDUCService">
 	<port binding="tns:WSDLDUCBinding" name="WSDLDUCPort">
-		<soap:address location="http://preproduccio.merli.xtec.cat/merli_ws2/duc"/>
+		<soap:address location="http://integracio.merli.xtec.cat/merli_ws2/duc"/>
 	</port>
 	</service>
 </definitions>

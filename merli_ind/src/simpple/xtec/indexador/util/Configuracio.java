@@ -48,6 +48,9 @@ public class Configuracio {
     public static String parseUrl = "";
     public static String refreshDUC = "";
 
+    //Added Nadim
+    public static String versionControl="v2.0.1";
+
     /**
      * Check if the values are already loaded
      *
@@ -63,7 +66,7 @@ public class Configuracio {
     /**
      * Load the info from the configuration file
      *
-     */
+
     public static void carregaConfiguracio() {
 
         RandomAccessFile propertiesFile = null;
@@ -75,10 +78,8 @@ public class Configuracio {
             //	javax.naming.Context ctx = new javax.naming.InitialContext();
 
             nameFile = System.getProperty("indexacio.educacio");
-            /* if (nameFile == null) {    	
-             nameFile = (String) ctx.lookup("java:comp/env/indexacio.educacio");
-             }
-             */
+
+
             logger.debug("[Buscant configuracio] " + nameFile);
 
             propertiesFile = new RandomAccessFile(nameFile, "r");
@@ -181,14 +182,14 @@ public class Configuracio {
         }
 
     }
-
-    public static void carregaConfiguracioBD() {
+        */
+    public static void carregaConfiguracio() {
 
         Connection myConnection = null;
         Statement stmt = null;
         ResultSet rs = null;
         try {
-            logger.debug("[carregaConfiguracioBD] -> init");
+            logger.debug("[carregaConfiguracio] -> init");
             myConnection = Utils.getConnectionFromPool();
             stmt = myConnection.createStatement();
             rs = stmt.executeQuery("SELECT * FROM configuracio");
@@ -271,9 +272,9 @@ public class Configuracio {
             }
 
             if (TipusFitxer.isVoid()) {
-                //             Class.forName(nomDriverBDOracle);            	 
+
                 TipusFitxer.carregaTipusFitxer();
-          	 //  XMLCollection.loadProperties(nameFile);
+
 
             }
         } catch (Exception e) {

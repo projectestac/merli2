@@ -7,8 +7,8 @@
 
   <module>
     <web>
-      <web-uri>e13_merli_duc.war</web-uri>
-      <context-root>/e13_merli_duc</context-root>
+      <web-uri>merli_duc.war</web-uri>
+      <context-root>/merli_duc</context-root>
     </web>
   </module>
 

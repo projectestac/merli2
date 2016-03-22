@@ -60,7 +60,7 @@
             <tr>
                 <th><%=XMLCollection.getProperty("administracio.inicial.cerca")%></th>
                 <th><%=XMLCollection.getProperty("administracio.inicial.data")%></th>
-                <th><%=XMLCollection.getProperty("administracio.inicial.hora")%></td>
+                <th><%=XMLCollection.getProperty("administracio.inicial.hora")%></th>
                 <th><%=XMLCollection.getProperty("administracio.inicial.cercador")%></th>	
             </tr>      
         </thead>

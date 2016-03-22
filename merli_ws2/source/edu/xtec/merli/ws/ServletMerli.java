@@ -31,9 +31,9 @@ public class ServletMerli extends ServletMain {
     public static final String EDITRESOURCE = "editResource";
 
     /**
-     * Processa el SOAPMessage, identifica de quin típus és l'objecte enviat i
-     * segons el típus executa la operació adequada. Retorna el missatge
-     * retornat per la operació executada.
+     * Processa el SOAPMessage, identifica de quin tï¿½pus ï¿½s l'objecte enviat i
+     * segons el tï¿½pus executa la operaciï¿½ adequada. Retorna el missatge
+     * retornat per la operaciï¿½ executada.
      */
     public SOAPMessage processMessage(SOAPMessage smRequest) {
         SOAPMessage smResponse = null;
@@ -61,32 +61,32 @@ public class ServletMerli extends ServletMain {
 
             //AddResource
             if (ADDRESOURCE.equals(sQuery)) {
-                smResponse = addResource((SOAPBodyElement) sbeRequest.getChildElements(sf.createName("lom")).next(), "ok");
+                smResponse = addResource((SOAPElement) sbeRequest.getChildElements(sf.createName("lom")).next(), "ok");
             }
 
             //SetResource
             if (SETRESOURCE.equals(sQuery)) {
-                smResponse = setResource((SOAPBodyElement) sbeRequest.getChildElements(sf.createName("lom")).next(), "ok");
+                smResponse = setResource((SOAPElement) sbeRequest.getChildElements(sf.createName("lom")).next(), "ok");
             }
 
             //DelResource
             if (DELRESOURCE.equals(sQuery)) {
-                smResponse = delResource((SOAPBodyElement) sbeRequest.getChildElements(sf.createName("idResource")).next(), "ok");
+                smResponse = delResource((SOAPElement) sbeRequest.getChildElements(sf.createName("idResource")).next(), "ok");
             }
 
             //unpublishResource
             if (UNPUBLISHRESOURCE.equals(sQuery)) {
-                smResponse = unpublishResource((SOAPBodyElement) sbeRequest.getChildElements(sf.createName("idResource")).next());
+                smResponse = unpublishResource((SOAPElement) sbeRequest.getChildElements(sf.createName("idResource")).next());
             }
 
             //GetResource
             if (GETRESOURCE.equals(sQuery)) {
-                smResponse = getResource((SOAPBodyElement) sbeRequest.getChildElements(sf.createName("idResource")).next());//,el);
+                smResponse = getResource((SOAPElement) sbeRequest.getChildElements(sf.createName("idResource")).next());//,el);
             }
 
             //EditResource
             if (EDITRESOURCE.equals(sQuery)) {
-                smResponse = editResource((SOAPBodyElement) sbeRequest.getChildElements(sf.createName("lom")).next(), "ok");//,el);
+                smResponse = editResource((SOAPElement) sbeRequest.getChildElements(sf.createName("lom")).next(), "ok");//,el);
             }
 
             printLog(sQuery + "-END", "Server", "WSMerli");
@@ -102,9 +102,9 @@ public class ServletMerli extends ServletMain {
     }
 
     /**
-     * Processa el SOAPMessage, identifica de quin típus és l'objecte enviat i
-     * segons el típus executa la operació adequada. Retorna el missatge
-     * retornat per la operació executada.
+     * Processa el SOAPMessage, identifica de quin tï¿½pus ï¿½s l'objecte enviat i
+     * segons el tï¿½pus executa la operaciï¿½ adequada. Retorna el missatge
+     * retornat per la operaciï¿½ executada.
      */
     public SOAPMessage processMessage(SOAPMessage smRequest, String ip) {
         SOAPMessage smResponse = null;
@@ -152,6 +152,7 @@ public class ServletMerli extends ServletMain {
 
             //GetResource
             if (GETRESOURCE.equals(sQuery)) {
+                //smResponse = getResource(getChildByLocalName(sbeRequest, "idResource"));
                 smResponse = getResource(getChildByLocalNameGetResource(sbeRequest, "idResource"));// ,el);
             }
 
@@ -171,8 +172,9 @@ public class ServletMerli extends ServletMain {
 
         return smResponse;
     }
+
 /* NADIM ADDED GET RESOURCE*/
-    private SOAPElement getChildByLocalNameGetResource(SOAPBodyElement sbeRequest, String localName) {
+    private SOAPElement getChildByLocalNameGetResource(SOAPElement sbeRequest, String localName) {
         Node element = null;
         //SOAPBodyElement element = null;
         Iterator it = sbeRequest.getChildElements();
@@ -191,7 +193,7 @@ public class ServletMerli extends ServletMain {
         return null;
     }
 /* END NADIM ADDED GET RESOURCE*/    
-    private SOAPBodyElement getChildByLocalName(SOAPBodyElement sbeRequest, String localName) {
+    private SOAPElement getChildByLocalName(SOAPElement sbeRequest, String localName) {
         Node element = null;
         Iterator it = sbeRequest.getChildElements();
         while (it.hasNext()) {
@@ -199,7 +201,7 @@ public class ServletMerli extends ServletMain {
                 element = (Node) it.next();
                 if (element.getLocalName() != null) {
                     if (element.getLocalName().equals(localName)) {
-                        return (SOAPBodyElement) element;
+                        return (SOAPElement) element;
                     }
                 }
             } catch (Exception ex) {
@@ -213,9 +215,9 @@ public class ServletMerli extends ServletMain {
      * Rep el SOAPBodyElement enviat pel client i el converteix a l'objecte
      * adequat dins el domini. En aquest cas un Lom
      *
-     * Executa la operació setResource passant com a parametre el Lom.
+     * Executa la operaciï¿½ setResource passant com a parametre el Lom.
      *
-     * Retorna un Result indicant la operació i que l'execució ha estat correcte
+     * Retorna un Result indicant la operaciï¿½ i que l'execuciï¿½ ha estat correcte
      * i amb un objecte IdResource amb l'id del recurs modificat.
      *
      * @param sbeRequest SOAPBodyElement amb un Lom
@@ -223,7 +225,7 @@ public class ServletMerli extends ServletMain {
      * @throws MerliDBException
      * @throws SOAPException
      */
-    private SOAPMessage setResource(SOAPBodyElement sbeRequest, String ip) throws MerliDBException, SOAPException {
+    private SOAPMessage setResource(SOAPElement sbeRequest, String ip) throws MerliDBException, SOAPException {
         WSMerliBD wsmbd = new WSMerliBD();
         Lom lom;
 
@@ -257,8 +259,8 @@ public class ServletMerli extends ServletMain {
                 throw new MerliDBException(MerliDBException.CAMPS_OBLIGATORIS);
             }
         } else {
-            logger.info("[SetResource] Adreça no permesa -->" + ip);
-            throw new SOAPException("Permís denegat");
+            logger.info("[SetResource] Adreï¿½a no permesa -->" + ip);
+            throw new SOAPException("Permï¿½s denegat");
         }
         return smResponse;
     }
@@ -323,9 +325,9 @@ public class ServletMerli extends ServletMain {
      * Rep el SOAPBodyElement enviat pel client i el converteix a l'objecte
      * adequat dins el domini. En aquest cas un IdResource.
      *
-     * Executa la operació delResource passant com a parametre l'IdResource.
+     * Executa la operaciï¿½ delResource passant com a parametre l'IdResource.
      *
-     * Retorna un Result indicant la operació i que l'execució ha estat
+     * Retorna un Result indicant la operaciï¿½ i que l'execuciï¿½ ha estat
      * correcte.
      *
      * @param sbeRequest SOAPBodyElement amb un IdResource
@@ -333,7 +335,7 @@ public class ServletMerli extends ServletMain {
      * @throws SOAPException
      * @throws MerliDBException
      */
-    public SOAPMessage delResource(SOAPBodyElement sbeRequest, String ip) throws SOAPException, MerliDBException {
+    public SOAPMessage delResource(SOAPElement sbeRequest, String ip) throws SOAPException, MerliDBException {
 
         WSMerliBD wsmbd = new WSMerliBD();
 
@@ -352,8 +354,8 @@ public class ServletMerli extends ServletMain {
             smResponse = createResponse(DELRESOURCE, idResource);
             //		smResponse= internalError(new MerliDBException(MerliDBException.OBJECTE_INEXISTENT),DELRESOURCE);
         } else {
-            logger.info("[DelResource] Adreça no permesa -->" + ip);
-            throw new SOAPException("Permís denegat");
+            logger.info("[DelResource] Adreï¿½a no permesa -->" + ip);
+            throw new SOAPException("Permï¿½s denegat");
         }
 
         return smResponse;
@@ -363,9 +365,9 @@ public class ServletMerli extends ServletMain {
      * Rep el SOAPBodyElement enviat pel client i el converteix a l'objecte
      * adequat dins el domini. En aquest cas un IdResource.
      *
-     * Executa la operació unpublishRecurs passant com a parametre l'IdResource.
+     * Executa la operaciï¿½ unpublishRecurs passant com a parametre l'IdResource.
      *
-     * Retorna un Result indicant la operació i que l'execució ha estat
+     * Retorna un Result indicant la operaciï¿½ i que l'execuciï¿½ ha estat
      * correcte.
      *
      * @param sbeRequest SOAPBodyElement amb un IdResource
@@ -373,7 +375,7 @@ public class ServletMerli extends ServletMain {
      * @throws SOAPException
      * @throws MerliDBException
      */
-    public SOAPMessage unpublishResource(SOAPBodyElement sbeRequest) throws SOAPException, MerliDBException {
+    public SOAPMessage unpublishResource(SOAPElement sbeRequest) throws SOAPException, MerliDBException {
 
         WSMerliBD wsmbd = new WSMerliBD();
 
@@ -393,9 +395,9 @@ public class ServletMerli extends ServletMain {
      * Rep el SOAPBodyElement enviat pel client i el converteix a l'objecte
      * adequat dins el domini. En aquest cas un Lom
      *
-     * Executa la operació addResource passant com a parametre el Lom.
+     * Executa la operaciï¿½ addResource passant com a parametre el Lom.
      *
-     * Retorna un Result indicant la operació i que l'execució ha estat correcte
+     * Retorna un Result indicant la operaciï¿½ i que l'execuciï¿½ ha estat correcte
      * i amb un objecte IdResource amb l'id del recurs creat.
      *
      * @param sbeRequest SOAPBodyElement amb un Lom
@@ -403,7 +405,7 @@ public class ServletMerli extends ServletMain {
      * @throws SOAPException
      * @throws MerliDBException
      */
-    public SOAPMessage addResource(SOAPBodyElement sbeRequest, String ip) throws SOAPException, MerliDBException {
+    public SOAPMessage addResource(SOAPElement sbeRequest, String ip) throws SOAPException, MerliDBException {
 
         WSMerliBD wsmbd = new WSMerliBD();
         wsmbd.setLomes(false);
@@ -429,8 +431,8 @@ public class ServletMerli extends ServletMain {
             printLog("addResource-creat:" + idResource.getIdentifier(), "SERVER", "wsMerli");
             //smResponse= internalError(new MerliDBException(MerliDBException.OBJECTE_INEXISTENT),ADDRESOURCE);
         } else {
-            logger.info("[AddResource] Adreça no permesa -->" + ip);
-            throw new SOAPException("Permís denegat");
+            logger.info("[AddResource] Adreï¿½a no permesa -->" + ip);
+            throw new SOAPException("Permï¿½s denegat");
         }
 
         return smResponse;
@@ -449,7 +451,7 @@ public class ServletMerli extends ServletMain {
      * Rep el SOAPBodyElement enviat pel client i el converteix a l'objecte
      * adequat dins el domini. En aquest cas un IdResource.
      *
-     * Executa la operació getResource passant com a parametre l'IdResource. Se
+     * Executa la operaciï¿½ getResource passant com a parametre l'IdResource. Se
      * li afageix un atribut "lomEs", si te valor "true" es retorna el recurs en
      * format LOM-ESv1.0
      *
@@ -459,14 +461,15 @@ public class ServletMerli extends ServletMain {
      * <type>MERLI</type>
      * </idResource>
      * </getResource>
-     * Retorna un Result indicant la operació i que l'execució ha estat correcte
-     * i amb l'objecte sol·licitat en un Lom.
+     * Retorna un Result indicant la operaciï¿½ i que l'execuciï¿½ ha estat correcte
+     * i amb l'objecte solï¿½licitat en un Lom.
      *
-     * @param node SOAPBodyElement amb un IdResource
+     * @param  node SOAPBodyElement amb un IdResource
      * @return
      * @throws SOAPException
      * @throws MerliDBException
      */
+    //OLD -> Naseq [casting problem]
     public SOAPMessage getResource(SOAPElement sbRequest/*,SOAPBodyElement sbLomes*/) throws SOAPException, MerliDBException {
 
         WSMerliBD wsmbd = new WSMerliBD();
@@ -479,7 +482,7 @@ public class ServletMerli extends ServletMain {
             throw new MerliDBException(MerliDBException.PARAM_INCORRECTE);
         }
 
-        //Es passa el valor de l'atribut lomEs. Per defecte és "false".
+        //Es passa el valor de l'atribut lomEs. Per defecte ï¿½s "false".
         wsmbd.setLomes(idResource.isLomEs());
         SOAPMessage smResponse = null;
         Lom lom = null;
@@ -495,7 +498,7 @@ public class ServletMerli extends ServletMain {
         return smResponse;
     }
 
-    public SOAPMessage editResource(SOAPBodyElement sbeRequest, String ip) throws SOAPException, MerliDBException {
+    public SOAPMessage editResource(SOAPElement sbeRequest, String ip) throws SOAPException, MerliDBException {
         SOAPMessage smResponse = null;
         IdResource url = new IdResource();
         Properties p;
@@ -524,8 +527,8 @@ public class ServletMerli extends ServletMain {
             printLog("editResource-url creada: " + sUrl + "\n", "SERVER", "wsMerli");
         } else {
             //smResponse= internalError(new MerliDBException(MerliDBException.ADRECA_NO_PERMESA),EDITRESOURCE);
-            logger.info("[EditResource] Adreça no permesa -->" + ip);
-            throw new SOAPException("Permís denegat");
+            logger.info("[EditResource] Adreï¿½a no permesa -->" + ip);
+            throw new SOAPException("Permï¿½s denegat");
         }
         return smResponse;
     }

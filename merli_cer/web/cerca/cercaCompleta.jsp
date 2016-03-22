@@ -256,20 +256,6 @@
             }
 
             function doSubmit() {
-                /* NADIM 03/07/2015*/
-                var value = document.cerca.textCerca.value;                
-                document.cerca.textCerca.value = value.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");
-                var keywords = document.cerca.keywords.value;
-                document.cerca.keywords.value = keywords.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");
-                var autorCerca = document.cerca.autorCerca.value;
-                document.cerca.autorCerca.value = autorCerca.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");
-                var editorialCerca = document.cerca.editorialCerca.value;
-                document.cerca.editorialCerca.value = editorialCerca.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");
-                var dataIniciPublicacio = document.cerca.dataIniciPublicacio.value;
-                document.cerca.dataIniciPublicacio.value = dataIniciPublicacio.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");
-                var dataFinalPublicacio = document.cerca.dataFinalPublicacio.value;
-                document.cerca.dataFinalPublicacio.value = dataFinalPublicacio.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");
-                /*END*/
                 if ($('#dataIniciPublicacio').val() == '<%=XMLCollection.getProperty("cerca.cercaCompleta.dataPublicacioPosterior", sLang)%>') {
                     $('#dataIniciPublicacio').val('');
                 }

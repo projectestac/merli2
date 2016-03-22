@@ -294,63 +294,7 @@ public class DataSourceSNJDBC  implements DataSource{
 
 			return lRes;
 		}
-		/*
-		public List getRelations(int idNode, String nodeType , String type, int direction) throws SemanticException {
-			String condi, sType = "", dType = "", sIdNode = "id_node",  idNodeDest = "";
-			String table = null;
-			List l = new ArrayList();
-			List lRes = new ArrayList();
-			
-			Hashtable hConf = configRelationQuery(idNode, nodeType, type, direction);
-			table = (String) hConf.get("table");
-			condi = (String) hConf.get("condition");
-			l = (List) hConf.get("elements");
-			sType = (String) hConf.get("sourceType");
-			dType = (String) hConf.get("destType");
-			
-			try {
-				ConnectionBean cb= this.connectBD();
-				Map m = AccesBD.getObjectList(table,l,"("+condi+")","", cb.getConnection());
-				this.disconnectBD(cb);
-				List l1, l2, l3 = null;
-				l1 = (List) m.get(l.get(0));
-				l2 = (List) m.get(l.get(1));
-				if (l.size() > 2) l3 = (List) m.get(l.get(2));
-				for (int i=0;i< l1.size();i++){
-					/*
-					 * En cas que algun dels camps sigui 'null' es creu que la relació no existeix.
-					 * /
-					try{
-						Hashtable dto = new Hashtable();
-						dto.put("idSource",new Integer(Utility.toParaula(l1.get(i).toString())));
-						dto.put("sourceType",sType);
-						if (l3 != null){
-							dto.put("destType",Utility.toParaula(l3.get(i).toString()));
-							if (sType.compareTo("thesaurus")==0){
-								dto.put("sourceType",Utility.toParaula(l3.get(i).toString()));
-								dto.put("destType",sType);
-							}
-						}
-						else dto.put("destType",dType);
-						dto.put("idDest",new Integer(Utility.toParaula(l2.get(i).toString())));
-						dto.put("relationType",type);
-						lRes.add(dto);
-					}catch(NullPointerException npe){
-						logger.warn("Error creating relation:"+npe.getMessage());
-					}
-				}
-				
-			} catch (SQLException e) {
-				logger.warn("Error loading relations of:"+idNode+nodeType+":"+e.getMessage());
-			}
 
-			return lRes;
-		}*/
-		
-		
-		/**
-		 * 
-		 */
 		public List getRelations(int idNode,String nodeType , List types, int direction) throws SemanticException {
 			// TODO Auto-generated method stub
 			String condi;
@@ -397,7 +341,8 @@ public class DataSourceSNJDBC  implements DataSource{
 			//String folderProp = "../../../../";
 			String folderProp = "/";
 			String pathProp = "database.properties";
-                        logger.error("1");
+			logger.error("1");
+			logger.error("folderprop y pathprop" + folderProp + pathProp);
 			if (hProperties.containsKey("properties")){
                             
 				propDoc = (Hashtable) hProperties.get("properties");                                

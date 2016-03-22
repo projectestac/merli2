@@ -15,7 +15,7 @@
 <html:form action="gesNodes.do">
 <div class="esquerra">
 	<div id="logo">
-		<img id="img" src="../merli/web/imatges/logo.png" alt="MeRLí" title="MeRLí"/>
+		<img id="img" src="../merli/web/imatges/logo.png" alt="MeRLï¿½" title="MeRLï¿½"/>
 	</div>
 	<div class="formulari">
 		<div class="title"><bean:message key="application.nodeform.title"/></div>
@@ -66,7 +66,9 @@
 					<html:textarea property="note"  rows="8" cols="20" ></html:textarea>
 					</div>
 				</div>
-				<div class="opcional"><div class="option"<span class="left"><bean:message key="application.nodeform.references"/></span><span class="right"><a href="#" onclick="swapDisplay('formReferencia')">+</a></span></div>
+				<div class="opcional"><div class="option"><span class="left"><bean:message key="application.nodeform.references"/></span>
+					<span class="right">
+						<a href="#" onclick="swapDisplay('formReferencia')">+</a></span></div>
 					<div id="formReferencia">
 					<html:textarea property="references"  rows="8" cols="20" ></html:textarea>
 					</div>
@@ -91,7 +93,7 @@
 				</a>
 				<span> | </span>
 				<a href="../metiq/gesrecurs.do" title="Gestor de Recursos">
-					Merlí REC
+					Merlï¿½ REC
 				</a>
 			</div>
 			<div class="inferior">

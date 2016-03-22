@@ -106,7 +106,7 @@ public class MerliBean {
 	public MessageResources messages;
 
 	/* ADDED - Nadim --> Have to update when deploying new version --> 25/11/2015 */
-    public static String versionControl = "v2.0.6";
+    public static String versionControl = "v2.1.0";
 
 	/**
 	 * Sol·licita un ConnectionBean al ConnectionBeanProvider, si aquest no està innicialitzat, ho fa.
