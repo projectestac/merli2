@@ -110,7 +110,7 @@ public class CercaRSS extends HttpServlet {
 				bq = queryGenerator.getQueryFiltreRecurs(filtreRecurs, bq);
 			}
 
-            logger.info("Query: " + bq.toString());
+			logger.info("CercaRSS doget Query: " + bq.toString());
 
 			hits = indexPrincipal.search(bq, new Sort(new SortField("dataPublicacio", true)));
 

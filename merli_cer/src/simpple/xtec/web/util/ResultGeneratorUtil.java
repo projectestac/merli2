@@ -68,12 +68,20 @@ public class ResultGeneratorUtil {
         html += "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + baseUrl + "/css/tooltip.css\"/>" + SALTLINIA;
         html += "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + baseUrl + "/css/merli.css\"/>" + SALTLINIA;
         html += "<link rel=\"stylesheet\" href=\"" + baseUrl + "/css/merli-print.css\" media=\"print\" type=\"text/css\" />" + SALTLINIA;
-
+        html += "<link href=\"//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css\" rel=\"stylesheet\" integrity=\"sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1\" crossorigin=\"anonymous\">"+ SALTLINIA;
         return html;
     }
 
     public static void javascriptCercador(PrintWriter out) {
         out.println("  <script type=\"text/javascript\">");
+        out.println("    function copia_portapapeles (url) {");
+        out.println("       var aux = document.createElement('input');");
+        out.println("       aux.setAttribute('value', url);");
+        out.println("       document.body.appendChild(aux);");
+        out.println("       aux.select();");
+        out.println("       document.execCommand(\"copy\");");
+        out.println("       document.body.removeChild(aux);");
+        out.println("      }");
         out.println("    function askToAgrega () {");
         out.println("      document.cerca.agrega.value = 1;");
         out.println("      document.cerca.submit();");
@@ -255,10 +263,10 @@ public class ResultGeneratorUtil {
         html += "<div id=\"cabecera\">	" + SALTLINIA;
         html += "<a  href=\"" + baseUrl + "\" alt=\"" + alt + "\" ><img src=\"" + baseUrl + "/imatges/capca_logo_merli.png\" border=\"0\" usemap=\"#mapTop\" /></a>" + SALTLINIA;
         html += "<a href=\"http://www.gencat.cat/educacio/\" target=\"_blank\" alt=\"Generalitat de Catalunya. Departament d'Ensenyament\"><img style=\"float:right;\" src=\"" + baseUrl + "/imatges/capca_gene.png\" border=\"0\" usemap=\"#mapTop\" /></a>" + SALTLINIA;
-//		html += "<img src=\""+ baseUrl +"/imatges/capcalera.png\" border=\"0\" usemap=\"#mapTop\" /><br />"+SALTLINIA;	
-//		html += " <map name=\"mapTop\" id=\"mapTop\"> "+SALTLINIA;	
-//		html += "  <area shape=\"rect\" coords=\"731,19,930,49\" href=\"http://www.gencat.cat/educacio/\" target=\"_blank\" alt=\"Generalitat de Catalunya. Departament d'Educaci&oacute;\" />"+SALTLINIA;	
-//		html += "  <area shape=\"rect\" coords=\"1,13,325,49\" href=\"" + baseUrl + "\" alt=\""+alt+"\" />"+SALTLINIA;	
+//		html += "<img src=\""+ baseUrl +"/imatges/capcalera.png\" border=\"0\" usemap=\"#mapTop\" /><br />"+SALTLINIA;
+//		html += " <map name=\"mapTop\" id=\"mapTop\"> "+SALTLINIA;
+//		html += "  <area shape=\"rect\" coords=\"731,19,930,49\" href=\"http://www.gencat.cat/educacio/\" target=\"_blank\" alt=\"Generalitat de Catalunya. Departament d'Educaci&oacute;\" />"+SALTLINIA;
+//		html += "  <area shape=\"rect\" coords=\"1,13,325,49\" href=\"" + baseUrl + "\" alt=\""+alt+"\" />"+SALTLINIA;
 //		html += " </map> ";
         html += "<div id=\"languages\">";
         html += "	<a alt=\"Catal&agrave;\" href=\"" + lastUrl + "lang=ca\">Catal&agrave;</a>";
@@ -281,8 +289,8 @@ public class ResultGeneratorUtil {
         html += "<div id=\"menu\">" + SALTLINIA;
         html += " <div id=\"menu_left\">" + SALTLINIA;
         html += "  <ul><li><a href=\"" + baseUrl + "\">" + XMLCollection.getProperty("cerca.directoriInicial.inici", lang) + "</a></li>" + SALTLINIA;
-//		html += "  <li><a target=\"_blank\" href=\"http://blocs.xtec.cat/merli\">"+XMLCollection.getProperty("cerca.directoriInicial.bloc",lang)+"</a></li>"+SALTLINIA;	
-//		html += "  <li><a target=\"_blank\" href=\"http://phobos.xtec.cat/forum/viewforum.php?f=46\">"+XMLCollection.getProperty("cerca.directoriInicial.forum",lang)+"</a></li>"+SALTLINIA;	
+//		html += "  <li><a target=\"_blank\" href=\"http://blocs.xtec.cat/merli\">"+XMLCollection.getProperty("cerca.directoriInicial.bloc",lang)+"</a></li>"+SALTLINIA;
+//		html += "  <li><a target=\"_blank\" href=\"http://phobos.xtec.cat/forum/viewforum.php?f=46\">"+XMLCollection.getProperty("cerca.directoriInicial.forum",lang)+"</a></li>"+SALTLINIA;
         html += "  <li><a target=\"_blank\" href=\"" + XMLCollection.getProperty("url.ajuda", lang) + "\">" + XMLCollection.getProperty("cerca.directoriInicial.ajuda", lang) + "</a></li>" + SALTLINIA;
         html += "  <li class=\"ultimli\">" + SALTLINIA;
         if (usuari == null) {
@@ -349,14 +357,14 @@ public class ResultGeneratorUtil {
     }
 
     public static String htmlResumResultats(Hits hits, IndexSearcher indexPrincipal, Query totalQuery, String urlCerca,
-            String lang, PrintWriter out) {
+                                            String lang, PrintWriter out) {
         String html = htmlResumResultats(hits, indexPrincipal, totalQuery, urlCerca, lang);
         out.println(html);
         return html;
     }
 
     public static String htmlResumResultats(Hits hits, IndexSearcher indexPrincipal, Query totalQuery, String urlCerca,
-            String lang) {
+                                            String lang) {
         //Creaci� de la taula amb tipus de recursos i quantitat de cada un d'ells.
         String html = "";
         Hashtable hm = new Hashtable();
@@ -864,9 +872,9 @@ public class ResultGeneratorUtil {
                 if ((imgUrl == null) || imgUrl.equals("")) {
                     imgUrl = "imatges/icones/altres.gif";
                 }
-//CHANGES NADIM --> 20/10/2014                 
+//CHANGES NADIM --> 20/10/2014
                 String title = UtilsCercador.toAcute(singleFormat).trim();
-//REMOVED NADIM --> 20/10/2014 
+//REMOVED NADIM --> 20/10/2014
                 //String title = (String) TipusFitxer.allTipusIds.get(singleFormat);
                 logger.debug("Single format no acute... " + singleFormat);
 

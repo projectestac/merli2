@@ -120,6 +120,8 @@ public class ResultGenerator {
     }
 
     public String generateRSS(Connection myConnection, Hits hits, String query, String nivellEducatiu, String areaCurricular) {
+
+
         String lang = "";
 
         String outputRSS = "";
@@ -187,7 +189,7 @@ public class ResultGenerator {
         int docFinal = 0;
 
         try {
-	  	           // myConnection = DriverManager.getConnection(Configuracio.cadenaConnexioBD);
+            // myConnection = DriverManager.getConnection(Configuracio.cadenaConnexioBD);
 
             outputXML = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
             outputXML += "<!DOCTYPE resultatsCerca SYSTEM \"" + urlServidor + "/" + contextWebAplicacio + "/resultats.dtd\">\n";
@@ -202,7 +204,7 @@ public class ResultGenerator {
             outputXML += "<resultats numResultats=\"" + hits.length() + "\">\n";
 
             /* if (i >= nivell * num_resultats && i < (nivell + 1) * num_resultats) {
-             Document currentDoc = (Document)hits.doc(i);		
+             Document currentDoc = (Document)hits.doc(i);
              */
             if (ConfiguracioFragments.isVoid()) {
                 ConfiguracioFragments.loadConfiguracio(myConnection, "edu365");
@@ -237,7 +239,7 @@ public class ResultGenerator {
                 String data = currentDoc.get("euncl@lom@euncl@lifeCycle@euncl@contribute@euncl@date@euncl@dateTime");
                 int numComentaris = (new Integer(currentDoc.get("numComentaris"))).intValue();
                 float puntuacioMitja = (new Float(currentDoc.get("puntuacio"))).floatValue();
-	//		int numComentaris = getNumComentaris(myConnection, idRecurs);
+                //		int numComentaris = getNumComentaris(myConnection, idRecurs);
                 //		float puntuacioMitja = getPuntuacioMitja(myConnection, idRecurs);
                 outputXML += " <resultat num=\"" + (i + 1) + "\" numComentaris=\"" + numComentaris + "\" puntuacioMitja=\"" + puntuacioMitja + "\">\n";
                 int j = 0;
@@ -286,10 +288,10 @@ public class ResultGenerator {
     }
 
     public String generateHTML(Hits hitsTotal, Hits hits, IndexSearcher indexPrincipal, Query totalQuery,
-            ArrayList allLevels, Hashtable allAreas, String tipus, int nivell, String query, String sheetId,
-            Hashtable parameters, String ordenacio, boolean direccio, String usuari, String userGeneric,
-            String usuariNomComplet, boolean isCataleg, String imprimir, String urlImprimir, PrintWriter out,
-            String lang, int incrusXTEC, String lastURL) {
+                               ArrayList allLevels, Hashtable allAreas, String tipus, int nivell, String query, String sheetId,
+                               Hashtable parameters, String ordenacio, boolean direccio, String usuari, String userGeneric,
+                               String usuariNomComplet, boolean isCataleg, String imprimir, String urlImprimir, PrintWriter out,
+                               String lang, int incrusXTEC, String lastURL) {
         String outputHTML = "";
         String baseUrl = "";
         String fitxa = "";
@@ -318,6 +320,9 @@ public class ResultGenerator {
         String unitatCerca = "";
 
         String urlRss = "";
+        String urlLink = "";
+        String titolRss="";
+        String titolurlLink="";
         String hiddenFields = "";
         String cicle = "";
         String[] ducContent = null;
@@ -346,19 +351,24 @@ public class ResultGenerator {
             baseUrl = "http://" + Configuracio.servidorWeb + ":" + Configuracio.portWeb + "/" + Configuracio.contextWebAplicacio + "/";
 
             urlRss = baseUrl + "CercaRSS?textCerca=" + query;
+            urlLink = baseUrl + "ServletCerca?textCerca=" + query;
             if (nivellEducatiu != null) {
                 urlRss += "&nivell_educatiu=" + nivellEducatiu;
+                urlLink += "&nivell_educatiu=" + nivellEducatiu;
             }
             if (areaCurricular != null) {
                 urlRss += "&area_curricular=" + areaCurricular;
+                urlLink += "&area_curricular=" + areaCurricular;
             }
             if (filtreRecurs != null) {
                 urlRss += "&filtreRecurs=" + filtreRecurs;
+                urlLink += "&filtreRecurs=" + filtreRecurs;
             }
 
             if (!tipus.equals("simple")) {
                 if (cicle != null) {
                     urlRss += "&cicle=" + cicle;
+                    urlLink += "&cicle=" + cicle;
                     hiddenFields += " <input type=\"hidden\" name=\"cicle\" value=\"" + cicle + "\"/>\n";
                 }
                 if (ducContent != null) {
@@ -375,54 +385,67 @@ public class ResultGenerator {
                 }
                 if (autorCerca != null) {
                     urlRss += "&autorCerca=" + autorCerca;
+                    urlLink += "&autorCerca=" + autorCerca;
                     hiddenFields += " <input type=\"hidden\" name=\"autorCerca\" value=\"" + autorCerca + "\"/>\n";
                 }
                 if (idiomaCerca != null) {
                     urlRss += "&idiomaCerca=" + idiomaCerca;
+                    urlLink += "&idiomaCerca=" + idiomaCerca;
                     hiddenFields += " <input type=\"hidden\" name=\"idiomaCerca\" value=\"" + idiomaCerca + "\"/>\n";
                 }
                 if (destinatariCerca != null) {
                     urlRss += "&destinatariCerca=" + destinatariCerca;
+                    urlLink += "&destinatariCerca=" + destinatariCerca;
                     hiddenFields += " <input type=\"hidden\" name=\"destinatariCerca\" value=\"" + destinatariCerca + "\"/>\n";
                 }
                 if (tipusRecurs != null) {
                     urlRss += "&tipusRecurs=" + tipusRecurs;
+                    urlLink += "&tipusRecurs=" + tipusRecurs;
                     hiddenFields += " <input type=\"hidden\" name=\"tipusRecurs\" value=\"" + tipusRecurs + "\"/>\n";
                 }
                 if (recursOnline != null) {
                     urlRss += "&recursOnline=" + recursOnline;
+                    urlLink += "&recursOnline=" + recursOnline;
                     hiddenFields += " <input type=\"hidden\" name=\"recursOnline\" value=\"" + recursOnline + "\"/>\n";
                 }
                 if (recursFisic != null) {
                     urlRss += "&recursFisic=" + recursFisic;
+                    urlLink += "&recursFisic=" + recursFisic;
                     hiddenFields += " <input type=\"hidden\" name=\"recursFisic\" value=\"" + recursFisic + "\"/>\n";
                 }
                 if (unitatCerca != null) {
                     urlRss += "&unitatCerca=" + unitatCerca;
+                    urlLink += "&unitatCerca=" + unitatCerca;
                     hiddenFields += " <input type=\"hidden\" name=\"unitatCerca\" value=\"" + unitatCerca + "\"/>\n";
                 }
                 if (keywordsCerca != null) {
                     urlRss += "&keywords=" + keywordsCerca;
+                    urlLink += "&keywords=" + keywordsCerca;
                     hiddenFields += " <input type=\"hidden\" name=\"keywords\" value=\"" + keywordsCerca + "\"/>\n";
                 }
                 if (editorialCerca != null) {
                     urlRss += "&editorialCerca=" + editorialCerca;
+                    urlLink += "&editorialCerca=" + editorialCerca;
                     hiddenFields += " <input type=\"hidden\" name=\"editorialCerca\" value=\"" + editorialCerca + "\"/>\n";
                 }
                 if (llicenciaCerca != null) {
                     urlRss += "&llicenciaCerca=" + llicenciaCerca;
+                    urlLink += "&llicenciaCerca=" + llicenciaCerca;
                     hiddenFields += " <input type=\"hidden\" name=\"llicenciaCerca\" value=\"" + llicenciaCerca + "\"/>\n";
                 }
                 if (dataIniciPublicacio != null) {
                     urlRss += "&dataIniciPublicacio=" + dataIniciPublicacio;
+                    urlLink += "&dataIniciPublicacio=" + dataIniciPublicacio;
                     hiddenFields += " <input type=\"hidden\" name=\"dataIniciPublicacio\" value=\"" + dataIniciPublicacio + "\"/>\n";
                 }
                 if (dataFinalPublicacio != null) {
                     urlRss += "&dataFinalPublicacio=" + dataFinalPublicacio;
+                    urlLink += "&dataFinalPublicacio=" + dataFinalPublicacio;
                     hiddenFields += " <input type=\"hidden\" name=\"dataFinalPublicacio\" value=\"" + dataFinalPublicacio + "\"/>\n";
                 }
                 if (formatRecurs != null) {
                     urlRss += "&formatRecurs=" + formatRecurs;
+                    urlLink += "&formatRecurs=" + formatRecurs;
                     hiddenFields += " <input type=\"hidden\" name=\"formatRecurs\" value=\"" + formatRecurs + "\"/>\n";
                 }
             }
@@ -459,7 +482,7 @@ public class ResultGenerator {
             ResultGeneratorUtil.htmlHeader(out, baseUrl, "cerca.resultatsCerca.titol", urlRss, lang);
 
             out.println("  <script type=\"text/javascript\">");
-            //	ArrayList allLevels = UtilsCercador.getAllLevels(myConnection);	
+            //	ArrayList allLevels = UtilsCercador.getAllLevels(myConnection);
             DucObject ducLevel;
             DucObject ducArea;
             ArrayList allAreasArray;
@@ -490,9 +513,9 @@ public class ResultGenerator {
                     } else {
                         ResultGeneratorUtil.htmlHeaderNoCapcalera(out);
                     }
-	//FI - Capçalera 
+                    //FI - Capçalera
 
-                    //Cercador	
+                    //Cercador
                     out.println("<div id=\"barra_buscador\">");
                     out.println("<div id=\"cercadorOptions\">");
                     out.println("	<form class=\"cercador_xtec\" name=\"cerca\" action=\"/" + Configuracio.contextWebAplicacio + "/ServletCerca\" method=\"POST\">");
@@ -530,7 +553,7 @@ public class ResultGenerator {
                     i = 0;
                     while (i < allLevels.size()) {
                         ducLevel = (DucObject) allLevels.get(i);
-		     // FIXME: Treure quan FP estigui disponible al DUC
+                        // FIXME: Treure quan FP estigui disponible al DUC
                         //if(ducLevel.getTerm(lang).indexOf("FP")<0) {
                         if (nivellEducatiu.equals("" + ducLevel.id)) {
                             out.print("						<option value=\"" + ducLevel.id + "\" selected>" + ducLevel.getTerm(lang) + "</option>");
@@ -565,7 +588,7 @@ public class ResultGenerator {
                     }
 
                     out.print("					</select>");
-                    //out.println( "<div class=\"buto_cerca\"><a class=\"button\" onclick=\"doSubmit(true);\">"+XMLCollection.getProperty("cerca.directoriInicial.cerca", lang)+"</a></div>");	
+                    //out.println( "<div class=\"buto_cerca\"><a class=\"button\" onclick=\"doSubmit(true);\">"+XMLCollection.getProperty("cerca.directoriInicial.cerca", lang)+"</a></div>");
                     out.println("<button onclick=\"doSubmit();\" class=\"butoMerli small red\">" + XMLCollection.getProperty("cerca.directoriInicial.cerca", lang) + "</button>");
 
                     if (incrusXTEC > ResultGeneratorUtil.SHOW_ALL) {
@@ -621,7 +644,7 @@ public class ResultGenerator {
             }
 
             if (incrusXTEC != ResultGeneratorUtil.SHOW_SEARCH) {
-	//CapçaleraResultats
+                //CapçaleraResultats
                 //	Resultats totals
                 out.println(ResultGeneratorUtil.htmlBarraTotalResultats(hits, query, imprimir, lang, docInicial, docFinal));
 
@@ -646,7 +669,7 @@ public class ResultGenerator {
                     //Resum de resultats
                     ResultGeneratorUtil.htmlResumResultats(hitsTotal, indexPrincipal, totalQuery, lastURL, lang, out);
                 }
-	//Fi camps ordenació resultats
+                //Fi camps ordenació resultats
 
                 //Resultats
                 out.println("<div id=\"resultats\">");
@@ -668,6 +691,8 @@ public class ResultGenerator {
 
                     if (hits.length() > 0) {
                         out.println("<div id=\"bottom\">");
+                        out.println("<div class=\"bottom_left_div\">");
+                        out.println("</div>");
                         out.println("<div id=\"bottom_left\">");
                         int numPagines = hits.length() / num_resultats;
                         if ((hits.length() % num_resultats) != 0) {
@@ -693,7 +718,7 @@ public class ResultGenerator {
                                     //   out.println( "<a href=\"javascript:goToNivell('" + j + "')\">" +  (j + 1) + "</a>&nbsp;";
                                     out.println("<a href=\"javascript:goToNivell('" + j + "')\">" + (j + 1) + "</a>&nbsp;&nbsp;");
                                 } else {
-                                    // out.println( "" + (j + 1) + "&nbsp;";  
+                                    // out.println( "" + (j + 1) + "&nbsp;";
                                     out.println("<span>" + (j + 1) + "</span>&nbsp;&nbsp;");
                                 }
                                 j++;
@@ -702,9 +727,12 @@ public class ResultGenerator {
                                 out.println("...");
                             }
                         }
+                        titolRss = XMLCollection.getProperty("cerca.resultatsCerca.subscriureCerca", lang);
+                        titolurlLink = XMLCollection.getProperty("cerca.resultatsCerca.subscriurePermalink", lang);
                         out.println("</div>");
                         out.println("<div id=\"bottom_right\">");
-                        out.println("<p class=\"rss\"><a href=\"" + urlRss + "\">" + XMLCollection.getProperty("cerca.resultatsCerca.subscriureCerca", lang) + "</a></p>");
+                        out.println("<a  style=\"cursor: pointer;\" onclick=\"copia_portapapeles('" + urlLink + "')\" title=\"" + titolurlLink + "\"><i class=\"fa fa-clipboard fa-2x\" aria-hidden=\"true\"></i></a>");
+                        out.println("<a href=\"" + urlRss + "\" title=\"" + titolRss + "\"><i class=\"fa fa-rss fa-2x\" aria-hidden=\"true\"></i></a>");
                         out.println("</div>");
                         out.println("<div class=\"clear\"></div>");
                         out.println("</div>");
@@ -826,7 +854,7 @@ public class ResultGenerator {
                     String value = "";
                     while (j < ducContent.length) {
                         value += ducContent[j];
-                        //	  hiddenFields += "   <input type=\"checkbox\" style=\"visibility:hidden\" id=\"ducContent\" name=\"ducContent\" value=\"" + ducContent[j] + "\" />\n";					  
+                        //	  hiddenFields += "   <input type=\"checkbox\" style=\"visibility:hidden\" id=\"ducContent\" name=\"ducContent\" value=\"" + ducContent[j] + "\" />\n";
                         j++;
                         if (j < ducContent.length) {
                             value += ",";
@@ -934,7 +962,7 @@ public class ResultGenerator {
 //			if (docFinal > hits.length()) {
 //				docFinal = hits.length();
 //				nextPage = false;
-//			    }			
+//			    }
 
             fitxa = baseUrl + "cerca/fitxaRecurs.jsp";
             // Necessari per tooltip
@@ -942,7 +970,7 @@ public class ResultGenerator {
             out.println("<html lang=\"ca\">");
             ResultGeneratorUtil.htmlHeader(out, baseUrl, "cerca.resultatsCerca.titol", urlRss, lang);
 
-            //	ArrayList allLevels = UtilsCercador.getAllLevels(myConnection);	
+            //	ArrayList allLevels = UtilsCercador.getAllLevels(myConnection);
             i = 0;
             DucObject ducLevel = null;
             DucObject ducArea = null;
@@ -1013,8 +1041,8 @@ public class ResultGenerator {
                 out.println("<div id=\"menu\">");
                 out.println(" <div id=\"menu_left\">");
                 out.println("  <ul><li><a href=\"" + baseUrl + "\">" + XMLCollection.getProperty("cerca.directoriInicial.inici", lang) + "</a></li>");
-//	out.println( "  <li><a target=\"_blank\" href=\"http://blocs.xtec.cat/merli\">bloc</a></li>");	
-//	out.println( "  <li><a target=\"_blank\" href=\"http://phobos.xtec.cat/forum/viewforum.php?f=46\">f&ograve;rum</a></li>");	
+//	out.println( "  <li><a target=\"_blank\" href=\"http://blocs.xtec.cat/merli\">bloc</a></li>");
+//	out.println( "  <li><a target=\"_blank\" href=\"http://phobos.xtec.cat/forum/viewforum.php?f=46\">f&ograve;rum</a></li>");
                 out.println("  <li><a target=\"_blank\" href=\"" + XMLCollection.getProperty("url.ajuda", lang) + "\">" + XMLCollection.getProperty("cerca.directoriInicial.ajuda", lang) + "</a></li><li>");
                 if (usuari == null) {
                     out.println("  <a href=\"" + baseUrl + "/loginSSO.jsp?logOn=true\">identificaci&oacute;</a></li>");
@@ -1151,7 +1179,7 @@ public class ResultGenerator {
                 String data = (String) currentDoc.get("dataPublicacio");
                 int numComentaris = 0;//(new Integer((String)currentDoc.get("numComentaris"))).intValue();
                 int numVisites = 0;//(new Integer((String)currentDoc.get("numVisites"))).intValue();
-                float puntuacioMitja = 0;//(new Float((String)currentDoc.get("puntuacio"))).floatValue();			
+                float puntuacioMitja = 0;//(new Float((String)currentDoc.get("puntuacio"))).floatValue();
                 String format = (String) currentDoc.get("format");
 
                 String imgUrl = "";
@@ -1179,7 +1207,7 @@ public class ResultGenerator {
                 data = UtilsCercador.girarDataDMYguio(data);
 
                 out.println("<div id=\"resultat\">");
-			//	out.println( "  <p>" + imgUrl + "</p>");
+                //	out.println( "  <p>" + imgUrl + "</p>");
 
                 String titolToShow = titol;
                 if (titolToShow.length() > 75) {
@@ -1260,6 +1288,8 @@ public class ResultGenerator {
             if (imprimir.equals("no")) {
                 if (hits.size() > 0) {
                     out.println("<div id=\"bottom\">");
+                    out.println("<div class=\"bottom_left_div\">");
+                    out.println("</div>");
                     out.println("<div id=\"bottom_left\">");
                     int numPagines = hits.size() / num_resultats;
                     if ((hits.size() % num_resultats) != 0) {
@@ -1282,10 +1312,10 @@ public class ResultGenerator {
                         }
                         while (j < top) {
                             if (j != nivell) {
-                                //   out.println( "<a href=\"javascript:goToNivell('" + j + "')\">" +  (j + 1) + "</a>&nbsp;";
+                                //   out.println( "<a href=\"javascriptgoToNivell:('" + j + "')\">" +  (j + 1) + "</a>&nbsp;";
                                 out.println("<a href=\"javascript:goToNivell('" + j + "')\">" + (j + 1) + "</a>&nbsp;&nbsp;");
                             } else {
-                                // out.println( "" + (j + 1) + "&nbsp;";  
+                                // out.println( "" + (j + 1) + "&nbsp;";
                                 out.println("" + (j + 1) + "&nbsp;&nbsp;");
                             }
                             j++;
@@ -1325,7 +1355,7 @@ public class ResultGenerator {
                 out.println("} catch(err) {}</script>");
                 out.println("<!-- END -->");
 
-                /*		
+                /*
                  <!-- GOOGLE ANALYTICS -->
                  <script type="text/javascript">
                  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -1337,7 +1367,7 @@ public class ResultGenerator {
                  pageTracker._trackPageview();
                  } catch(err) {}</script>
                  <!-- END -->
-		
+
                  */
             }
 

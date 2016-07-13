@@ -787,12 +787,14 @@ public class UtilsCercador {
 
             stmt = myConnection.createStatement();
             sqlQuery = "SELECT term, " + term + " FROM duc_info WHERE id=" + idDuc;
-            logger.debug(sqlQuery);
+            logger.debug("getTermDuc: " + sqlQuery);
             rs = stmt.executeQuery(sqlQuery);
-            rs.next();
-            term = rs.getString(term);
-            if (term == null || "".equals(term)) {
-                term = rs.getString("term");
+            /*v2.2 java.sql.SQLException: Exhausted Resultset*/
+            if(rs.next()){
+                term = rs.getString(term);
+                if (term == null || "".equals(term)) {
+                    term = rs.getString("term");
+                }
             }
         } catch (Exception e) {
             logger.error(e);
@@ -956,7 +958,7 @@ public class UtilsCercador {
 
             logger.debug("Create connexio");
             stmt = myConnection.createStatement();
-            //   stmt2 = myConnection.createStatement(); 	      
+            //   stmt2 = myConnection.createStatement();
             logger.debug("connexio created");
             for (int i = 0; i < ducContent.length; i++) {
                 if (i > 0) {
@@ -1120,11 +1122,11 @@ public class UtilsCercador {
         try {
             Context initContext = new InitialContext();
             DataSource ds = null;
-            //ds = (DataSource)initContext.lookup("jdbc/pool/CercadorConnectionPoolDS");	    	    	
+            //ds = (DataSource)initContext.lookup("jdbc/pool/CercadorConnectionPoolDS");
             logger.info("Weblogic");
-            ds = (DataSource) initContext.lookup("jdbc/pool/CercadorConnectionPoolDS");            
+            ds = (DataSource) initContext.lookup("jdbc/pool/CercadorConnectionPoolDS");
             logger.debug("Getting connection....");
-            // DataSource ds = (DataSource)initContext.lookup("jdbc/pool/MerliConnectionPoolDS");      	  
+            // DataSource ds = (DataSource)initContext.lookup("jdbc/pool/MerliConnectionPoolDS");
             myConnection = ds.getConnection();
             logger.debug("Connection get....");
         } catch (Exception e) {
@@ -1138,11 +1140,11 @@ public class UtilsCercador {
         try {
             Context initContext = new InitialContext();
             DataSource ds = null;
-            //ds = (DataSource)initContext.lookup("jdbc/pool/CercadorConnectionPoolDS");	    	    	
+            //ds = (DataSource)initContext.lookup("jdbc/pool/CercadorConnectionPoolDS");
             logger.info("Weblogic");
-            ds = (DataSource) initContext.lookup(connectionPool);            
+            ds = (DataSource) initContext.lookup(connectionPool);
             logger.debug("Getting connection....");
-            // DataSource ds = (DataSource)initContext.lookup("jdbc/pool/MerliConnectionPoolDS");      	  
+            // DataSource ds = (DataSource)initContext.lookup("jdbc/pool/MerliConnectionPoolDS");
             myConnection = ds.getConnection();
             logger.debug("Connection get....");
         } catch (Exception e) {
@@ -1150,7 +1152,7 @@ public class UtilsCercador {
         }
         return myConnection;
     }
-/*END NADIM*/
+    /*END NADIM*/
     public static ArrayList getComentarisSuspesosUsuari(String usuari) {
         String sqlQuery = "";
         Connection myConnection = null;
@@ -1256,9 +1258,9 @@ public class UtilsCercador {
             oFunction.registerOutParameter(8, Types.VARCHAR);
             oFunction.execute();
             String sResult = oFunction.getString(3);
-            
+
             logger.info("sResult: " + sResult);
-            
+
             if ("1".equals(sResult)) {
                 String nom = oFunction.getString(6);
                 String cognom1 = oFunction.getString(7);
@@ -1556,7 +1558,7 @@ public class UtilsCercador {
                 }
                 numParams++;
                 lastUrl += nameParam + "=" + valueParam;
-                
+
             }
         } catch (Exception e) {
             logger.error(e);
@@ -1660,7 +1662,7 @@ public class UtilsCercador {
         return modificada;
     }
 
-    /* 
+    /*
      public static boolean indexIsOk (String indexDir) {
      IndexSearcher searcher = null;
      FSDirectory indexDirectory = null;
@@ -1669,37 +1671,37 @@ public class UtilsCercador {
      try {
      logger.debug("indexIsOk -> in");
      indexDirectory = FSDirectory.getDirectory(indexDir);
-     logger.debug("Checking... " + indexDir);          
+     logger.debug("Checking... " + indexDir);
      if (IndexReader.isLocked(indexDirectory)) {
-     logger.debug("Index locked...."  + indexDirectory);        	  
+     logger.debug("Index locked...."  + indexDirectory);
      IndexReader.unlock(indexDirectory);
      }
      if (!IndexReader.indexExists(indexDirectory)) {
-     logger.debug("Index no existeix...." + indexDirectory);        	  
+     logger.debug("Index no existeix...." + indexDirectory);
      isOk = false;
      }
-     logger.debug("Creating searcher..."); 
+     logger.debug("Creating searcher...");
      searcher = new IndexSearcher(indexDirectory);
      maxDoc = searcher.maxDoc();
-     logger.debug("Max doc..." + maxDoc);          
+     logger.debug("Max doc..." + maxDoc);
      // if (maxDoc <= 1000) {
      if (maxDoc <= 1000) {
      isOk = false;
      } else {
-     isOk = true;    
-     }    
-     logger.debug("indexIsOk -> out");          
+     isOk = true;
+     }
+     logger.debug("indexIsOk -> out");
      } catch (Exception e) {
      logger.error(e);
      isOk = false;
      } finally {
      try {
-     searcher.close();  
+     searcher.close();
      } catch  (Exception e) {
-     }        
+     }
      }
      return isOk;
-     }  
+     }
      */
     public static ArrayList getAllLanguages() {
         Connection myConnection = null;
@@ -2478,9 +2480,10 @@ public class UtilsCercador {
 
         return response;
     }
-    
+
     public static String getLoggedIn(){
-        
+
         return "";
     }
 }
+
