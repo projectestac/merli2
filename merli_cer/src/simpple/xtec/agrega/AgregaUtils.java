@@ -94,8 +94,8 @@ public class AgregaUtils {
             switch (context){
             	case AgregaWS.MERLI: 
 	    			switch (server){
-	    				case AgregaWS.TEST: url = new URL("http://http://integracio.merli.xtec.cat/merli_ws2/merli"); break;
-	    				case AgregaWS.LOCAL:	url = new URL("http://http://integracio.merli.xtec.cat/merli_ws2/merli");break;
+	    				case AgregaWS.TEST: url = new URL("http://integracio.merli.xtec.cat/merli_ws2/merli"); break;
+	    				case AgregaWS.LOCAL:	url = new URL("http://integracio.merli.xtec.cat/merli_ws2/merli");break;
 	    				case AgregaWS.ACCEPT: url = new URL("http://preproduccio.merli.xtec.cat/merli_ws2/merli");break;
 	    				case AgregaWS.PRODU: url = new URL("http://merli.xtec.cat/merli_ws2/merli");break;
 	    				default: url = new URL("http://integracio.merli.xtec.cat/merli_ws2/merli");

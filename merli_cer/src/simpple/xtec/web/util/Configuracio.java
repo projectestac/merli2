@@ -50,7 +50,7 @@ public class Configuracio {
 	public static String paswAgrega;
 
 	public static int numNoticiesPortada = 4;
-	public static String versionControl = "V2.1.1";
+	public static String versionControl = "V 2.1.3";
 
 
 	/**

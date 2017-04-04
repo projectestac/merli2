@@ -96,12 +96,11 @@ public class ResultGeneratorUtil {
         out.println("      document.cerca.submit();");
         out.println("      }");
         out.println("    function doSubmit (keep) {");
-        /*NADIM 03/07/2015*/
+
 
         out.println("var value = document.cerca.textCerca.value;");
-        out.println("document.cerca.textCerca.value = value.toString().replace(/</g, \"&lt;\").replace(/>/g, \"&gt;\").replace(/'/g, \"&#39;\").replace(/\"/g, \"&#34;\");");
+        out.println("document.cerca.textCerca.value = value.toString();");
 
-        /*NADIM 03/07/2015 --- END*/
         out.println("      document.cerca.nivell.value = 0;");
         out.print("      if (!keep){ ");
         out.println("      	document.cerca.filtreRecurs.value = '';}");
@@ -175,7 +174,7 @@ public class ResultGeneratorUtil {
                 int j = 0;
                 while (j < allAreasArray.size()) {
                     ducArea = (DucObject) allAreasArray.get(j);
-                    if (!ducArea.term.startsWith("Competéncies")) {
+                    if (!ducArea.term.startsWith("Competï¿½ncies")) {
                         html += (",\"" + ducArea.term + "\",\"" + ducArea.id + "\"") + SALTLINIA;
                     }
                     j++;
@@ -327,7 +326,7 @@ public class ResultGeneratorUtil {
         html += "<a href=\"http://www.xtec.cat/web/guest/avis\">" + XMLCollection.getProperty("cerca.directoriInicial.avisLegal", lang) + "</a> |" + SALTLINIA;
         html += "<a href=\"http://www.xtec.cat/web/guest/avis\">" + XMLCollection.getProperty("cerca.directoriInicial.privadesa", lang) + "</a> |" + SALTLINIA;
         html += "<a href=\"http://www.xtec.cat/web/guest/avis\">" + XMLCollection.getProperty("cerca.directoriInicial.condicionsUs", lang) + "</a> |" + SALTLINIA;
-        html += "<a href=\"#\">Copyright © 2014, Generalitat de Catalunya</a> <br/>" + SALTLINIA;
+        html += "<a href=\"#\">Copyright ï¿½ 2014, Generalitat de Catalunya</a> <br/>" + SALTLINIA;
         html += "<a href=\"http://www.xtec.cat/web/guest/avis\">" + XMLCollection.getProperty("cerca.directoriInicial.responsabilitat", lang) + "</a>" + SALTLINIA;
         html += "  </div>" + SALTLINIA;
         html += "</div>" + SALTLINIA;
@@ -387,7 +386,7 @@ public class ResultGeneratorUtil {
         // 1. El total
         total = hits.length();
         logger.debug("TOTAL: " + total);
-        // 2. Total físics
+        // 2. Total fï¿½sics
         try {
             fisicsQuery = (Query) totalQuery.clone();
             Query query = queryGenerator.getQueryRecursFisicOnline(TipusFitxer.FISIC);
