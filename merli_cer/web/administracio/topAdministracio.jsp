@@ -1,6 +1,6 @@
-ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <%@ page import="java.sql.*,simpple.xtec.web.util.Configuracio,simpple.xtec.web.util.UtilsCercador" %>
-<%@ page pageEncoding="UTF-8" %>
+
 
 <%
     if (Configuracio.isVoid()){
@@ -44,11 +44,11 @@
 %>
 <html>
 <head>
-<title> AdministraciÃ³ Sistema de Cerca XTEC </title>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title> Administració Sistema de Cerca XTEC </title>
+<meta http-equiv="content-type" content="text/html"/>
 <link rel="stylesheet" type="text/css" href="<%=cssFile%>"/>
  <% if (selected.equals("6")) { %>
- <link rel="alternate" type="application/rss+xml" title="Feed notÃ­cies" href="<%=urlLocal%>/rss/noticies.rss" />  
+ <link rel="alternate" type="application/rss+xml" title="Feed notícies" href="<%=urlLocal%>/rss/noticies.rss" />  
  <%  } %> 
 </head>
 

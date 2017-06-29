@@ -60,6 +60,12 @@
     	<fileset dir="${src.dir}" includes="**/*.properties"/>
     </copy>
     <jar jarfile="${dist.dir}/apiSemanticNetv3.1.jar" basedir="${build.dir}" />
+    <copy file="${dist.dir}/apiSemanticNetv3.1.jar" tofile="../merli_etiq/WEB-INF/lib/apiSemanticNetv3.1.jar"/>
+    <copy file="${dist.dir}/apiSemanticNetv3.1.jar" tofile="../merli_duc/web/WEB-INF/lib/apiSemanticNetv3.1.jar"/>
+    <copy file="${dist.dir}/apiSemanticNetv3.1.jar" tofile="../merli_harvesting/web/WEB-INF/lib/apiSemanticNetv3.1.jar"/>
+    <copy file="${dist.dir}/apiSemanticNetv3.1.jar" tofile="../merli_magics/web/WEB-INF/lib/apiSemanticNetv3.1.jar"/>
+    <copy file="${dist.dir}/apiSemanticNetv3.1.jar" tofile="../merli_ws2/web/WEB-INF/lib/apiSemanticNetv3.1.jar"/>
+
   </target>
   
 </project>

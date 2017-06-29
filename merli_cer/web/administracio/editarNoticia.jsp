@@ -1,6 +1,5 @@
-﻿<%@ page import="java.sql.*,simpple.xtec.web.util.Configuracio, simpple.xtec.web.util.XMLCollection" %>
+<%@ page import="java.sql.*,simpple.xtec.web.util.Configuracio, simpple.xtec.web.util.XMLCollection" %>
 <%@ page import="org.apache.log4j.Logger, java.util.Locale, simpple.xtec.web.util.UtilsCercador" %>
-<%@ page pageEncoding="UTF-8" %>
 
 <%
     if (Configuracio.isVoid()) {

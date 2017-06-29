@@ -61,6 +61,7 @@
         <fileset dir="${src.dir}" includes="**/*.properties"/>
     </copy>
     <jar jarfile="${dist.dir}/correoWS.jar" basedir="${build.dir}" />
+    <copy file="${dist.dir}/correoWS.jar" tofile="../merli_etiq/WEB-INF/lib/correoWS.jar"/>
 </target>
 
 </project>

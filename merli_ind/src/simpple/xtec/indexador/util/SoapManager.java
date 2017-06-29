@@ -42,52 +42,52 @@ public class SoapManager {
         // boolean okProcess = true;
         String bodyText = "";
         try {
-            logger.debug("doCall 1");
+           // logger.debug("doCall 1");
             SOAPConnectionFactory factory = SOAPConnectionFactory.newInstance();
-            logger.debug("doCall 2");
+          //  logger.debug("doCall 2");
             SOAPConnection soapConnection = factory.createConnection();
-            logger.debug("doCall 3");
+          //  logger.debug("doCall 3");
             MessageFactory msgFactory = MessageFactory.newInstance();
-            logger.debug("doCall 4");
+          //  logger.debug("doCall 4");
             SOAPMessage msg = msgFactory.createMessage();
 
-            logger.debug("doCall 5");
+          //  logger.debug("doCall 5");
             // add headers - these are targets for the message
             SOAPEnvelope envelope = msg.getSOAPPart().getEnvelope();
 
-            logger.debug("doCall 6");
+          //  logger.debug("doCall 6");
 
             SOAPHeader headers = envelope.getHeader();
-            logger.debug("doCall 7");
+           // logger.debug("doCall 7");
             SOAPHeaderElement target;
-            logger.debug("doCall 8");
+         //   logger.debug("doCall 8");
             SOAPBody body = envelope.getBody();
 
-            logger.debug("doCall 9");
+         //   logger.debug("doCall 9");
             SOAPElement message = body.addBodyElement(envelope.createName("getResource"));
-            logger.debug("doCall 10");
+         //   logger.debug("doCall 10");
             SOAPElement idResource = message.addChildElement(envelope.createName("idResource"));
-            logger.debug("doCall 11 " + idContingut);
+         //   logger.debug("doCall 11 " + idContingut);
             SOAPElement identifier = idResource.addChildElement(envelope.createName("identifier"));
-            logger.debug("doCall 12");
+         //   logger.debug("doCall 12");
             identifier.addTextNode(idContingut);
             SOAPElement type = idResource.addChildElement(envelope.createName("type"));
-            logger.debug("doCall 13");
+        //    logger.debug("doCall 13");
             type.addTextNode("lom");
 
             // send the message
             String myUrl = serverURL + servicePath;
-            logger.debug("Sending message to " + myUrl + " ...");
-            logger.debug(msg.getSOAPPart().getEnvelope().getBody());
-	        //  provider.send(msg, url);  
+       //     logger.debug("Sending message to " + myUrl + " ...");
+        //    logger.debug(msg.getSOAPPart().getEnvelope().getBody());
+	        //  provider.send(msg, url);
             //provider.send(msg);
             //logger.debug("See the result at the server console.");
             SOAPMessage response = soapConnection.call(msg, myUrl);
-            logger.debug("doCall 14");
+        //    logger.debug("doCall 14");
             SOAPEnvelope envelopeResponse = response.getSOAPPart().getEnvelope();
-            logger.debug("doCall 15");
+         //   logger.debug("doCall 15");
             SOAPBody bodyResponse = envelopeResponse.getBody();
-            logger.debug(bodyResponse);
+        //    logger.debug(bodyResponse);
             bodyText = bodyResponse.toString();
 
         } catch (Exception e) {
@@ -101,41 +101,41 @@ public class SoapManager {
         // boolean okProcess = true;
         String bodyText = "";
         try {
-            logger.info("doCall 1");
+        //    logger.info("doCall 1");
             SOAPConnectionFactory factory = SOAPConnectionFactory.newInstance();
-            logger.info("doCall 2");
+            //    logger.info("doCall 2");
             SOAPConnection soapConnection = factory.createConnection();
-            logger.info("doCall 3");
+            //   logger.info("doCall 3");
             MessageFactory msgFactory = MessageFactory.newInstance();
-            logger.info("doCall 4");
+            //    logger.info("doCall 4");
             SOAPMessage msg = msgFactory.createMessage();
-            logger.info("doCall 5");
+            //   logger.info("doCall 5");
             // add headers - these are targets for the message
             SOAPEnvelope envelope = msg.getSOAPPart().getEnvelope();
-            logger.info("doCall 6");
+            //    logger.info("doCall 6");
             SOAPHeader headers = envelope.getHeader();
-            logger.info("doCall 7");
+            //    logger.info("doCall 7");
             SOAPHeaderElement target;
-            logger.info("doCall 8");
+            //    logger.info("doCall 8");
             SOAPBody body = envelope.getBody();
-            logger.info("doCall 9");
+            //    logger.info("doCall 9");
             SOAPElement message = body.addBodyElement(envelope.createName("getDUC"));
-            logger.info("doCall 10");
+            //    logger.info("doCall 10");
 
             // send the message
             String myUrl = serverURL + "e13_merli_ws/duc";
             myUrl = serverURL + "merli_ws2/duc";
-            logger.info("Sending message to " + myUrl + " ...");
-            logger.info(msg.getSOAPPart().getEnvelope().getBody());
+            //   logger.info("Sending message to " + myUrl + " ...");
+            //    logger.info(msg.getSOAPPart().getEnvelope().getBody());
 	        //  provider.send(msg, url);  
             //provider.send(msg);
-            logger.debug("See the result at the server console.");
+            //    logger.debug("See the result at the server console.");
             SOAPMessage response = soapConnection.call(msg, myUrl);
-            logger.info("doCall 11");
+            //   logger.info("doCall 11");
             SOAPEnvelope envelopeResponse = response.getSOAPPart().getEnvelope();
-            logger.info("doCall 12");
+            //   logger.info("doCall 12");
             SOAPBody bodyResponse = envelopeResponse.getBody();
-            logger.debug(bodyResponse);
+            //   logger.debug(bodyResponse);
             bodyText = bodyResponse.toString();
 
         } catch (Exception e) {

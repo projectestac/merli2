@@ -1,15 +1,23 @@
 <?xml version="1.0"?>
 <project name="merli_ws_melt" basedir="." default="all">
 
-  <property name="web.dir"        location="web" />
-  <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
-  <property name="build.dir"      location="build" />
-  <property name="dist.dir"       location="dist" />
-	
-  <!-- DUC is currently targeted to JVM 1.7 -->
-  <property name="ant.build.javac.source" value="1.7"/>
-  <property name="ant.build.javac.target" value="1.7"/>	
-  <property name="ant.build.javac.encoding" value="ISO-8859-15"/>	
+    <target name="init">
+
+        <property name="web.dir"        location="web" />
+        <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
+        <property name="build.dir"      location="build" />
+        <property name="dist.dir"       location="dist" />
+        <property name="src.dir"        location="source" />
+        <property name="server.config" location="${dist.dir}/config/${server.name}" />
+
+        <property name="debug"          value="on" />
+        <property name="deprecation"    value="off" />
+        <property name="optimize"       value="on" />
+
+        <!-- WS2 is currently targeted to JVM 1.7 -->
+        <property name="ant.build.javac.source" value="1.7"/>
+        <property name="ant.build.javac.target" value="1.7"/>
+        <property name="ant.build.javac.encoding" value="ISO-8859-15"/>
 	
     
     <!-- Patterns -->
@@ -19,42 +27,52 @@
 		<include name="*.png"/>
 		<include name="*.js"/>
 	</patternset>
-    <patternset id="props" >
-      <include name="**/*.properties"/>
-    </patternset>
     
     <patternset id="logs" >
       <include name="**/*.log"/>
       <include name="**/*.txt"/>
     </patternset>
-	
-  <!-- =================================================================== -->
+
+         <mkdir dir="${build.dir}"/>
+    </target>
+
+    <target name="pro_init">
+        <property name="server.name" value="PRO" />
+    </target>
+
+    <target name="pre_init">
+        <property name="server.name" value="PRE" />
+    </target>
+
+    <target name="int_init">
+        <property name="server.name" value="INT" />
+    </target>
+
+
+    <!-- =================================================================== -->
   <!-- MAIN                                                                -->
   <!-- =================================================================== -->
-  <target name="all" depends="deploy">
-    <echo message="***Merli WS has been built correctly!"/>
-  </target>
+    <target name="pro" depends="pro_init,deploy" description="Build development">
+        <echo message="***Merli WS creat correctament! production!"/>
+    </target>
 
-  <!-- =================================================================== -->
-  <!-- INIT                                                                -->
-  <!-- =================================================================== -->
-  <target name="init" depends="clean">  
-    <!-- Variables -->
-    <property name="src.dir"        location="source" />
+    <target name="pre" depends="pre_init,deploy" description="Build development">
+        <echo message="***IMerli WS creat correctament! acceptation!"/>
+    </target>
 
-    <property name="debug"          value="on" />    
-    <property name="deprecation"    value="off" />    
-    <property name="optimize"       value="on" />    
-    
-    <!-- Create dirs -->
-    <mkdir dir="${dist.dir}"/>
-    <mkdir dir="${build.dir}"/>
-  </target>
+    <target name="int" depends="int_init,deploy" description="Build development">
+        <echo message="***Merli WS creat correctament! integration!"/>
+    </target>
+
+    <target name="all" depends="pro, deploy" description="Build everything">
+        <echo message="***Merli WS creat correctament!"/>
+    </target>
+
 
   <!-- =================================================================== -->
   <!-- CLEAN                                                               -->
   <!-- =================================================================== -->
-  <target name="clean">
+  <target name="clean" depends="init">
     <delete dir="${build.dir}" />
     <echo message="*** Deleted build directory"/>
   </target>
@@ -107,60 +125,66 @@
 	 <target name="build" depends="compile">
 	  </target>	
 	
-   <target name="dist" 
-          depends="build">
-	<copy todir="${build.dir}">
-		<fileset dir="web" includes="*.wsdl"/>
-		<fileset dir="web" includes="*.xsd"/>
-	</copy>
-    <war destfile="${build.dir}/merli_ws2.war" 
+   <target name="dist" depends="build">
+   <copy todir="${build.dir}">
+        <fileset dir="web" includes= "semanticNetv3.xsd" />
+    </copy>
+    <war destfile="${build.dir}/merli_ws2.war"
          webxml="${web.dir}/WEB-INF/web.xml">
-    	
+
          <manifest>
-           <attribute name="Built-By" 
+           <attribute name="Built-By"
                       value="${user.name}"/>
         </manifest>
         <lib dir="${lib.dir}">
             <include name="activation.jar"/>
-        	<include name="apiSemanticMerli.jar"/>
-        	<include name="apiSemanticNetv3.1.jar"/>
+            <include name="apiSemanticMerli.jar"/>
+            <include name="apiSemanticNetv3.1.jar"/>
             <include name="dbconn.jar"/>
             <include name="dom.jar"/>
             <include name="jdom.jar"/>
-        	<include name="log4j-1.2.13.jar"/>
+            <include name="log4j-1.2.13.jar"/>
             <include name="mail.jar"/>
-        	<include name="merliBasics.jar"/>
-        	<include name="merliUtils.jar"/>
-           	<include name="ojdbc14.jar"/>
-           	<include name="saaj-api.jar"/>
-           	<include name="saaj-impl.jar"/>
-           	<include name="sax.jar"/>
+            <include name="merliBasics.jar"/>
+            <include name="merliUtils.jar"/>
+               <include name="ojdbc14.jar"/>
+               <include name="saaj-api.jar"/>
+               <include name="saaj-impl.jar"/>
+               <include name="sax.jar"/>
             <include name="struts.jar"/>
             <include name="xalan.jar"/>
             <include name="xerces.jar"/>
             <include name="xercesImpl.jar"/>
-		</lib>
-    	
-		<classes dir="${build.dir}" prefix=""/>
-		<zipfileset dir="${src.dir}" prefix="WEB-INF/classes">
-			<patternset refid="props"/>
-		</zipfileset>
+        </lib>
+
+        <classes dir="${build.dir}" prefix=""/>
+        <zipfileset dir="${server.config}" prefix="WEB-INF/classes">
+            <patternset includes="log4j.properties"/>
+            <patternset includes="database.properties"/>
+            <patternset includes="ws.properties"/>
+            <patternset includes="semanticnet.properties"/>
+        </zipfileset>
+        <zipfileset dir="${server.config}" prefix="">
+            <patternset includes="WSDLMerli.wsdl"/>
+            <patternset includes="WSXtecTypes1.5.xsd"/>
+        </zipfileset>
+
     </war>
   </target>
-  
-  <target name="deploy"
-  		  depends="dist">
-    <ear destfile="${dist.dir}/merli_ws2.ear" 
+
+  <target name="deploy" depends="dist">
+      <mkdir dir="${dist.dir}/${server.name}"/>
+    <ear destfile="${dist.dir}/${server.name}/merli_ws2.ear"
          appxml="${web.dir}/WEB-INF/application.xml">
          <manifest>
-           <attribute name="Built-By" 
+           <attribute name="Built-By"
                       value="${user.name}"/>
          </manifest>
       <fileset dir="${build.dir}" includes="merli_ws2.war"/>
     </ear>
     <delete dir="${build.dir}"/>
   </target>
-	
+
   <!-- =================================================================== -->
   <!-- MERLI WS LIB                                                        -->
   <!-- =================================================================== -->
@@ -171,10 +195,9 @@
 	<copy todir="${build.dir}/ws">
     	<fileset dir="${build.dir}/WEB-INF/classes" includes="edu/xtec/merli/**/*.class"/>
     </copy>
-	<!--copy todir="${build.dir}/ws">
-    	<fileset dir="${src.dir}" includes="**/database.properties,**/log4j.properties"/>
-    </copy-->
+
     <jar jarfile="${dist.dir}/merliWS2.jar" basedir="${build.dir}/ws" />
+      <copy file="${dist.dir}/merliWS2.jar" tofile="../merli_harvesting/web/WEB-INF/lib/merliWS2.jar"/>
     <delete dir="${build.dir}"/>
   </target>
 	

@@ -45,7 +45,7 @@ public class RSSGenerator {
 		  rss += " <rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\">\n";
 	      rss += "  <channel>\n";
 	      rss += "    <title>Merl\u00ed</title>\n";
-	      rss += "    <link>http://integracio.merli.xtec.cat/</link>\n";
+	      rss += "    <link>http://merli.xtec.cat/</link>\n";
 	      rss += "    <description>Canal de comentaris dels recursos de Merl\u00ed</description>\n";
 	      rss += "    <language>ca</language>\n";
 	      
@@ -101,7 +101,7 @@ public class RSSGenerator {
 			  rss += " <rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\">\n";
 		      rss += "  <channel>\n";
 		      rss += "    <title>Merl\u00ed</title>\n";
-		      rss += "    <link>http://preproduccio.merli.xtec.cat/</link>\n";
+		      rss += "    <link>http://merli.xtec.cat/</link>\n";
 		      rss += "    <description>Canal de not\u00edcies i novetats relacionades amb el projecte Merl\u00ed</description>\n";
 		      rss += "    <language>ca</language>\n";
 		      

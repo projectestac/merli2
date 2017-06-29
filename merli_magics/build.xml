@@ -1,15 +1,20 @@
 <?xml version="1.0"?>
 <project name="MAGICS" basedir="." default="all">
+    <target name="init">
+        <property name="web.dir"        location="web" />
+        <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
+        <property name="build.dir"      location="build" />
+        <property name="dist.dir"       location="dist" />
+        <property name="server.config" location="${dist.dir}/config/${server.name}" />
+        <property name="src.dir"        location="source" />
+        <property name="debug"          value="off" />
+        <property name="deprecation"    value="off" />
+        <property name="optimize"       value="on" />
 
-  <property name="web.dir"        location="web" />
-  <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
-  <property name="build.dir"      location="build" />
-  <property name="dist.dir"       location="dist" />
-
-  <!-- MAGICS is currently targeted to JVM 1.7 -->
-  <property name="ant.build.javac.source" value="1.7"/>
-  <property name="ant.build.javac.target" value="1.7"/>	
-  <property name="ant.build.javac.encoding" value="ISO-8859-15"/>
+        <!-- MAGICS is currently targeted to JVM 1.7 -->
+        <property name="ant.build.javac.source" value="1.7"/>
+        <property name="ant.build.javac.target" value="1.7"/>
+        <property name="ant.build.javac.encoding" value="ISO-8859-15"/>
 	
     <!-- Patterns -->
 	<patternset id="jsps" >
@@ -18,37 +23,48 @@
 		<include name="*.png"/>
 		<include name="*.js"/>
 	</patternset>
-    <patternset id="props" >
-      <include name="**/*.properties"/>
-    </patternset>
-    
+
+
+        <mkdir dir="${build.dir}"/>
+    </target>
+
+    <target name="pro_init">
+        <property name="server.name" value="PRO" />
+    </target>
+
+    <target name="pre_init">
+        <property name="server.name" value="PRE" />
+    </target>
+
+    <target name="int_init">
+        <property name="server.name" value="INT" />
+    </target>
   <!-- =================================================================== -->
   <!-- MAIN                                                                -->
   <!-- =================================================================== -->
-  <target name="all" depends="deploy">
-    <echo message="***Magics creat correctament!"/>
-  </target>
+       <target name="pro" depends="pro_init,deploy" description="Build development">
+          <echo message="***Magics creat correctament! production!"/>
+      </target>
 
-  <!-- =================================================================== -->
-  <!-- INIT                                                                -->
-  <!-- =================================================================== -->
-  <target name="init" depends="clean">  
-    <!-- Variables -->
-    <property name="src.dir"        location="source" />
+      <target name="pre" depends="pre_init,deploy" description="Build development">
+          <echo message="***Magics creat correctament! acceptation!"/>
+      </target>
 
-    <property name="debug"          value="off" />    
-    <property name="deprecation"    value="off" />    
-    <property name="optimize"       value="on" />    
-    
-    <!-- Create dirs -->
-    <mkdir dir="${dist.dir}"/>
-    <mkdir dir="${build.dir}"/>
-  </target>
+      <target name="int" depends="int_init,deploy" description="Build development">
+          <echo message="***Magics creat correctament! integration!"/>
+      </target>
+
+      <target name="all" depends="pro, deploy" description="Build everything">
+          <echo message="***Magics creat correctament!"/>
+      </target>
+
+
+
 
   <!-- =================================================================== -->
   <!-- CLEAN                                                               -->
   <!-- =================================================================== -->
-  <target name="clean">
+  <target name="clean" depends="init">
     <delete dir="${build.dir}" />
     <echo message="*** S'ha esborrat el directori build!"/>
   </target>
@@ -56,7 +72,7 @@
   <!-- =================================================================== -->
   <!-- COMPILE                                                                -->
   <!-- =================================================================== -->
-  <target name="compile" depends="init">
+  <target name="compile" depends="clean, init">
     <mkdir dir="${build.dir}/WEB-INF/classes"/>
     <javac destdir="${build.dir}/WEB-INF/classes" 
            debug="${debug}" 
@@ -105,7 +121,7 @@
 	  	<copy todir="${build.dir}/WEB-INF/classes">
 	  	      <fileset dir="${src.dir}" includes="**/*.properties"/>
 	  	</copy>
-	  </target>	
+	  </target>
 	
    <target name="dist" 
           depends="build">
@@ -140,20 +156,16 @@
 		</zipfileset>
 		<zipfileset dir="${build.dir}/web/JS" prefix="web/JS">
 		</zipfileset>
-    	
-		<!--classes dir="${build.dir}" prefix=""/>
-		<zipfileset dir="${src.dir}" prefix="WEB-INF/classes">
-			<patternset refid="props"/>
-		</zipfileset>
-		<zipfileset dir="" prefix="">
-			<patternset refid="jsps"/>
-		</zipfileset-->
+        <zipfileset dir="${server.config}" prefix="WEB-INF/classes">
+            <patternset includes="log4j.properties"/>
+            <patternset includes="database.properties"/>
+        </zipfileset>
     </war>
   </target>
   
-  <target name="deploy"
-  		  depends="dist">
-    <ear destfile="${dist.dir}/merli_magics.ear" 
+  <target name="deploy" depends="dist">
+      <mkdir dir="${dist.dir}/${server.name}"/>
+    <ear destfile="${dist.dir}/${server.name}/merli_magics.ear"
          appxml="${web.dir}/WEB-INF/application.xml">
          <manifest>
            <attribute name="Built-By" 

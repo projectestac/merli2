@@ -284,7 +284,8 @@ public class MerliHarvester implements Job {
                 Element idElement = (Element) oneHeader.getChild("identifier", myNamespace);
                 String id = idElement.getText();
                 // ID RECURS
-                id = id.replaceAll("oai:integracio.merli.xtec.cat:merli/", "");
+                id = id.replaceAll("oai:" + Configuracio.servidorWSmerli + ":merli/" ,"");
+                //id = id.replaceAll("oai:preproduccio.merli.xtec.cat:merli/", "");
                 allIds.add(id);
             }
 
@@ -314,14 +315,14 @@ public class MerliHarvester implements Job {
     /**
      * Retrieves one record from Merli, using the GetRecord method
      *
-     * @param client
+     * @param  client
      * @param identifier
      */
     public void parseRecordFromMerli(TestCelebrate myTestCelebrate, String identifier) {
         try {
             logger.info("parseRecordFromMerli -> in");
             String contingutLom = getContentBySOAP(identifier);
-            logger.info("Parsing..." + contingutLom);
+         //   logger.info("Parsing..." + contingutLom);
             myTestCelebrate.parse(contingutLom, identifier);
             logger.info("parseRecordFromMerli -> out");
         } catch (Exception e) {

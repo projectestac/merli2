@@ -1,14 +1,21 @@
 <?xml version="1.0"?>
 <project name="merli_etiq" basedir="." default="all">
-
-  <property name="lib.dir"        location="WEB-INF/lib" />
-  <property name="build.dir"      location="build" />
-  <property name="dist.dir"       location="dist" />
+    <target name="init">
+        <property name="lib.dir"        location="WEB-INF/lib" />
+        <property name="build.dir"      location="build" />
+        <property name="dist.dir"       location="dist" />
+        <property name="src.dir"        location="source" />
+        <property name="deploy.dir"     location="web" />
+        <property name="server.config" location="${dist.dir}/config/${server.name}" />
+        <property name="debug"          value="on" />
+        <property name="deprecation"    value="off" />
+        <property name="optimize"       value="on" />
 
   <!-- METIQ is currently targeted to JVM 1.7 (previously it was 1.4 ) -->
-  <property name="ant.build.javac.source" value="1.7"/>
-  <property name="ant.build.javac.target" value="1.7"/>	
-  <property name="ant.build.javac.encoding" value="ISO-8859-15"/>	
+        <property name="ant.build.javac.source" value="1.7"/>
+        <property name="ant.build.javac.target" value="1.7"/>
+        <property name="ant.build.javac.encoding" value="ISO-8859-15"/>
+
 
     <!-- Patterns -->
 	<patternset id="jsps" >
@@ -18,43 +25,54 @@
 		<include name="*.png"/>
 		<include name="*.js"/>
 	</patternset>
-    <patternset id="props" >
-      <include name="**/*.properties"/>
-    </patternset>
+
     
     <patternset id="logs" >
       <include name="**/*.log"/>
       <include name="**/*.txt"/>
     </patternset>
-	
-  <!-- =================================================================== -->
+
+       <mkdir dir="${build.dir}"/>
+   </target>
+
+    <target name="pro_init">
+        <property name="server.name" value="PRO" />
+    </target>
+
+    <target name="pre_init">
+        <property name="server.name" value="PRE" />
+    </target>
+
+    <target name="int_init">
+        <property name="server.name" value="INT" />
+    </target>
+
+
+    <!-- =================================================================== -->
   <!-- MAIN                                                                -->
   <!-- =================================================================== -->
-  <target name="all" depends="deploy">
-    <echo message="***Merlí creat correctament!"/>
-  </target>
 
-  <!-- =================================================================== -->
-  <!-- INIT                                                                -->
-  <!-- =================================================================== -->
-  <target name="init" depends="clean">  
-    <!-- Variables -->
-    <property name="src.dir"        location="source" />
-    <property name="deploy.dir"     location="web" />
+    <target name="pro" depends="pro_init,deploy" description="Build development">
+        <echo message="***Merlí creat correctament! production!"/>
+    </target>
 
-    <property name="debug"          value="on" />    
-    <property name="deprecation"    value="off" />    
-    <property name="optimize"       value="on" />    
-    
-    <!-- Create dirs -->
-    <mkdir dir="${dist.dir}"/>
-    <mkdir dir="${build.dir}"/>
-  </target>
+    <target name="pre" depends="pre_init,deploy" description="Build development">
+        <echo message="***Merlí creat correctament! acceptation!"/>
+    </target>
+
+    <target name="int" depends="int_init,deploy" description="Build development">
+        <echo message="***Merlí creat correctament! integration!"/>
+    </target>
+
+    <target name="all" depends="pro, deploy" description="Build everything">
+        <echo message="***Merlí creat correctament!"/>
+    </target>
+
 
   <!-- =================================================================== -->
   <!-- CLEAN                                                               -->
   <!-- =================================================================== -->
-  <target name="clean">
+  <target name="clean" depends="init">
     <delete dir="${build.dir}" />
     <echo message="*** S'ha esborrat el directori build!"/>
   </target>
@@ -62,7 +80,7 @@
   <!-- =================================================================== -->
   <!-- COMPILE                                                                -->
   <!-- =================================================================== -->
-  <target name="compile" depends="init">
+  <target name="compile" depends="clean,init">
     <mkdir dir="${build.dir}/WEB-INF/classes"/>
     <javac destdir="${build.dir}/WEB-INF/classes" 
            debug="${debug}" 
@@ -106,7 +124,6 @@
         <pathelement location="${lib.dir}/xalan.jar"/>
         <pathelement location="${lib.dir}/xerces.jar"/>
         <pathelement location="${lib.dir}/xercesImpl.jar"/>
-      	<!--<pathelement location="${lib.dir}/envia-correu-ws-1.0.jar"/>-->
       	<pathelement location="${lib.dir}/correoWS.jar"/>
         <pathelement location="${lib.dir}/http_client.jar"/>
         <pathelement location="${lib.dir}/javax-ssl-1_2.jar"/>
@@ -114,7 +131,6 @@
    		<pathelement location="${lib.dir}/soap.jar"/>
       	<pathelement location="${lib.dir}/xmlcomp.jar"/>
       	<pathelement location="${lib.dir}/xmlparserv2.jar"/>
-        	
       </classpath>
     </javac>
   </target>
@@ -168,8 +184,7 @@
             <include name="struts-el.jar"/>
         	<include name="xalan.jar"/>
             <include name="xerces.jar"/>	
-        	<include name="xercesImpl.jar"/>	
-          	<!--<include name="envia-correu-ws-1.0.jar"/>-->
+        	<include name="xercesImpl.jar"/>
         	<include name="correoWS.jar"/>
             <include name="http_client.jar"/>
             <include name="javax-ssl-1_2.jar"/>
@@ -181,18 +196,22 @@
     	
 		<classes dir="${build.dir}" prefix=""/>
 		<zipfileset dir="${src.dir}" prefix="WEB-INF/classes">
-			<patternset refid="props"/>
 		</zipfileset>
 		<zipfileset dir="" prefix="">
 			<patternset refid="jsps"/>
 		</zipfileset>
+        <zipfileset dir="${server.config}" prefix="WEB-INF/classes">
+            <patternset includes="log4j.properties"/>
+            <patternset includes="database.properties"/>
+            <patternset includes="semanticnet.properties"/>
+        </zipfileset>
 
     </war>
   </target>
   
-  <target name="deploy"
-  		  depends="dist">
-    <ear destfile="${dist.dir}/e13_merli.ear" 
+  <target name="deploy" depends="dist">
+    <mkdir dir="${dist.dir}/${server.name}"/>
+    <ear destfile="${dist.dir}/${server.name}/e13_merli.ear"
          appxml="WEB-INF/application.xml">
          <manifest>
            <attribute name="Built-By" 
@@ -200,6 +219,7 @@
          </manifest>
       <fileset dir="${dist.dir}" includes="e13_merli.war"/>
     </ear>
+      <delete dir="${build.dir}"/>
   </target>
 
   <!-- =================================================================== -->
@@ -219,7 +239,9 @@
     	<fileset dir="${build.dir}/WEB-INF/classes" includes="edu/xtec/merli/RecursMerli.class"/>
     </copy>
     <jar jarfile="${dist.dir}/merliBasics.jar" basedir="${build.dir}/merliBasics" />
+      <copy file="${dist.dir}/merliBasics.jar" tofile="../merli_harvesting/web/WEB-INF/lib/merliBasics.jar"/>
+      <copy file="${dist.dir}/merliBasics.jar" tofile="../merli_ws2/web/WEB-INF/lib/merliBasics.jar"/>
+
   </target>
-	
 </project>
 

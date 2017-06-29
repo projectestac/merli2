@@ -75,7 +75,7 @@ public class nouDataSourceSNJDBC  implements DataSource{
 			try {
 				cb = this.connectBD();
 				Map m =  AccesBD.getObject("cur_"+nodeType,l,id_node+" = "+idNode,cb.getConnection());
-				dto = (Hashtable)mapToNodesDTO(m, nodeType).get(0);				
+				dto = (Hashtable)mapToNodesDTO(m, nodeType).get(0);
 			} catch (Exception e) {
 				logger.warn("The node "+idNode+nodeType+" doesn't exists.");
 				SemanticException the = new SemanticException("NonExistentNode");
@@ -171,6 +171,7 @@ public class nouDataSourceSNJDBC  implements DataSource{
 				cb = this.connectBD();
 				m =  AccesBD.getObjectList("cur_"+nodeType,l,condicio,order,cb.getConnection());
 				lDTO = this.mapToNodesDTO(m, nodeType);
+				logger.warn("PRUEBA 2 The node "+nodeType);
 			} catch (Exception e) {
 				logger.warn("Error loading list of nodes "+nodeType+".");
 				SemanticException the = new SemanticException("NonExistentNode");
@@ -388,7 +389,7 @@ public class nouDataSourceSNJDBC  implements DataSource{
 		/**
 		 * Sol·licita un ConnectionBean al ConnectionBeanProvider, si aquest no està innicialitzat, ho fa.
 		 * @return ConnectionBean, servit pel ConnectionBeanProvider.
-		 * @throws ThesaurusException 
+		 * @throws  ThesaurusException
 		 */
 		private ConnectionBean connectBD() throws SemanticException{
 			//Inicialitza el CBP si no ho està.

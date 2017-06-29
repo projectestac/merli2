@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 import simpple.xtec.dao.OracleNoticiesDAO;
 import simpple.xtec.web.util.Configuracio;
 import simpple.xtec.web.util.RSSGenerator;
+import simpple.xtec.web.util.*;
 
 /**
  * Manages the actions over Noticia model 
@@ -63,6 +64,7 @@ public class ManagerNoticies extends HttpServlet {
 			operacio = request.getParameter("operacio");
 			logger.debug("operacio: " + operacio);
 		   	titol = request.getParameter("titolNoticia");
+			//titol = UtilsCercador.toAcute(titol);
 			logger.debug("titolNoticia: " + titol);
 		   	cosNoticia = textEditor;
 		   	idNoticia = request.getParameter("idNoticia");

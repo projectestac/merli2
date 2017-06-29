@@ -1,15 +1,21 @@
 <?xml version="1.0"?>
 <project name="merli_harvesting" basedir="." default="all">
+    <target name="init">
 
-  <property name="web.dir"        location="web" />
-  <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
-  <property name="build.dir"      location="build" />
-  <property name="dist.dir"       location="dist" />
-    
-  <!-- MeRLi is currently targeted to JVM 1.4 -->
-  <property name="ant.build.javac.source" value="1.7"/>
-  <property name="ant.build.javac.target" value="1.7"/>	
-  <property name="ant.build.javac.encoding" value="ISO-8859-15"/>
+        <property name="web.dir"        location="web" />
+        <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
+        <property name="build.dir"      location="build" />
+        <property name="dist.dir"       location="dist" />
+        <property name="src.dir"        location="source" />
+        <property name="server.config" location="${dist.dir}/config/${server.name}" />
+        <property name="debug"          value="on" />
+        <property name="deprecation"    value="off" />
+        <property name="optimize"       value="on" />
+
+        <!-- MeRLi is currently targeted to JVM 1.4 -->
+        <property name="ant.build.javac.source" value="1.7"/>
+        <property name="ant.build.javac.target" value="1.7"/>
+        <property name="ant.build.javac.encoding" value="ISO-8859-15"/>
 	
     <!-- Patterns -->
 	<patternset id="jsps" >
@@ -18,49 +24,62 @@
 		<include name="*.png"/>
 		<include name="*.js"/>
 	</patternset>
-    <patternset id="props" >
-      <include name="**/*.properties"/>
-    </patternset>
+
     
     <patternset id="logs" >
       <include name="**/*.log"/>
       <include name="**/*.txt"/>
     </patternset>
-	
-  <!-- =================================================================== -->
+
+        <mkdir dir="${build.dir}"/>
+
+</target>
+
+
+    <target name="pro_init">
+        <property name="server.name" value="PRO" />
+    </target>
+
+    <target name="pre_init">
+        <property name="server.name" value="PRE" />
+    </target>
+
+    <target name="int_init">
+        <property name="server.name" value="INT" />
+    </target>
+
+
+    <!-- =================================================================== -->
   <!-- MAIN                                                                -->
   <!-- =================================================================== -->
-  <target name="all" depends="deploy">
+    <target name="pro" depends="pro_init,deploy" description="Build development">
+        <echo message="***Merli Harvesting creat correctament! production!"/>
+    </target>
+
+    <target name="pre" depends="pre_init,deploy" description="Build development">
+        <echo message="***Merli Harvesting creat correctament! acceptation!"/>
+    </target>
+
+    <target name="int" depends="int_init,deploy" description="Build development">
+        <echo message="***Merli Harvesting creat correctament! integration!"/>
+    </target>
+  <target name="all" depends="pro, deploy">
     <echo message="***Merli Harvesting has been built correctly!"/>
   </target>
 
-  <!-- =================================================================== -->
-  <!-- INIT                                                                -->
-  <!-- =================================================================== -->
-  <target name="init" depends="clean">  
-    <!-- Variables -->
-    <property name="src.dir"        location="source" />
-
-    <property name="debug"          value="on" />    
-    <property name="deprecation"    value="off" />    
-    <property name="optimize"       value="on" />    
-    
-    <!-- Create dirs -->
-    <mkdir dir="${dist.dir}"/>
-    <mkdir dir="${build.dir}"/>
-  </target>
 
   <!-- =================================================================== -->
   <!-- CLEAN                                                               -->
   <!-- =================================================================== -->
-  <target name="clean">
+  <target name="clean" depends="init">
+      <delete dir="${build.dir}" />
     <echo message="*** Deleted build directory"/>
   </target>
 
   <!-- =================================================================== -->
   <!-- COMPILE                                                                -->
   <!-- =================================================================== -->
-  <target name="compile" depends="init">
+  <target name="compile" depends="clean, init">
     <mkdir dir="${build.dir}/WEB-INF/classes"/>
     <javac destdir="${build.dir}/WEB-INF/classes" 
            debug="${debug}" 
@@ -129,7 +148,6 @@
     	
 		<classes dir="${build.dir}" prefix=""/>
 		<zipfileset dir="${src.dir}" prefix="WEB-INF/classes">
-			<patternset refid="props"/>
 		</zipfileset>
     	<zipfileset dir="" prefix="">
     		<patternset refid="jsps"/>
@@ -137,12 +155,19 @@
 		<zipfileset dir="${web.dir}/logs" prefix="logs">
 			<patternset refid="logs"/>
 		</zipfileset>
+        <zipfileset dir="${server.config}" prefix="WEB-INF/classes">
+            <patternset includes="log4j.properties"/>
+            <patternset includes="database.properties"/>
+        </zipfileset>
+        <zipfileset dir="${server.config}" prefix="WEB-INF/classes/edu/xtec/resources/properties">
+            <patternset includes="merli_harvesting.properties"/>
+        </zipfileset>
     </war>
   </target>
   
-  <target name="deploy"
-  		  depends="dist">
-    <ear destfile="${dist.dir}/merli_harvesting.ear" 
+  <target name="deploy" depends="dist">
+      <mkdir dir="${dist.dir}/${server.name}"/>
+    <ear destfile="${dist.dir}/${server.name}/merli_harvesting.ear"
          appxml="web/WEB-INF/application.xml">
          <manifest>
            <attribute name="Built-By" 

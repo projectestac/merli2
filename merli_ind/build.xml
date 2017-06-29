@@ -1,15 +1,20 @@
 <?xml version="1.0"?>
 <project name="INDEXADOR" basedir="." default="all">
+    <target name="init">
+        <property name="web.dir"        location="web" />
+        <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
+        <property name="build.dir"      location="build" />
+        <property name="dist.dir"       location="dist" />
+        <property name="src.dir"        location="src" />
+        <property name="debug"          value="off" />
+        <property name="deprecation"    value="off" />
+        <property name="optimize"       value="on" />
+        <property name="server.config" location="${dist.dir}/config/${server.name}" />
 
-    <property name="web.dir"        location="web" />
-    <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
-    <property name="build.dir"      location="build" />
-    <property name="dist.dir"       location="dist" />
-
-    <!-- INDEXADOR is currently targeted to JVM 1.7 (Previously it was 1.4) -->
-    <property name="ant.build.javac.source" value="1.7"/>
-    <property name="ant.build.javac.target" value="1.7"/>
-    <property name="ant.build.javac.encoding" value="ISO-8859-1"/>
+     <!-- INDEXADOR is currently targeted to JVM 1.7 (Previously it was 1.4) -->
+        <property name="ant.build.javac.source" value="1.7"/>
+        <property name="ant.build.javac.target" value="1.7"/>
+        <property name="ant.build.javac.encoding" value="ISO-8859-1"/>
 
     <!-- Patterns -->
     <patternset id="jsps" >
@@ -22,33 +27,46 @@
         <include name="**/*.properties"/>
     </patternset>
 
+    <mkdir dir="${build.dir}"/>
+</target>
+
+    <target name="pro_init">
+        <property name="server.name" value="PRO" />
+    </target>
+
+    <target name="pre_init">
+        <property name="server.name" value="PRE" />
+    </target>
+
+    <target name="int_init">
+        <property name="server.name" value="INT" />
+    </target>
+
     <!-- =================================================================== -->
     <!-- MAIN                                                                -->
     <!-- =================================================================== -->
-    <target name="all" depends="deploy">
+    <target name="pro" depends="pro_init,deploy" description="Build development">
+        <echo message="***INDEXADOR creat correctament! production!"/>
+    </target>
+
+    <target name="pre" depends="pre_init,deploy" description="Build development">
+        <echo message="***INDEXADOR creat correctament! acceptation!"/>
+    </target>
+
+    <target name="int" depends="int_init,deploy" description="Build development">
+        <echo message="***INDEXADOR creat correctament! integration!"/>
+    </target>
+
+    <target name="all" depends="pro, deploy" description="Build everything">
         <echo message="***INDEXADOR creat correctament!"/>
-        </target>
+    </target>
 
-    <!-- =================================================================== -->
-    <!-- INIT                                                                -->
-    <!-- =================================================================== -->
-    <target name="init" depends="clean">
-        <!-- Variables -->
-        <property name="src.dir"        location="src" />
 
-        <property name="debug"          value="off" />
-        <property name="deprecation"    value="off" />
-        <property name="optimize"       value="on" />
-
-        <!-- Create dirs -->
-        <mkdir dir="${dist.dir}"/>
-        <mkdir dir="${build.dir}"/>
-        </target>
 
     <!-- =================================================================== -->
     <!-- CLEAN                                                               -->
     <!-- =================================================================== -->
-    <target name="clean">
+    <target name="clean"  depends="init">
         <delete dir="${build.dir}" />
         <echo message="*** S'ha esborrat el directori build!"/>
     </target>
@@ -56,7 +74,7 @@
     <!-- =================================================================== -->
     <!-- COMPILE                                                                -->
     <!-- =================================================================== -->
-    <target name="compile" depends="init">
+    <target name="compile" depends="clean, init">
         <mkdir dir="${build.dir}/WEB-INF/classes"/>
         <javac destdir="${build.dir}/WEB-INF/classes"
                debug="${debug}"
@@ -179,21 +197,15 @@
             </zipfileset>
             <zipfileset dir="${build.dir}/WEB-INF" prefix="WEB-INF">
             </zipfileset>
-
-
-            <!--classes dir="${build.dir}" prefix=""/>
-            <zipfileset dir="${src.dir}" prefix="WEB-INF/classes">
-                <patternset refid="props"/>
+            <zipfileset dir="${server.config}" prefix="WEB-INF/classes">
+                <patternset includes="log4j.properties"/>
             </zipfileset>
-            <zipfileset dir="" prefix="">
-                <patternset refid="jsps"/>
-            </zipfileset-->
         </war>
     </target>
 
-    <target name="deploy"
-            depends="dist">
-        <ear destfile="${dist.dir}/merli_ind.ear"
+    <target name="deploy" depends="dist">
+        <mkdir dir="${dist.dir}/${server.name}"/>
+        <ear destfile="${dist.dir}/${server.name}/merli_ind.ear"
              appxml="${web.dir}/WEB-INF/application.xml">
             <manifest>
                 <attribute name="Built-By"

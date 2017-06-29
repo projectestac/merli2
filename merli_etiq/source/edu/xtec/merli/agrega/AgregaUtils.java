@@ -284,7 +284,7 @@ public class AgregaUtils {
 	    				case AgregaWS.TEST:	url = new URL("http://integracio.merli.xtec.cat/merli_ws2/merli");break;
 	    				case AgregaWS.ACCEPT: url = new URL("http://preproduccio.merli.xtec.cat/merli_ws2/merli");break;
 	    				case AgregaWS.PRODU: url = new URL("http://merli.xtec.cat/merli_ws2/merli");break;
-	    				default: url = new URL("http://integracio.merli.xtec.cat/merli_ws2/merli");			
+	    				default: url = new URL("http://merli.xtec.cat/merli_ws2/merli");
 	    			}
 	    			break;
             	case AgregaWS.AGREGA: 

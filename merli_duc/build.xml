@@ -1,15 +1,21 @@
 <?xml version="1.0"?>
 <project name="DUC" basedir="." default="all">
-
+    <target name="init">
     <property name="web.dir"        location="web" />
     <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
     <property name="build.dir"      location="build" />
     <property name="dist.dir"       location="dist" />
+    <property name="src.dir"        location="src" />
+    <property name="debug"          value="off" />
+    <property name="deprecation"    value="off" />
+    <property name="optimize"       value="on" />
+    <property name="server.config" location="${dist.dir}/config/${server.name}" />
 
     <!-- DUC is currently targeted to JVM 1.4 -->
     <property name="ant.build.javac.source" value="1.7"/>
     <property name="ant.build.javac.target" value="1.7"/>
     <property name="ant.build.javac.encoding" value="ISO-8859-15"/>
+
 
     <!-- Patterns -->
     <patternset id="jsps" >
@@ -19,45 +25,61 @@
         <include name="*.js"/>
         <include name="*.xml"/>
     </patternset>
-    <patternset id="props" >
-        <include name="**/*.properties"/>
-    </patternset>
 
-    <!-- =================================================================== -->
+    <!--<patternset id="props" >
+      <include name="**/*.properties"/>
+  </patternset> -->
+
+  <mkdir dir="${build.dir}"/>
+  </target>
+
+
+  <target name="pro_init">
+      <property name="server.name" value="PRO" />
+  </target>
+
+  <target name="pre_init">
+      <property name="server.name" value="PRE" />
+  </target>
+
+  <target name="int_init">
+      <property name="server.name" value="INT" />
+  </target>
+  <!-- =================================================================== -->
     <!-- MAIN                                                                -->
     <!-- =================================================================== -->
-    <target name="all" depends="clean,build,deploy">
+
+    <target name="pro" depends="pro_init,deploy" description="Build development">
+        <echo message="***DUC creat correctament! production!"/>
+    </target>
+
+    <target name="pre" depends="pre_init,deploy" description="Build development">
+        <echo message="***DUC creat correctament! acceptation!"/>
+    </target>
+
+    <target name="int" depends="int_init,deploy" description="Build development">
+        <echo message="***DUC creat correctament! integration!"/>
+    </target>
+
+    <target name="all" depends="pro, deploy" description="Build everything">
         <echo message="***DUC creat correctament!"/>
     </target>
 
     <!-- =================================================================== -->
-    <!-- INIT                                                                -->
-    <!-- =================================================================== -->
-    <target name="init">
-        <!-- Variables -->
-        <property name="src.dir"        location="src" />
-
-        <property name="debug"          value="off" />
-        <property name="deprecation"    value="off" />
-        <property name="optimize"       value="on" />
-    </target>
-
-
-    <!-- =================================================================== -->
     <!-- CLEAN                                                               -->
     <!-- =================================================================== -->
-    <target name="clean">
+    <target name="clean" depends="init">
         <delete dir="${build.dir}" />
-        <!-- Create dirs -->
-        <mkdir dir="${dist.dir}"/>
-        <mkdir dir="${build.dir}"/>
+        <!-- Create dirs
+        <mkdir dir="${dist.dir}"/>-->
+
         <echo message="*** S'ha esborrat el directori build!"/>
     </target>
 
     <!-- =================================================================== -->
     <!-- COMPILE                                                                -->
     <!-- =================================================================== -->
-    <target name="compile" depends="init">
+    <target name="compile" depends="clean,init">
         <mkdir dir="${build.dir}/WEB-INF/classes"/>
         <javac destdir="${build.dir}/WEB-INF/classes"
                debug="${debug}"
@@ -111,64 +133,62 @@
     </target>
 
 
-    <target name="dist" depends="init">
-        <war destfile="${dist.dir}/merli_duc.war"
-             webxml="${web.dir}/WEB-INF/web.xml">
+<target name="dist" depends="build">
+    <war destfile="${dist.dir}/merli_duc.war"
+         webxml="${web.dir}/WEB-INF/web.xml">
+        <manifest>
+            <attribute name="Built-By"
+                       value="${user.name}"/>
+        </manifest>
+        <lib dir="${lib.dir}">
+            <include name="apiSemanticNetv3.1.jar"/>
+            <include name="commons-beanutils.jar"/>
+            <include name="commons-collections.jar"/>
+            <include name="commons-digester.jar"/>
+            <include name="commons-fileupload.jar"/>
+            <include name="commons-lang.jar"/>
+            <include name="commons-logging.jar"/>
+            <include name="commons-validator.jar"/>
+            <include name="dbconn.jar"/>
+            <include name="jdom.jar"/>
+            <include name="log4j-1.2.13.jar"/>
+            <include name="ojdbc14.jar"/>
+            <include name="standard.jar"/>
+            <include name="struts.jar"/>
+            <include name="struts-el.jar"/>
+            <include name="xerces.jar"/>
+        </lib>
 
-            <manifest>
-                <attribute name="Built-By"
-                           value="${user.name}"/>
-            </manifest>
-            <lib dir="${lib.dir}">
-                <include name="apiSemanticNetv3.1.jar"/>
-                <include name="commons-beanutils.jar"/>
-                <include name="commons-collections.jar"/>
-                <include name="commons-digester.jar"/>
-                <include name="commons-fileupload.jar"/>
-                <include name="commons-lang.jar"/>
-                <include name="commons-logging.jar"/>
-                <include name="commons-validator.jar"/>
-                <include name="dbconn.jar"/>
-                <include name="jdom.jar"/>
-                <include name="log4j-1.2.13.jar"/>
-                <include name="ojdbc14.jar"/>
-                <include name="standard.jar"/>
-                <include name="struts.jar"/>
-                <include name="struts-el.jar"/>
-                <include name="xerces.jar"/>
-            </lib>
 
-            <!--classes dir="${build.dir}" prefix=""/>
-            <zipfileset dir="${src.dir}" prefix="WEB-INF/classes">
-                <patternset refid="props"/>
-            </zipfileset>
-            <zipfileset dir="{web.dir}" prefix="">
-                <patternset refid="jsps"/>
-            </zipfileset-->
-            <zipfileset dir="${build.dir}" prefix="" excludes="web-inf/** WEB-INF/** web/js/** web/JS/**">
-            </zipfileset>
-            <zipfileset dir="${build.dir}/WEB-INF" prefix="WEB-INF">
-            </zipfileset>
-            <zipfileset dir="${build.dir}/web/JS" prefix="web/JS">
-            </zipfileset>
-        </war>
-    </target>
+        <zipfileset dir="${build.dir}" prefix="" excludes="web-inf/** WEB-INF/** web/js/** web/JS/**">
+        </zipfileset>
+        <zipfileset dir="${build.dir}/WEB-INF" prefix="WEB-INF">
+        </zipfileset>
+        <zipfileset dir="${build.dir}/web/JS" prefix="web/JS">
+        </zipfileset>
+        <zipfileset dir="${server.config}" prefix="WEB-INF/classes">
+            <patternset includes="log4j.properties"/>
+            <patternset includes="database.properties"/>
+            <patternset includes="semanticnet.properties"/>
+        </zipfileset>
+    </war>
+</target>
 
-    <target name="deploy"
-            depends="dist">
-        <ear destfile="${dist.dir}/merli_duc.ear"
-             appxml="${web.dir}/WEB-INF/application.xml">
-            <manifest>
-                <attribute name="Built-By"
-                           value="${user.name}"/>
-            </manifest>
-            <fileset dir="${dist.dir}" includes="merli_duc.war"/>
-        </ear>
-        <delete dir="${build.dir}"/>
-        <delete file="${dist.dir}/merli_duc.war"/>
-    </target>
+<target name="deploy" depends="dist">
+    <mkdir dir="${dist.dir}/${server.name}"/>
+    <ear destfile="${dist.dir}/${server.name}/merli_duc.ear"
+         appxml="${web.dir}/WEB-INF/application.xml">
+        <manifest>
+            <attribute name="Built-By"
+                       value="${user.name}"/>
+        </manifest>
+        <fileset dir="${dist.dir}" includes="merli_duc.war"/>
+    </ear>
+    <delete dir="${build.dir}"/>
+    <delete file="${dist.dir}/merli_duc.war"/>
+</target>
 
-    <!-- =================================================================== -->
+<!-- =================================================================== -->
     <!-- MERLI UTILS LIB                                                     -->
     <!-- =================================================================== -->
     <target name="merliUtils" depends="compile">
@@ -178,15 +198,18 @@
         <copy todir="${build.dir}/utils">
             <fileset dir="${build.dir}/WEB-INF/classes" includes="edu/xtec/merli/**/*.class" excludes="edu/xtec/merli/semanticnet/**" />
         </copy>
-    <!-- <copy todir="${build.dir}/utils">
-            <fileset dir="${src.dir}" includes="**/database.properties,**/log4j.properties"/>
-     </copy>-->
-     <jar jarfile="${dist.dir}/merliUtils.jar" basedir="${build.dir}/utils" />
+
+        <jar jarfile="${dist.dir}/merliUtils.jar" basedir="${build.dir}/utils" />
+        <copy file="${dist.dir}/merliUtils.jar" tofile="../merli_etiq/WEB-INF/lib/merliUtils.jar"/>
+     <copy file="${dist.dir}/merliUtils.jar" tofile="../merli_cer/web/WEB-INF/lib/merliUtils.jar"/>
+     <copy file="${dist.dir}/merliUtils.jar" tofile="../merli_harvesting/web/WEB-INF/lib/merliUtils.jar"/>
+     <copy file="${dist.dir}/merliUtils.jar" tofile="../merli_magics/web/WEB-INF/lib/merliUtils.jar"/>
+     <copy file="${dist.dir}/merliUtils.jar" tofile="../merli_ws2/web/WEB-INF/lib/merliUtils.jar"/>
+
  </target>
 
 
-
- <!-- =================================================================== -->
+<!-- =================================================================== -->
     <!-- APISEMANTICMERLI.jar                                                     -->
     <!-- =================================================================== -->
     <target name="apiSemanticMerli" depends="compile">
@@ -198,6 +221,7 @@
         </copy>
 
         <jar jarfile="${dist.dir}/apiSemanticMerli.jar" basedir="${build.dir}/semanticnet" />
+        <copy file="${dist.dir}/apiSemanticMerli.jar" tofile="../merli_ws2/web/WEB-INF/lib/apiSemanticMerli.jar"/>
     </target>
 </project>
 

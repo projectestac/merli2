@@ -4,16 +4,22 @@
 <!-- This file was not found when we've recieved this application pacakges for SVN (la farga) -->
 
 <project name="CERCADOR" basedir="." default="all">
+    <target name="init">
 
-    <property name="web.dir"        location="web" />
-    <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
-    <property name="build.dir"      location="build" />
-    <property name="dist.dir"       location="dist" />
+        <property name="web.dir"        location="web" />
+        <property name="lib.dir"        location="${web.dir}/WEB-INF/lib" />
+        <property name="build.dir"      location="build" />
+        <property name="dist.dir"       location="dist" />
+        <property name="server.config" location="${dist.dir}/config/${server.name}" />
+        <property name="src.dir"        location="src" />
+        <property name="debug"          value="off" />
+        <property name="deprecation"    value="off" />
+        <property name="optimize"       value="on" />
 
     <!-- CERCADOR is currently targeted to JVM 1.7 (Previously it was 1.4) -->
-    <property name="ant.build.javac.source" value="1.7"/>
-    <property name="ant.build.javac.target" value="1.7"/>
-    <property name="ant.build.javac.encoding" value="ISO-8859-1"/>
+        <property name="ant.build.javac.source" value="1.7"/>
+        <property name="ant.build.javac.target" value="1.7"/>
+        <property name="ant.build.javac.encoding" value="ISO-8859-1"/>
 
     <!-- Patterns -->
     <patternset id="jsps" >
@@ -22,37 +28,47 @@
         <include name="*.png"/>
         <include name="*.js"/>
     </patternset>
-    <patternset id="props" >
-        <include name="**/*.properties"/>
-    </patternset>
+
+        <mkdir dir="${build.dir}"/>
+    </target>
+
+    <target name="pro_init">
+        <property name="server.name" value="PRO" />
+    </target>
+
+    <target name="pre_init">
+        <property name="server.name" value="PRE" />
+    </target>
+
+    <target name="int_init">
+        <property name="server.name" value="INT" />
+    </target>
 
     <!-- =================================================================== -->
     <!-- MAIN                                                                -->
     <!-- =================================================================== -->
-    <target name="all" depends="deploy">
+
+    <target name="pro" depends="pro_init,deploy" description="Build development">
+        <echo message="***CERCADOR creat correctament! production!"/>
+    </target>
+
+    <target name="pre" depends="pre_init,deploy" description="Build development">
+        <echo message="***CERCADOR creat correctament! acceptation!"/>
+    </target>
+
+    <target name="int" depends="int_init,deploy" description="Build development">
+        <echo message="***CERCADOR creat correctament! integration!"/>
+    </target>
+
+    <target name="all" depends="pro, deploy" description="Build everything">
         <echo message="***CERCADOR creat correctament!"/>
     </target>
 
-    <!-- =================================================================== -->
-    <!-- INIT                                                                -->
-    <!-- =================================================================== -->
-    <target name="init" depends="clean">
-        <!-- Variables -->
-        <property name="src.dir"        location="src" />
-
-        <property name="debug"          value="off" />
-        <property name="deprecation"    value="off" />
-        <property name="optimize"       value="on" />
-
-        <!-- Create dirs -->
-        <mkdir dir="${dist.dir}"/>
-        <mkdir dir="${build.dir}"/>
-    </target>
 
     <!-- =================================================================== -->
     <!-- CLEAN                                                               -->
     <!-- =================================================================== -->
-    <target name="clean">
+    <target name="clean" depends="init">
         <delete dir="${build.dir}" />
         <echo message="*** S'ha esborrat el directori build!"/>
     </target>
@@ -60,7 +76,7 @@
     <!-- =================================================================== -->
     <!-- COMPILE                                                                -->
     <!-- =================================================================== -->
-    <target name="compile" depends="init">
+    <target name="compile" depends="clean,init">
         <mkdir dir="${build.dir}/WEB-INF/classes"/>
         <javac destdir="${build.dir}/WEB-INF/classes"
                debug="${debug}"
@@ -101,7 +117,6 @@
                 <pathelement location="${lib.dir}/woden-1.0.0M6.jar"/>
                 <pathelement location="${lib.dir}/wsdl4j-1.6.1.jar"/>
                 <pathelement location="${lib.dir}/xalan-2.7.0.jar"/>
-
             </classpath>
         </javac>
     </target>
@@ -115,18 +130,16 @@
             <fileset dir="${web.dir}/WEB-INF/" includes="*" excludesfile="${web.dir}/WEB-INF/web.xml"/>
         </copy>
         <copy todir="${build.dir}/">
-            <fileset dir="${web.dir}" excludes="WEB-INF/** web-inf/**"/>
+            <fileset dir="${web.dir}" excludes="WEB-INF/** web-inf/** merli-browser-search.xml"/>
         </copy>
         <copy todir="${build.dir}/WEB-INF/classes">
             <fileset dir="${src.dir}" includes="**/*.properties"/>
         </copy>
     </target>
 
-    <target name="dist"
-            depends="build">
+    <target name="dist" depends="build">
         <war destfile="${dist.dir}/merli_cer.war"
              webxml="${web.dir}/WEB-INF/web.xml">
-
             <manifest>
                 <attribute name="Built-By"
                            value="${user.name}"/>
@@ -170,22 +183,20 @@
             </zipfileset>
             <zipfileset dir="${build.dir}/WEB-INF" prefix="WEB-INF">
             </zipfileset>
-
-
-
-            <!--classes dir="${build.dir}" prefix=""/>
-            <zipfileset dir="${src.dir}" prefix="WEB-INF/classes">
-                <patternset refid="props"/>
+            <zipfileset dir="${server.config}" prefix="WEB-INF/classes">
+                <patternset includes="log4j.properties"/>
             </zipfileset>
-            <zipfileset dir="" prefix="">
-                <patternset refid="jsps"/>
-            </zipfileset-->
+            <zipfileset dir="${server.config}" prefix="">
+                <patternset includes="merli-browser-search.xml"/>
+            </zipfileset>
+
+
         </war>
     </target>
 
-    <target name="deploy"
-            depends="dist">
-        <ear destfile="${dist.dir}/merli_cer.ear"
+    <target name="deploy" depends="dist">
+        <mkdir dir="${dist.dir}/${server.name}"/>
+        <ear destfile="${dist.dir}/${server.name}/merli_cer.ear"
              appxml="${web.dir}/WEB-INF/application.xml">
             <manifest>
                 <attribute name="Built-By"
