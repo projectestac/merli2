@@ -25,6 +25,7 @@ public class ResultGeneratorUtil {
     public static final int SHOW_SEARCHRESULTS = 1;
     public static final int SHOW_SEARCH = 2;
     public static final int SHOW_ONLYRESULTS = 3;
+    public static final int SHOW_EMBEDDED = 4;
 
     private static final char SALTLINIA = '\n';
 
@@ -797,6 +798,10 @@ public class ResultGeneratorUtil {
                 html += "  <h3><div id=\"" + i + "\">" + SALTLINIA;
                 String cutDescription = cutDescription(descripcio, longitud_descripcio);
                 html += cutDescription;
+               // html +="     <input type=\"inline\" name=\"resultaslength0\" value=\"" + longitud_descripcio + "\"/>";
+               // html +="     <input type=\"inline\" name=\"resultaslength\" value=\"" + descripcio.length() + "\"/>";
+               // html +="     <input type=\"inline\" name=\"resultaslength1\" value=\"" + cutDescription.length() + "\"/>";
+
 
                 if (cutDescription.length() != descripcio.length()) {
                     html += "<a href=\"javascript:showFull('" + i + "')\">[+]</a></div>" + SALTLINIA;
@@ -829,14 +834,21 @@ public class ResultGeneratorUtil {
             }
             cutPoint = longitudDescripcio;
             myChar = descripcio.charAt(cutPoint);
-            while ((myChar != fi) && cutPoint < (descripcio.length() - 1)) {
+            //logger.debug("Text cut myChar 3... " + myChar);
+            while ((myChar != fi) && (descripcio.charAt(cutPoint + 1)  != ' ') && cutPoint < (descripcio.length() - 1)) {
                 cutPoint++;
                 myChar = descripcio.charAt(cutPoint);
+             //   logger.debug("Text cut myChar 4... " + myChar);
             }
             if (myChar == fi) {
+             //   logger.debug("Text cut myChar 5... " + myChar);
                 cutPoint++;
             }
             descripcioRetorn = descripcio.substring(0, cutPoint);
+           // logger.debug("Text cut longitudDescripcio 1... " + longitudDescripcio);
+           // logger.debug("Text cut descripcio.length 2... " + descripcio.length());
+
+
             logger.debug("Text cut... " + cutPoint);
         } catch (Exception e) {
             logger.error(e);

@@ -256,7 +256,7 @@ form {
 }
 
 fieldset {
-	margin 1em 0;
+	margin: 1em 0;
 	padding:10px;
 	border:none;
 	border:1px solid #ccc;
@@ -264,8 +264,8 @@ fieldset {
 }
 
 legend {
-	margin 1em 0;
-	padding 0.5em;
+	margin: 1em 0;
+	padding: 0.5em;
 	color:#0f3982;
 	background:transparent;
 	font-weight:bold;

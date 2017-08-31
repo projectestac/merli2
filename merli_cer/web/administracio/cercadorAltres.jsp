@@ -5,9 +5,7 @@
     if (Configuracio.isVoid()) {
         Configuracio.carregaConfiguracio();
     }
-
-    Logger logger = Logger.getLogger("cercadorXtec.jsp");
-
+    Logger logger = Logger.getLogger("cercadorAltres.jsp");
     //String usuari = (String)request.getRemoteUser();
     String usuari = (String) session.getAttribute("user");
 
@@ -29,8 +27,7 @@
         Locale myLocale = new Locale(idioma);
 
 %> 
-
-<%    String tipusCercador = "xtec";
+<%    String tipusCercador = "altres";
 
     int longitudDescripcio = -1;
     int resultatsPagina = -1;
@@ -51,14 +48,13 @@
         conn = UtilsCercador.getConnectionFromPool();
 
         stmt = conn.createStatement();
-        sql = "select * from config_cerca where cercador_id=2";
+        sql = "select * from config_cerca where cercador_id=3";
         rs = stmt.executeQuery(sql);
         rs.next();
         longitudDescripcio = rs.getInt("long_desc");
         resultatsPagina = rs.getInt("max_resultats_pag");
         nombreNovetats = rs.getInt("nombre_novetats");
         tempsVidaNovetat = rs.getInt("temps_vida_novetat");
-
         /*      sql = "select * from pesos where tipusCercador='" + tipusCercador + "'";
          rs = stmt.executeQuery(sql);
          rs.next();       
@@ -68,28 +64,26 @@
          pes_keywords = rs.getFloat("pes_keywords");        */
 %>
 
-<jsp:include page="topAdministracio.jsp?selected=4" />
-
+<jsp:include page="topAdministracio.jsp?selected=3" />
 <script language="Javascript">
     function doSubmit() {
         var myForm = document.modificar;
         for (i = 0; i < myForm.elements.length; i++) {
             if (myForm.elements[i].type == "text" && isNaN(myForm.elements[i].value)) {
-                alert("<%=XMLCollection.getProperty("administracio.cercadorXtec.errorNumeric")%>");
+                alert("<%=XMLCollection.getProperty("administracio.cercadorAltres.errorNumeric")%>");
                 myForm.elements[i].focus();
                 return false;
             }
             if (myForm.elements[i].type == "text" && (myForm.elements[i].value < 0)) {
-                alert("<%=XMLCollection.getProperty("administracio.cercadorXtec.errorPositiu")%>");
+                alert("<%=XMLCollection.getProperty("administracio.cercadorAltres.errorPositiu")%>");
                 myForm.elements[i].focus();
                 return false;
             }
             if (myForm.elements[i].type == "text" && (myForm.elements[i].value == '')) {
-                alert("<%=XMLCollection.getProperty("administracio.cercadorXtec.errorValor")%>");
+                alert("<%=XMLCollection.getProperty("administracio.cercadorAltres.errorValor")%>");
                 myForm.elements[i].focus();
                 return false;
             }
-
 
         }
         document.modificar.submit();
@@ -100,30 +94,31 @@
     <form name="modificar" action="/<%=Configuracio.contextWebAplicacio%>/ServletConfiguracio" method="post">     
         <input type="hidden" name="tipusCercador" value="<%=tipusCercador%>"/>
         <fieldset>
-            <legend><%=XMLCollection.getProperty("administracio.cercadorXtec.parametres_cercador")%></legend>
-            <p class="area_form">Aparença dels resultats</p>     
+            <legend><%=XMLCollection.getProperty("administracio.cercadorAltres.parametres_cercador")%></legend>
+            <p class="area_form"><%=XMLCollection.getProperty("administracio.cercadorAltres.aparenca_resultats")%></p>
 
             <div id="linia">
-                <label class="cercador" for="longitudDescripcio"><%=XMLCollection.getProperty("administracio.cercadorXtec.longitud_descripcio")%></label>
+                <label class="cercador" for="longitudDescripcio"><%=XMLCollection.getProperty("administracio.cercadorAltres.longitud_descripcio")%></label>
                 <input type="text" name="longitudDescripcio" size="3" maxlength="3" value="<%=longitudDescripcio%>" />
             </div>
             <div id="linia">
-                <label class="cercador" for="resultatsPagina"><%=XMLCollection.getProperty("administracio.cercadorXtec.resultats_per_pagina")%></label>
+                <label class="cercador" for="resultatsPagina"><%=XMLCollection.getProperty("administracio.cercadorAltres.resultats_per_pagina")%></label>
                 <input type="text" name="resultatsPagina" size="3" maxlength="3" value="<%=resultatsPagina%>"/>
             </div>
             <div id="linia">
-                <label class="cercador" for="nombreNovetats"><%=XMLCollection.getProperty("administracio.cercadorXtec.nombre_novetats")%></label>
+                <label class="cercador" for="nombreNovetats"><%=XMLCollection.getProperty("administracio.cercadorAltres.nombre_novetats")%></label>
                 <input type="text" name="nombreNovetats" size="3" maxlength="3" value="<%=nombreNovetats%>"/>
             </div>
             <div id="linia">
-                <label class="cercador" for="tempsVidaNovetat"><%=XMLCollection.getProperty("administracio.cercadorXtec.temps_vida_novetat")%></label>
+                <label class="cercador" for="tempsVidaNovetat"><%=XMLCollection.getProperty("administracio.cercadorAltres.temps_vida_novetat")%></label>
                 <input type="text" name="tempsVidaNovetat" size="3" maxlength="3" value="<%=tempsVidaNovetat%>"/>
-            </div>						
-            <p class="area_form"><%=XMLCollection.getProperty("administracio.cercadorXtec.algoritme_ordenacio")%></p>
+            </div>
+
+            <p class="area_form"><%=XMLCollection.getProperty("administracio.cercadorAltres.algoritme_ordenacio")%></p>
 
             <%
                 stmt = conn.createStatement();
-                sql = "select * from config_pesos_index where cercador_id=2";
+                sql = "select * from config_pesos_index where cercador_id=3";
                 rs = stmt.executeQuery(sql);
                 while (rs.next()) {
                     String nom = rs.getString("nom");
@@ -153,7 +148,7 @@
             %>
 
             <div id="linia">
-                <input type="button" name="Modificar" value="<%=XMLCollection.getProperty("administracio.cercadorXtec.modificar")%>" class="tableButton" onClick="javascript:doSubmit();"/>
+                <input type="button" name="Modificar" value="<%=XMLCollection.getProperty("administracio.cercadorAltres.modificar")%>" class="tableButton" onClick="javascript:doSubmit();"/>
 
             </div>
         </fieldset>

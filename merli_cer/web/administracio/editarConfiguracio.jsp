@@ -58,7 +58,7 @@
 <%
 
 %>   
-<jsp:include page="topAdministracio.jsp?selected=9" />
+<jsp:include page="topAdministracio.jsp?selected=10" />
 
 <script language="Javascript">
     function eliminar(idConfiguracio) {

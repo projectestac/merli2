@@ -209,11 +209,19 @@ public class ResultGenerator {
             if (ConfiguracioFragments.isVoid()) {
                 ConfiguracioFragments.loadConfiguracio(myConnection, "edu365");
                 ConfiguracioFragments.loadConfiguracio(myConnection, "xtec");
+                ConfiguracioFragments.loadConfiguracio(myConnection, "altres");
             }
             if (tipus.equals("simple")) {
                 num_resultats = ConfiguracioFragments.numResultatsPerPagina[0];
                 longitud_descripcio = ConfiguracioFragments.longitudDescripcio[0];
-            } else {
+            }
+            else if (tipus.equals("embedded")){
+                num_resultats = 5;
+                longitud_descripcio = 20;
+                // num_resultats = ConfiguracioFragments.numResultatsPerPagina[2];
+                //longitud_descripcio = ConfiguracioFragments.longitudDescripcio[2];
+            }
+            else {
                 num_resultats = ConfiguracioFragments.numResultatsPerPagina[1];
                 longitud_descripcio = ConfiguracioFragments.longitudDescripcio[1];
             }
@@ -365,7 +373,7 @@ public class ResultGenerator {
                 urlLink += "&filtreRecurs=" + filtreRecurs;
             }
 
-            if (!tipus.equals("simple")) {
+            if ((!tipus.equals("simple")) || (!tipus.equals("embedded"))) {
                 if (cicle != null) {
                     urlRss += "&cicle=" + cicle;
                     urlLink += "&cicle=" + cicle;
@@ -454,12 +462,22 @@ public class ResultGenerator {
 
                 ConfiguracioFragments.loadConfiguracio(myConnection, "edu365");
                 ConfiguracioFragments.loadConfiguracio(myConnection, "xtec");
+                ConfiguracioFragments.loadConfiguracio(myConnection, "altres");
             }
 
             if (tipus.equals("simple")) {
+
                 num_resultats = ConfiguracioFragments.numResultatsPerPagina[0];
                 longitud_descripcio = ConfiguracioFragments.longitudDescripcio[0];
-            } else {
+            }
+              else if (tipus.equals("embedded")){
+                num_resultats = 5;
+                longitud_descripcio = 20;
+                //num_resultats = ConfiguracioFragments.numResultatsPerPagina[2];
+               //longitud_descripcio = ConfiguracioFragments.longitudDescripcio[2];
+
+            }
+            else {
                 num_resultats = ConfiguracioFragments.numResultatsPerPagina[1];
                 longitud_descripcio = ConfiguracioFragments.longitudDescripcio[1];
             }
@@ -501,7 +519,8 @@ public class ResultGenerator {
             out.println("<body>");
             out.println("<div id=\"non-footer\">");
 
-            if (incrusXTEC != ResultGeneratorUtil.SHOW_ONLYRESULTS) {
+            if ((incrusXTEC != ResultGeneratorUtil.SHOW_ONLYRESULTS)  && (incrusXTEC != ResultGeneratorUtil.SHOW_EMBEDDED )) {
+
                 if (imprimir.equals("no")) {
                     //Capçalera del cercador
                     if (incrusXTEC <= ResultGeneratorUtil.SHOW_ALL) {
@@ -520,6 +539,8 @@ public class ResultGenerator {
                     out.println("<div id=\"cercadorOptions\">");
                     out.println("	<form class=\"cercador_xtec\" name=\"cerca\" action=\"/" + Configuracio.contextWebAplicacio + "/ServletCerca\" method=\"POST\">");
                     out.println("      <fieldset>");
+                    out.println("     <input type=\"hidden\" name=\"numResultats\" value=\"" + num_resultats + "\"/>");
+                    out.println("     <input type=\"hidden\" name=\"descLong\" value=\"" + longitud_descripcio + "\"/>");
                     out.println("     <input type=\"hidden\" name=\"agrega\" value=\"0\"/>");
                     out.println("     <input type=\"hidden\" name=\"sheetId\" value=\"" + sheetId + "\"/>");
                     out.println("     <input type=\"hidden\" name=\"tipus\" value=\"" + tipus + "\"/>");
@@ -593,7 +614,10 @@ public class ResultGenerator {
 
                     if (incrusXTEC > ResultGeneratorUtil.SHOW_ALL) {
                         out.println(" <a href=\"/" + Configuracio.contextWebAplicacio + "/cerca/cercaCompleta.jsp?inxtec=" + ResultGeneratorUtil.SHOW_SEARCHRESULTS + "\">" + XMLCollection.getProperty("cerca.directoriInicial.cercaCompleta", lang) + "</a>");
-                    } else {
+                    } else if(incrusXTEC == ResultGeneratorUtil.SHOW_EMBEDDED){
+                        out.println(" <a href=\"/" + Configuracio.contextWebAplicacio + "/cerca/cercaCompleta.jsp?inxtec=" + ResultGeneratorUtil.SHOW_EMBEDDED + "\">" + XMLCollection.getProperty("cerca.directoriInicial.cercaCompleta", lang) + "</a>");
+                    }
+                    else {
                         out.println(" <a href=\"/" + Configuracio.contextWebAplicacio + "/cerca/cercaCompleta.jsp\">" + XMLCollection.getProperty("cerca.directoriInicial.cercaCompleta", lang) + "</a>");
                     }
                     out.println("&nbsp; <a href=\"" + XMLCollection.getProperty("url.ajuda", lang) + "\" target=\"_blank\"><img style=\"border:0;\" src=\"" + baseUrl + "imatges/ajuda.png\"/></a>");
@@ -609,8 +633,10 @@ public class ResultGenerator {
                 }
                 //Fi-Cercador
             } else {
-                out.println("	<form name=\"cerca\" action=\"/" + Configuracio.contextWebAplicacio + "/ServletCerca\" method=\"POST\">");
 
+                out.println("	<form name=\"cerca\" action=\"/" + Configuracio.contextWebAplicacio + "/ServletCerca\" method=\"POST\">");
+                out.println("     <input type=\"hidden\" name=\"numResultats\" value=\"" + num_resultats + "\"/>");
+                out.println("     <input type=\"hidden\" name=\"descLong\" value=\"" + longitud_descripcio + "\"/>");
                 out.println("     <input type=\"hidden\" name=\"agrega\" value=\"0\"/>");
                 out.println("     <input type=\"hidden\" name=\"filtreRecurs\" value=\"" + filtreRecurs + "\"/>");
                 out.println("     <input type=\"hidden\" name=\"sheetId\" value=\"" + sheetId + "\"/>");
@@ -646,7 +672,8 @@ public class ResultGenerator {
             if (incrusXTEC != ResultGeneratorUtil.SHOW_SEARCH) {
                 //CapçaleraResultats
                 //	Resultats totals
-                out.println(ResultGeneratorUtil.htmlBarraTotalResultats(hits, query, imprimir, lang, docInicial, docFinal));
+                if (incrusXTEC != ResultGeneratorUtil.SHOW_EMBEDDED) {
+                    out.println(ResultGeneratorUtil.htmlBarraTotalResultats(hits, query, imprimir, lang, docInicial, docFinal));
 
                 //Camps d'ordenació de resultats
                 if (hits.length() > 0) {
@@ -664,10 +691,13 @@ public class ResultGenerator {
 //		  }else{
 //			  aux = "";
 //		  }
-                    ResultGeneratorUtil.htmlOrderBy(ordenacio, direccio, lang, aux, out);
+
+                        ResultGeneratorUtil.htmlOrderBy(ordenacio, direccio, lang, aux, out);
 
                     //Resum de resultats
-                    ResultGeneratorUtil.htmlResumResultats(hitsTotal, indexPrincipal, totalQuery, lastURL, lang, out);
+
+                      ResultGeneratorUtil.htmlResumResultats(hitsTotal, indexPrincipal, totalQuery, lastURL, lang, out);
+                  }
                 }
                 //Fi camps ordenació resultats
 
@@ -730,10 +760,12 @@ public class ResultGenerator {
                         titolRss = XMLCollection.getProperty("cerca.resultatsCerca.subscriureCerca", lang);
                         titolurlLink = XMLCollection.getProperty("cerca.resultatsCerca.subscriurePermalink", lang);
                         out.println("</div>");
-                        out.println("<div id=\"bottom_right\">");
-                        out.println("<a  style=\"cursor: pointer;\" onclick=\"copia_portapapeles('" + urlLink + "')\" title=\"" + titolurlLink + "\"><i class=\"fa fa-clipboard fa-2x\" aria-hidden=\"true\"></i></a>");
-                        out.println("<a href=\"" + urlRss + "\" title=\"" + titolRss + "\"><i class=\"fa fa-rss fa-2x\" aria-hidden=\"true\"></i></a>");
-                        out.println("</div>");
+                        if (incrusXTEC != ResultGeneratorUtil.SHOW_EMBEDDED) {
+                            out.println("<div id=\"bottom_right\">");
+                            out.println("<a  style=\"cursor: pointer;\" onclick=\"copia_portapapeles('" + urlLink + "')\" title=\"" + titolurlLink + "\"><i class=\"fa fa-clipboard fa-2x\" aria-hidden=\"true\"></i></a>");
+                            out.println("<a href=\"" + urlRss + "\" title=\"" + titolRss + "\"><i class=\"fa fa-rss fa-2x\" aria-hidden=\"true\"></i></a>");
+                            out.println("</div>");
+                        }
                         out.println("<div class=\"clear\"></div>");
                         out.println("</div>");
                     }
@@ -945,12 +977,20 @@ public class ResultGenerator {
 
                 ConfiguracioFragments.loadConfiguracio(myConnection, "edu365");
                 ConfiguracioFragments.loadConfiguracio(myConnection, "xtec");
+                ConfiguracioFragments.loadConfiguracio(myConnection, "altres");
             }
 
             if (tipus.equals("simple")) {
                 num_resultats = ConfiguracioFragments.numResultatsPerPagina[0];
                 longitud_descripcio = ConfiguracioFragments.longitudDescripcio[0];
-            } else {
+            }
+            else if (tipus.equals("embedded")){
+                num_resultats = 5;
+                longitud_descripcio = 20;
+                // num_resultats = ConfiguracioFragments.numResultatsPerPagina[2];
+                //longitud_descripcio = ConfiguracioFragments.longitudDescripcio[2];
+            }
+            else {
                 num_resultats = ConfiguracioFragments.numResultatsPerPagina[1];
                 longitud_descripcio = ConfiguracioFragments.longitudDescripcio[1];
             }
@@ -1138,7 +1178,9 @@ public class ResultGenerator {
 
                 ResultGeneratorUtil.barraNivell(out, ResultGeneratorUtil.AGREGA);
 
+
                 out.println("<div id=\"barra_resultats\">");
+
 
                 if ((query != null) && !query.trim().equals("")) {
                     out.println("<div id=\"barra_resultats_left\">");

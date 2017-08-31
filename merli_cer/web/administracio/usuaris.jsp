@@ -31,7 +31,7 @@
 
 <%
 %>   
-<jsp:include page="topAdministracio.jsp?selected=7" />	
+<jsp:include page="topAdministracio.jsp?selected=8" />
 <script language="Javascript">
     function eliminar(idUsuari) {
         if (confirm("<%=UtilsCercador.fromAcute(XMLCollection.getProperty("administracio.usuaris.eliminar_confirmacio"))%>")) {

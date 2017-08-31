@@ -111,7 +111,7 @@
 
     ArrayList resultats = (ArrayList) request.getAttribute("comentaris.resultats");
 %>  
-<jsp:include page="topAdministracio.jsp?selected=4" />	
+<jsp:include page="topAdministracio.jsp?selected=5" />
 <!-- <link rel="stylesheet" type="text/css" media="all" href="<%=urlLocal%>/css/theme.css" title="Aqua" /> -->
 <!-- import the calendar script -->
 <script type="text/javascript" src="<%=urlLocal%>/scripts/calendar-main.js"></script>

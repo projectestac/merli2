@@ -84,6 +84,11 @@ public class ConfiguracioFragments {
             	sql = "select * from config_cerca where cercador_id=2";            	
                 }
 
+			if (tipusCercador.equals("altres")) {
+				indexConfiguracio = 2;
+				sql = "select * from config_cerca where cercador_id=3";
+			}
+
             stmt = myConnection.createStatement();
             
             logger.debug(sql);

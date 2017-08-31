@@ -31,7 +31,7 @@
 
 <%
 %>   
-<jsp:include page="topAdministracio.jsp?selected=6" />
+<jsp:include page="topAdministracio.jsp?selected=7" />
 
 <script language="Javascript">
     function editar(idNoticia) {

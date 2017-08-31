@@ -125,7 +125,11 @@ public class OracleConfiguracioDAO implements ConfiguracioDAO {
 			prepStmt.setInt(4, tempsVidaNovetat);			
 			if (tipusCercador.equals("edu365")) {
 			   prepStmt.setInt(5, 1);
-			   } else {
+			   }
+			   else if(tipusCercador.equals("altres")){
+				prepStmt.setInt(5, 3);
+				}
+			   else {
 			   prepStmt.setInt(5, 2);
 			   }
             logger.info("SQL: " + prepStmt);
