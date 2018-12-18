@@ -1,0 +1,113 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!--
+ * DUC - Disseny Unitari del Currículum.
+ * Copyright (C) 2018 Department of Education, Government of Catalonia
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+  http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>cat.xtec.merli</groupId>
+  <artifactId>merli-package</artifactId>
+  <version>${revision}</version>
+  <packaging>ear</packaging>
+
+  <!-- Project properties =============================================== -->
+
+  <properties>
+    <revision>1.0.0-SNAPSHOT</revision>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <!-- Parent module ==================================================== -->
+
+  <parent>
+    <groupId>cat.xtec.merli</groupId>
+    <artifactId>merli</artifactId>
+    <version>${revision}</version>
+  </parent>
+
+  <!-- Environment builds =============================================== -->
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-ear-plugin</artifactId>
+        <version>2.9</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>ear</goal>
+            </goals>
+            <configuration>
+              <classifier>${env}</classifier>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- Build profiles =================================================== -->
+
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <env>dev</env>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
+      <id>int</id>
+      <properties>
+        <env>int</env>
+      </properties>
+    </profile>
+    <profile>
+      <id>pro</id>
+      <properties>
+        <env>pro</env>
+      </properties>
+    </profile>
+  </profiles>
+
+  <!-- Module dependencies ============================================== -->
+
+  <dependencies>
+
+    <!-- Crawler module -->
+
+    <dependency>
+      <groupId>cat.xtec.merli.crawler</groupId>
+      <artifactId>merli-crawler</artifactId>
+      <version>${revision}</version>
+      <type>war</type>
+    </dependency>
+
+  </dependencies>
+
+</project>

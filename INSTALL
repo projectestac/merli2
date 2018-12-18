@@ -1,0 +1,25 @@
+Installation of DUC Disseny Unitari del Currículum
+
+  Copyright (C) 2018 Department of Education, Government of Catalonia
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+======================================================================
+
+  Build dependencies
+  ------------------
+
+  * Apache Maven >= 3.5.2
+
+  Packaging as a web application
+  ------------------------------
+
+  In order to generate an EAR archive that could be deployed on your
+  application server of choice, issue the following command. You will
+  find the generated .ear file inside the package folder.
+
+  Change ${version} and ${environment} to suit your needs.
+
+  $ mvn clean package -Drevision=${version} -P ${environment}

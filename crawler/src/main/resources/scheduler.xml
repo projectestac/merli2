@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<job-scheduling-data
+  xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData
+  http://www.quartz-scheduler.org/xml/job_scheduling_data_1_8.xsd"
+  version="1.8">
+
+  <schedule>
+
+    <!-- Queue job ====================================================== -->
+
+    <job>
+      <name>zonaclic-crawl-job</name>
+      <group>CRAWLER_JOB_GROUP</group>
+      <description>Queue crawling tasks</description>
+      <job-class>cat.xtec.merli.crawler.jobs.ZonaclicJob</job-class>
+    </job>
+
+    <!-- Job triggers =================================================== -->
+
+    <trigger>
+      <cron>
+        <name>zonaclic-crawl-trigger</name>
+        <group>CRAWLER_TRIGGER_GROUP</group>
+        <job-name>zonaclic-crawl-job</job-name>
+        <job-group>CRAWLER_JOB_GROUP</job-group>
+        <cron-expression>0 0 3 1/1 * ? *</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+
+</job-scheduling-data>
