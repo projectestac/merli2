@@ -2,13 +2,11 @@ package cat.xtec.merli.crawler;
 
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletContextEvent;
-import javax.servlet.annotation.WebListener;
 
 
 /**
  * Handles the servlet context events.
  */
-@WebListener("Crawler context listener")
 public class CrawlerListener implements ServletContextListener {
 
     /**

@@ -211,8 +211,8 @@ public class ZonaclicClient implements LomClient {
     protected Client createClient() {
         ClientBuilder builder = ClientBuilder.newBuilder();
 
-        builder.connectTimeout(CONNECT_TIMEOUT, MILLISECONDS);
-        builder.readTimeout(READ_TIMEOUT, MILLISECONDS);
+        // builder.connectTimeout(CONNECT_TIMEOUT, MILLISECONDS);
+        // builder.readTimeout(READ_TIMEOUT, MILLISECONDS);
 
         return builder.build();
     }
