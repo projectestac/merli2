@@ -1,0 +1,3 @@
+[submodule "manager/core"]
+	path = manager/src/core
+	url = git@github.com:protegeproject/webprotege.git

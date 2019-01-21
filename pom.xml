@@ -35,15 +35,58 @@
 
   <properties>
     <revision>1.0.0-SNAPSHOT</revision>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
+
+  <!-- Project build ==================================================== -->
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.17</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- Build profiles =================================================== -->
+
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <env>dev</env>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
+      <id>int</id>
+      <properties>
+        <env>int</env>
+      </properties>
+    </profile>
+    <profile>
+      <id>pro</id>
+      <properties>
+        <env>pro</env>
+      </properties>
+    </profile>
+  </profiles>
 
   <!-- Project modules ================================================== -->
 
   <modules>
     <module>core</module>
     <module>crawler</module>
+    <module>manager</module>
     <module>package</module>
   </modules>
 
