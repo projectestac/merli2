@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module>
+  <!-- Source paths -->
+
+  <source path="client"/>
+  <source path="shared"/>
+  <super-source path="locales"/>
+
+  <!-- Global module styles -->
+
+  <stylesheet src="I18n.css"/>
+
+  <!-- Module imports -->
+
+  <inherits name="com.google.gwt.i18n.I18N"/>
+  <inherits name="com.google.gwt.user.User"/>
+  <inherits name="edu.stanford.bmir.protege.web.WebProtege"/>
+
+  <!-- Client entry point -->
+
+  <entry-point class='cat.xtec.merli.i18n.client.I18nEntryPoint'/>
+
+  <!-- Replace the date-time formatter implementation -->
+
+  <replace-with class="cat.xtec.merli.i18n.client.format.MomentFormatter">
+    <when-type-is class="edu.stanford.bmir.protege.web.client.ui.TimeFormatter"/>
+  </replace-with>
+
+  <!-- Available locales configuration -->
+
+  <extend-property name="locale" values="ca"/>
+  <extend-property name="locale" values="en"/>
+  <extend-property name="locale" values="es"/>
+
+  <set-property name="locale" value="ca,en,es"/>
+  <set-property-fallback name="locale" value="en"/>
+
+  <!-- Use the user agent locale when available -->
+
+  <set-configuration-property name="locale.useragent" value="Y"/>
+  <set-configuration-property name="locale.searchorder" value="queryparam,useragent"/>
+</module>

@@ -1,0 +1,59 @@
+/* Root menu item */
+
+.i18n-LocalesMenuItem {
+  display: flex;
+  align-items: center;
+  padding: 0 .625rem;
+  cursor: pointer;
+}
+
+.i18n-LocalesMenuItem:after {
+  content: "\25BE";
+  margin-left: .5rem;
+}
+
+.i18n-LocalesMenuItem.gwt-MenuItem {
+  cursor: pointer;
+}
+
+.i18n-LocalesMenuItem.gwt-MenuItem-selected {
+  color: rgb(16, 16, 16);
+  background-color: transparent;
+  outline: rgb(148, 192, 237) solid 2px;
+  outline-offset: -1px;
+}
+
+.i18n-LocalesMenuItem.gwt-MenuItem-selected:hover {
+  outline: none;
+}
+
+/* Submenu items */
+
+.i18n-LocalesMenuBar {
+  padding: 0;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgb(224, 224, 224);
+  margin: 5px 2px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  min-width: 150px;
+}
+
+.i18n-LocalesMenuBar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.i18n-LocalesMenuBar .gwt-MenuItem {
+  cursor: pointer;
+  color: rgb(85, 85, 85);
+  font-size: 14px;
+  padding: 5px 15px;
+  line-height: 20px;
+  border-radius: 3px;
+}
+
+.i18n-LocalesMenuBar .gwt-MenuItem-selected {
+  color: rgb(255, 255, 255);;
+  background: rgb(17, 108, 214);
+}
