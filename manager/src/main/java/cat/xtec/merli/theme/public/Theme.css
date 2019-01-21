@@ -1,0 +1,346 @@
+/* Typography */
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto:500,700");
+
+/* Base styles */
+
+html {
+  font-size: 16px !important;
+}
+
+body, input, textarea, keygen, select, button, td {
+  font-weight: 400;
+  font-size: .812rem;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+.duc-theme a {
+  color: rgb(0, 136, 170);
+}
+
+.duc-theme h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: .875rem;
+}
+
+/* Logos */
+
+.duc-theme .GODDE-LAS {
+  font-size: 1rem;
+}
+
+.duc-theme .wp-login__logo {
+  width: 200px;
+  height: 200px;
+}
+
+.duc-theme .wp-topbar .wp-topbar__logo {
+  background-image: url('images/logo.png');
+  background-size: auto;
+  margin: .5rem;
+  width: 56px;
+  height: 10px;
+}
+
+/* WebProtege widgets */
+
+.duc-theme .wp-popup-menu .gwt-Label {
+  font-weight: 400;
+  font-size: .812rem;
+}
+
+.duc-theme .wp-btn--accept,
+.duc-theme .wp-btn--primary,
+.duc-theme .gwt-MenuBarPopup .gwt-MenuItem-selected,
+.duc-theme .wp-popup-menu__item--selected {
+  background-color: rgb(0, 136, 170);
+}
+
+.duc-theme .gwt-MenuBarPopup .gwt-MenuItem {
+  font-size: inherit;
+}
+
+.duc-theme .wp-btn {
+  border-radius: .25rem;
+  font-size: .875rem;
+  font-weight: 600;
+  height: auto;
+  letter-spacing: inherit;
+  line-height: 2rem;
+}
+
+.duc-theme .wp-btn--accept:hover,
+.duc-theme .wp-btn--primary:hover {
+  background-color: rgb(215, 80, 8);
+}
+
+.duc-theme .wp-btn + .wp-btn {
+  margin-left: .5rem;
+}
+
+/* Dialog boxes */
+
+.duc-theme .gwt-DialogBox .Caption {
+  font-size: .875rem;
+}
+
+.duc-theme .gwt-DialogBox .dialogTop {
+  background-image: url('images/icon.png');
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
+
+/* View containers */
+
+.duc-theme .wp-topbar {
+  color: rgb(255, 255, 255);
+  background-color: rgb(70, 70, 70);
+  padding: .5rem;
+}
+
+.duc-theme .wp-perspective-switcher {
+  margin-top: -.3rem;
+  background-color: rgba(215, 80, 8, .1);
+}
+
+.duc-theme .wp-perspective-switcher .gwt-TabBar {
+  padding: .5rem;
+}
+
+.duc-theme .wp-perspective-switcher > div {
+  margin: 0;
+}
+
+.duc-theme .wp-perspective-container {
+  margin: 10px;
+}
+
+/* Top navigation bar */
+
+.duc-theme .wp-topbar .wp-topbar__title {
+  font-size: .875rem;
+  font-weight: 600;
+  margin-left: .5rem;
+}
+
+.duc-theme .wp-topbar .wp-topbar__btn,
+.duc-theme .wp-topbar .gwt-MenuItem {
+  line-height: 2rem;
+  padding: 0 .5rem;
+}
+
+.duc-theme .wp-topbar .gwt-MenuItem-selected {
+  color: rgb(255, 255, 255);
+}
+
+.duc-theme .wp-topbar .wp-topbar__btn:hover {
+  color: rgb(255, 255, 255);
+}
+
+.duc-theme .wp-topbar__content {
+  align-items: center;
+}
+
+.duc-theme .wp-topbar__separator {
+  width: 2px;
+  margin: .5rem 1rem;
+  background: rgb(100, 100, 100);
+}
+
+/* Navigation links */
+
+.duc-theme .wp-perspective-switcher .gwt-TabBar .gwt-TabBarItem {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  margin-left: 0;
+  margin-right: 1.25rem;
+  padding: 0;
+}
+
+.duc-theme .wp-perspective-switcher
+.gwt-TabBar .gwt-TabBarItem {
+  border: 2px solid transparent;
+}
+
+.duc-theme .wp-perspective-switcher
+.gwt-TabBar .gwt-TabBarItem .gwt-Label {
+  line-height: 1.6875em;
+}
+
+.duc-theme .wp-perspective-switcher
+.gwt-TabBar .gwt-TabBarItem-selected {
+  color: rgb(215, 80, 8);
+  border-bottom: 2px solid rgb(215, 80, 8);
+}
+
+.duc-theme .wp-perspective-switcher
+.gwt-TabBar .gwt-TabBarItem .gwt-Label:not(:last-child) {
+  margin-right: .5rem;
+}
+
+.duc-theme .wp-btn-add-tab {
+  margin-right: 10px;
+  padding: .5rem;
+}
+
+.duc-theme .wp-btn-add-tab:hover {
+  background-color: inherit;
+  color: inherit;
+}
+
+/* Projects list */
+
+.duc-theme .wp-projects-manager {
+  overflow: hidden;
+}
+
+.duc-theme .wp-projects-sidebar {
+  width: 250px;
+  padding: .5rem;
+  margin: .5rem 0 .5rem .5rem;
+  border: 1px solid rgb(224, 224, 224);
+  background-color: rgba(215, 80, 8, .1);
+}
+
+.duc-theme .wp-projects-sidebar div {
+  padding: 0;
+}
+
+.duc-theme .wp-projects-sidebar .gwt-CheckBox {
+  display: flex;
+  align-items: center;
+  line-height: 2rem;
+}
+
+.duc-theme .wp-projects-sidebar .gwt-ListBox {
+  cursor: pointer;
+  margin-top: 1rem;
+  padding: .1875rem;
+  background: transparent;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.duc-theme .wp-projects-list {
+  border: 1px solid rgb(224, 224, 224);
+  width: calc(100% - 1rem);
+  margin: .5rem;
+}
+
+.duc-theme .wp-projects-list-header {
+  color: rgb(255, 255, 255);
+  background: rgb(215, 80, 8);
+}
+
+.duc-theme .wp-projects-list-item {
+  font-weight: 600;
+}
+
+.duc-theme .wp-projects-list-item > div {
+  line-height: 2rem;
+}
+
+/* Portlets */
+
+.duc-theme .wp-portlet {
+  border: none;
+}
+
+.duc-theme .duc-PortletContainer {
+  border: none;
+}
+
+.duc-theme .duc-Portlet .gwt-Label {
+  font-weight: 600;
+}
+
+.duc-theme .duc-ToolBar .gwt-Label {
+  font-weight: 400;
+}
+
+.duc-theme .drop-zone {
+  border: 1px solid rgb(224, 224, 224);
+}
+
+.duc-theme .drop-zone > div > div:first-child {
+  font-size: .812rem;
+  font-weight: 700;
+  padding: .5rem;
+  background: rgb(215, 80, 8);
+  align-items: center;
+}
+
+.duc-theme .wp-toolbar {
+  padding: .1875rem;
+  background-color: rgb(250, 250, 250);
+  border-bottom: 1px dotted rgb(224, 224, 224);
+}
+
+.duc-theme .wp-toolbar__btn {
+  font-size: .75rem;
+  padding: .12rem .625rem;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, .1);
+  height: auto;
+}
+
+/* Pagination */
+
+.duc-theme .wp-pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: .75rem;
+}
+
+.duc-theme .wp-pagination > div {
+  padding: 0 .25rem;
+}
+
+.duc-theme .wp-pagination .gwt-Label,
+.duc-theme .wp-pagination .gwt-Button {
+  font-size: .75rem;
+}
+
+.duc-theme .wp-pagination .gwt-Label {
+  padding: 0;
+}
+
+.duc-theme .wp-pagination .gwt-TextBox {
+  text-align: center;
+  padding: 0;
+}
+
+/* Menus */
+
+.duc-theme .gwt-MenuBar-vertical {
+  padding: 0;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.duc-theme .gwt-MenuBar-vertical .gwt-MenuItem {
+  cursor: default;
+  color: rgb(85, 85, 85);
+  padding: .3125rem 1rem;
+  line-height: 1.25rem;
+  border-radius: .1875rem;
+}
+
+.duc-theme .gwt-MenuBar-vertical .gwt-MenuItem-selected {
+  color: rgb(255, 255, 255);
+}
+
+.duc-theme .gwt-MenuBar-vertical .gwt-MenuItemSeparator {
+  border-bottom: 1px dotted #ddd;
+}

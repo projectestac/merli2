@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 32 29"
+   version="1.1"
+   sodipodi:docname="home-icon.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata21">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1207"
+     inkscape:window-height="701"
+     id="namedview19"
+     showgrid="false"
+     inkscape:zoom="8.137931"
+     inkscape:cx="16"
+     inkscape:cy="14.5"
+     inkscape:window-x="524"
+     inkscape:window-y="212"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Layer_1" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1{fill:#505050;}</style>
+  </defs>
+  <title
+     id="title6">home-icon</title>
+  <g
+     id="g4539"
+     style="fill:#ffffff"
+     transform="translate(0,-0.5)">
+    <polygon
+       id="polygon8"
+       points="0.82,16.64 31.18,16.64 16,1 "
+       class="cls-1"
+       style="fill:#ffffff" />
+    <rect
+       id="rect10"
+       height="7"
+       width="3"
+       y="6"
+       x="24"
+       class="cls-1"
+       style="fill:#ffffff" />
+    <rect
+       id="rect12"
+       height="14"
+       width="8"
+       y="15"
+       x="5"
+       class="cls-1"
+       style="fill:#ffffff" />
+    <rect
+       id="rect14"
+       height="14"
+       width="8"
+       y="15"
+       x="19"
+       class="cls-1"
+       style="fill:#ffffff" />
+    <rect
+       id="rect16"
+       height="3"
+       width="11"
+       y="15"
+       x="10.5"
+       class="cls-1"
+       style="fill:#ffffff" />
+  </g>
+</svg>

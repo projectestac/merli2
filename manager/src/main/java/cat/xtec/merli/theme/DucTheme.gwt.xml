@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module>
+  <!-- Source paths -->
+
+  <source path="client"/>
+  <super-source path="resources"/>
+
+  <!-- Module imports -->
+
+  <inherits name="com.google.gwt.user.User"/>
+  <inherits name="edu.stanford.bmir.protege.web.WebProtege"/>
+
+  <!-- Global module styles -->
+
+  <stylesheet src="Theme.css"/>
+  <stylesheet src="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+
+  <!-- Client entry point -->
+
+  <entry-point class='cat.xtec.merli.theme.client.DucThemeEntryPoint'/>
+</module>
