@@ -12,6 +12,7 @@ import cat.xtec.merli.domain.voc.Copyright;
 import cat.xtec.merli.domain.voc.Cost;
 import cat.xtec.merli.domain.voc.License;
 import cat.xtec.merli.bind.*;
+import cat.xtec.merli.xml.*;
 
 
 /**
@@ -27,13 +28,13 @@ public class RightsDetails implements Serializable {
     /** Whether use of the resource requires payment */
     @DucProperty(DucVocabulary.COST)
     @XmlElement(name = "cost")
-    @XmlJavaTypeAdapter(Cost.Adapter.class)
+    @XmlJavaTypeAdapter(CostAdapter.class)
     protected Cost cost;
 
     /** Whether copyright or other restrictions apply */
     @DucProperty(DucVocabulary.COPYRIGHT)
     @XmlElement(name = "copyrightAndOtherRestrictions")
-    @XmlJavaTypeAdapter(Copyright.Adapter.class)
+    @XmlJavaTypeAdapter(CopyrightAdapter.class)
     protected Copyright copyright;
 
     /** License of the content */

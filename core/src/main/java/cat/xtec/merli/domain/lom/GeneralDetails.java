@@ -11,8 +11,8 @@ import cat.xtec.merli.domain.type.LangString;
 import cat.xtec.merli.domain.taxa.Entity;
 import cat.xtec.merli.domain.voc.Language;
 import cat.xtec.merli.domain.voc.Structure;
-import cat.xtec.merli.bind.DucVocabulary;
 import cat.xtec.merli.bind.*;
+import cat.xtec.merli.xml.*;
 
 
 /**
@@ -50,7 +50,7 @@ public class GeneralDetails implements Serializable {
     /** Organizational structure of the learning object */
     @DucProperty(DucVocabulary.STRUCTURE)
     @XmlElement(name = "structure")
-    @XmlJavaTypeAdapter(Structure.Adapter.class)
+    @XmlJavaTypeAdapter(StructureAdapter.class)
     protected Structure structure;
 
     /** Keywords that describe this learning object */

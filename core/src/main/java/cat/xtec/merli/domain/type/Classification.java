@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.adapters.*;
 
 import cat.xtec.merli.domain.taxa.Entity;
 import cat.xtec.merli.domain.voc.Purpose;
-import cat.xtec.merli.domain.xml.TaxonAdapter;
+import cat.xtec.merli.xml.*;
 
 
 /**
@@ -22,7 +22,7 @@ public class Classification {
 
     /** Purpose of the classification */
     @XmlElement(name = "purpose")
-    @XmlJavaTypeAdapter(Purpose.Adapter.class)
+    @XmlJavaTypeAdapter(PurposeAdapter.class)
     protected Purpose purpose;
 
     /** Root entities on the classification */

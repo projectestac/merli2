@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
-import cat.xtec.merli.domain.xml.EnumAdapter;
+// import cat.xtec.merli.xml.EnumAdapter;
 
 
 /**
@@ -102,18 +102,13 @@ public enum Context implements EnumString {
      * {@inheritDoc}
      */
     public static Context fromValue(String value) {
-        for (Context object : Context.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
+        return EnumString.from(Context.class, value);
     }
 
 
     /** Vocabulary XML adapter for this enumeration */
-    public static class Adapter extends EnumAdapter<Context> {
-        public Adapter() { super(Context.class); }
-    }
+    // public static class Adapter extends EnumAdapter<Context> {
+    //     public Adapter() { super(Context.class); }
+    // }
 
 }

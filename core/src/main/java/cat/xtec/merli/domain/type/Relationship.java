@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.adapters.*;
 import cat.xtec.merli.domain.taxa.Entity;
 import cat.xtec.merli.domain.taxa.Relation;
 import cat.xtec.merli.domain.taxa.RelationType;
-import cat.xtec.merli.domain.xml.TargetAdapter;
+import cat.xtec.merli.xml.*;
 
 
 /**
@@ -43,7 +43,7 @@ public class Relationship {
      * @return              Relation type
      */
     @XmlElement(name = "kind")
-    @XmlJavaTypeAdapter(RelationType.Adapter.class)
+    @XmlJavaTypeAdapter(RelationTypeAdapter.class)
     public RelationType getType() {
         return (relation == null) ?
             null : relation.getType();

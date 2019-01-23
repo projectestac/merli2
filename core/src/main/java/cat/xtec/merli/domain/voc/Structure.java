@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
-import cat.xtec.merli.domain.xml.EnumAdapter;
+// import cat.xtec.merli.xml.EnumAdapter;
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
 
@@ -73,18 +73,13 @@ public enum Structure implements EnumString {
      * {@inheritDoc}
      */
     public static Structure fromValue(String value) {
-        for (Structure object : Structure.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
+        return EnumString.from(Structure.class, value);
     }
 
 
     /** Vocabulary XML adapter for this enumeration */
-    public static class Adapter extends EnumAdapter<Structure> {
-        public Adapter() { super(Structure.class); }
-    }
+    // public static class Adapter extends EnumAdapter<Structure> {
+    //     public Adapter() { super(Structure.class); }
+    // }
 
 }

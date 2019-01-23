@@ -1,4 +1,4 @@
-package cat.xtec.merli.domain.xml;
+package cat.xtec.merli.xml;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.*;

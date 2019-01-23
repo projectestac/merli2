@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
-import cat.xtec.merli.domain.xml.EnumAdapter;
+// import cat.xtec.merli.xml.EnumAdapter;
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
 
@@ -109,18 +109,13 @@ public enum Purpose implements EnumString {
      * {@inheritDoc}
      */
     public static Purpose fromValue(String value) {
-        for (Purpose object : Purpose.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
+        return EnumString.from(Purpose.class, value);
     }
 
 
     /** Vocabulary XML adapter for this enumeration */
-    public static class Adapter extends EnumAdapter<Purpose> {
-        public Adapter() { super(Purpose.class); }
-    }
+    // public static class Adapter extends EnumAdapter<Purpose> {
+    //     public Adapter() { super(Purpose.class); }
+    // }
 
 }

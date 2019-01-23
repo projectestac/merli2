@@ -34,4 +34,23 @@ public interface EnumString<E extends Enum<E>> {
      */
     public EnumSource source();
 
+
+    /**
+     * Returns an enumeration object given a value.
+     *
+     * @param type      Enumeration type
+     * @param value     Enumeration value
+     *
+     * @throws IllegalArgumentException
+     * @throws NullPointerException
+     */
+    public static <E extends EnumString> E from(Class<E> type, String value) {
+        for (E object : type.getEnumConstants()) {
+            if (value.equals(object.value()))
+                return object;
+        }
+
+        throw new IllegalArgumentException(value);
+    }
+
 }

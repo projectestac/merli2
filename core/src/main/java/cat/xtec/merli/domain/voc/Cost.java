@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
-import cat.xtec.merli.domain.xml.EnumAdapter;
+// import cat.xtec.merli.xml.EnumAdapter;
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
 
@@ -61,18 +61,13 @@ public enum Cost implements EnumString {
      * {@inheritDoc}
      */
     public static Cost fromValue(String value) {
-        for (Cost object : Cost.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
+        return EnumString.from(Cost.class, value);
     }
 
 
     /** Vocabulary XML adapter for this enumeration */
-    public static class Adapter extends EnumAdapter<Cost> {
-        public Adapter() { super(Cost.class); }
-    }
+    // public static class Adapter extends EnumAdapter<Cost> {
+    //     public Adapter() { super(Cost.class); }
+    // }
 
 }

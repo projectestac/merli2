@@ -6,13 +6,13 @@ import java.util.List;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.*;
 
-import cat.xtec.merli.bind.DucVocabulary;
 import cat.xtec.merli.domain.type.LangString;
 import cat.xtec.merli.domain.voc.Context;
 import cat.xtec.merli.domain.voc.Language;
 import cat.xtec.merli.domain.voc.UserRole;
 import cat.xtec.merli.domain.voc.ResourceType;
 import cat.xtec.merli.bind.*;
+import cat.xtec.merli.xml.*;
 
 
 /**
@@ -40,19 +40,19 @@ public class EducationalDetails implements Serializable {
     /** Normal users of the learning object */
     @DucProperty(DucVocabulary.USER_ROLE)
     @XmlElement(name = "intendedEndUserRole")
-    @XmlJavaTypeAdapter(UserRole.Adapter.class)
+    @XmlJavaTypeAdapter(UserRoleAdapter.class)
     protected List<UserRole> userRoles;
 
     /** Typical learning environment */
     @DucProperty(DucVocabulary.CONTEXT)
     @XmlElement(name = "context")
-    @XmlJavaTypeAdapter(Context.Adapter.class)
+    @XmlJavaTypeAdapter(ContextAdapter.class)
     protected List<Context> contexts;
 
     /** Specific kinds of resources */
     @DucProperty(DucVocabulary.LEARNING_TYPE)
     @XmlElement(name = "learningResourceType")
-    @XmlJavaTypeAdapter(ResourceType.Adapter.class)
+    @XmlJavaTypeAdapter(ResourceTypeAdapter.class)
     protected List<ResourceType> resourceTypes;
 
 

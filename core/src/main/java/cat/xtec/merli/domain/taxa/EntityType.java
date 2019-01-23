@@ -1,5 +1,6 @@
 package cat.xtec.merli.domain.taxa;
 
+import java.util.Arrays;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
@@ -127,15 +128,23 @@ public enum EntityType implements EnumString {
 
 
     /**
+     * Returns the enumeration constants for the given group.
+     *
+     * @param group     Enumeration group class
+     * @return          Enumeration constants array
+     */
+    public static <T extends Entity> EntityType[] valuesFor(Class<T> group) {
+        return Arrays.stream(EntityType.values())
+            .filter(t -> group.equals(t.group()))
+            .toArray(EntityType[]::new);
+    }
+
+
+    /**
      * {@inheritDoc}
      */
     public static EntityType fromValue(String value) {
-        for (EntityType object : EntityType.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
+        return EnumString.from(EntityType.class, value);
     }
 
 }

@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
-import cat.xtec.merli.domain.xml.EnumAdapter;
+// import cat.xtec.merli.xml.EnumAdapter;
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
 
@@ -117,18 +117,13 @@ public enum ContributorRole implements EnumString {
      * {@inheritDoc}
      */
     public static ContributorRole fromValue(String value) {
-        for (ContributorRole object : ContributorRole.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
+        return EnumString.from(ContributorRole.class, value);
     }
 
 
     /** Vocabulary XML adapter for this enumeration */
-    public static class Adapter extends EnumAdapter<ContributorRole> {
-        public Adapter() { super(ContributorRole.class); }
-    }
+    // public static class Adapter extends EnumAdapter<ContributorRole> {
+    //     public Adapter() { super(ContributorRole.class); }
+    // }
 
 }

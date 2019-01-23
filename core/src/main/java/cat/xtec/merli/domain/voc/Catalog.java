@@ -79,12 +79,7 @@ public enum Catalog implements EnumString {
      * {@inheritDoc}
      */
     public static Catalog fromValue(String value) {
-        for (Catalog object : Catalog.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
+        return EnumString.from(Catalog.class, value);
     }
 
 }

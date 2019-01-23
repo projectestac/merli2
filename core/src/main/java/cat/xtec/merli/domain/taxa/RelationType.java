@@ -1,5 +1,6 @@
 package cat.xtec.merli.domain.taxa;
 
+import java.util.Arrays;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
@@ -7,7 +8,7 @@ import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
 import cat.xtec.merli.domain.lom.Resource;
 import cat.xtec.merli.domain.taxa.Term;
-import cat.xtec.merli.domain.xml.EnumAdapter;
+// import cat.xtec.merli.xml.EnumAdapter;
 import cat.xtec.merli.bind.*;
 
 
@@ -164,18 +165,26 @@ public enum RelationType implements EnumString {
      * {@inheritDoc}
      */
     public static RelationType fromValue(String value) {
-        for (RelationType object : RelationType.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
+        return EnumString.from(RelationType.class, value);
+    }
 
-        throw new IllegalArgumentException(value);
+
+    /**
+     * Returns the enumeration constants for the given group.
+     *
+     * @param group     Enumeration group class
+     * @return          Enumeration constants array
+     */
+    public static <T extends Entity> RelationType[] valuesFor(Class<T> group) {
+        return Arrays.stream(RelationType.values())
+            .filter(t -> group.equals(t.group()))
+            .toArray(RelationType[]::new);
     }
 
 
     /** Vocabulary XML adapter for this enumeration */
-    public static class Adapter extends EnumAdapter<RelationType> {
-        public Adapter() { super(RelationType.class); }
-    }
+    // public static class Adapter extends EnumAdapter<RelationType> {
+    //     public Adapter() { super(RelationType.class); }
+    // }
 
 }

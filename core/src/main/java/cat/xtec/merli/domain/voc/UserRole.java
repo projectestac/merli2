@@ -4,7 +4,6 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
-import cat.xtec.merli.domain.xml.EnumAdapter;
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
 
@@ -69,18 +68,7 @@ public enum UserRole implements EnumString {
      * {@inheritDoc}
      */
     public static UserRole fromValue(String value) {
-        for (UserRole object : UserRole.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
-    }
-
-
-    /** Vocabulary XML adapter for this enumeration */
-    public static class Adapter extends EnumAdapter<UserRole> {
-        public Adapter() { super(UserRole.class); }
+        return EnumString.from(UserRole.class, value);
     }
 
 }

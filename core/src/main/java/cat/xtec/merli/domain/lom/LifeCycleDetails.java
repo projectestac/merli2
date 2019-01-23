@@ -9,8 +9,8 @@ import javax.xml.bind.annotation.adapters.*;
 import cat.xtec.merli.domain.type.Contribution;
 import cat.xtec.merli.domain.type.LangString;
 import cat.xtec.merli.domain.voc.Status;
-import cat.xtec.merli.bind.DucVocabulary;
 import cat.xtec.merli.bind.*;
+import cat.xtec.merli.xml.*;
 
 
 /**
@@ -27,7 +27,7 @@ public class LifeCycleDetails implements Serializable {
     /** State or condition of the learning object */
     @DucProperty(DucVocabulary.STATUS)
     @XmlElement(name = "status")
-    @XmlJavaTypeAdapter(Status.Adapter.class)
+    @XmlJavaTypeAdapter(StatusAdapter.class)
     protected Status status;
 
     /** Edition of the learning object */

@@ -787,12 +787,7 @@ public enum Language implements EnumString {
      * {@inheritDoc}
      */
     public static Language fromValue(String value) {
-        for (Language object : Language.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
+        return EnumString.from(Language.class, value);
     }
 
 }

@@ -29,7 +29,7 @@ public class StringDeserializer extends JsonDeserializer<List<LangString>> {
         throws IOException, JsonProcessingException {
         JsonNode node = parser.getCodec().readTree(parser);
         Iterator<String> tags = node.fieldNames();
-        List results = new ArrayList();
+        List<LangString> results = new ArrayList<>();
 
         while (tags.hasNext()) {
             String tag = tags.next();

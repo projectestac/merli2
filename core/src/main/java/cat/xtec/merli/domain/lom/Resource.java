@@ -12,10 +12,8 @@ import cat.xtec.merli.domain.taxa.EntityType;
 import cat.xtec.merli.domain.taxa.Relation;
 import cat.xtec.merli.domain.type.Classification;
 import cat.xtec.merli.domain.type.LangString;
-import cat.xtec.merli.domain.voc.Purpose;
-import cat.xtec.merli.domain.xml.RelationAdapter;
-import cat.xtec.merli.bind.DucVocabulary;
 import cat.xtec.merli.bind.*;
+import cat.xtec.merli.xml.*;
 
 
 /**

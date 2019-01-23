@@ -1,4 +1,4 @@
-package cat.xtec.merli.domain.xml;
+package cat.xtec.merli.xml;
 
 import java.lang.reflect.Field;
 import javax.xml.bind.annotation.XmlEnumValue;

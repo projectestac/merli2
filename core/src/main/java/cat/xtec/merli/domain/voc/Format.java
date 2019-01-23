@@ -220,12 +220,7 @@ public enum Format implements EnumString {
      * {@inheritDoc}
      */
     public static Format fromValue(String value) {
-        for (Format object : Format.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
+        return EnumString.from(Format.class, value);
     }
 
 }

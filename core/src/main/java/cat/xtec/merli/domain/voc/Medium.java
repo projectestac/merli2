@@ -144,12 +144,7 @@ public enum Medium implements EnumString {
      * {@inheritDoc}
      */
     public static Medium fromValue(String value) {
-        for (Medium object : Medium.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
+        return EnumString.from(Medium.class, value);
     }
 
 }

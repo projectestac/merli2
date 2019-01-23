@@ -67,12 +67,7 @@ public enum Knowledge implements EnumString {
      * {@inheritDoc}
      */
     public static Knowledge fromValue(String value) {
-        for (Knowledge object : Knowledge.values()) {
-            if (value.equals(object.value()))
-                return object;
-        }
-
-        throw new IllegalArgumentException(value);
+        return EnumString.from(Knowledge.class, value);
     }
 
 }

@@ -5,9 +5,9 @@ import java.util.Date;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.*;
 
-import cat.xtec.merli.bind.DucVocabulary;
 import cat.xtec.merli.domain.voc.ContributorRole;
 import cat.xtec.merli.bind.*;
+import cat.xtec.merli.xml.*;
 
 
 /**
@@ -22,7 +22,7 @@ public class Contribution implements Serializable {
 
     /** Type of contribution */
     @XmlElement(name = "role", required = true)
-    @XmlJavaTypeAdapter(ContributorRole.Adapter.class)
+    @XmlJavaTypeAdapter(ContributorRoleAdapter.class)
     protected ContributorRole role;
 
     /** List of contributors */
