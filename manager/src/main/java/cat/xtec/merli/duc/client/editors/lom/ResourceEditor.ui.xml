@@ -1,0 +1,76 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  xmlns:duc="urn:import:cat.xtec.merli.duc.client.editors"
+  xmlns:voc="urn:import:cat.xtec.merli.duc.client.editors.voc"
+  xmlns:lom="urn:import:cat.xtec.merli.duc.client.editors.lom"
+  xmlns:taxa="urn:import:cat.xtec.merli.duc.client.editors.taxa"
+  xmlns:lists="urn:import:cat.xtec.merli.duc.client.editors.lists"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <!-- Editor panel -->
+
+  <g:HTMLPanel>
+
+    <g:DisclosurePanel open="true">
+      <g:header>
+        <ui:msg>General information</ui:msg>
+      </g:header>
+      <lom:GeneralDetailsEditor ui:field="generalDetails"/>
+    </g:DisclosurePanel>
+
+    <g:DisclosurePanel open="true">
+      <g:header>
+        <ui:msg>History and current state</ui:msg>
+      </g:header>
+      <lom:LifeCycleDetailsEditor ui:field="lifeCycleDetails"/>
+    </g:DisclosurePanel>
+
+    <g:DisclosurePanel open="true">
+      <g:header>
+        <ui:msg>Technical characteristics</ui:msg>
+      </g:header>
+      <lom:TechnicalDetailsEditor ui:field="technicalDetails"/>
+    </g:DisclosurePanel>
+
+    <g:DisclosurePanel open="true">
+      <g:header>
+        <ui:msg>Pedagogical and educational characteristics</ui:msg>
+      </g:header>
+      <lom:EducationalDetailsEditor ui:field="educationalDetails"/>
+    </g:DisclosurePanel>
+
+    <g:DisclosurePanel open="true">
+      <g:header>
+        <ui:msg>Conditions of use</ui:msg>
+      </g:header>
+      <lom:RightsDetailsEditor ui:field="rightsDetails"/>
+    </g:DisclosurePanel>
+
+    <g:DisclosurePanel open="true">
+      <g:header>
+        <ui:msg>Relations with other resources</ui:msg>
+      </g:header>
+      <g:HTMLPanel>
+        <dw:LabelPanel>
+          <g:Label>
+            <ui:msg>Categories where this object belongs</ui:msg>
+          </g:Label>
+          <lists:CategoryListEditor ui:field="parents"/>
+        </dw:LabelPanel>
+        <dw:LabelPanel>
+          <g:Label>
+            <ui:msg>Relations with other resources</ui:msg>
+          </g:Label>
+          <lists:ResourceRelationListEditor ui:field="relations"/>
+        </dw:LabelPanel>
+      </g:HTMLPanel>
+    </g:DisclosurePanel>
+  </g:HTMLPanel>
+
+</ui:UiBinder>

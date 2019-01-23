@@ -1,0 +1,97 @@
+/* Toolbar */
+
+.duc-ToolBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(250, 250, 250);
+  border-bottom: 1px dotted rgb(224, 224, 224);
+  padding: .1875rem;
+}
+
+/* Toolbar buttons with icons */
+
+.duc-ToolBar span {
+  display: none;
+}
+
+.duc-ToolBar span.btn-main {
+  display: inline-block;
+}
+
+.duc-ToolBar .gwt-Button span:not(:first-child) {
+  margin-left: .12rem;
+}
+
+/* Toolbar items */
+
+.duc-FlexSpace {
+  flex-grow: 1;
+  min-width: 1rem;
+}
+
+.duc-ToolBar .duc-Indicator {
+  padding: .7135rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.duc-ToolBar .duc-EntityLabel {
+  font-style: normal;
+  font-size: .75rem;
+  margin: .0625rem .1825rem;
+}
+
+.duc-ToolBar .gwt-Label,
+.duc-ToolBar .duc-EntityLabel {
+  font-weight: 400;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.duc-ToolBar .gwt-Button,
+.duc-ToolBar .gwt-Label,
+.duc-ToolBar .gwt-MenuItem {
+  cursor: default;
+  font-size: .75rem;
+  margin: .0625rem;
+  padding: .12rem .375rem;
+  white-space: nowrap;
+}
+
+.duc-ToolBar .gwt-Button,
+.duc-ToolBar .gwt-MenuItem {
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 2px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.duc-ToolBar .gwt-Button .fas,
+.duc-ToolBar .gwt-MenuItem .fas {
+  min-width: .75rem;
+}
+
+.duc-ToolBar .gwt-Button:hover:enabled {
+  color: rgb(255, 255, 255);
+  background-color: rgb(112, 112, 112);
+}
+
+.duc-ToolBar .gwt-MenuItem-selected {
+  color: inherit;
+  outline: 2px solid rgb(148, 192, 237);
+  outline-offset: -1px;
+}
+
+.duc-ToolBar .gwt-MenuItem-selected:hover {
+  outline: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(112, 112, 112);
+}
+
+.duc-ToolBar .gwt-Button[disabled] {
+  opacity: .5;
+}

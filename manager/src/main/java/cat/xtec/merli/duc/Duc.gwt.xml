@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module>
+  <!-- Source paths -->
+
+  <source path="client"/>
+
+  <!-- Module imports -->
+
+  <inherits name="com.google.gwt.editor.Editor"/>
+  <inherits name="com.google.gwt.i18n.I18N"/>
+  <inherits name="com.google.gwt.logging.Logging"/>
+  <inherits name="com.google.gwt.user.User"/>
+
+  <inherits name="cat.xtec.merli.Domain"/>
+  <inherits name="cat.xtec.merli.i18n.I18n"/>
+  <inherits name="edu.stanford.bmir.protege.web.WebProtege"/>
+
+  <!-- Global module styles -->
+
+  <stylesheet src="Duc.css"/>
+  <stylesheet src="Portlet.css"/>
+  <stylesheet src="Sprites.css"/>
+  <stylesheet src="ToolBar.css"/>
+
+  <!-- Client entry point -->
+
+  <entry-point class='cat.xtec.merli.duc.client.DucEntryPoint'/>
+</module>

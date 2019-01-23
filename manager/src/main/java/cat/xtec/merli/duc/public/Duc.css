@@ -1,0 +1,25 @@
+/* Base styles */
+
+*[hidden] {
+  display: none !important;
+}
+
+::-webkit-input-placeholder {
+  opacity: 1;
+  color: rgb(155, 155, 155);
+}
+
+::-moz-placeholder {
+  opacity: 1;
+  color: rgb(155, 155, 155);
+}
+
+:-ms-input-placeholder {
+  opacity: 1;
+  color: rgb(155, 155, 155);
+}
+
+:-moz-placeholder {
+  opacity: 1;
+  color: rgb(155, 155, 155);
+}

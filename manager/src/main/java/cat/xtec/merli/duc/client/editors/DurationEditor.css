@@ -1,0 +1,38 @@
+@external .input-wrapper;
+@external .gwt-Label;
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  height: 1.563rem;
+  line-height: 1.2rem;
+  padding: 2px;
+  outline: rgb(148, 192, 237) solid 2px;
+  outline-offset: -1px;
+}
+
+.input-wrapper .gwt-Label {
+  display: inline;
+  width: auto;
+  font-weight: 400;
+  margin: 0;
+}
+
+.input-wrapper input {
+  border: 0;
+  margin-left: .4rem;
+  margin-right: .25rem;
+  padding: 0;
+  text-align: right;
+  width: 2rem;
+}
+
+.input-wrapper input:active,
+.input-wrapper input:focus {
+  border: none;
+  outline: 0;
+}
+
+.input-wrapper input:first-child {
+  margin-left: 0;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <!-- Editor panel -->
+
+  <g:HTMLPanel>
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>User identifier</ui:msg>
+      </g:Label>
+       <dw:InputBox ui:field="userId"/>
+    </dw:LabelPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Company or individual name</ui:msg>
+      </g:Label>
+       <dw:InputBox ui:field="name"/>
+    </dw:LabelPanel>
+  </g:HTMLPanel>
+
+</ui:UiBinder>

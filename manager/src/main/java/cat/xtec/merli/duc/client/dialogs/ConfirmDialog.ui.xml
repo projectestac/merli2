@@ -1,0 +1,30 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <g:DialogBox autoHide="false" modal="true">
+    <g:caption>
+      <ui:msg>Delete entity</ui:msg>
+    </g:caption>
+    <g:HTMLPanel>
+      <ui:msg>Are you sure you want to delete «xxx»?</ui:msg>
+
+      <g:FlowPanel> <!-- style="display: flex; padding-top: 1rem;" -->
+        <dw:FlexSpace/>
+        <g:Button ui:field='cancel'>
+          <ui:msg>Cancel</ui:msg>
+        </g:Button>
+        <g:Button ui:field='confirm'>
+          <ui:msg>Delete</ui:msg>
+        </g:Button>
+      </g:FlowPanel>
+    </g:HTMLPanel>
+  </g:DialogBox>
+
+</ui:UiBinder>

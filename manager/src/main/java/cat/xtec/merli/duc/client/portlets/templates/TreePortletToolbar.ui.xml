@@ -1,0 +1,48 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <dw:ToolBar>
+
+    <!-- Primary actions -->
+
+    <g:Button ui:field="create" title="Create">
+      <i class="fas fa-plus"/>
+      <span class="btn-main">
+        <ui:msg>Create</ui:msg>
+      </span>
+      <ui:attribute name="title"/>
+    </g:Button>
+    <g:Button ui:field="search" title="Search">
+      <i class="fas fa-search"/>
+      <span><ui:msg>Search</ui:msg></span>
+      <ui:attribute name="title"/>
+    </g:Button>
+
+    <!-- Actions spacer -->
+
+    <dw:FlexSpace/>
+
+    <!-- Secondary actions -->
+
+    <g:MenuBar>
+      <g:MenuItem title="Other actions">
+        <i class="fas fa-ellipsis-v"/>
+        <ui:attribute name="title"/>
+        <g:MenuBar vertical="true">
+          <g:MenuItem ui:field="refresh">
+            <ui:msg>Refresh view</ui:msg>
+          </g:MenuItem>
+        </g:MenuBar>
+      </g:MenuItem>
+    </g:MenuBar>
+
+  </dw:ToolBar>
+
+</ui:UiBinder>

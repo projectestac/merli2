@@ -1,0 +1,306 @@
+/* Portlet interface */
+
+.duc-Portlet {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Form controls */
+
+.duc-Form {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding: 1.25rem;
+}
+
+.duc-Form * {
+  box-sizing: border-box;
+}
+
+.duc-Form .gwt-DisclosurePanel {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.duc-Form .gwt-DisclosurePanel .header {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ccc;
+  padding: 2px 0;
+}
+
+.duc-Form .gwt-DisclosurePanel .header * {
+  font-size: 14px;
+}
+
+.duc-Form .gwt-DisclosurePanel .header table {
+  border-collapse: collapse;
+}
+
+.duc-Form .duc-Legend,
+.duc-Form .gwt-Label {
+  display: block;
+  width: 100%;
+  font-weight: 600;
+  margin-bottom: .5rem;
+  padding: 0;
+  cursor: default;
+}
+
+.duc-Form .gwt-TextArea {
+  display: block;
+  width: 100%;
+  padding: 3px;
+}
+
+.duc-Form .gwt-TextArea {
+  min-height: 108px;
+}
+
+.duc-Form [disabled] {
+  background-color: rgba(255, 195, 130, .2);
+}
+
+/* Panels */
+
+.gwt-DisclosurePanel .content {
+  padding: 3px;
+}
+
+/* Custom form controls */
+
+.duc-FieldsetPanel,
+.duc-LabelPanel {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.duc-FieldsetPanel:last-child,
+.duc-LabelPanel:last-child {
+  margin-bottom: 0;
+}
+
+.duc-FieldsetPanel {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0;
+}
+
+.duc-InputBox,
+.duc-SelectBox {
+  display: block;
+  width: 100%;
+  line-height: 1.2rem;
+  height: 1.563rem;
+  padding: 2px;
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.15);
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  box-shadow: none;
+}
+
+/* Selectbox editors */
+
+.duc-SelectBox {
+  padding: 3px 1rem 3px 3px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.duc-SelectBox option {
+  padding: 0;
+}
+
+.duc-SelectBoxWrapper {
+  position: relative;
+}
+
+.duc-SelectBoxWrapper:after {
+  content: "\25BE";
+  position: absolute;
+  top: 0;
+  right: 0.4rem;
+  vertical-align: middle;
+  line-height: 24px;
+  pointer-events: none;
+}
+
+/* Checkbox and radiobutton editors */
+
+.duc-CheckBoxEditor,
+.duc-RadioButtonEditor {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  max-height: 145px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.duc-CheckBoxEditor > .gwt-CheckBox,
+.duc-RadioButtonEditor > .gwt-RadioButton {
+  display: flex;
+  align-items: center;
+  padding: 3px 0;
+  min-width: 33%;
+  max-width: 33%;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.duc-CheckBoxEditor > .gwt-CheckBox label,
+.duc-RadioButtonEditor > .gwt-RadioButton label {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  padding-left: 10px;
+  width: 100%;
+}
+
+.duc-CheckBoxEditor > .gwt-CheckBox input,
+.duc-RadioButtonEditor > .gwt-RadioButton input {
+  margin: 3px;
+  padding: 0;
+}
+
+/* Entity label representation */
+
+.duc-EntityLabel {
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 22px;
+  min-height: .9375rem;
+}
+
+.duc-EntityLabel[lang] {
+  font-style: italic;
+}
+
+/* Entity tree widgets */
+
+.duc-EntityTree {
+  padding: .25rem 0;
+}
+
+.duc-EntityTree .gwt-TreeItem,
+.duc-EntityTree .duc-EntityLabel {
+  cursor: pointer;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  width: auto;
+}
+
+.duc-EntityTree table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.duc-EntityTree td {
+  padding: 0;
+}
+
+.duc-EntityTree td:first-child {
+  vertical-align: middle;
+  text-align: center;
+  width: 23px;
+}
+
+.duc-EntityTreeItem {
+  position: relative;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.duc-EntityTree .duc-EntityLabel {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: 1px solid transparent;
+}
+
+.duc-EntityTree .gwt-TreeItem-selected .duc-EntityLabel {
+  border: 1px dotted black;
+  background-color: rgba(0, 0, 0, .05);
+}
+
+/* Entity suggest box widgets */
+
+.duc-EntityBoxPopup {
+  border: 1px solid #ccc;
+  background-color: white;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.duc-EntityBoxPopup .item {
+  cursor: pointer;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  width: auto;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 10px;
+  border: 1px dotted transparent;
+}
+
+.duc-EntityBoxPopup .item-selected {
+  border: 1px dotted black;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.duc-EntityBoxPopup .item > span {
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 22px;
+}
+
+.duc-EntityBoxPopup .suggestPopupContent {
+  overflow-x: hidden;
+}
+
+.duc-EntityBoxPopup .suggestPopupContent table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* Custom placeholder texts */
+
+.duc-SelectBoxWrapper.duc-EMPTY::before {
+  content: attr(data-placeholder);
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgb(155, 155, 155);
+  line-height: 24px;
+  padding-left: 3px;
+  pointer-events: none;
+  vertical-align: middle;
+}
+
+/* Animations to delay the busy indicator while keeping
+   portlets blocked from user interactions */
+
+@keyframes fade-in {
+    0%  { opacity: 0.0; }
+   25%  { opacity: 0.0; }
+   50%  { opacity: 0.5; }
+  100%  { opacity: 1.0; }
+}
+
+.duc-PortletContainer.duc-STATE_WORKING .busy-indicator {
+  opacity: 1;
+  animation-name: fade-in;
+  animation-duration: 3s;
+  transform: scale(0.5);
+}

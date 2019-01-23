@@ -1,0 +1,41 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:date="urn:import:com.google.gwt.user.datepicker.client"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  xmlns:duc="urn:import:cat.xtec.merli.duc.client.editors"
+  xmlns:voc="urn:import:cat.xtec.merli.duc.client.editors.voc"
+  xmlns:lom="urn:import:cat.xtec.merli.duc.client.editors.lom"
+  xmlns:taxa="urn:import:cat.xtec.merli.duc.client.editors.taxa"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <!-- Editor panel -->
+
+  <g:HTMLPanel>
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Type of contribution</ui:msg>
+      </g:Label>
+      <voc:ContributorRoleEditor ui:field="role"/>
+    </dw:LabelPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Date of the contribution</ui:msg>
+      </g:Label>
+      <date:DateBox ui:field="date"/>
+    </dw:LabelPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>List of contributors</ui:msg>
+      </g:Label>
+      <duc:ContactEditor ui:field="entity"/>
+    </dw:LabelPanel>
+  </g:HTMLPanel>
+
+</ui:UiBinder>

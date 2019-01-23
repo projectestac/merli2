@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  xmlns:duc="urn:import:cat.xtec.merli.duc.client.editors"
+  xmlns:voc="urn:import:cat.xtec.merli.duc.client.editors.voc"
+  xmlns:lom="urn:import:cat.xtec.merli.duc.client.editors.lom"
+  xmlns:taxa="urn:import:cat.xtec.merli.duc.client.editors.taxa"
+  xmlns:type="urn:import:cat.xtec.merli.duc.client.editors.type"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <!-- Custom styles -->
+
+  <ui:style src="RelationEditor.css"/>
+
+  <!-- Editor panel -->
+
+  <g:HTMLPanel>
+    <type:RelationTypeEditor ui:field="type"/>
+    <taxa:TargetEditor ui:field="target"/>
+  </g:HTMLPanel>
+
+</ui:UiBinder>

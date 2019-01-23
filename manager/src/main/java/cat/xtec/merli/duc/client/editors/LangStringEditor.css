@@ -1,0 +1,31 @@
+@external .duc-LangStringEditor;
+@external .duc-EnumLabel;
+@external .duc-InputBox;
+@external .duc-LabelPanel;
+@external .gwt-Label;
+
+.duc-LangStringEditor .duc-LabelPanel {
+  display: block;
+  position: relative;
+  margin: 0;
+}
+
+.duc-LangStringEditor .gwt-Label.duc-EnumLabel {
+  position: absolute;
+  display: inline-block;
+  pointer-events: none;
+  color: rgb(102, 102, 102);
+  border-radius: 100%;
+  font-size: .7rem;
+  font-weight: 700;
+  text-align: center;
+  width: 18px !important;
+  height: 18px !important;
+  line-height: 1rem;
+  margin: .1875rem;
+  padding: 0;
+}
+
+.duc-LangStringEditor .duc-InputBox {
+  padding-left: 28px;
+}

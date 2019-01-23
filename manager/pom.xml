@@ -45,6 +45,7 @@
     <version.gwt>2.8.2</version.gwt>
     <version.guava>26.0-jre</version.guava>
     <data.directory>/data/duc</data.directory>
+    <src.core>src/core/src/main</src.core>
   </properties>
 
   <!-- External repositories ============================================ -->
@@ -69,7 +70,11 @@
 
     <resources>
       <resource>
-        <directory>src/core/src/main/resources</directory>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>${src.core}/resources</directory>
         <filtering>true</filtering>
       </resource>
     </resources>
@@ -86,14 +91,13 @@
               <goal>war</goal>
             </goals>
             <configuration>
-              <filteringDeploymentDescriptors>
-                true
-              </filteringDeploymentDescriptors>
+              <classifier>${env}</classifier>
+              <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
             </configuration>
           </execution>
         </executions>
         <configuration>
-           <warSourceDirectory>src/core/src/main/webapp</warSourceDirectory>
+           <warSourceDirectory>${src.core}/webapp</warSourceDirectory>
         </configuration>
       </plugin>
 
@@ -110,7 +114,8 @@
             </goals>
             <configuration>
               <sources>
-                <source>src/core/src/main/java</source>
+                <source>src/main/java</source>
+                <source>${src.core}/java</source>
               </sources>
             </configuration>
           </execution>
@@ -118,9 +123,9 @@
       </plugin>
 
       <plugin>
-        <groupId>edu.stanford.protege</groupId>
-        <artifactId>webprotege-maven-plugin</artifactId>
-        <version>1.1.0</version>
+        <groupId>cat.xtec.merli</groupId>
+        <artifactId>merli-maven-webprotege</artifactId>
+        <version>${revision}</version>
         <executions>
           <execution>
             <phase>generate-sources</phase>
@@ -136,7 +141,7 @@
         <version>3.0.0</version>
         <configuration>
           <descriptors>
-            <descriptor>src/core/src/main/assembly/webprotege-cli.xml</descriptor>
+            <descriptor>${src.core}/assembly/webprotege-cli.xml</descriptor>
           </descriptors>
           <archive>
             <manifest>
@@ -173,7 +178,7 @@
           <extraJvmArgs>-Xms1G -Xmx4G</extraJvmArgs>
           <localWorkers>1</localWorkers>
           <modules>
-            <module>cat.xtec.merli.Main</module>
+            <module>module-${env}</module>
           </modules>
         </configuration>
       </plugin>
@@ -195,42 +200,6 @@
     </plugins>
   </build>
 
-  <!-- Build profiles =================================================== -->
-
-  <profiles>
-    <profile>
-      <id>dev</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>gwt-maven-plugin</artifactId>
-            <version>${version.gwt}</version>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>compile</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <draftcompile>true</draftcompile>
-              <modules>
-                <module>cat.xtec.merli.Main-dev</module>
-              </modules>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-      <properties>
-        <env>dev</env>
-      </properties>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-    </profile>
-  </profiles>
-
   <!-- Module dependencies ============================================== -->
 
   <dependencies>
@@ -241,6 +210,13 @@
       <groupId>cat.xtec.merli.core</groupId>
       <artifactId>merli-core</artifactId>
       <version>${revision}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>cat.xtec.merli.core</groupId>
+      <artifactId>merli-core</artifactId>
+      <version>${revision}</version>
+      <classifier>sources</classifier>
     </dependency>
 
     <!-- Google Web Toolkit (GWT) -->
@@ -285,13 +261,13 @@
     <dependency>
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
-      <version>1.1.0.Final</version>
+      <version>1.0.0.GA</version>
     </dependency>
 
     <dependency>
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
-      <version>1.1.0.Final</version>
+      <version>1.0.0.GA</version>
       <classifier>sources</classifier>
     </dependency>
 

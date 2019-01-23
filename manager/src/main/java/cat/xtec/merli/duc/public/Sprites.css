@@ -1,0 +1,67 @@
+/* General entity types */
+
+.duc-ROOT_CONCEPT {
+  background-image: url('icons/ROOT_CONCEPT.svg');
+}
+
+.duc-LEARNING_OBJECT {
+  background-image: url('icons/LEARNING_OBJECT.svg');
+}
+
+/* Term entity types */
+
+.duc-FACET_INDICATOR {
+  background-image: url('icons/FACET_INDICATOR.svg');
+}
+
+.duc-PREFERRED_TERM {
+  background-image: url('icons/PREFERRED_TERM.svg');
+}
+
+.duc-NON_PREFERRED_TERM {
+  background-image: url('icons/NON_PREFERRED_TERM.svg');
+}
+
+/* Category entity types */
+
+.duc-ACADEMIC_YEAR {
+  background-image: url('icons/ACADEMIC_YEAR.svg');
+}
+
+.duc-EDUCATION_PHASE {
+  background-image: url('icons/EDUCATION_PHASE.svg');
+}
+
+.duc-EDUCATION_STAGE {
+  background-image: url('icons/EDUCATION_STAGE.svg');
+}
+
+.duc-FIELD_OF_STUDY {
+  background-image: url('icons/FIELD_OF_STUDY.svg');
+}
+
+.duc-PROGRAMME_OF_STUDY {
+  background-image: url('icons/PROGRAMME_OF_STUDY.svg');
+}
+
+.duc-TOPIC_OF_STUDY {
+  background-image: url('icons/TOPIC_OF_STUDY.svg');
+}
+
+/* Generic types */
+
+.duc-ANY_TYPE {
+  background-image: url('icons/ANY_TYPE.svg');
+}
+
+.duc-RELATION {
+  background-image: url('icons/RELATION.svg');
+}
+
+.duc-EDIT_BOX {
+  background-image: url('icons/EDIT_BOX.svg') !important;
+}
+
+.duc-DIRTY_BOX {
+  background-image: url('icons/DIRTY_BOX.svg') !important;
+}

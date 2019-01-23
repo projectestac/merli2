@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  xmlns:duc="urn:import:cat.xtec.merli.duc.client.editors"
+  xmlns:voc="urn:import:cat.xtec.merli.duc.client.editors.voc"
+  xmlns:lom="urn:import:cat.xtec.merli.duc.client.editors.lom"
+  xmlns:taxa="urn:import:cat.xtec.merli.duc.client.editors.taxa"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <!-- Editor panel -->
+
+  <g:HTMLPanel>
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Whether use of the resource requires payment</ui:msg>
+      </g:Label>
+      <voc:CostEditor ui:field="cost"/>
+    </dw:LabelPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Whether copyright or other restrictions apply</ui:msg>
+      </g:Label>
+      <voc:CopyrightEditor ui:field="copyright"/>
+    </dw:LabelPanel>
+
+    <!--
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Comments on the conditions of use of the resource</ui:msg>
+      </g:Label>
+      <dw:TextAreaBox ui:field="description" placeholder="Comments on the conditions of use of the resource">
+        <ui:attribute name="placeholder"/>
+      </dw:TextAreaBox>
+    </dw:LabelPanel>
+    -->
+  </g:HTMLPanel>
+
+</ui:UiBinder>

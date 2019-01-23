@@ -1,0 +1,56 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  xmlns:duc="urn:import:cat.xtec.merli.duc.client.editors"
+  xmlns:voc="urn:import:cat.xtec.merli.duc.client.editors.voc"
+  xmlns:lom="urn:import:cat.xtec.merli.duc.client.editors.lom"
+  xmlns:taxa="urn:import:cat.xtec.merli.duc.client.editors.taxa"
+  xmlns:lists="urn:import:cat.xtec.merli.duc.client.editors.lists"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <!-- Editor panel -->
+
+  <g:HTMLPanel>
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Location of the learning object</ui:msg>
+      </g:Label>
+      <duc:URIEditor ui:field="location" placeholder="Web address of the learning object">
+        <ui:attribute name="placeholder"/>
+      </duc:URIEditor>
+    </dw:LabelPanel>
+
+    <dw:FieldsetPanel>
+      <g:Label>
+        <ui:msg>Formats and media types</ui:msg>
+      </g:Label>
+      <lists:FormatListEditor ui:field="formats"/>
+    </dw:FieldsetPanel>
+
+    <!--
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Duration of the resource</ui:msg>
+      </g:Label>
+      <duc:DurationEditor ui:field="duration"/>
+    </dw:LabelPanel>
+    -->
+
+    <!--
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Physical characteristics</ui:msg>
+      </g:Label>
+      <dw:TextAreaBox ui:field="medium" placeholder="Physical characteristics of the learning object">
+        <ui:attribute name="placeholder"/>
+      </dw:TextAreaBox>
+    </dw:LabelPanel>
+    -->
+  </g:HTMLPanel>
+
+</ui:UiBinder>

@@ -1,0 +1,58 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  xmlns:duc="urn:import:cat.xtec.merli.duc.client.editors"
+  xmlns:voc="urn:import:cat.xtec.merli.duc.client.editors.voc"
+  xmlns:lom="urn:import:cat.xtec.merli.duc.client.editors.lom"
+  xmlns:taxa="urn:import:cat.xtec.merli.duc.client.editors.taxa"
+  xmlns:type="urn:import:cat.xtec.merli.duc.client.editors.type"
+  xmlns:lists="urn:import:cat.xtec.merli.duc.client.editors.lists"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <!-- Editor panel -->
+
+  <g:HTMLPanel>
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Term type</ui:msg>
+      </g:Label>
+      <type:TermTypeEditor ui:field="type"/>
+    </dw:LabelPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Label for the term</ui:msg>
+      </g:Label>
+      <lists:LangStringListEditor ui:field="labels"/>
+    </dw:LabelPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Meaning and usage</ui:msg>
+      </g:Label>
+      <dw:TextAreaBox ui:field="description" placeholder="Meaning of the term and its usage">
+        <ui:attribute name="placeholder"/>
+      </dw:TextAreaBox>
+    </dw:LabelPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Terms this object is a subclass-of</ui:msg>
+      </g:Label>
+      <lists:TermListEditor ui:field="parents"/>
+    </dw:LabelPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Relationships originating from this term</ui:msg>
+      </g:Label>
+      <lists:TermRelationListEditor ui:field="relations"/>
+    </dw:LabelPanel>
+  </g:HTMLPanel>
+
+</ui:UiBinder>

@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  xmlns:taxa="urn:import:cat.xtec.merli.duc.client.editors.taxa">
+
+  <g:FormPanel ui:field="form" styleName="duc-Form">
+    <taxa:TermEditor ui:field="editor"/>
+  </g:FormPanel>
+
+</ui:UiBinder>

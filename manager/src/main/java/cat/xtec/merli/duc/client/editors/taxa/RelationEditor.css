@@ -1,0 +1,35 @@
+@external .duc-RelationEditor;
+@external .duc-RelationTypeEditor;
+@external .duc-TargetEditor;
+@external .duc-SelectBox;
+@external .duc-SelectBoxWrapper;
+@external .duc-EntityBox-readonly;
+@external .duc-EMPTY;
+
+.duc-RelationEditor {
+  display: flex;
+  background-repeat: no-repeat;
+  background-position: 3px center;
+}
+
+.duc-RelationEditor .duc-RelationTypeEditor {
+  min-width: 10.5rem;
+  background-repeat: no-repeat;
+  background-position: 3px center;
+}
+
+.duc-RelationEditor .duc-TargetEditor {
+  flex: 1;
+}
+
+.duc-RelationEditor .duc-RelationTypeEditor .duc-SelectBox {
+  padding-left: 24px !important;
+}
+
+.duc-RelationEditor .duc-SelectBoxWrapper.duc-EMPTY::before {
+  padding-left: 27px !important;
+}
+
+.duc-RelationEditor .duc-EntityBox-readonly:focus {
+  outline: none !important;
+}

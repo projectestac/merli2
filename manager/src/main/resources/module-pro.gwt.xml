@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module rename-to="webprotege">
+  <!-- Module imports -->
+
+  <inherits name="cat.xtec.merli.duc.Duc"/>
+  <inherits name="cat.xtec.merli.theme.DucTheme"/>
+  <inherits name="edu.stanford.bmir.protege.web.WebProtege"/>
+
+  <!-- Logger configuration -->
+
+  <set-property name="gwt.logging.enabled" value="FALSE"/>
+  <set-property name="gwt.logging.consoleHandler" value="DISABLED"/>
+  <set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED"/>
+</module>

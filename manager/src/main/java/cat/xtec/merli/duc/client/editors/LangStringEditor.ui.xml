@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets">
+
+  <!-- Custom styles -->
+
+  <ui:style src="LangStringEditor.css"/>
+
+  <!-- Editor panel -->
+
+  <dw:LabelPanel>
+    <dw:StringLabel ui:field="language"/>
+    <dw:InputBox ui:field="text"/>
+  </dw:LabelPanel>
+
+</ui:UiBinder>

@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:lom="urn:import:cat.xtec.merli.duc.client.editors.lom">
+
+  <g:FormPanel ui:field="form" styleName="duc-Form">
+    <lom:ResourceEditor ui:field="editor"/>
+  </g:FormPanel>
+
+</ui:UiBinder>

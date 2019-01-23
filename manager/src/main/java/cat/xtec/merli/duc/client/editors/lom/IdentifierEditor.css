@@ -1,0 +1,34 @@
+@external .duc-IdentifierEditor;
+@external .duc-CatalogEditor;
+@external .duc-InputBox;
+@external .duc-SelectBox;
+@external .duc-SelectBoxWrapper;
+@external .duc-EMPTY;
+
+.duc-IdentifierEditor {
+  display: flex;
+  background-repeat: no-repeat;
+  background-position: 3px center;
+}
+
+.duc-IdentifierEditor .duc-CatalogEditor {
+  min-width: 10.5rem;
+  background-repeat: no-repeat;
+  background-position: 3px center;
+}
+
+.duc-IdentifierEditor .duc-InputBox {
+  flex: 1;
+}
+
+.duc-IdentifierEditor .duc-CatalogEditor .duc-SelectBox {
+  padding-left: 24px !important;
+}
+
+.duc-IdentifierEditor .duc-SelectBoxWrapper.duc-EMPTY::before {
+  padding-left: 27px !important;
+}
+
+.duc-IdentifierEditor .duc-InputBox-readonly:focus {
+  outline: none !important;
+}

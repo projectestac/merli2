@@ -1,0 +1,11 @@
+@external .duc-TargetEditor;
+@external .duc-InputBox;
+
+.duc-TargetEditor {
+  background-repeat: no-repeat;
+  background-position: 3px center;
+}
+
+.duc-TargetEditor .duc-InputBox {
+  padding-left: 28px !important;
+}

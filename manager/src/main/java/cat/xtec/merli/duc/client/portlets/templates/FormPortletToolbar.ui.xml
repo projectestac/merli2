@@ -1,0 +1,63 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <dw:ToolBar>
+
+    <!-- Prefered label -->
+
+    <dw:EntityLabel ui:field="label"/>
+
+    <!-- Actions spacer -->
+
+    <dw:FlexSpace/>
+
+    <!-- Buffer state indicator -->
+
+    <g:Label ui:field="indicator"
+      title="Has unsaved changes"
+      styleName="duc-Indicator duc-DIRTY_BOX"
+      visible="false">
+      <ui:attribute name="title"/>
+    </g:Label>
+
+    <!-- Primary actions -->
+
+    <g:Button ui:field="store" title="Save changes">
+      <i class="fas fa-check"/>
+      <span class="btn-main">
+        <ui:msg>Save</ui:msg>
+      </span>
+      <ui:attribute name="title"/>
+    </g:Button>
+
+    <!-- Secondary actions -->
+
+    <g:MenuBar>
+      <g:MenuItem title="Other actions">
+        <i class="fas fa-ellipsis-v"/>
+        <ui:attribute name="title"/>
+        <g:MenuBar vertical="true">
+          <g:MenuItem ui:field="export">
+            <ui:msg>Export entity</ui:msg>
+          </g:MenuItem>
+          <g:MenuItemSeparator/>
+          <g:MenuItem ui:field="reset">
+            <ui:msg>Undo all changes</ui:msg>
+          </g:MenuItem>
+          <g:MenuItem ui:field="remove">
+            <ui:msg>Delete entity</ui:msg>
+          </g:MenuItem>
+        </g:MenuBar>
+      </g:MenuItem>
+    </g:MenuBar>
+
+  </dw:ToolBar>
+
+</ui:UiBinder>

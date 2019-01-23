@@ -1,0 +1,89 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  xmlns:duc="urn:import:cat.xtec.merli.duc.client.editors"
+  xmlns:type="urn:import:cat.xtec.merli.duc.client.editors.type"
+  xmlns:voc="urn:import:cat.xtec.merli.duc.client.editors.voc"
+  xmlns:lists="urn:import:cat.xtec.merli.duc.client.editors.lists"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <!-- Inline styles -->
+
+  <ui:style>
+    .textarea { min-height: 68px !important; }
+  </ui:style>
+
+  <!-- Editor panel -->
+
+  <g:HTMLPanel>
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Learning resource type</ui:msg>
+      </g:Label>
+      <type:CategoryTypeEditor ui:field="type"/>
+    </dw:LabelPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Type of curricular knowledge </ui:msg>
+      </g:Label>
+      <voc:KnowledgeEditor ui:field="knowledge"/>
+    </dw:LabelPanel>
+
+    <dw:FieldsetPanel>
+      <dw:Legend>
+        <ui:msg>Label for the category</ui:msg>
+      </dw:Legend>
+      <lists:LangStringListEditor ui:field="labels"/>
+    </dw:FieldsetPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Meaning and usage</ui:msg>
+      </g:Label>
+      <dw:TextAreaBox ui:field="description" placeholder="Meaning of the category and its usage">
+        <ui:attribute name="placeholder"/>
+      </dw:TextAreaBox>
+    </dw:LabelPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>Observations</ui:msg>
+      </g:Label>
+      <dw:TextAreaBox ui:field="observation" addStyleNames="{style.textarea}"
+          placeholder="Additional observations and remarks">
+        <ui:attribute name="placeholder"/>
+      </dw:TextAreaBox>
+    </dw:LabelPanel>
+
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>References</ui:msg>
+      </g:Label>
+      <dw:TextAreaBox ui:field="reference" addStyleNames="{style.textarea}"
+          placeholder="Citations and references to the sources">
+        <ui:attribute name="placeholder"/>
+      </dw:TextAreaBox>
+    </dw:LabelPanel>
+
+    <dw:FieldsetPanel>
+      <dw:Legend>
+        <ui:msg>Categories this object is a subclass-of</ui:msg>
+      </dw:Legend>
+      <lists:CategoryListEditor ui:field="parents"/>
+    </dw:FieldsetPanel>
+
+    <dw:FieldsetPanel>
+      <dw:Legend>
+        <ui:msg>Keywords that describe this node</ui:msg>
+      </dw:Legend>
+      <lists:TermListEditor ui:field="keywords"/>
+    </dw:FieldsetPanel>
+  </g:HTMLPanel>
+
+</ui:UiBinder>
