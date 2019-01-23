@@ -1,3 +1,6 @@
 [submodule "manager/core"]
 	path = manager/src/core
 	url = git@github.com:protegeproject/webprotege.git
+[submodule "maven/webprotege"]
+	path = utilities/webprotege
+	url = git@github.com:protegeproject/webprotege-maven-plugin.git
