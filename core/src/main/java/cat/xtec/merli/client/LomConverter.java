@@ -14,6 +14,6 @@ public interface LomConverter<T> {
      * @param object        Object containing the data
      * @return              New resource object
      */
-    public Resource convert(T object);
+    Resource convert(T object);
 
 }

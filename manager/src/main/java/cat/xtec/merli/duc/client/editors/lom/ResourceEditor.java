@@ -34,6 +34,9 @@ public class ResourceEditor extends Composite implements Editor<Resource> {
     /** Technical characteristics */
     @UiField TechnicalDetailsEditor technicalDetails;
 
+    /** Physical characteristics */
+    @UiField PhysicalDetailsEditor physicalDetails;
+
     /** Pedagogical and educational characteristics */
     @UiField EducationalDetailsEditor educationalDetails;
 

@@ -2,7 +2,6 @@ package cat.xtec.merli.duc.client.editors.taxa;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.editor.client.*;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.ui.*;

@@ -4,7 +4,6 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
-// import cat.xtec.merli.xml.EnumAdapter;
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
 
@@ -71,11 +70,5 @@ public enum Status implements EnumString {
     public static Status fromValue(String value) {
         return EnumString.from(Status.class, value);
     }
-
-
-    /** Vocabulary XML adapter for this enumeration */
-    // public static class Adapter extends EnumAdapter<Status> {
-    //     public Adapter() { super(Status.class); }
-    // }
 
 }

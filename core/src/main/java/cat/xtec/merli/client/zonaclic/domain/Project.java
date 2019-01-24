@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.annotation.*;
 
 import cat.xtec.merli.domain.UID;
 import cat.xtec.merli.domain.type.LangString;
-import cat.xtec.merli.domain.voc.Catalog;
 import cat.xtec.merli.client.zonaclic.StringDeserializer;
 
 

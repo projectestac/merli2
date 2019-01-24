@@ -7,6 +7,7 @@
   xmlns:voc="urn:import:cat.xtec.merli.duc.client.editors.voc"
   xmlns:lom="urn:import:cat.xtec.merli.duc.client.editors.lom"
   xmlns:taxa="urn:import:cat.xtec.merli.duc.client.editors.taxa"
+  xmlns:lists="urn:import:cat.xtec.merli.duc.client.editors.lists"
   ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
   ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
   ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
@@ -29,16 +30,19 @@
       <voc:CopyrightEditor ui:field="copyright"/>
     </dw:LabelPanel>
 
-    <!--
+    <dw:LabelPanel>
+      <g:Label>
+        <ui:msg>License of the content</ui:msg>
+      </g:Label>
+      <voc:LicenseEditor ui:field="license"/>
+    </dw:LabelPanel>
+
     <dw:LabelPanel>
       <g:Label>
         <ui:msg>Comments on the conditions of use of the resource</ui:msg>
       </g:Label>
-      <dw:TextAreaBox ui:field="description" placeholder="Comments on the conditions of use of the resource">
-        <ui:attribute name="placeholder"/>
-      </dw:TextAreaBox>
+      <lists:LangStringListEditor ui:field="descriptions"/>
     </dw:LabelPanel>
-    -->
   </g:HTMLPanel>
 
 </ui:UiBinder>

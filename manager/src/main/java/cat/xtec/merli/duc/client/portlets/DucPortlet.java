@@ -96,7 +96,7 @@ public abstract class DucPortlet extends FlowPanel
      */
     @Override @Deprecated
     public final void setBusy(boolean value) {
-        setViewState(DucPortletState.STATE_WORKING);
+        setViewState(STATE_WORKING);
     }
 
 
@@ -321,7 +321,7 @@ public abstract class DucPortlet extends FlowPanel
     /**
      * Debounces selection change events.
      */
-    private Debouncer fireDebouncer = new Debouncer<OWLEntity>() {
+    private Debouncer<OWLEntity> fireDebouncer = new Debouncer<OWLEntity>() {
         @Override public void process(OWLEntity entity) {
             fireSelectionChange(entity);
         }
@@ -331,18 +331,10 @@ public abstract class DucPortlet extends FlowPanel
     /**
      * Debounces selection broadcast events.
      */
-    private Debouncer emitDebouncer = new Debouncer<OWLEntity>() {
+    private Debouncer<OWLEntity> emitDebouncer = new Debouncer<OWLEntity>() {
         @Override public void process(OWLEntity entity) {
             emitSelectionChange(entity);
         }
     };
-
-
-    /**
-     * Logs an object to the browser's console.
-     */
-    protected native static void log(Object o) /*-{
-        console.log(o.toString());
-    }-*/;
 
 }

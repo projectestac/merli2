@@ -17,16 +17,12 @@
   <!-- Editor panel -->
 
   <g:HTMLPanel>
-    <!--
     <dw:LabelPanel>
       <g:Label>
         <ui:msg>How the learning object is to be used</ui:msg>
       </g:Label>
-      <dw:TextAreaBox ui:field="description" placeholder="How the learning object is to be used">
-        <ui:attribute name="placeholder"/>
-      </dw:TextAreaBox>
+      <lists:LangStringListEditor ui:field="descriptions"/>
     </dw:LabelPanel>
-    -->
 
     <dw:LabelPanel>
       <g:Label>
@@ -49,14 +45,12 @@
       <voc:ContextEditor ui:field="contexts"/>
     </dw:FieldsetPanel>
 
-    <!--
     <dw:FieldsetPanel>
       <g:Label>
         <ui:msg>Specific kinds of resources</ui:msg>
       </g:Label>
-      <type:ResourceTypeEditor  ui:field="resourceTypes"/>
+      <voc:ResourceTypeEditor  ui:field="resourceTypes"/>
     </dw:FieldsetPanel>
-    -->
   </g:HTMLPanel>
 
 </ui:UiBinder>

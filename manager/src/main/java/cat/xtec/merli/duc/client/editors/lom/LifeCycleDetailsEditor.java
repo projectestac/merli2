@@ -6,8 +6,9 @@ import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.ui.*;
 
 import cat.xtec.merli.domain.lom.LifeCycleDetails;
+import cat.xtec.merli.duc.client.editors.lists.ContributionListEditor;
+import cat.xtec.merli.duc.client.editors.lists.LangStringListEditor;
 import cat.xtec.merli.duc.client.editors.voc.StatusEditor;
-import cat.xtec.merli.duc.client.widgets.InputBox;
 
 
 /**
@@ -27,13 +28,13 @@ public class LifeCycleDetailsEditor extends Composite implements Editor<LifeCycl
     interface Binder extends UiBinder<Widget, LifeCycleDetailsEditor> {}
 
     /** Edition of the learning object */
-    // @UiField InputBox version;
+    @UiField LangStringListEditor versions;
 
     /** State or condition of the learning object */
     @UiField StatusEditor status;
 
     /** Contributors to the learning object metadata */
-    //ListEditor<Contribution, ContributionEditor> contributions;
+    @UiField ContributionListEditor contributions;
 
 
     /**

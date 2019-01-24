@@ -8,9 +8,9 @@ import com.google.gwt.user.client.ui.*;
 import cat.xtec.merli.domain.lom.EducationalDetails;
 import cat.xtec.merli.duc.client.editors.voc.ContextEditor;
 import cat.xtec.merli.duc.client.editors.voc.UserRoleEditor;
-import cat.xtec.merli.duc.client.editors.type.ResourceTypeEditor;
+import cat.xtec.merli.duc.client.editors.voc.ResourceTypeEditor;
 import cat.xtec.merli.duc.client.editors.lists.LanguageListEditor;
-import cat.xtec.merli.duc.client.widgets.TextAreaBox;
+import cat.xtec.merli.duc.client.editors.lists.LangStringListEditor;
 
 
 /**
@@ -30,7 +30,7 @@ public class EducationalDetailsEditor extends Composite
     interface Binder extends UiBinder<Widget, EducationalDetailsEditor> {}
 
     /** How the learning object is to be used */
-    // @UiField TextAreaBox description;
+    @UiField LangStringListEditor descriptions;
 
     /** User's natural languages */
     @UiField LanguageListEditor languages;
@@ -42,7 +42,7 @@ public class EducationalDetailsEditor extends Composite
     @UiField ContextEditor contexts;
 
     /** Specific kinds of resources */
-    // @UiField ResourceTypeEditor resourceTypes;
+    @UiField ResourceTypeEditor resourceTypes;
 
 
     /**

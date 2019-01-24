@@ -3,10 +3,8 @@ package cat.xtec.merli.domain.voc;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-// import cat.xtec.merli.xml.EnumAdapter;
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
-import cat.xtec.merli.bind.*;
 
 
 /**
@@ -87,11 +85,5 @@ public enum ResourceType implements EnumString {
     public static ResourceType fromValue(String value) {
         return EnumString.from(ResourceType.class, value);
     }
-
-
-    /** Vocabulary XML adapter for this enumeration */
-    // public static class Adapter extends EnumAdapter<ResourceType> {
-    //     public Adapter() { super(ResourceType.class); }
-    // }
 
 }

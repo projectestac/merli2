@@ -3,10 +3,7 @@ package cat.xtec.merli.duc.client.editors.lists;
 import java.util.List;
 import java.util.ArrayList;
 import com.google.gwt.editor.client.*;
-import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.ui.*;
-
-import cat.xtec.merli.duc.client.editors.lists.LeafEditorWidget;
 
 
 /**
@@ -240,13 +237,5 @@ public abstract class DynamicListEditor<T, E extends LeafEditorWidget<T>>
     /** {@inheritDoc} */
     @Override
     public void setDelegate(EditorDelegate<List<T>> delegate) {}
-
-
-    /**
-     * Logs an object to the browser's console.
-     */
-    protected native static void log(Object o) /*-{
-        console.log(o.toString());
-    }-*/;
 
 }

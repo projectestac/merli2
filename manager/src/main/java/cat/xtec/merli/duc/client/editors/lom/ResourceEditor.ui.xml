@@ -40,6 +40,13 @@
 
     <g:DisclosurePanel open="true">
       <g:header>
+        <ui:msg>Physical characteristics</ui:msg>
+      </g:header>
+      <lom:PhysicalDetailsEditor ui:field="physicalDetails"/>
+    </g:DisclosurePanel>
+
+    <g:DisclosurePanel open="true">
+      <g:header>
         <ui:msg>Pedagogical and educational characteristics</ui:msg>
       </g:header>
       <lom:EducationalDetailsEditor ui:field="educationalDetails"/>

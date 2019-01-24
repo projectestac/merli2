@@ -37,16 +37,12 @@
       <lists:IdentifierListEditor ui:field="identifiers"/>
     </dw:LabelPanel>
 
-    <!--
     <dw:LabelPanel>
       <g:Label>
         <ui:msg>Description of the content</ui:msg>
       </g:Label>
-      <dw:TextAreaBox ui:field="description" placeholder="Description of the content">
-        <ui:attribute name="placeholder"/>
-      </dw:TextAreaBox>
+      <lists:LangStringListEditor ui:field="descriptions"/>
     </dw:LabelPanel>
-    -->
 
     <dw:LabelPanel>
       <g:Label>

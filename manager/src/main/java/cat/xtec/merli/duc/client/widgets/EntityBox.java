@@ -6,9 +6,9 @@ import java.util.Collection;
 import java.util.Objects;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.event.dom.client.HasFocusHandlers;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.SuggestBox.*;
@@ -238,9 +238,7 @@ public class EntityBox extends Composite implements Focusable,
 
         suggestBox.addSelectionHandler(e -> {
             entity = ((EntitySuggestion) e.getSelectedItem()).getEntity();
-            log("fire suggest box selection: " + entity);
             SelectionEvent.fire(this, entity);
-            log("fire suggest box value change: " + entity);
             ValueChangeEvent.fire(this, entity);
         });
 
@@ -256,13 +254,11 @@ public class EntityBox extends Composite implements Focusable,
                 if (Objects.equals(name, getTextFor(value))) {
                     if (entity != value) {
                         entity = value;
-                        log("fire input key up selection: " + entity);
                         SelectionEvent.fire(this, entity);
                     }
                 } else {
                     if (entity != NIL_VALUE) {
                         entity = NIL_VALUE;
-                        log("fire input key up selection: [null]");
                         SelectionEvent.fire(this, null);
                     }
                 }
@@ -272,20 +268,16 @@ public class EntityBox extends Composite implements Focusable,
         input.addChangeHandler(e -> {
             if (entity == NIL_VALUE && !hasText()) {
                 setValue(value);
-                log("fire input change selection: " + value);
                 SelectionEvent.fire(this, getValue());
-                log("fire input change value change: " + entity);
                 ValueChangeEvent.fire(this, getValue());
             } else {
                 entity = hasText() ? NIL_VALUE : entity;
 
                 if (!entity.equals(value)) {
                     setValue(entity);
-                    log("fire input change value change: " + entity);
                     ValueChangeEvent.fire(this, getValue());
                 } else {
                     setValue(entity);
-                    log("fire input change value change: " + entity);
                     ValueChangeEvent.fire(this, getValue());
                 }
             }
@@ -354,13 +346,5 @@ public class EntityBox extends Composite implements Focusable,
             return true;
         }
     };
-
-
-    /**
-     * Logs an object to the browser's console.
-     */
-    protected native static void log(Object o) /*-{
-        console.log(o.toString());
-    }-*/;
 
 }

@@ -1,13 +1,11 @@
-package cat.xtec.merli.duc.client.editors.lom;
+package cat.xtec.merli.duc.client.editors.type;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.datepicker.client.DateBox;
 import com.google.gwt.editor.client.*;
 import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.ui.*;
 
 import cat.xtec.merli.domain.type.Contribution;
-import cat.xtec.merli.duc.client.editors.ContactEditor;
 import cat.xtec.merli.duc.client.editors.voc.ContributorRoleEditor;
 
 
@@ -29,11 +27,11 @@ public class ContributionEditor extends Composite implements Editor<Contribution
     /** Type of contribution */
     @UiField ContributorRoleEditor role;
 
-    /** Date of the contribution */
-    @UiField DateBox date;
-
     /** List of contributors */
     @UiField ContactEditor entity;
+
+    /** Date of the contribution */
+    @UiField TimePointEditor timePoint;
 
 
     /**

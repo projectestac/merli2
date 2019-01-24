@@ -27,14 +27,14 @@
       <g:Label>
         <ui:msg>Date of the contribution</ui:msg>
       </g:Label>
-      <date:DateBox ui:field="date"/>
+      <type:TimePointEditor ui:field="timePoint"/>
     </dw:LabelPanel>
 
     <dw:LabelPanel>
       <g:Label>
         <ui:msg>List of contributors</ui:msg>
       </g:Label>
-      <duc:ContactEditor ui:field="entity"/>
+      <type:ContactEditor ui:field="entity"/>
     </dw:LabelPanel>
   </g:HTMLPanel>
 

@@ -6,16 +6,16 @@ import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.ui.*;
 
 import cat.xtec.merli.domain.lom.TechnicalDetails;
-import cat.xtec.merli.duc.client.editors.URIEditor;
-import cat.xtec.merli.duc.client.editors.DurationEditor;
+import cat.xtec.merli.duc.client.editors.UIDEditor;
 import cat.xtec.merli.duc.client.editors.lists.FormatListEditor;
-import cat.xtec.merli.duc.client.widgets.TextAreaBox;
+import cat.xtec.merli.duc.client.editors.type.TimePeriodEditor;
 
 
 /**
  * Technical requirements and characteristics of a learning object.
  */
-public class TechnicalDetailsEditor extends Composite implements Editor<TechnicalDetails> {
+public class TechnicalDetailsEditor extends Composite
+    implements Editor<TechnicalDetails> {
 
     /** Primary CSS style for this widget */
     public static final String STYLE_NAME = "duc-TechnicalDetailsEditor";
@@ -28,16 +28,13 @@ public class TechnicalDetailsEditor extends Composite implements Editor<Technica
     interface Binder extends UiBinder<Widget, TechnicalDetailsEditor> {}
 
     /** Duration of the learning object */
-    // @UiField DurationEditor duration;
+    @UiField TimePeriodEditor timePeriod;
 
     /** Media types of the learning object */
     @UiField FormatListEditor formats;
 
     /** URIs of the learning object */
-    @UiField URIEditor location;
-
-    /** Physical characteristics of the learning object */
-    // @UiField TextAreaBox medium;
+    @UiField UIDEditor location;
 
 
     /**

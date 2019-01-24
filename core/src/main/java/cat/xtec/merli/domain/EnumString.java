@@ -12,7 +12,7 @@ public interface EnumString<E extends Enum<E>> {
      *
      * @return  String value
      */
-    public String value();
+    String value();
 
 
     /**
@@ -20,7 +20,7 @@ public interface EnumString<E extends Enum<E>> {
      *
      * @return  String value
      */
-    public String name();
+    String name();
 
 
     /**
@@ -32,7 +32,7 @@ public interface EnumString<E extends Enum<E>> {
      *
      * @return  Source value
      */
-    public EnumSource source();
+    EnumSource source();
 
 
     /**
@@ -44,7 +44,7 @@ public interface EnumString<E extends Enum<E>> {
      * @throws IllegalArgumentException
      * @throws NullPointerException
      */
-    public static <E extends EnumString> E from(Class<E> type, String value) {
+    static <E extends EnumString> E from(Class<E> type, String value) {
         for (E object : type.getEnumConstants()) {
             if (value.equals(object.value()))
                 return object;

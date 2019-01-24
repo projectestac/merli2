@@ -3,7 +3,6 @@ package cat.xtec.merli.client.zonaclic.domain;
 import java.io.Serializable;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.*;
 
 import cat.xtec.merli.domain.UID;
 import cat.xtec.merli.domain.voc.Catalog;

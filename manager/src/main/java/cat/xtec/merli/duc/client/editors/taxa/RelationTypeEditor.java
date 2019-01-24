@@ -1,4 +1,4 @@
-package cat.xtec.merli.duc.client.editors.type;
+package cat.xtec.merli.duc.client.editors.taxa;
 
 import cat.xtec.merli.duc.client.editors.ListBoxEditor;
 import cat.xtec.merli.domain.taxa.Entity;

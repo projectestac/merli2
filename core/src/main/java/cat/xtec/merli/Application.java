@@ -43,7 +43,7 @@ public final class Application {
     /**
      * Application initialization method.
      */
-    public static final void initialize() {
+    public static void initialize() {
         initializeLogger();
         updateSystemProperties();
     }
@@ -67,7 +67,7 @@ public final class Application {
      *
      * @return              Logger instance
      */
-    public static final Logger getLogger() {
+    public static Logger getLogger() {
         return logger;
     }
 
@@ -168,7 +168,7 @@ public final class Application {
       * (from the command line or otherwise). The properties that can be
       * set are defined on the {@link #SYSTEM_PROPERTIES} array.
       */
-     private static final void updateSystemProperties() {
+     private static void updateSystemProperties() {
          try {
              for (String key : SYSTEM_PROPERTIES) {
                  final String value;
@@ -192,7 +192,7 @@ public final class Application {
     /**
      * Initialize the logger for this application.
      */
-    private static final void initializeLogger() {
+    private static void initializeLogger() {
         logger = Logger.getLogger(getLoggerName());
 
         try {

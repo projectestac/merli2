@@ -1,14 +1,13 @@
-package cat.xtec.merli.duc.client.editors.type;
+package cat.xtec.merli.duc.client.editors.voc;
 
 import cat.xtec.merli.duc.client.editors.CheckBoxEditor;
-import cat.xtec.merli.domain.taxa.EntityType;
-import cat.xtec.merli.domain.lom.Resource;
+import cat.xtec.merli.domain.voc.ResourceType;
 
 
 /**
  * Specific kind of resource (LOMv1.0).
  */
-public class ResourceTypeEditor extends CheckBoxEditor<EntityType> {
+public class ResourceTypeEditor extends CheckBoxEditor<ResourceType> {
 
     /** Primary CSS style for this widget */
     public static final String STYLE_NAME = "duc-ResourceTypeEditor";
@@ -18,7 +17,7 @@ public class ResourceTypeEditor extends CheckBoxEditor<EntityType> {
      * Constructs a resourcetype editor.
      */
     public ResourceTypeEditor() {
-        super(EntityType.valuesFor(Resource.class));
+        super(ResourceType.class);
         setStylePrimaryName(STYLE_NAME);
     }
 

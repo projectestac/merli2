@@ -13,7 +13,6 @@ import com.google.gwt.user.client.ui.*;
 import com.google.gwt.uibinder.client.*;
 
 import cat.xtec.merli.duc.client.widgets.ToolBar;
-import static cat.xtec.merli.duc.client.portlets.DucPortletState.*;
 
 
 /**

@@ -6,7 +6,6 @@ import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.ui.*;
 
 import cat.xtec.merli.domain.taxa.Term;
-import cat.xtec.merli.duc.client.editors.type.TermTypeEditor;
 import cat.xtec.merli.duc.client.editors.lists.TermListEditor;
 import cat.xtec.merli.duc.client.editors.lists.TermRelationListEditor;
 import cat.xtec.merli.duc.client.editors.lists.LangStringListEditor;

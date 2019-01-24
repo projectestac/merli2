@@ -1,11 +1,11 @@
-package cat.xtec.merli.domain.type;
+package cat.xtec.merli.xml.domain;
 
 import java.util.List;
 import javax.xml.bind.annotation.*;
 
 import cat.xtec.merli.domain.UID;
-import cat.xtec.merli.domain.Namespace;
 import cat.xtec.merli.domain.taxa.Entity;
+import cat.xtec.merli.domain.type.LangString;
 
 
 /**

@@ -6,7 +6,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
-// import cat.xtec.merli.xml.EnumAdapter;
 
 
 /**
@@ -104,11 +103,5 @@ public enum Context implements EnumString {
     public static Context fromValue(String value) {
         return EnumString.from(Context.class, value);
     }
-
-
-    /** Vocabulary XML adapter for this enumeration */
-    // public static class Adapter extends EnumAdapter<Context> {
-    //     public Adapter() { super(Context.class); }
-    // }
 
 }

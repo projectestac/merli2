@@ -94,7 +94,15 @@ public class DucServiceServlet extends WebProtegeRemoteServiceServlet
      * {@inheritDoc}
      */
     public List<Vertex> fetchChildren(String id, String iri) {
-        return null;
+        List<Vertex> childs = new java.util.ArrayList<>();
+        Entity entity = (Entity) fetchObject(id, iri, Entity.class);
+        Vertex child = new Vertex();
+
+        child.setEntity(entity);
+        child.setChildCount(1);
+        childs.add(child);
+
+        return childs;
     }
 
 
@@ -110,7 +118,15 @@ public class DucServiceServlet extends WebProtegeRemoteServiceServlet
      *
      */
     private Object fetchObject(String id, String iri, Class type) {
-        return null;
+        Entity entity = null;
+
+        try {
+            entity = (Entity) type.newInstance();
+            entity.setUID(UID.from(id));
+            entity.setType(cat.xtec.merli.domain.taxa.EntityType.EDUCATION_PHASE);
+        } catch (Exception e) {}
+
+        return entity;
     }
 
 }

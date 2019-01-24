@@ -111,7 +111,7 @@ public class MerliClient implements AutoCloseable {
      *
      * @return              New marshaller instance
      */
-    private final static Marshaller createMarshaller() throws Exception {
+    private static Marshaller createMarshaller() throws Exception {
         JAXBContext context = JAXBContext.newInstance(Resource.class);
         Marshaller marshaller = context.createMarshaller();
 
@@ -124,7 +124,7 @@ public class MerliClient implements AutoCloseable {
      *
      * @return              New connection instance
      */
-    private final static SOAPConnection createConnection() throws Exception {
+    private static SOAPConnection createConnection() throws Exception {
         return SOAPConnectionFactory.newInstance().createConnection();
     }
 
@@ -137,7 +137,7 @@ public class MerliClient implements AutoCloseable {
      *
      * @return              New transformer instance
      */
-    private final static Transformer createTransformer() throws Exception {
+    private static Transformer createTransformer() throws Exception {
         final String xslt = "/transform/remove-ns.xslt";
         final InputStream input = Application.getResource(xslt);
         final StreamSource source = new StreamSource(input);

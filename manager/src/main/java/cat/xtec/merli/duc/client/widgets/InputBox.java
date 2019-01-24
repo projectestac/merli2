@@ -2,7 +2,6 @@ package cat.xtec.merli.duc.client.widgets;
 
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.TextBox;
-import cat.xtec.merli.domain.type.LangString;
 
 
 /**

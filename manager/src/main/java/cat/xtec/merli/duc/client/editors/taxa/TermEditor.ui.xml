@@ -21,7 +21,7 @@
       <g:Label>
         <ui:msg>Term type</ui:msg>
       </g:Label>
-      <type:TermTypeEditor ui:field="type"/>
+      <taxa:TermTypeEditor ui:field="type"/>
     </dw:LabelPanel>
 
     <dw:LabelPanel>

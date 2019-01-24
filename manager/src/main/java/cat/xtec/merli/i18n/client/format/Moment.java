@@ -1,6 +1,5 @@
 package cat.xtec.merli.i18n.client.format;
 
-import java.util.Date;
 import jsinterop.annotations.*;
 
 

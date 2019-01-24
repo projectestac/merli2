@@ -3,12 +3,11 @@ package cat.xtec.merli.duc.client.editors.lists;
 import java.util.List;
 import java.util.ArrayList;
 import com.google.gwt.editor.client.*;
-import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.editor.client.CompositeEditor.EditorChain;
 
 import cat.xtec.merli.domain.type.LangString;
-import cat.xtec.merli.duc.client.editors.LangStringEditor;
+import cat.xtec.merli.duc.client.editors.type.LangStringEditor;
 import static cat.xtec.merli.i18n.client.I18nConstants.I18N;
 
 

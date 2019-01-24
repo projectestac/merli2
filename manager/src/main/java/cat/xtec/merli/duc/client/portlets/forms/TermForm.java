@@ -114,19 +114,9 @@ public class TermForm extends ScrollPanel
     public void visit() {
         driver.accept(new EditorVisitor() {
             public boolean visit(EditorContext context) {
-                // log("path = " + context.getAbsolutePath());
-
                 return true;
             }
         });
     }
-
-
-    /**
-     * Logs an object to the browser's console.
-     */
-    protected native static void log(Object o) /*-{
-        console.log(o.toString());
-    }-*/;
 
 }

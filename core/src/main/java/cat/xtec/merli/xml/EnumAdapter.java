@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 import cat.xtec.merli.domain.EnumString;
-import cat.xtec.merli.domain.type.Constant;
+import cat.xtec.merli.xml.domain.Constant;
 
 
 /**

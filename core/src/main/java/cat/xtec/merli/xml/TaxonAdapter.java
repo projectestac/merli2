@@ -1,10 +1,8 @@
 package cat.xtec.merli.xml;
 
-import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.*;
-
 import cat.xtec.merli.domain.taxa.Entity;
-import cat.xtec.merli.domain.type.TaxonPath;
+import cat.xtec.merli.xml.domain.TaxonPath;
 
 
 /**

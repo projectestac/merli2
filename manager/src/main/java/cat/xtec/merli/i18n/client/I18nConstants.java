@@ -2,7 +2,6 @@ package cat.xtec.merli.i18n.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.Constants;
-import com.google.gwt.i18n.client.LocalizableResource.DefaultLocale;
 import com.google.gwt.i18n.client.LocalizableResource;
 
 

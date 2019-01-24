@@ -7,6 +7,7 @@
   xmlns:voc="urn:import:cat.xtec.merli.duc.client.editors.voc"
   xmlns:lom="urn:import:cat.xtec.merli.duc.client.editors.lom"
   xmlns:taxa="urn:import:cat.xtec.merli.duc.client.editors.taxa"
+  xmlns:type="urn:import:cat.xtec.merli.duc.client.editors.type"
   xmlns:lists="urn:import:cat.xtec.merli.duc.client.editors.lists"
   ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
   ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
@@ -20,9 +21,9 @@
       <g:Label>
         <ui:msg>Location of the learning object</ui:msg>
       </g:Label>
-      <duc:URIEditor ui:field="location" placeholder="Web address of the learning object">
+      <duc:UIDEditor ui:field="location" placeholder="Web address of the learning object">
         <ui:attribute name="placeholder"/>
-      </duc:URIEditor>
+      </duc:UIDEditor>
     </dw:LabelPanel>
 
     <dw:FieldsetPanel>
@@ -32,25 +33,12 @@
       <lists:FormatListEditor ui:field="formats"/>
     </dw:FieldsetPanel>
 
-    <!--
     <dw:LabelPanel>
       <g:Label>
         <ui:msg>Duration of the resource</ui:msg>
       </g:Label>
-      <duc:DurationEditor ui:field="duration"/>
+      <type:TimePeriodEditor ui:field="timePeriod"/>
     </dw:LabelPanel>
-    -->
-
-    <!--
-    <dw:LabelPanel>
-      <g:Label>
-        <ui:msg>Physical characteristics</ui:msg>
-      </g:Label>
-      <dw:TextAreaBox ui:field="medium" placeholder="Physical characteristics of the learning object">
-        <ui:attribute name="placeholder"/>
-      </dw:TextAreaBox>
-    </dw:LabelPanel>
-    -->
   </g:HTMLPanel>
 
 </ui:UiBinder>

@@ -1,14 +1,10 @@
 package cat.xtec.merli.duc.client.widgets;
 
 import java.util.List;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.TreeItem;
 
 import cat.xtec.merli.domain.taxa.Entity;
-import cat.xtec.merli.domain.taxa.EntityType;
 import cat.xtec.merli.domain.taxa.Vertex;
-import cat.xtec.merli.domain.type.LangString;
-import cat.xtec.merli.domain.voc.Language;
 
 
 /**

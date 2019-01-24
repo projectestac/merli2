@@ -3,7 +3,6 @@ package cat.xtec.merli.domain.taxa;
 import java.io.Serializable;
 import javax.xml.bind.annotation.*;
 import cat.xtec.merli.domain.Namespace;
-import cat.xtec.merli.bind.*;
 
 
 /**

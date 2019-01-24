@@ -7,9 +7,7 @@ import javax.xml.bind.annotation.*;
 
 import cat.xtec.merli.domain.Namespace;
 import cat.xtec.merli.domain.type.LangString;
-import cat.xtec.merli.domain.voc.Format;
 import cat.xtec.merli.domain.voc.Medium;
-import cat.xtec.merli.bind.DucVocabulary;
 import cat.xtec.merli.bind.*;
 
 
@@ -31,7 +29,7 @@ public class PhysicalDetails implements Serializable {
     @XmlElement(name = "medium", namespace = Namespace.DC)
     protected List<LangString> descriptions;
 
-    /** Physical types of the the learning object */
+    /** Physical types of the learning object */
     @DucProperty(DucVocabulary.FORMAT)
     @XmlElement(name = "format", namespace = Namespace.DC)
     protected List<Medium> mediums;

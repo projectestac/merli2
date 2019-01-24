@@ -16,25 +16,18 @@
   <!-- Editor panel -->
 
   <g:HTMLPanel>
-    <dw:LabelPanel>
+    <dw:FieldsetPanel>
       <g:Label>
-        <ui:msg>Edition of the object</ui:msg>
+        <ui:msg>Physical types</ui:msg>
       </g:Label>
-      <lists:LangStringListEditor ui:field="versions"/>
-    </dw:LabelPanel>
+      <lists:MediumListEditor ui:field="mediums"/>
+    </dw:FieldsetPanel>
 
     <dw:LabelPanel>
       <g:Label>
-        <ui:msg>State or condition of the object</ui:msg>
+        <ui:msg>Physical characteristics</ui:msg>
       </g:Label>
-      <voc:StatusEditor ui:field="status"/>
-    </dw:LabelPanel>
-
-    <dw:LabelPanel>
-      <g:Label>
-        <ui:msg>Contributors to the metadata</ui:msg>
-      </g:Label>
-      <lists:ContributionListEditor ui:field="contributions"/>
+      <lists:LangStringListEditor ui:field="descriptions"/>
     </dw:LabelPanel>
   </g:HTMLPanel>
 

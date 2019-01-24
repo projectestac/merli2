@@ -12,17 +12,17 @@ import cat.xtec.merli.duc.client.widgets.InputBox;
 /**
  * Universal Resource Identifer editor.
  */
-public class URIEditor extends Composite implements Editor<UID> {
+public class UIDEditor extends Composite implements Editor<UID> {
 
     /** Primary CSS style for this widget */
-    public static final String STYLE_NAME = "duc-URIEditor";
+    public static final String STYLE_NAME = "duc-UIDEditor";
 
     /** UiBinder instance */
     private static final Binder binder = GWT.create(Binder.class);
 
     /** UiBinder interface */
-    @UiTemplate("URIEditor.ui.xml")
-    interface Binder extends UiBinder<Widget, URIEditor> {}
+    @UiTemplate("UIDEditor.ui.xml")
+    interface Binder extends UiBinder<Widget, UIDEditor> {}
 
     /** Identifier IRI */
     @UiField InputBox string;
@@ -31,7 +31,7 @@ public class URIEditor extends Composite implements Editor<UID> {
     /**
      * Constructs a new URI editor.
      */
-    public URIEditor() {
+    public UIDEditor() {
         Widget widget = binder.createAndBindUi(this);
 
         initWidget(widget);

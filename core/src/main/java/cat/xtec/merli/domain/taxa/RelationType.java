@@ -7,8 +7,6 @@ import javax.xml.bind.annotation.XmlEnumValue;
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
 import cat.xtec.merli.domain.lom.Resource;
-import cat.xtec.merli.domain.taxa.Term;
-// import cat.xtec.merli.xml.EnumAdapter;
 import cat.xtec.merli.bind.*;
 
 
@@ -180,11 +178,5 @@ public enum RelationType implements EnumString {
             .filter(t -> group.equals(t.group()))
             .toArray(RelationType[]::new);
     }
-
-
-    /** Vocabulary XML adapter for this enumeration */
-    // public static class Adapter extends EnumAdapter<RelationType> {
-    //     public Adapter() { super(RelationType.class); }
-    // }
 
 }

@@ -1,8 +1,6 @@
 package cat.xtec.merli.duc.client.dialogs;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.user.client.Event.NativePreviewEvent;
 import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.ui.*;
 
@@ -63,13 +61,5 @@ public class ConfirmDialog {
 
         dialog.center();
     }
-
-
-    /**
-     * Logs an object to the browser's console.
-     */
-    protected native static void log(Object o) /*-{
-        console.log(o.toString());
-    }-*/;
 
 }

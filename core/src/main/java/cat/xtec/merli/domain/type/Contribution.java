@@ -33,7 +33,7 @@ public class Contribution implements Serializable {
     /** Date of the contribution */
     @DucProperty(DucVocabulary.DATE)
     @XmlElement(name = "date")
-    protected TimePoint timepoint;
+    protected TimePoint timePoint;
 
 
     /**
@@ -92,11 +92,11 @@ public class Contribution implements Serializable {
      * @return          Time point value
      */
     public TimePoint getTimePoint() {
-        if (timepoint == null) {
-            timepoint = new TimePoint();
+        if (timePoint == null) {
+            timePoint = new TimePoint();
         }
 
-        return timepoint;
+        return timePoint;
     }
 
 
@@ -106,7 +106,7 @@ public class Contribution implements Serializable {
      * @param value     Time point value
      */
     public void setTimePoint(TimePoint value) {
-        this.timepoint = value;
+        this.timePoint = value;
     }
 
 
@@ -116,8 +116,8 @@ public class Contribution implements Serializable {
      * @param date      Date value
      */
     public void setTimePoint(Date date) {
-        this.timepoint = new TimePoint();
-        this.timepoint.setDate(date);
+        this.timePoint = new TimePoint();
+        this.timePoint.setDate(date);
     }
 
 }

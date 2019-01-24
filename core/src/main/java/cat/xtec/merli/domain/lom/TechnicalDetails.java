@@ -1,16 +1,13 @@
 package cat.xtec.merli.domain.lom;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.*;
 
-import cat.xtec.merli.domain.Namespace;
 import cat.xtec.merli.domain.UID;
 import cat.xtec.merli.domain.type.TimePeriod;
 import cat.xtec.merli.domain.voc.Format;
-import cat.xtec.merli.bind.DucVocabulary;
 import cat.xtec.merli.bind.*;
 
 
@@ -27,7 +24,7 @@ public class TechnicalDetails implements Serializable {
     /** Duration of the learning object */
     @DucProperty(DucVocabulary.DURATION)
     @XmlElement(name = "duration")
-    protected TimePeriod timeperiod;
+    protected TimePeriod timePeriod;
 
     /** UID of the learning object */
     @DucProperty(DucVocabulary.LOCATION)
@@ -47,7 +44,7 @@ public class TechnicalDetails implements Serializable {
      * @return          Time period value
      */
     public TimePeriod getTimePeriod() {
-        return timeperiod;
+        return timePeriod;
     }
 
 
@@ -57,7 +54,7 @@ public class TechnicalDetails implements Serializable {
      * @param value     Time period value
      */
     public void setTimePeriod(TimePeriod value) {
-        this.timeperiod = value;
+        this.timePeriod = value;
     }
 
 

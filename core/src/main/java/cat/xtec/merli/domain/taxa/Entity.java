@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.io.Serializable;
 import javax.xml.bind.annotation.*;
 
-import cat.xtec.merli.bind.DucVocabulary;
 import cat.xtec.merli.domain.Namespace;
 import cat.xtec.merli.domain.UID;
 import cat.xtec.merli.domain.type.LangString;

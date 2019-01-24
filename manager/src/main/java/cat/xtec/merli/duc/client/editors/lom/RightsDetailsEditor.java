@@ -6,9 +6,10 @@ import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.ui.*;
 
 import cat.xtec.merli.domain.lom.RightsDetails;
+import cat.xtec.merli.duc.client.editors.lists.LangStringListEditor;
 import cat.xtec.merli.duc.client.editors.voc.CopyrightEditor;
 import cat.xtec.merli.duc.client.editors.voc.CostEditor;
-import cat.xtec.merli.duc.client.widgets.TextAreaBox;
+import cat.xtec.merli.duc.client.editors.voc.LicenseEditor;
 
 
 /**
@@ -32,8 +33,11 @@ public class RightsDetailsEditor extends Composite implements Editor<RightsDetai
     /** Whether copyright or other restrictions apply */
     @UiField CopyrightEditor copyright;
 
+    /** License of the content */
+    @UiField LicenseEditor license;
+
     /** Comments on the conditions of use of the resource */
-    // @UiField TextAreaBox description;
+    @UiField LangStringListEditor descriptions;
 
 
     /**

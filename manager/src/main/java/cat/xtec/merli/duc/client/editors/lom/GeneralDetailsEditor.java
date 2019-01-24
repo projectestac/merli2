@@ -6,13 +6,10 @@ import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.ui.*;
 
 import cat.xtec.merli.domain.lom.GeneralDetails;
-import cat.xtec.merli.domain.taxa.Category;
 import cat.xtec.merli.duc.client.editors.voc.StructureEditor;
 import cat.xtec.merli.duc.client.editors.lists.IdentifierListEditor;
 import cat.xtec.merli.duc.client.editors.lists.LangStringListEditor;
 import cat.xtec.merli.duc.client.editors.lists.TermListEditor;
-import cat.xtec.merli.duc.client.widgets.InputBox;
-import cat.xtec.merli.duc.client.widgets.TextAreaBox;
 
 
 /**
@@ -32,7 +29,7 @@ public class GeneralDetailsEditor extends Composite
     interface Binder extends UiBinder<Widget, GeneralDetailsEditor> {}
 
     /** Description of the content */
-    // @UiField TextAreaBox description;
+    @UiField LangStringListEditor descriptions;
 
     /** Name of the learning object */
     @UiField LangStringListEditor titles;

@@ -6,9 +6,6 @@ import javax.xml.bind.annotation.XmlEnumValue;
 
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
-import cat.xtec.merli.domain.lom.Resource;
-import cat.xtec.merli.domain.taxa.Term;
-import cat.xtec.merli.bind.*;
 
 
 /**

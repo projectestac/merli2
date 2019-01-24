@@ -1,7 +1,6 @@
 package cat.xtec.merli.domain.type;
 
 import javax.xml.bind.annotation.*;
-import cat.xtec.merli.domain.UID;
 
 
 /**

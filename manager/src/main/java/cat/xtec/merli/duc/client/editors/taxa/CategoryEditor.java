@@ -7,7 +7,6 @@ import com.google.gwt.user.client.ui.*;
 
 import cat.xtec.merli.domain.taxa.Category;
 import cat.xtec.merli.duc.client.editors.voc.KnowledgeEditor;
-import cat.xtec.merli.duc.client.editors.type.CategoryTypeEditor;
 import cat.xtec.merli.duc.client.editors.lists.CategoryListEditor;
 import cat.xtec.merli.duc.client.editors.lists.TermListEditor;
 import cat.xtec.merli.duc.client.editors.lists.LangStringListEditor;

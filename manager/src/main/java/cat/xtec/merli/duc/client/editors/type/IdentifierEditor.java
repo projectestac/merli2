@@ -1,9 +1,8 @@
-package cat.xtec.merli.duc.client.editors.lom;
+package cat.xtec.merli.duc.client.editors.type;
 
 import java.util.Objects;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.editor.client.*;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.ui.*;
@@ -13,11 +12,6 @@ import cat.xtec.merli.duc.client.editors.voc.CatalogEditor;
 import cat.xtec.merli.duc.client.widgets.InputBox;
 import cat.xtec.merli.domain.type.Identifier;
 import cat.xtec.merli.domain.voc.Catalog;
-
-
-/* TODO: Què passa si rebo un identificador no vàlid?? ->
-    Hauria de tractar-ho a Identifier.java -> L'interpreto com
-    un identificador sense prefix (amb prefix per defecte)?? */
 
 
 /**
@@ -352,13 +346,5 @@ public class IdentifierEditor extends Composite
             refreshEditors(identifier.getCatalog());
         });
     }
-
-
-    /**
-     * Logs an object to the browser's console.
-     */
-    protected native static void log(Object o) /*-{
-        console.log(o.toString());
-    }-*/;
 
 }

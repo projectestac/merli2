@@ -1,7 +1,7 @@
 package cat.xtec.merli.duc.client.editors.lists;
 
 import com.google.gwt.editor.client.Editor;
-import cat.xtec.merli.duc.client.editors.lom.IdentifierEditor;
+import cat.xtec.merli.duc.client.editors.type.IdentifierEditor;
 import cat.xtec.merli.domain.type.Identifier;
 
 

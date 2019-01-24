@@ -4,7 +4,6 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
-// import cat.xtec.merli.xml.EnumAdapter;
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
 
@@ -63,11 +62,5 @@ public enum Copyright implements EnumString {
     public static Copyright fromValue(String value) {
         return EnumString.from(Copyright.class, value);
     }
-
-
-    /** Vocabulary XML adapter for this enumeration */
-    // public static class Adapter extends EnumAdapter<Copyright> {
-    //     public Adapter() { super(Copyright.class); }
-    // }
 
 }

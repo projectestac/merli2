@@ -13,6 +13,6 @@ public interface LomConsumer {
      *
      * @param id            Resource identifier
      */
-    public void accept(UID id);
+    void accept(UID id);
 
 }

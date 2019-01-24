@@ -1,4 +1,4 @@
-package cat.xtec.merli.duc.client.editors;
+package cat.xtec.merli.duc.client.editors.type;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;

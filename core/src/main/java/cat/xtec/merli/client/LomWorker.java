@@ -7,7 +7,6 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import cat.xtec.merli.domain.UID;
-import cat.xtec.merli.domain.lom.Resource;
 
 
 /**

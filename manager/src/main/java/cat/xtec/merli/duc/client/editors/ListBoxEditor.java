@@ -1,10 +1,8 @@
 package cat.xtec.merli.duc.client.editors;
 
-import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.user.client.ui.*;
-import com.google.gwt.event.dom.client.*;
 
 import cat.xtec.merli.duc.client.editors.lists.LeafEditorWidget;
 import cat.xtec.merli.duc.client.messages.DucConstants;

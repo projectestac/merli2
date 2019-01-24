@@ -4,13 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.*;
 
-import cat.xtec.merli.domain.taxa.Entity;
-import cat.xtec.merli.domain.taxa.EntityType;
-import cat.xtec.merli.domain.type.LangString;
 import cat.xtec.merli.domain.Namespace;
-import cat.xtec.merli.domain.taxa.Relation;
 import cat.xtec.merli.domain.UID;
-import cat.xtec.merli.bind.DucVocabulary;
 import cat.xtec.merli.bind.*;
 
 

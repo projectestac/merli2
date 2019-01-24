@@ -3,7 +3,6 @@ package cat.xtec.merli.domain.type;
 import java.util.Objects;
 import java.io.Serializable;
 import javax.xml.bind.annotation.*;
-import static javax.xml.XMLConstants.*;
 
 import cat.xtec.merli.domain.voc.Language;
 

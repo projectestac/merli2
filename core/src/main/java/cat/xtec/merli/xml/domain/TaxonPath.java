@@ -1,11 +1,7 @@
-package cat.xtec.merli.domain.type;
+package cat.xtec.merli.xml.domain;
 
-import java.util.List;
-import java.util.ArrayList;
 import javax.xml.bind.annotation.*;
-
 import cat.xtec.merli.domain.taxa.Entity;
-import cat.xtec.merli.domain.voc.Language;
 
 
 /**

@@ -1,13 +1,7 @@
 package cat.xtec.merli.client.zonaclic.convert;
 
-import java.util.Arrays;
-
 import cat.xtec.merli.domain.UID;
 import cat.xtec.merli.domain.taxa.Category;
-import cat.xtec.merli.domain.type.LangString;
-import cat.xtec.merli.domain.voc.Language;
-
-import static cat.xtec.merli.domain.voc.Language.*;
 
 
 /**

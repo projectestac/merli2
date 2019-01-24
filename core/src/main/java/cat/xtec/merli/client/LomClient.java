@@ -17,10 +17,10 @@ import cat.xtec.merli.domain.lom.Resource;
 public interface LomClient extends AutoCloseable {
 
     /** Default connect timeout in milliseconds */
-    public static final long CONNECT_TIMEOUT = 5000L;
+    static long CONNECT_TIMEOUT = 5000L;
 
     /** Default read timeout in milliseconds */
-    public static final long READ_TIMEOUT = 180000L;
+    static long READ_TIMEOUT = 180000L;
 
 
     /**
@@ -28,7 +28,7 @@ public interface LomClient extends AutoCloseable {
      *
      * @return              A stream of unique identifiers
      */
-    public Iterator<UID> identifiers();
+    Iterator<UID> identifiers();
 
 
     /**
@@ -40,7 +40,7 @@ public interface LomClient extends AutoCloseable {
      *
      * @return              A stream of unique identifiers
      */
-    public Iterator<UID> identifiers(Date from, Date until);
+    Iterator<UID> identifiers(Date from, Date until);
 
 
     /**
@@ -49,6 +49,6 @@ public interface LomClient extends AutoCloseable {
      * @param id            Unique resource identifier
      * @return              LOM resource object
      */
-    public Resource resource(UID id);
+    Resource resource(UID id);
 
 }

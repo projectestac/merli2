@@ -3,13 +3,11 @@ package cat.xtec.merli.duc.client.editors.taxa;
 import java.util.Objects;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.editor.client.*;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.ui.*;
 
 import cat.xtec.merli.duc.client.editors.lists.LeafEditorWidget;
-import cat.xtec.merli.duc.client.editors.type.RelationTypeEditor;
 import cat.xtec.merli.domain.taxa.Entity;
 import cat.xtec.merli.domain.taxa.Relation;
 import cat.xtec.merli.domain.taxa.RelationType;

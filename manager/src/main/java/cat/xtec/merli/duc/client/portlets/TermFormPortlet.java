@@ -144,10 +144,10 @@ public class TermFormPortlet extends DucPortlet
      *
      */
     protected void onRemoveCommand() {
-        log("DUC: Remove command invoked");
+        // log("DUC: Remove command invoked");
 
         ConfirmDialog.confirm(confirm -> {
-            log("Dialog response: " + confirm);
+            // log("Dialog response: " + confirm);
 
             if (confirm == true) {
                 String id = getProjectId();
@@ -157,12 +157,12 @@ public class TermFormPortlet extends DucPortlet
 
                     /** {@inheritDoc} */
                     @Override public void onSuccess(Void value) {
-                        log("DUC: Remove success");
+                        // log("DUC: Remove success");
                     }
 
                     /** {@inheritDoc} */
                     @Override public void onFailure(Throwable caught) {
-                        log("DUC: Remove failure");
+                        // log("DUC: Remove failure");
                     }
                 });
             }
@@ -194,7 +194,7 @@ public class TermFormPortlet extends DucPortlet
      */
     private void attachHandlers() {
         attachHandler(form.addChangeHandler(e -> {
-            log("Change: " + e);
+            // log("Change: " + e);
             refreshView();
         }));
     }
@@ -241,13 +241,5 @@ public class TermFormPortlet extends DucPortlet
         }
 
     };
-
-
-    /**
-     * Logs an object to the browser's console.
-     */
-    protected native static void log(Object o) /*-{
-        console.log(o.toString());
-    }-*/;
 
 }
