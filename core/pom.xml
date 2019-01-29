@@ -26,7 +26,6 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>cat.xtec.merli.core</groupId>
   <artifactId>merli-core</artifactId>
   <version>${revision}</version>
   <packaging>jar</packaging>
@@ -36,7 +35,7 @@
   <parent>
     <groupId>cat.xtec.merli</groupId>
     <artifactId>merli</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0</version>
   </parent>
 
   <!-- Project properties =============================================== -->

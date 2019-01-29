@@ -26,7 +26,6 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>cat.xtec.merli</groupId>
   <artifactId>merli-package</artifactId>
   <version>${revision}</version>
   <packaging>ear</packaging>
@@ -36,7 +35,7 @@
   <parent>
     <groupId>cat.xtec.merli</groupId>
     <artifactId>merli</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0</version>
   </parent>
 
   <!-- Environment builds =============================================== -->
@@ -69,7 +68,7 @@
     <!-- Crawler module -->
 
     <dependency>
-      <groupId>cat.xtec.merli.crawler</groupId>
+      <groupId>cat.xtec.merli</groupId>
       <artifactId>merli-crawler</artifactId>
       <version>${revision}</version>
       <type>war</type>
@@ -78,7 +77,7 @@
     <!-- Curriculum editor module -->
 
     <dependency>
-      <groupId>cat.xtec.merli.manager</groupId>
+      <groupId>cat.xtec.merli</groupId>
       <artifactId>merli-manager</artifactId>
       <version>${revision}</version>
       <type>war</type>

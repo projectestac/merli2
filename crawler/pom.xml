@@ -26,7 +26,6 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>cat.xtec.merli.crawler</groupId>
   <artifactId>merli-crawler</artifactId>
   <version>${revision}</version>
   <packaging>war</packaging>
@@ -36,7 +35,7 @@
   <parent>
     <groupId>cat.xtec.merli</groupId>
     <artifactId>merli</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0</version>
   </parent>
 
   <!-- Environment builds =============================================== -->
@@ -77,9 +76,8 @@
     <!-- Core library -->
 
     <dependency>
-      <groupId>cat.xtec.merli.core</groupId>
+      <groupId>cat.xtec.merli</groupId>
       <artifactId>merli-core</artifactId>
-      <version>${revision}</version>
     </dependency>
 
     <!-- Java servlets API -->

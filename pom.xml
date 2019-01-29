@@ -28,7 +28,7 @@
 
   <groupId>cat.xtec.merli</groupId>
   <artifactId>merli</artifactId>
-  <version>${revision}</version>
+  <version>1.0.0</version>
   <packaging>pom</packaging>
 
   <!-- Project properties =============================================== -->
@@ -95,6 +95,24 @@
       </properties>
     </profile>
   </profiles>
+
+  <!-- Core dependencies ================================================ -->
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>cat.xtec.merli</groupId>
+        <artifactId>merli-core</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>cat.xtec.merli</groupId>
+        <artifactId>merli-core</artifactId>
+        <version>${revision}</version>
+        <classifier>sources</classifier>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <!-- Project modules ================================================== -->
 
