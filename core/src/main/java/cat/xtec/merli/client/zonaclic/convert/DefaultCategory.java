@@ -11,7 +11,7 @@ import cat.xtec.merli.domain.taxa.Category;
 public enum DefaultCategory {
 
     /** Tecnologia educativa > Tecnologies de l'aprenentatge... */
-    LEARNING_TECHNOLOGIES(UID.from(39541));
+    LEARNING_TECHNOLOGIES(UID.valueOf(39541));
 
     /** Category value */
     private final Category category;
@@ -31,7 +31,7 @@ public enum DefaultCategory {
      * Returns the category identifier.
      */
     public UID identifier() {
-        return category.getUID();
+        return category.getId();
     }
 
 

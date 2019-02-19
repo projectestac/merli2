@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -20,7 +21,7 @@ import cat.xtec.merli.domain.EnumString;
  */
 @XmlEnum
 @XmlType(name = "catalog")
-public enum Catalog implements EnumString {
+public enum Catalog implements EnumString<Catalog> {
 
     /** International Standard Book Number */
     @XmlEnumValue("ISBN")
@@ -70,6 +71,7 @@ public enum Catalog implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -78,6 +80,7 @@ public enum Catalog implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static Catalog fromValue(String value) {
         return EnumString.from(Catalog.class, value);
     }

@@ -65,7 +65,7 @@ public class ZonaclicClient implements LomClient {
         List<UID> identifiers = new ArrayList<>();
 
         for (Reference reference : references) {
-            identifiers.add(reference.getUID());
+            identifiers.add(reference.getId());
         }
 
         return identifiers.iterator();
@@ -81,7 +81,7 @@ public class ZonaclicClient implements LomClient {
 
         for (Reference reference : references) {
             Date updated = reference.getDate();
-            UID id = reference.getUID();
+            UID id = reference.getId();
 
             if (updated instanceof Date) {
                 if (inDateRange(updated, from, until)) {
@@ -102,7 +102,7 @@ public class ZonaclicClient implements LomClient {
         UID location = Reference.getLocation(path);
         Project project = fetchProject(path);
 
-        project.setUID(id);
+        project.setId(id);
         project.setLocation(location);
 
         return toResource(project);

@@ -7,15 +7,9 @@ import java.lang.annotation.Target;
 
 
 /**
- * Class assertion axiom.
+ * Prevents the mapping of a field. All static fields on a class are
+ * transient by default.
  */
-@Target({ ElementType.TYPE, ElementType.FIELD })
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DucClass {
-
-    /**
-     * Axiom predicate.
-     */
-    DucVocabulary value() default DucVocabulary.CLASS;
-
-}
+public @interface DucTransient {}

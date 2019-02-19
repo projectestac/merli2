@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -13,7 +14,7 @@ import cat.xtec.merli.domain.EnumString;
  */
 @XmlEnum
 @XmlType(name = "UserRole")
-public enum UserRole implements EnumString {
+public enum UserRole implements EnumString<UserRole> {
 
     /** Whoever creates or publishes a resource */
     @XmlEnumValue("author")
@@ -59,6 +60,7 @@ public enum UserRole implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -67,6 +69,7 @@ public enum UserRole implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static UserRole fromValue(String value) {
         return EnumString.from(UserRole.class, value);
     }

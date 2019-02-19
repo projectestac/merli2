@@ -151,7 +151,7 @@ public class TermFormPortlet extends DucPortlet
 
             if (confirm == true) {
                 String id = getProjectId();
-                String iri = String.valueOf(form.getEntity().getUID());
+                String iri = String.valueOf(form.getEntity().getId());
 
                 service.removeEntity(id, iri, new AsyncCallback<Void>() {
 

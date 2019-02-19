@@ -18,6 +18,7 @@ import cat.xtec.merli.xml.*;
 /**
  * General information that describes a learning object as a whole.
  */
+@DucContainer()
 @XmlType(name = "general")
 @XmlAccessorType(XmlAccessType.NONE)
 public class GeneralDetails implements Serializable {
@@ -25,36 +26,37 @@ public class GeneralDetails implements Serializable {
     /** This class version number */
     static final long serialVersionUID = 1L;
 
-    /** Catalog entries for the learning object */
-    @DucProperty(DucVocabulary.IDENTIFIER)
-    @XmlElement(name = "identifier")
-    protected List<Identifier> identifiers;
-
     /** Name of the learning object */
+    @DucTransient()
     @XmlElement(name = "string")
     @XmlElementWrapper(name = "title")
     protected List<LangString> titles;
 
     /** Description of the content */
-    @DucProperty(DucVocabulary.DESCRIPTION)
+    @DucAnnotation(DucVocabulary.ABSTRACT)
     @XmlElement(name = "string")
     @XmlElementWrapper(name = "description")
     protected List<LangString> descriptions;
 
-    /** Languages used within the resource */
-    @DucProperty(DucVocabulary.LANGUAGE)
+    /** Catalog entries for the learning object */
+    @DucAttribute(DucVocabulary.IDENTIFIER)
+    @XmlElement(name = "identifier")
+    protected List<Identifier> identifiers;
+
+    /** Primary languages used within the resource */
+    @DucAttribute(DucVocabulary.RESOURCE_LANGUAGE)
     @XmlElement(name = "language")
     @XmlSchemaType(name = "string")
     protected List<Language> languages;
 
     /** Organizational structure of the learning object */
-    @DucProperty(DucVocabulary.STRUCTURE)
+    @DucAttribute(DucVocabulary.STRUCTURE)
     @XmlElement(name = "structure")
     @XmlJavaTypeAdapter(StructureAdapter.class)
     protected Structure structure;
 
     /** Keywords that describe this learning object */
-    @DucClass(DucVocabulary.KEYWORD)
+    @DucRelation(DucVocabulary.KEYWORD)
     @XmlElement(name = "keyword")
     protected List<Entity> keywords;
 

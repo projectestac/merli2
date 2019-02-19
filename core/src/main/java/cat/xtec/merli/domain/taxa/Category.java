@@ -13,10 +13,10 @@ import cat.xtec.merli.bind.*;
 /**
  * An educational content category.
  */
-@DucClass()
 @XmlType(name = "category")
 @XmlRootElement(name = "category")
 @XmlAccessorType(XmlAccessType.NONE)
+@DucEntity(DucVocabulary.CLASS)
 public class Category extends Entity {
 
     /** This class version number */
@@ -38,17 +38,17 @@ public class Category extends Entity {
     protected String reference;
 
     /** Type of curricular knowledge  */
-    @DucAnnotation(DucVocabulary.KNOWLEDGE_TYPE)
+    @DucAttribute(DucVocabulary.KNOWLEDGE_TYPE)
     @XmlElement(name = "knowledge")
     protected Knowledge knowledge;
 
     /** Categories this object is a subclass-of */
-    @DucClass(DucVocabulary.CLASS)
+    @DucRelation(DucVocabulary.PARENT)
     @XmlElement(name = "class")
     protected List<Entity> parents;
 
     /** Keywords that describe this node */
-    @DucClass(DucVocabulary.KEYWORD)
+    @DucRelation(DucVocabulary.KEYWORD)
     @XmlElement(name = "keyword")
     protected List<Entity> keywords;
 
@@ -57,7 +57,7 @@ public class Category extends Entity {
      * Object constructor.
      */
     public Category() {
-        this(null);
+        this(UID.valueOf(null));
     }
 
 
@@ -67,8 +67,9 @@ public class Category extends Entity {
      * @param id    Unique identifier
      */
     public Category(UID id) {
-        this.setUID(id);
+        this.setId(id);
         this.setType(EntityType.CONTENT_CATEGORY);
+        this.setKnowledge(Knowledge.UNSPECIFIED);
     }
 
 

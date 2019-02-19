@@ -45,7 +45,7 @@ public class Reference implements Serializable {
      * @return          URN value
      */
     @JsonIgnore
-    public UID getUID() {
+    public UID getId() {
         if (id instanceof UID == false) {
             id = Reference.getUUID(path);
         }
@@ -111,7 +111,7 @@ public class Reference implements Serializable {
     @JsonIgnore
     public static UID getUUID(String path) {
         final String id = HOST + ":projects:" + path;
-        return UID.from("urn:" + CATALOG + ":" + id);
+        return UID.valueOf("urn:" + CATALOG + ":" + id);
     }
 
 
@@ -124,7 +124,7 @@ public class Reference implements Serializable {
      */
     @JsonIgnore
     public static UID getLocation(String path) {
-        return UID.from("https://" + HOST + BASE_PATH + path);
+        return UID.valueOf("https://" + HOST + BASE_PATH + path);
     }
 
 

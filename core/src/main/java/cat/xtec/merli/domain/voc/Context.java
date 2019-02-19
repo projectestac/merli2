@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -14,7 +15,7 @@ import cat.xtec.merli.domain.EnumString;
  */
 @XmlEnum
 @XmlType(name = "context")
-public enum Context implements EnumString {
+public enum Context implements EnumString<Context> {
 
     /** Education after kindergarten and before higher education */
     @XmlEnumValue("compulsory education")
@@ -92,6 +93,7 @@ public enum Context implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -100,6 +102,7 @@ public enum Context implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static Context fromValue(String value) {
         return EnumString.from(Context.class, value);
     }

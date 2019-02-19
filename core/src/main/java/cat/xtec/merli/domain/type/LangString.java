@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.*;
 
 import cat.xtec.merli.domain.voc.Language;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -62,30 +63,6 @@ public final class LangString implements Serializable {
 
 
     /**
-     * Returns a new LangString for the given value.
-     *
-     * @param value       Text value
-     * @return            Untagged language string
-     */
-    public static LangString from(String text) {
-        return new LangString(text);
-    }
-
-
-    /**
-     * Returns a copy of for the given value.
-     *
-     * @param string      Language string
-     * @return            A new language string
-     *
-     * @throws NullPointerException
-     */
-    public static LangString from(LangString string) {
-        return new LangString(string.text, string.language);
-    }
-
-
-    /**
      * Returns a new LangString for the given value and tag.
      *
      * @param text        Text value
@@ -94,8 +71,34 @@ public final class LangString implements Serializable {
      * @throws IllegalArgumentException   If tag is not a
      *      valid language identifier
      */
-    public static LangString from(String text, String tag) {
-        return new LangString(text, Language.fromValue(tag));
+    @DucCreator()
+    public static LangString valueOf(String text, String tag) {
+        Language language = Language.fromValue(tag);
+        return new LangString(text, language);
+    }
+
+
+    /**
+     * Returns a copy of the given value.
+     *
+     * @param string      Language string
+     * @return            A new language string
+     *
+     * @throws NullPointerException
+     */
+    public static LangString valueOf(LangString string) {
+        return new LangString(string.text, string.language);
+    }
+
+
+    /**
+     * Returns a new LangString for the given value.
+     *
+     * @param value       Text value
+     * @return            Untagged language string
+     */
+    public static LangString valueOf(String text) {
+        return new LangString(text);
     }
 
 
@@ -111,17 +114,6 @@ public final class LangString implements Serializable {
 
 
     /**
-     * Returns the locale code of this string.
-     *
-     * @see               Language#value
-     * @return            Locale code
-     */
-    public String getLocaleCode() {
-        return language.value();
-    }
-
-
-    /**
      * Returns the language tag.
      *
      * @return            Language tag
@@ -132,10 +124,23 @@ public final class LangString implements Serializable {
 
 
     /**
+     * Returns the locale code of this string.
+     *
+     * @see               Language#value
+     * @return            Locale code
+     */
+    @DucLocale
+    public String getLocaleCode() {
+        return language.value();
+    }
+
+
+    /**
      * Returns the text value.
      *
      * @return            Text value
      */
+    @DucString
     public String getText() {
         return text;
     }

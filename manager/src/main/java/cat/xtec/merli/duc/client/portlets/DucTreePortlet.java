@@ -72,7 +72,7 @@ public abstract class DucTreePortlet extends DucPortlet {
      */
     public void expandTreeItem(EntityTreeItem item) {
         String id = this.getProjectId();
-        String iri = item.getEntity().getUID().getString();
+        String iri = item.getEntity().getId().getString();
 
         service.fetchChildren(id, iri, new AsyncCallback<List<Vertex>>() {
             @Override public void onFailure(Throwable caught) {}
@@ -105,7 +105,7 @@ public abstract class DucTreePortlet extends DucPortlet {
      */
     public void emitTreeItem(EntityTreeItem item) {
         Entity entity = item.getEntity();
-        String iri = entity.getUID().getString();
+        String iri = entity.getId().getString();
         OWLEntity instance = DataFactory.getOWLClass(iri);
 
         this.emitSelectedEntity(instance);

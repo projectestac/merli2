@@ -122,7 +122,7 @@ public class DucServiceServlet extends WebProtegeRemoteServiceServlet
 
         try {
             entity = (Entity) type.newInstance();
-            entity.setUID(UID.from(id));
+            entity.setId(UID.valueOf(id));
             entity.setType(cat.xtec.merli.domain.taxa.EntityType.EDUCATION_PHASE);
         } catch (Exception e) {}
 

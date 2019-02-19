@@ -17,6 +17,7 @@ import cat.xtec.merli.bind.*;
  * Note that this is not part of the LOM standard but an extension
  * of the format introduced by DUC.
  */
+@DucContainer()
 @XmlType(name = "physical")
 @XmlAccessorType(XmlAccessType.NONE)
 public class PhysicalDetails implements Serializable {
@@ -25,12 +26,12 @@ public class PhysicalDetails implements Serializable {
     static final long serialVersionUID = 1L;
 
     /** Physical characteristics of the learning object */
-    @DucProperty(DucVocabulary.MEDIUM)
+    @DucAnnotation(DucVocabulary.DESCRIPTION)
     @XmlElement(name = "medium", namespace = Namespace.DC)
     protected List<LangString> descriptions;
 
     /** Physical types of the learning object */
-    @DucProperty(DucVocabulary.FORMAT)
+    @DucAttribute(DucVocabulary.MEDIUM)
     @XmlElement(name = "format", namespace = Namespace.DC)
     protected List<Medium> mediums;
 

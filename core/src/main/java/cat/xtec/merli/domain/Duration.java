@@ -2,6 +2,7 @@ package cat.xtec.merli.domain;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.*;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -159,16 +160,6 @@ public class Duration implements Serializable, Comparable<Duration> {
 
 
     /**
-     * Returns the seconds value of this object.
-     *
-     * @return              Seconds value
-     */
-    protected long getSeconds() {
-        return seconds;
-    }
-
-
-    /**
      * Sets the value of this object given a number of seconds.
      *
      * @param value         Duration in seconds
@@ -176,6 +167,16 @@ public class Duration implements Serializable, Comparable<Duration> {
     protected void setSeconds(long value) {
         this.string = toString(value);
         this.seconds = value;
+    }
+
+
+    /**
+     * Returns the seconds value of this object.
+     *
+     * @return              Seconds value
+     */
+    protected long getSeconds() {
+        return seconds;
     }
 
 
@@ -217,6 +218,7 @@ public class Duration implements Serializable, Comparable<Duration> {
      *
      * @param value     ISO-8601 duration
      */
+    @DucCreator()
     public static Duration parse(String value) {
         return new Duration(value);
     }

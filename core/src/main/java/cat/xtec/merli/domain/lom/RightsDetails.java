@@ -18,6 +18,7 @@ import cat.xtec.merli.xml.*;
 /**
  * Conditions of use of the resource
  */
+@DucContainer()
 @XmlType(name = "rights")
 @XmlAccessorType(XmlAccessType.NONE)
 public class RightsDetails implements Serializable {
@@ -26,24 +27,24 @@ public class RightsDetails implements Serializable {
     static final long serialVersionUID = 1L;
 
     /** Whether use of the resource requires payment */
-    @DucProperty(DucVocabulary.COST)
+    @DucAttribute(DucVocabulary.COST)
     @XmlElement(name = "cost")
     @XmlJavaTypeAdapter(CostAdapter.class)
     protected Cost cost;
 
     /** Whether copyright or other restrictions apply */
-    @DucProperty(DucVocabulary.COPYRIGHT)
+    @DucAttribute(DucVocabulary.COPYRIGHT)
     @XmlElement(name = "copyrightAndOtherRestrictions")
     @XmlJavaTypeAdapter(CopyrightAdapter.class)
     protected Copyright copyright;
 
     /** License of the content */
-    @DucProperty(DucVocabulary.LICENSE)
+    @DucAttribute(DucVocabulary.LICENSE)
     @XmlElement(name = "license", namespace = Namespace.DUC)
     protected License license;
 
     /** Comments on the conditions of use */
-    @DucProperty(DucVocabulary.CONDITIONS)
+    @DucAnnotation(DucVocabulary.CONDITIONS)
     @XmlElement(name = "string")
     @XmlElementWrapper(name = "description")
     protected List<LangString> descriptions;

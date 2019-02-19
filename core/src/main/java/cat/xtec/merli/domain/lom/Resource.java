@@ -12,6 +12,7 @@ import cat.xtec.merli.domain.taxa.EntityType;
 import cat.xtec.merli.domain.taxa.Relation;
 import cat.xtec.merli.domain.type.Classification;
 import cat.xtec.merli.domain.type.LangString;
+import cat.xtec.merli.domain.voc.Purpose;
 import cat.xtec.merli.bind.*;
 import cat.xtec.merli.xml.*;
 
@@ -20,57 +21,46 @@ import cat.xtec.merli.xml.*;
  * Learning object. Encapsulates all the details and classifications of
  * a single learning object.
  */
-@DucIndividual()
 @XmlType(name = "lom")
 @XmlRootElement(name = "lom")
 @XmlAccessorType(XmlAccessType.NONE)
+@DucEntity(DucVocabulary.INDIVIDUAL)
 public class Resource extends Entity {
 
     /** This class version number */
     static final long serialVersionUID = 1L;
 
-    /** General details titles reference */
-    @DucAnnotation(DucVocabulary.LABEL)
-    @XmlTransient
-    protected List<LangString> titles;
-
     /** General information */
-    @DucBundle()
     @XmlElement(name = "general")
     protected GeneralDetails generalDetails;
 
     /** History and current state */
-    @DucBundle()
     @XmlElement(name = "lifeCycle")
     protected LifeCycleDetails lifeCycleDetails;
 
     /** Technical characteristics */
-    @DucBundle()
     @XmlElement(name = "technical")
     protected TechnicalDetails technicalDetails;
 
     /** Pedagogical and educational characteristics */
-    @DucBundle()
     @XmlElement(name = "educational")
     protected EducationalDetails educationalDetails;
 
     /** Conditions of use */
-    @DucBundle()
     @XmlElement(name = "rights")
     protected RightsDetails rightsDetails;
 
     /** Description of this metadata */
-    @DucBundle()
+    @DucTransient()
     @XmlElement(name = "metaMetadata")
     protected MetadataDetails metadataDetails;
 
     /** Physical characteristics */
-    @DucBundle()
     @XmlElement(name = "physical", namespace = Namespace.DUC)
     protected PhysicalDetails physicalDetails;
 
-    /** Categories this object is a subclass-of */
-    @DucClass(DucVocabulary.CLASS)
+    /** Categories this object is an instance-of */
+    @DucRelation(DucVocabulary.TYPE)
     protected List<Entity> parents;
 
     /** Relations with other resources */
@@ -80,6 +70,7 @@ public class Resource extends Entity {
     protected List<Relation> relations;
 
     /** Classifications for this object */
+    @DucTransient()
     @XmlElement(name = "classification")
     protected List<Classification> classes;
 
@@ -88,7 +79,7 @@ public class Resource extends Entity {
      * Object constructor.
      */
     public Resource() {
-        this(null);
+        this(UID.valueOf(null));
     }
 
 
@@ -98,9 +89,8 @@ public class Resource extends Entity {
      * @param id    Unique identifier
      */
     public Resource(UID id) {
-        this.setUID(id);
+        this.setId(id);
         this.setType(EntityType.LEARNING_OBJECT);
-        this.titles = super.labels;
     }
 
 
@@ -211,7 +201,6 @@ public class Resource extends Entity {
     public List<LangString> getLabels() {
         if (labels == null) {
             labels = getGeneralDetails().getTitles();
-            titles = super.labels;
         }
 
         return labels;
@@ -235,11 +224,16 @@ public class Resource extends Entity {
     /**
      * Returns this object's parents list reference.
      *
+     * This is a convenience method that extracts and returns the list
+     * of entities on the DISCIPLINE classification. If no classification
+     * exists with that purpose, then it is created.
+     *
+     * @see             #getClasses
      * @return          Entities list reference
      */
     public List<Entity> getParents() {
         if (parents == null) {
-            parents = new ArrayList<Entity>();
+            parents = getEntities(Purpose.DISCIPLINE);
         }
 
         return parents;
@@ -249,7 +243,7 @@ public class Resource extends Entity {
     /**
      * Returns this object's classes list reference.
      *
-     * @return          Entities list reference
+     * @return          Classifications list reference
      */
     public List<Classification> getClasses() {
         if (classes == null) {
@@ -257,6 +251,33 @@ public class Resource extends Entity {
         }
 
         return classes;
+    }
+
+
+    /**
+     * Returns the entities list reference for the classification
+     * with the given purpose or creates it.
+     *
+     * @return          Entities list reference
+     */
+    private List<Entity> getEntities(Purpose purpose) {
+        List<Classification> classes = getClasses();
+        List<Entity> entities = null;
+
+        for (Classification section : classes) {
+            if (purpose.equals(section.getPurpose())) {
+                entities = section.getEntities();
+                break;
+            }
+        }
+
+        if (entities instanceof List == false) {
+            Classification section = new Classification(purpose);
+            entities = section.getEntities();
+            classes.add(section);
+        }
+
+        return entities;
     }
 
 }

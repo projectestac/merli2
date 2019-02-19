@@ -126,7 +126,7 @@ public class EntityLabel extends Label {
      */
     public static String getStyleNameFor(Entity entity) {
         final EntityType type = entity.getType();
-        final UID id = entity.getUID();
+        final UID id = entity.getId();
 
         if (type instanceof EntityType) {
             return "duc-" + type.name();

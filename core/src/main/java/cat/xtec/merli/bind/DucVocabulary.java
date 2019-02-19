@@ -6,6 +6,32 @@ package cat.xtec.merli.bind;
  */
 public enum DucVocabulary {
 
+    /* Predefined OWL vocabulary */
+
+    /** Entity identifier */
+    ABOUT(DucNamespace.RDF, "about"),
+
+    /** The resource is a subclass of a class */
+    PARENT(DucNamespace.RDFS, "subClassOf"),
+
+    /** The resource is an instance of a class */
+    TYPE(DucNamespace.RDF, "type"),
+
+    /** Parent of all the classes */
+    THING(DucNamespace.OWL, "Thing"),
+
+    /** Subclass of all the classes */
+    NOTHING(DucNamespace.OWL, "Nothing"),
+
+    /** Empty data property */
+    BOTTOM(DucNamespace.OWL, "BottomDataProperty"),
+
+    /** The resource is a class */
+    CLASS(DucNamespace.OWL, "Class"),
+
+    /** The resource is a named individual */
+    INDIVIDUAL(DucNamespace.OWL, "NamedIndividual"),
+
     /* Root concept classes */
 
     /** Root of the categories */
@@ -16,9 +42,6 @@ public enum DucVocabulary {
 
     /* Annotation properties */
 
-    /** Alternative term identifier */
-    XTHES_ID(DucNamespace.XTHES, "altIdentifier"),
-
     /** Description of the resource */
     COMMENT(DucNamespace.RDFS, "comment"),
 
@@ -26,7 +49,7 @@ public enum DucVocabulary {
     LABEL(DucNamespace.RDFS, "label"),
 
     /** The nature or genre of the resource */
-    TYPE(DucNamespace.DCTERMS, "type"),
+    KIND(DucNamespace.DCTERMS, "type"),
 
     /** Observations for the resource */
     OBSERVATION(DucNamespace.DUC, "observation"),
@@ -38,6 +61,9 @@ public enum DucVocabulary {
     KNOWLEDGE_TYPE(DucNamespace.DUC, "knowledgeType"),
 
     /* Datatype properties */
+
+    /** Summary of the resource */
+    ABSTRACT(DucNamespace.DCTERMS, "abstract"),
 
     /** Name given to the resource */
     TITLE(DucNamespace.DCTERMS, "title"),
@@ -58,7 +84,7 @@ public enum DucVocabulary {
     FORMAT(DucNamespace.DCTERMS, "format"),
 
     /** Language of the resource */
-    LANGUAGE(DucNamespace.DCTERMS, "language"),
+    RESOURCE_LANGUAGE(DucNamespace.DCTERMS, "language"),
 
     /** Comments on the conditions of use */
     CONDITIONS(DucNamespace.DCTERMS, "conditions"),
@@ -102,10 +128,10 @@ public enum DucVocabulary {
     /** License of the content */
     LICENSE(DucNamespace.DUC, "license"),
 
-    /* Object properties */
+    /** Natural language of the user */
+    USER_LANGUAGE(DucNamespace.DUC, "userLanguage"),
 
-    /** The resource is a child of another resource */
-    CLASS(DucNamespace.OWL, "Class"),
+    /* Object properties */
 
     /** A related vocabulary term */
     TERM_RELATION(DucNamespace.DUC, "termRelation"),
@@ -183,16 +209,20 @@ public enum DucVocabulary {
     /**
      * Enumeration constructor
      *
-     * @param value
+     * @param ns        Namespace
+     * @param path      Namespace path
      */
-    DucVocabulary(DucNamespace ns, String value) {
+    DucVocabulary(DucNamespace ns, String path) {
         this.ns = ns;
-        this.value = value;
+        this.value = ns.value() + path;
     }
 
 
     /**
      * Returns this enumeration value.
+     *
+     * That is, the concatenation of the namespace and the path.
+     * Thus, this method return the full IRI of a vocabulary.
      *
      * @return  String value
      */
@@ -202,9 +232,19 @@ public enum DucVocabulary {
 
 
     /**
+     * Returns this enumeration namespace.
+     *
+     * @return  Namespace value
+     */
+    public DucNamespace namespace() {
+        return ns;
+    }
+
+
+    /**
      * Returns an enumeration object given a value.
      *
-     * @param value     Enumeration value
+     * @param value      Enumeration value
      * @throws IllegalArgumentException
      */
     public static DucVocabulary fromValue(String value) {

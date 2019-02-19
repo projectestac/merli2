@@ -7,15 +7,14 @@ import java.lang.annotation.Target;
 
 
 /**
- * Annotation assertion axiom.
+ * Marks a field as containing an annotation or a list of
+ * annotations.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DucAnnotation {
 
-    /**
-     * Axiom predicate.
-     */
+    /** Predicate of the annotation */
     DucVocabulary value();
 
 }

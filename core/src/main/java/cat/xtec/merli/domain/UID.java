@@ -3,6 +3,7 @@ package cat.xtec.merli.domain;
 import java.util.Objects;
 import java.io.Serializable;
 import javax.xml.bind.annotation.*;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -52,22 +53,23 @@ public class UID implements Serializable, Comparable<UID> {
     /**
      * Returns a new URI for the given object.
      *
-     * @param o     Object to parse
-     * @return      New URI instance
+     * @param value     Object to parse
+     * @return          New URI instance
      */
-    public static UID from(Object o) {
-        return from(String.valueOf(o));
+    public static UID valueOf(Object value) {
+        return valueOf(String.valueOf(value));
     }
 
 
     /**
      * Returns a new URI for the given string.
      *
-     * @param o     Object to parse
-     * @return      New URI instance
+     * @param value     String to parse
+     * @return          New UID instance
      */
-    public static UID from(String o) {
-        return new UID(o);
+    @DucCreator()
+    public static UID valueOf(String value) {
+        return new UID(value);
     }
 
 

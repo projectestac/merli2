@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -13,7 +14,7 @@ import cat.xtec.merli.domain.EnumString;
  */
 @XmlEnum
 @XmlType(name = "structure")
-public enum Structure implements EnumString {
+public enum Structure implements EnumString<Structure> {
 
     /** Indivisible resource */
     @XmlEnumValue("atomic")
@@ -63,6 +64,7 @@ public enum Structure implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -71,6 +73,7 @@ public enum Structure implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static Structure fromValue(String value) {
         return EnumString.from(Structure.class, value);
     }

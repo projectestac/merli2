@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlEnumValue;
 
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -12,7 +13,7 @@ import cat.xtec.merli.domain.EnumString;
  * defined LRE Learning Resource Types.
  */
 @XmlEnum
-public enum ResourceType implements EnumString {
+public enum ResourceType implements EnumString<ResourceType> {
 
     /** The primary purpose is the evaluation of the learner */
     @XmlEnumValue("assessment")
@@ -74,6 +75,7 @@ public enum ResourceType implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -82,6 +84,7 @@ public enum ResourceType implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static ResourceType fromValue(String value) {
         return EnumString.from(ResourceType.class, value);
     }

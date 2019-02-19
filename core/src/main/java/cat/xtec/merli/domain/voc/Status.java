@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -13,7 +14,7 @@ import cat.xtec.merli.domain.EnumString;
  */
 @XmlEnum
 @XmlType(name = "status")
-public enum Status implements EnumString {
+public enum Status implements EnumString<Status> {
 
     /** Draft */
     @XmlEnumValue("draft")
@@ -59,6 +60,7 @@ public enum Status implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -67,6 +69,7 @@ public enum Status implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static Status fromValue(String value) {
         return EnumString.from(Status.class, value);
     }

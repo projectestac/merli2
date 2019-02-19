@@ -328,8 +328,8 @@ public class EntityBox extends Composite implements Focusable,
             List<Suggestion> suggestions = new ArrayList<>();
 
             for (int i = 0; i < 5; i++) {
-                Entity entity = new Entity(UID.from("http://Xiuxiuejar" + i));
-                entity.getLabels().add(LangString.from("Xiuxiuejar"));
+                Entity entity = new Entity(UID.valueOf("http://Xiuxiuejar" + i));
+                entity.getLabels().add(LangString.valueOf("Xiuxiuejar"));
                 suggestions.add(new EntitySuggestion(entity));
             }
 

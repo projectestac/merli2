@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -13,7 +14,7 @@ import cat.xtec.merli.domain.EnumString;
  */
 @XmlEnum
 @XmlType(name = "contributorRole")
-public enum ContributorRole implements EnumString {
+public enum ContributorRole implements EnumString<ContributorRole> {
 
     /** Who is responsible for making the content */
     @XmlEnumValue("author")
@@ -107,6 +108,7 @@ public enum ContributorRole implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -115,6 +117,7 @@ public enum ContributorRole implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static ContributorRole fromValue(String value) {
         return EnumString.from(ContributorRole.class, value);
     }

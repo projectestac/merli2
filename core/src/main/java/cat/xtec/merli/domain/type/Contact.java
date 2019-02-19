@@ -1,6 +1,8 @@
 package cat.xtec.merli.domain.type;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.*;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -12,7 +14,7 @@ import javax.xml.bind.annotation.*;
  */
 @XmlType(name = "entity")
 @XmlAccessorType(XmlAccessType.NONE)
-public class Contact {
+public class Contact implements Serializable {
 
     /** This class version number */
     static final long serialVersionUID = 1L;
@@ -65,6 +67,7 @@ public class Contact {
      * @param value         Expression of a vCard
      * @return              New vCard object
      */
+    @DucCreator()
     public static Contact parse(String value) {
         return new Contact(value);
     }

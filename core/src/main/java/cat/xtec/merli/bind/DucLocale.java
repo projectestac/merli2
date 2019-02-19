@@ -7,13 +7,9 @@ import java.lang.annotation.Target;
 
 
 /**
- * Marks a field as containing a relation or a list of relations.
+ * Method or field that provides a language tag for an object.
+ * Defaults to {@code null}.
  */
-@Target({ ElementType.FIELD })
+@Target({ ElementType.FIELD, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DucRelation {
-
-    /** Default predicate of the relation */
-    DucVocabulary value() default DucVocabulary.RELATION;
-
-}
+public @interface DucLocale {}

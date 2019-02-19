@@ -3,6 +3,7 @@ package cat.xtec.merli.domain.type;
 import javax.xml.bind.annotation.*;
 import cat.xtec.merli.domain.UID;
 import cat.xtec.merli.domain.voc.Catalog;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -52,6 +53,29 @@ public class Identifier extends UID {
      */
     public Identifier(UID urn) {
         setString(String.valueOf(urn));
+    }
+
+
+    /**
+     * Returns a new identifier for the given object.
+     *
+     * @param value     Object to parse
+     * @return          New identifier instance
+     */
+    public static Identifier valueOf(Object value) {
+        return valueOf(String.valueOf(value));
+    }
+
+
+    /**
+     * Returns a new identifier for the given string.
+     *
+     * @param value     String to parse
+     * @return          New identifier instance
+     */
+    @DucCreator()
+    public static Identifier valueOf(String value) {
+        return new Identifier(value);
     }
 
 

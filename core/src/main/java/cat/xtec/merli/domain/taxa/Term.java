@@ -12,10 +12,10 @@ import cat.xtec.merli.bind.*;
 /**
  * A vocabulary item.
  */
-@DucClass()
 @XmlType(name = "term")
 @XmlRootElement(name = "term")
 @XmlAccessorType(XmlAccessType.NONE)
+@DucEntity(DucVocabulary.CLASS)
 public class Term extends Entity {
 
     /** This class version number */
@@ -27,7 +27,7 @@ public class Term extends Entity {
     protected String description;
 
     /** Terms this object is a subclass-of */
-    @DucClass(DucVocabulary.CLASS)
+    @DucRelation(DucVocabulary.PARENT)
     @XmlElement(name = "class")
     protected List<Entity> parents;
 
@@ -41,7 +41,7 @@ public class Term extends Entity {
      * Object constructor.
      */
     public Term() {
-        this(null);
+        this(UID.valueOf(null));
     }
 
 
@@ -51,7 +51,7 @@ public class Term extends Entity {
      * @param id    Unique identifier
      */
     public Term(UID id) {
-        this.setUID(id);
+        this.setId(id);
         this.setType(EntityType.VOCABULARY_TERM);
     }
 

@@ -7,13 +7,13 @@ import java.lang.annotation.Target;
 
 
 /**
- * Marks a field as containing a relation or a list of relations.
+ * Marks an object as being an entity.
  */
-@Target({ ElementType.FIELD })
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DucRelation {
+public @interface DucEntity {
 
-    /** Default predicate of the relation */
-    DucVocabulary value() default DucVocabulary.RELATION;
+    /** Declaration predicate */
+    DucVocabulary value() default DucVocabulary.CLASS;
 
 }

@@ -107,7 +107,7 @@ public class Relationship {
      * @param value         Relation value
      */
     public void setRelation(Relation value) {
-        this.relation = relation;
+        this.relation = value;
     }
 
 }

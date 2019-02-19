@@ -63,7 +63,7 @@ public class LangStringListEditor extends Composite
 
         for (String code : locales) {
             LangStringEditor editor = new LangStringEditor();
-            editor.setValue(LangString.from(null, code));
+            editor.setValue(LangString.valueOf(null, code));
             editors.add(editor);
             panel.add(editor);
         }
@@ -105,7 +105,7 @@ public class LangStringListEditor extends Composite
             }
         }
 
-        return LangString.from(null, code);
+        return LangString.valueOf(null, code);
     }
 
 

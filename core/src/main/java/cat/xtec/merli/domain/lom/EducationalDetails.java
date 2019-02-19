@@ -18,6 +18,7 @@ import cat.xtec.merli.xml.*;
 /**
  * Pedagogical and educational characteristics.
  */
+@DucContainer()
 @XmlType(name = "educational")
 @XmlAccessorType(XmlAccessType.NONE)
 public class EducationalDetails implements Serializable {
@@ -26,31 +27,31 @@ public class EducationalDetails implements Serializable {
     static final long serialVersionUID = 1L;
 
     /** How the learning object is to be used */
-    @DucProperty(DucVocabulary.USAGE)
+    @DucAnnotation(DucVocabulary.USAGE)
     @XmlElement(name = "string")
     @XmlElementWrapper(name = "description")
     protected List<LangString> descriptions;
 
     /** User's natural languages */
-    @DucProperty(DucVocabulary.LANGUAGE)
+    @DucAttribute(DucVocabulary.USER_LANGUAGE)
     @XmlElement(name = "language")
     @XmlSchemaType(name = "string")
     protected List<Language> languages;
 
     /** Normal users of the learning object */
-    @DucProperty(DucVocabulary.USER_ROLE)
+    @DucAttribute(DucVocabulary.USER_ROLE)
     @XmlElement(name = "intendedEndUserRole")
     @XmlJavaTypeAdapter(UserRoleAdapter.class)
     protected List<UserRole> userRoles;
 
     /** Typical learning environment */
-    @DucProperty(DucVocabulary.CONTEXT)
+    @DucAttribute(DucVocabulary.CONTEXT)
     @XmlElement(name = "context")
     @XmlJavaTypeAdapter(ContextAdapter.class)
     protected List<Context> contexts;
 
     /** Specific kinds of resources */
-    @DucProperty(DucVocabulary.LEARNING_TYPE)
+    @DucAttribute(DucVocabulary.LEARNING_TYPE)
     @XmlElement(name = "learningResourceType")
     @XmlJavaTypeAdapter(ResourceTypeAdapter.class)
     protected List<ResourceType> resourceTypes;

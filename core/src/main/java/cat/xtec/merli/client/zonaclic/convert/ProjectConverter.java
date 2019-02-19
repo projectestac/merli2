@@ -156,7 +156,7 @@ public class ProjectConverter implements LomConverter<Project> {
      * composed of a catalog and an entry within that catalog.
      */
     private Identifier getIdentifier(Project project) {
-        return new Identifier(project.getUID());
+        return new Identifier(project.getId());
     }
 
 
@@ -245,7 +245,7 @@ public class ProjectConverter implements LomConverter<Project> {
 
         for (Integer id : project.getKeywords()) {
             if (id instanceof Integer) {
-                terms.add(new Term(UID.from(id)));
+                terms.add(new Term(UID.valueOf(id)));
             }
         }
 

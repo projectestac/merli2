@@ -77,7 +77,7 @@ public class Project implements Serializable {
      *
      * @return          URN value
      */
-    public UID getUID() {
+    public UID getId() {
         return id;
     }
 
@@ -87,7 +87,7 @@ public class Project implements Serializable {
      *
      * @param value     URN value
      */
-    public void setUID(UID id) {
+    public void setId(UID id) {
         this.id = id;
     }
 

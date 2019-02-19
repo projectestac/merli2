@@ -3,8 +3,10 @@ package cat.xtec.merli.domain.voc;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
+
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -12,11 +14,11 @@ import cat.xtec.merli.domain.EnumString;
  */
 @XmlEnum
 @XmlType(name = "Knowledge")
-public enum Knowledge implements EnumString {
+public enum Knowledge implements EnumString<Knowledge> {
 
     /** Not exactly known or defined */
-    @XmlEnumValue("indeterminate")
-    INDETERMINATE("indeterminate"),
+    @XmlEnumValue("unspecified")
+    UNSPECIFIED("unspecified"),
 
     /** Ability to adopt appropriate attitudes */
     @XmlEnumValue("attitudinal")
@@ -58,6 +60,7 @@ public enum Knowledge implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -66,6 +69,7 @@ public enum Knowledge implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static Knowledge fromValue(String value) {
         return EnumString.from(Knowledge.class, value);
     }

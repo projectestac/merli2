@@ -7,8 +7,14 @@ import java.lang.annotation.Target;
 
 
 /**
- * IRI field.
+ * Marks a field as containing a data property or a list
+ * of data properties.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DucIRI {}
+public @interface DucAttribute {
+
+    /** Predicate of the attribute */
+    DucVocabulary value();
+
+}

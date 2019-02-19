@@ -7,15 +7,13 @@ import java.lang.annotation.Target;
 
 
 /**
- * Data property axiom.
+ * Marks a field as an IRI identifier.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DucProperty {
+public @interface DucIdentifier {
 
-    /**
-     *
-     */
-    DucVocabulary value();
+    /** Default vocabulary value */
+    DucVocabulary value() default DucVocabulary.ABOUT;
 
 }

@@ -14,6 +14,7 @@ import cat.xtec.merli.bind.*;
 /**
  * Technical requirements and characteristics of a learning object.
  */
+@DucContainer()
 @XmlType(name = "technical")
 @XmlAccessorType(XmlAccessType.NONE)
 public class TechnicalDetails implements Serializable {
@@ -22,40 +23,19 @@ public class TechnicalDetails implements Serializable {
     static final long serialVersionUID = 1L;
 
     /** Duration of the learning object */
-    @DucProperty(DucVocabulary.DURATION)
     @XmlElement(name = "duration")
     protected TimePeriod timePeriod;
 
     /** UID of the learning object */
-    @DucProperty(DucVocabulary.LOCATION)
+    @DucAttribute(DucVocabulary.LOCATION)
     @XmlElement(name = "location")
     @XmlSchemaType(name = "anyUID")
     protected UID location;
 
     /** Media types of the learning object */
-    @DucProperty(DucVocabulary.FORMAT)
+    @DucAttribute(DucVocabulary.FORMAT)
     @XmlElement(name = "format")
     protected List<Format> formats;
-
-
-    /**
-     * Returns this object's time period value.
-     *
-     * @return          Time period value
-     */
-    public TimePeriod getTimePeriod() {
-        return timePeriod;
-    }
-
-
-    /**
-     * Sets this object's time period value.
-     *
-     * @param value     Time period value
-     */
-    public void setTimePeriod(TimePeriod value) {
-        this.timePeriod = value;
-    }
 
 
     /**
@@ -75,6 +55,20 @@ public class TechnicalDetails implements Serializable {
      */
     public void setLocation(UID value) {
         this.location = value;
+    }
+
+
+    /**
+     * Returns this object's time period value.
+     *
+     * @return          Time period value
+     */
+    public TimePeriod getTimePeriod() {
+        if (timePeriod == null) {
+            timePeriod = new TimePeriod();
+        }
+
+        return timePeriod;
     }
 
 

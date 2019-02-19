@@ -3,8 +3,10 @@ package cat.xtec.merli.domain.voc;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
+
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -15,7 +17,7 @@ import cat.xtec.merli.domain.EnumString;
  */
 @XmlEnum
 @XmlType(name = "medium")
-public enum Medium implements EnumString {
+public enum Medium implements EnumString<Medium> {
 
     /* LRE Learning Resource Types (learning asset) */
 
@@ -135,6 +137,7 @@ public enum Medium implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -143,6 +146,7 @@ public enum Medium implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static Medium fromValue(String value) {
         return EnumString.from(Medium.class, value);
     }

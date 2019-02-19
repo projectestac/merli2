@@ -24,22 +24,22 @@ import cat.xtec.merli.bind.*;
  * Its name may be a human readable label for the entity or any other
  * textual representation.
  */
-@DucClass()
 @XmlType(name = "entity")
 @XmlRootElement(name = "entity")
 @XmlAccessorType(XmlAccessType.NONE)
+@DucEntity(DucVocabulary.CLASS)
 public class Entity implements Serializable {
 
     /** This class version number */
     static final long serialVersionUID = 1L;
 
     /** Global unique identifier */
-    @DucIRI()
+    @DucIdentifier()
     @XmlElement(name = "id", namespace = Namespace.DUC)
     protected UID id;
 
     /** Entity type */
-    @DucAnnotation(DucVocabulary.TYPE)
+    @DucAnnotation(DucVocabulary.KIND)
     @XmlElement(name = "type", namespace = Namespace.DC)
     protected EntityType type;
 
@@ -48,12 +48,15 @@ public class Entity implements Serializable {
     @XmlElement(name = "title", namespace = Namespace.DC)
     protected List<LangString> labels;
 
+    /** Entity flags as a bit mask */
+    protected int flags = 0x00;
+
 
     /**
      * Object constructor.
      */
     public Entity() {
-        this(null);
+        this(UID.valueOf(null));
     }
 
 
@@ -63,7 +66,7 @@ public class Entity implements Serializable {
      * @param id    Unique identifier
      */
     public Entity(UID id) {
-        this.setUID(id);
+        this.setId(id);
     }
 
 
@@ -72,7 +75,7 @@ public class Entity implements Serializable {
      *
      * @return          Id value
      */
-    public UID getUID() {
+    public UID getId() {
         return id;
     }
 
@@ -82,7 +85,7 @@ public class Entity implements Serializable {
      *
      * @param value     IRI identifier
      */
-    public void setUID(UID value) {
+    public void setId(UID value) {
         this.id = value;
     }
 
@@ -108,6 +111,29 @@ public class Entity implements Serializable {
 
 
     /**
+     * Checks if a flag is set.
+     *
+     * @param value     Flag value
+     * @return          True if flagged
+     */
+    public boolean hasFlag(EntityFlag flag) {
+        final int shift = 1 + flag.ordinal();
+        return 0 != (flags & (0x01 << shift));
+    }
+
+
+    /**
+     * Toggles a flag on this entity.
+     *
+     * @param value     Flag value
+     */
+    public void toggleFlag(EntityFlag flag) {
+        final int shift = 1 + flag.ordinal();
+        this.flags = flags ^ (0x01 << shift);
+    }
+
+
+    /**
      * Returns a label suitable for the given language.
      *
      * If no label is defined for the specified language this method
@@ -115,7 +141,7 @@ public class Entity implements Serializable {
      * or the first label found. May return null if the entity has
      * no labels defined.
      *
-     * @see LangString#DEFAULT_LANGUAGE
+     * @see             LangString#DEFAULT_LANGUAGE
      * @param language  Requested language tag
      * @return          A language string or {@code null}
      */
@@ -142,8 +168,8 @@ public class Entity implements Serializable {
 
     /**
      * Returns a label suitable for the given language code.
-     * @see #getLabel(Language)
      *
+     * @see             #getLabel(Language)
      * @param code      ISO 639-1 language code
      * @return          A language string or {@code null}
      */
@@ -212,7 +238,7 @@ public class Entity implements Serializable {
      */
     @Override
     public String toString() {
-        return String.valueOf(getUID());
+        return getClass().getSimpleName() + "(" + getId() + ")";
     }
 
 }

@@ -7,13 +7,9 @@ import java.lang.annotation.Target;
 
 
 /**
- * Marks a field as containing a relation or a list of relations.
+ * A container for binded elements. A mapper will descend into a
+ * class only if it is marked with this annotation.
  */
-@Target({ ElementType.FIELD })
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DucRelation {
-
-    /** Default predicate of the relation */
-    DucVocabulary value() default DucVocabulary.RELATION;
-
-}
+public @interface DucContainer {}

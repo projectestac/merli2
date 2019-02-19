@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -13,7 +14,7 @@ import cat.xtec.merli.domain.EnumString;
  */
 @XmlEnum
 @XmlType(name = "Purpose")
-public enum Purpose implements EnumString {
+public enum Purpose implements EnumString<Purpose> {
 
     /** Accessibility restrictions */
     @XmlEnumValue("accessibility restrictions")
@@ -99,6 +100,7 @@ public enum Purpose implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -107,6 +109,7 @@ public enum Purpose implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static Purpose fromValue(String value) {
         return EnumString.from(Purpose.class, value);
     }

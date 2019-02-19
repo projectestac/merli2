@@ -3,8 +3,10 @@ package cat.xtec.merli.domain.voc;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
+
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -13,7 +15,7 @@ import cat.xtec.merli.domain.EnumString;
  */
 @XmlEnum
 @XmlType(name = "format")
-public enum Format implements EnumString {
+public enum Format implements EnumString<Format> {
 
     /**  */
     @XmlEnumValue("application/base64")
@@ -211,6 +213,7 @@ public enum Format implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -219,6 +222,7 @@ public enum Format implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static Format fromValue(String value) {
         return EnumString.from(Format.class, value);
     }

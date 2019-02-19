@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -13,7 +14,7 @@ import cat.xtec.merli.domain.EnumString;
  */
 @XmlEnum
 @XmlType(name = "copyright")
-public enum Copyright implements EnumString {
+public enum Copyright implements EnumString<Copyright> {
 
     /** Requires payment */
     @XmlEnumValue("yes")
@@ -51,6 +52,7 @@ public enum Copyright implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -59,6 +61,7 @@ public enum Copyright implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static Copyright fromValue(String value) {
         return EnumString.from(Copyright.class, value);
     }

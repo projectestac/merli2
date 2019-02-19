@@ -1,5 +1,6 @@
 package cat.xtec.merli.domain.type;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import javax.xml.bind.annotation.*;
@@ -18,7 +19,10 @@ import cat.xtec.merli.xml.*;
  */
 @XmlType(name = "classification")
 @XmlAccessorType(XmlAccessType.NONE)
-public class Classification {
+public class Classification implements Serializable {
+
+    /** This class version number */
+    static final long serialVersionUID = 1L;
 
     /** Purpose of the classification */
     @XmlElement(name = "purpose")
@@ -75,6 +79,15 @@ public class Classification {
         }
 
         return entities;
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return getPurpose() + ": " + getEntities();
     }
 
 }

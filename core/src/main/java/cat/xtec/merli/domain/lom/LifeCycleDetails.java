@@ -17,6 +17,7 @@ import cat.xtec.merli.xml.*;
  * Features related to the history and current state of a learning object
  * and those who have affected it during its evolution.
  */
+@DucContainer()
 @XmlType(name = "lifeCycle")
 @XmlAccessorType(XmlAccessType.NONE)
 public class LifeCycleDetails implements Serializable {
@@ -25,18 +26,19 @@ public class LifeCycleDetails implements Serializable {
     static final long serialVersionUID = 1L;
 
     /** State or condition of the learning object */
-    @DucProperty(DucVocabulary.STATUS)
+    @DucAttribute(DucVocabulary.STATUS)
     @XmlElement(name = "status")
     @XmlJavaTypeAdapter(StatusAdapter.class)
     protected Status status;
 
     /** Edition of the learning object */
-    @DucProperty(DucVocabulary.VERSION)
+    @DucAttribute(DucVocabulary.VERSION)
     @XmlElement(name = "string")
     @XmlElementWrapper(name = "version")
     protected List<LangString> versions;
 
     /** Contributors to the learning object */
+    @DucTransient()
     @XmlElement(name = "contribute")
     protected List<Contribution> contributions;
 

@@ -214,7 +214,7 @@ public class LangStringEditor extends Composite
      */
     private void commitChanges() {
         if (hasChanges() == true) {
-            string = LangString.from(string);
+            string = LangString.valueOf(string);
             string.setText(text.getText());
         }
     }

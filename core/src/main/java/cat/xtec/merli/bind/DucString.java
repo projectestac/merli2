@@ -7,15 +7,9 @@ import java.lang.annotation.Target;
 
 
 /**
- * Individual axiom.
+ * Method or field that provides the string value of an object.
+ * Defaults to {@code String.valueOf}.
  */
-@Target({ ElementType.TYPE, ElementType.FIELD })
+@Target({ ElementType.FIELD, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DucIndividual {
-
-    /**
-     * Axiom predicate.
-     */
-    DucVocabulary value() default DucVocabulary.CLASS;
-
-}
+public @interface DucString {}

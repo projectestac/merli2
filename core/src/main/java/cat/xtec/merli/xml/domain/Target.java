@@ -42,9 +42,9 @@ public class Target {
      * @return          ID value
      */
     @XmlElement(name = "identifier")
-    public UID getUID() {
+    public UID getId() {
         return (entity == null) ?
-            null : entity.getUID();
+            null : entity.getId();
     }
 
 
@@ -86,12 +86,12 @@ public class Target {
      *
      * @param value     ID value
      */
-    public void setUID(UID id) {
+    public void setId(UID id) {
         if (entity == null) {
             entity = new Entity();
         }
 
-        entity.setUID(id);
+        entity.setId(id);
     }
 
 }

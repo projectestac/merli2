@@ -35,7 +35,7 @@ public class StringDeserializer extends JsonDeserializer<List<LangString>> {
             String tag = tags.next();
             String text = node.get(tag).textValue();
 
-            results.add(LangString.from(text, tag));
+            results.add(LangString.valueOf(text, tag));
         }
 
         return results;

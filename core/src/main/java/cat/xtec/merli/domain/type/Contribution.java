@@ -26,12 +26,12 @@ public class Contribution implements Serializable {
     protected ContributorRole role;
 
     /** List of contributors */
-    @DucProperty(DucVocabulary.CONTRIBUTOR)
+    @DucAttribute(DucVocabulary.CONTRIBUTOR)
     @XmlElement(name = "entity")
     protected Contact entity;
 
     /** Date of the contribution */
-    @DucProperty(DucVocabulary.DATE)
+    @DucAttribute(DucVocabulary.DATE)
     @XmlElement(name = "date")
     protected TimePoint timePoint;
 

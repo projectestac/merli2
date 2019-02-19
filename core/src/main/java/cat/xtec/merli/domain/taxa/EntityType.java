@@ -4,8 +4,10 @@ import java.util.Arrays;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
+import cat.xtec.merli.domain.lom.Resource;
 import cat.xtec.merli.domain.EnumSource;
 import cat.xtec.merli.domain.EnumString;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -24,10 +26,6 @@ public enum EntityType implements EnumString {
     @XmlEnumValue("content category")
     CONTENT_CATEGORY(Entity.class, "content category"),
 
-    /** Learning object */
-    @XmlEnumValue("learning object")
-    LEARNING_OBJECT(Entity.class, "learning object"),
-
     /** Thesaurus term */
     @XmlEnumValue("thesaurus term")
     VOCABULARY_TERM(Entity.class, "thesaurus term"),
@@ -35,6 +33,12 @@ public enum EntityType implements EnumString {
     /** Term not from a thesaurus  */
     @XmlEnumValue("free term")
     FREE_TERM(Entity.class, "free term"),
+
+    /* Resource types (DUCv3.0) */
+
+    /** Learning object */
+    @XmlEnumValue("learning object")
+    LEARNING_OBJECT(Resource.class, "learning object"),
 
     /* Category types (DUCv3.0) */
 
@@ -109,6 +113,7 @@ public enum EntityType implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucString
     public String value() {
         return value;
     }
@@ -140,6 +145,7 @@ public enum EntityType implements EnumString {
     /**
      * {@inheritDoc}
      */
+    @DucCreator()
     public static EntityType fromValue(String value) {
         return EnumString.from(EntityType.class, value);
     }

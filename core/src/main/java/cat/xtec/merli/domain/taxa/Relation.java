@@ -3,6 +3,7 @@ package cat.xtec.merli.domain.taxa;
 import java.io.Serializable;
 import javax.xml.bind.annotation.*;
 import cat.xtec.merli.domain.Namespace;
+import cat.xtec.merli.bind.*;
 
 
 /**
@@ -16,10 +17,12 @@ public class Relation implements Serializable {
     static final long serialVersionUID = 1L;
 
     /** Target of this relationship */
+    @DucTarget()
     @XmlElement(name = "target")
     protected Entity target;
 
     /** Type of the relationship */
+    @DucPredicate()
     @XmlElement(name = "type", namespace = Namespace.DC)
     protected RelationType type;
 
@@ -28,7 +31,17 @@ public class Relation implements Serializable {
      * Creates a new empty relation.
      */
     public Relation() {
-        this(null, null);
+        this(RelationType.ENTITY, null);
+    }
+
+
+    /**
+     * Creates a new relation.
+     *
+     * @param target    Target entity
+     */
+    public Relation(Entity target) {
+        this(RelationType.ENTITY, target);
     }
 
 
@@ -80,7 +93,8 @@ public class Relation implements Serializable {
      * @param value     Entity relation type value
      */
     public void setType(RelationType value) {
-        this.type = value;
+        this.type = (value == null) ?
+            RelationType.ENTITY : value;
     }
 
 
@@ -89,7 +103,8 @@ public class Relation implements Serializable {
      */
     @Override
     public String toString() {
-        return type + "|" + target;
+        return getClass().getSimpleName() +
+               "(" + type + ", " + target + ")";
     }
 
 }

@@ -7,8 +7,13 @@ import java.lang.annotation.Target;
 
 
 /**
- *
+ * Marks a field as the target of a relation.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DucBundle {}
+public @interface DucTarget {
+
+    /** Default vocabulary value */
+    DucVocabulary value() default DucVocabulary.THING;
+
+}
