@@ -119,9 +119,10 @@
   <modules>
     <module>core</module>
     <module>crawler</module>
-    <module>parser</module>
     <module>manager</module>
     <module>package</module>
+    <module>parser</module>
+    <module>mapper</module>
     <module>utilities</module>
   </modules>
 

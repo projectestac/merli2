@@ -1,0 +1,128 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!--
+ * DUC - Disseny Unitari del Currículum.
+ * Copyright (C) 2018 Department of Education, Government of Catalonia
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+  http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>merli-mapper</artifactId>
+  <version>${revision}</version>
+  <packaging>jar</packaging>
+
+  <!-- Parent module ==================================================== -->
+
+  <parent>
+    <groupId>cat.xtec.merli</groupId>
+    <artifactId>merli</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <!-- Project properties =============================================== -->
+
+  <properties>
+    <version.guava>26.0-jre</version.guava>
+  </properties>
+
+  <!-- Module build ===================================================== -->
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.1</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>libs/</classpathPrefix>
+              <mainClass>cat.xtec.merli.mapper.Mapper</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.1.1</version>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}/libs
+              </outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- Module dependencies ============================================== -->
+
+  <dependencies>
+
+    <!-- Core libraries -->
+
+    <dependency>
+      <groupId>cat.xtec.merli</groupId>
+      <artifactId>merli-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>cat.xtec.merli</groupId>
+      <artifactId>merli-parser</artifactId>
+      <version>${revision}</version>
+    </dependency>
+
+    <!-- Web Ontology Language (OWL API) -->
+
+    <dependency>
+      <groupId>net.sourceforge.owlapi</groupId>
+      <artifactId>owlapi-distribution</artifactId>
+      <version>4.3.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>net.sourceforge.owlapi</groupId>
+      <artifactId>binaryowl</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+
+    <!-- Simple Logging Facade for Java (SLF4J) -->
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-nop</artifactId>
+      <version>1.7.22</version>
+    </dependency>
+
+  </dependencies>
+
+</project>
