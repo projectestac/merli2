@@ -8,7 +8,6 @@ import cat.xtec.merli.domain.lom.Resource;
 import cat.xtec.merli.domain.taxa.Category;
 import cat.xtec.merli.domain.taxa.Entity;
 import cat.xtec.merli.domain.taxa.Term;
-import cat.xtec.merli.domain.taxa.Vertex;
 
 
 /**
@@ -63,19 +62,19 @@ public interface DucService extends RemoteService {
 
     /**
      * Obtains the direct children of an OWL class as a list of
-     * {@code Vertex} intances. Each vertex contains an {@code Entity}
-     * representation of a subclass of the OWL entity.
+     * {@code Entity} intances.
      *
      * @param id    Project identifier
      * @param iri   Entity IRI
      *
      * @return      Entity nodes list
      */
-    List<Vertex> fetchChildren(String id, String iri);
+    List<Entity> fetchChildren(String id, String iri);
 
 
     /**
-     *
+     * Removes from a project all the entities that have the
+     * given identifier.
      *
      * @param id    Project identifier
      * @param iri   Entity IRI

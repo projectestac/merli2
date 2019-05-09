@@ -13,8 +13,8 @@ import cat.xtec.merli.domain.UID;
 import cat.xtec.merli.domain.lom.Resource;
 import cat.xtec.merli.domain.taxa.Category;
 import cat.xtec.merli.domain.taxa.Entity;
+import cat.xtec.merli.domain.taxa.EntityFlag;
 import cat.xtec.merli.domain.taxa.Term;
-import cat.xtec.merli.domain.taxa.Vertex;
 import cat.xtec.merli.duc.client.services.DucService;
 
 
@@ -93,14 +93,12 @@ public class DucServiceServlet extends WebProtegeRemoteServiceServlet
     /**
      * {@inheritDoc}
      */
-    public List<Vertex> fetchChildren(String id, String iri) {
-        List<Vertex> childs = new java.util.ArrayList<>();
+    public List<Entity> fetchChildren(String id, String iri) {
+        List<Entity> childs = new java.util.ArrayList<>();
         Entity entity = (Entity) fetchObject(id, iri, Entity.class);
-        Vertex child = new Vertex();
 
-        child.setEntity(entity);
-        child.setChildCount(1);
-        childs.add(child);
+        entity.toggleFlag(EntityFlag.HAS_CHILDREN);
+        childs.add(entity);
 
         return childs;
     }

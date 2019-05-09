@@ -3,7 +3,7 @@ package cat.xtec.merli.duc.client.widgets;
 import java.util.List;
 import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.TreeItem;
-import cat.xtec.merli.domain.taxa.Vertex;
+import cat.xtec.merli.domain.taxa.Entity;
 
 
 /**
@@ -30,7 +30,7 @@ public class EntityTree extends Tree {
      * @param node      Entity graph vertex
      * @return          The new item
      */
-    public TreeItem addItem(Vertex node) {
+    public TreeItem addItem(Entity node) {
         TreeItem item = new EntityTreeItem(node);
         this.addItem(item);
 
@@ -43,8 +43,8 @@ public class EntityTree extends Tree {
      *
      * @param nodes     List of entity graph vertices
      */
-    public void addTreeItems(List<Vertex> nodes) {
-        for (Vertex node : nodes) {
+    public void addTreeItems(List<Entity> nodes) {
+        for (Entity node : nodes) {
             addItem(node);
         }
     }

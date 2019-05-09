@@ -7,7 +7,6 @@ import cat.xtec.merli.domain.lom.Resource;
 import cat.xtec.merli.domain.taxa.Category;
 import cat.xtec.merli.domain.taxa.Entity;
 import cat.xtec.merli.domain.taxa.Term;
-import cat.xtec.merli.domain.taxa.Vertex;
 
 
 /**
@@ -19,6 +18,6 @@ public interface DucServiceAsync {
     void fetchEntity(String id, String iri, AsyncCallback<Entity> callback);
     void fetchResource(String id, String iri, AsyncCallback<Resource> callback);
     void fetchTerm(String id, String iri, AsyncCallback<Term> callback);
-    void fetchChildren(String id, String iri, AsyncCallback<List<Vertex>> callback);
+    void fetchChildren(String id, String iri, AsyncCallback<List<Entity>> callback);
     void removeEntity(String id, String iri, AsyncCallback<Void> callback);
 }

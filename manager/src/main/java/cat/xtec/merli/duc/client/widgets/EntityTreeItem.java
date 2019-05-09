@@ -2,9 +2,7 @@ package cat.xtec.merli.duc.client.widgets;
 
 import java.util.List;
 import com.google.gwt.user.client.ui.TreeItem;
-
 import cat.xtec.merli.domain.taxa.Entity;
-import cat.xtec.merli.domain.taxa.Vertex;
 
 
 /**
@@ -27,14 +25,6 @@ public class EntityTreeItem extends TreeItem {
         setWidget(label);
         setEntity(entity);
         getElement().addClassName(STYLE_NAME);
-    }
-
-
-    /**
-     * Constructs a new tree node from the given vertex.
-     */
-    public EntityTreeItem(Vertex node) {
-        this(node.getEntity());
     }
 
 
@@ -65,7 +55,7 @@ public class EntityTreeItem extends TreeItem {
      * @param node      Entity graph vertex
      * @return          The new item
      */
-    public TreeItem addItem(Vertex node) {
+    public TreeItem addItem(Entity node) {
         TreeItem item = new EntityTreeItem(node);
         this.addItem(item);
 
@@ -78,8 +68,8 @@ public class EntityTreeItem extends TreeItem {
      *
      * @param nodes     List of entity graph vertices
      */
-    public void addTreeItems(List<Vertex> nodes) {
-        for (Vertex node : nodes) {
+    public void addTreeItems(List<Entity> nodes) {
+        for (Entity node : nodes) {
             addItem(node);
         }
     }

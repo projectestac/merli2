@@ -13,11 +13,11 @@ import edu.stanford.bmir.protege.web.shared.selection.SelectionModel;
 import org.semanticweb.owlapi.model.OWLEntity;
 
 import cat.xtec.merli.domain.taxa.Entity;
-import cat.xtec.merli.domain.taxa.Vertex;
 import cat.xtec.merli.duc.client.services.DucService;
 import cat.xtec.merli.duc.client.services.DucServiceAsync;
 import cat.xtec.merli.duc.client.widgets.EntityTree;
 import cat.xtec.merli.duc.client.widgets.EntityTreeItem;
+import static cat.xtec.merli.domain.taxa.EntityFlag.*;
 import static cat.xtec.merli.duc.client.portlets.DucPortletState.*;
 
 
@@ -74,9 +74,9 @@ public abstract class DucTreePortlet extends DucPortlet {
         String id = this.getProjectId();
         String iri = item.getEntity().getId().getString();
 
-        service.fetchChildren(id, iri, new AsyncCallback<List<Vertex>>() {
+        service.fetchChildren(id, iri, new AsyncCallback<List<Entity>>() {
             @Override public void onFailure(Throwable caught) {}
-            @Override public void onSuccess(List<Vertex> nodes) {
+            @Override public void onSuccess(List<Entity> nodes) {
                 setVertices(item, nodes);
             }
         });
@@ -118,9 +118,13 @@ public abstract class DucTreePortlet extends DucPortlet {
      * @param widget        Target widget
      * @param node          Node to add
      */
-    private void addVertex(HasTreeItems widget, Vertex node) {
+    private void addEntity(HasTreeItems widget, Entity node) {
         TreeItem item = new EntityTreeItem(node);
-        if (!node.isLeaf()) item.addItem(PLACEHOLDER);
+
+        if (!node.hasFlag(HAS_CHILDREN)) {
+            item.addItem(PLACEHOLDER);
+        }
+
         widget.addItem(item);
     }
 
@@ -132,11 +136,11 @@ public abstract class DucTreePortlet extends DucPortlet {
      * @param widget        Target widget
      * @param node          Node to add
      */
-    private void setVertices(HasTreeItems widget, List<Vertex> nodes) {
+    private void setVertices(HasTreeItems widget, List<Entity> nodes) {
         widget.removeItems();
 
-        for (Vertex node : nodes) {
-            addVertex(widget, node);
+        for (Entity node : nodes) {
+            addEntity(widget, node);
         }
     }
 
@@ -166,7 +170,7 @@ public abstract class DucTreePortlet extends DucPortlet {
      * Reusable RPC callback. When a response is received successfully,
      * sets the root vertices of this portlet's tree.
      */
-    private AsyncCallback callback = new AsyncCallback<List<Vertex>>() {
+    AsyncCallback<List<Entity>> callback = new AsyncCallback<List<Entity>>() {
 
         /** {@inheritDoc} */
         @Override public void onFailure(Throwable caught) {
@@ -174,7 +178,7 @@ public abstract class DucTreePortlet extends DucPortlet {
         }
 
         /** {@inheritDoc} */
-        @Override public void onSuccess(List<Vertex> nodes) {
+        @Override public void onSuccess(List<Entity> nodes) {
             setVertices(tree, nodes);
             setViewState(STATE_EDITING);
         }
