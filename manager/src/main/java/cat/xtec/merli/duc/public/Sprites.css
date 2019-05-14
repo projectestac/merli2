@@ -4,6 +4,18 @@
   background-image: url('icons/ROOT_CONCEPT.svg');
 }
 
+.duc-CONTENT_CATEGORY {
+  background-image: url('icons/CONTENT_CATEGORY.svg');
+}
+
+.duc-VOCABULARY_TERM {
+  background-image: url('icons/VOCABULARY_TERM.svg');
+}
+
+.duc-FREE_TERM {
+  background-image: url('icons/FREE_TERM.svg');
+}
+
 .duc-LEARNING_OBJECT {
   background-image: url('icons/LEARNING_OBJECT.svg');
 }
