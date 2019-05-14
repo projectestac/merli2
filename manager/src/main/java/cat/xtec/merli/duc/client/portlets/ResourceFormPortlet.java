@@ -7,14 +7,14 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import edu.stanford.bmir.protege.web.shared.project.ProjectId;
 import edu.stanford.bmir.protege.web.shared.selection.SelectionModel;
 import edu.stanford.webprotege.shared.annotations.Portlet;
-import org.semanticweb.owlapi.model.OWLEntity;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.*;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.uibinder.client.*;
 
 import cat.xtec.merli.domain.lom.Resource;
 import cat.xtec.merli.domain.taxa.EntityType;
+import cat.xtec.merli.duc.client.LocaleUtils;
 import cat.xtec.merli.duc.client.portlets.forms.ResourceForm;
 import cat.xtec.merli.duc.client.services.DucService;
 import cat.xtec.merli.duc.client.services.DucServiceAsync;
@@ -119,8 +119,8 @@ public class ResourceFormPortlet extends DucPortlet
      * @param entity        OWL entity pointer
      */
     private void fetchResource(OWLEntity entity) {
+        IRI iri = entity.getIRI();
         String id = getProjectId();
-        String iri = String.valueOf(entity.getIRI());
         service.fetchResource(id, iri, callback);
     }
 
@@ -174,14 +174,27 @@ public class ResourceFormPortlet extends DucPortlet
 
 
     /**
+     * Transforms the properties of the given entity. This convenience
+     * method currently sorts the entity relations befor editing.
+     *
+     * @param resource      Object to transform
+     */
+    private void transformResource(Resource resource) {
+        LocaleUtils.sortEntites(resource.getParents());
+        LocaleUtils.sortRelations(resource.getRelations());
+    }
+
+
+    /**
      * Reusable RPC callback. When a response is received successfully,
      * starts the edition of the object.
      */
-    private AsyncCallback callback = new AsyncCallback<Resource>() {
+    private AsyncCallback<Resource> callback = new AsyncCallback<Resource>() {
 
         /** {@inheritDoc} */
         @Override public void onSuccess(Resource resource) {
             if (hasType(resource, Resource.class)) {
+                transformResource(resource);
                 form.edit(resource);
                 form.scrollToTop();
                 label.setEntity(resource);
@@ -203,7 +216,6 @@ public class ResourceFormPortlet extends DucPortlet
             EntityType type = entity.getType();
             return type != null && group == type.group();
         }
-
     };
 
 }

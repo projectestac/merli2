@@ -179,8 +179,8 @@ public interface DucConstants extends ConstantsWithLookup {
 
     /* Types for 'Knowledge' */
 
-    @DefaultStringValue("Indeterminate")
-    String INDETERMINATE();
+    @DefaultStringValue("Unspecified")
+    String UNSPECIFIED();
 
     @DefaultStringValue("Attitudinal")
     String ATTITUDINAL();

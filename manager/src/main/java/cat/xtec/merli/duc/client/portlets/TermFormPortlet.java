@@ -7,14 +7,14 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import edu.stanford.bmir.protege.web.shared.project.ProjectId;
 import edu.stanford.bmir.protege.web.shared.selection.SelectionModel;
 import edu.stanford.webprotege.shared.annotations.Portlet;
-import org.semanticweb.owlapi.model.OWLEntity;
-import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.*;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.uibinder.client.*;
 
 import cat.xtec.merli.domain.taxa.Term;
 import cat.xtec.merli.domain.taxa.EntityType;
+import cat.xtec.merli.duc.client.LocaleUtils;
 import cat.xtec.merli.duc.client.dialogs.ConfirmDialog;
 import cat.xtec.merli.duc.client.portlets.forms.TermForm;
 import cat.xtec.merli.duc.client.services.DucService;
@@ -120,8 +120,8 @@ public class TermFormPortlet extends DucPortlet
      * @param entity        OWL entity pointer
      */
     private void fetchTerm(OWLEntity entity) {
+        IRI iri = entity.getIRI();
         String id = getProjectId();
-        String iri = String.valueOf(entity.getIRI());
         service.fetchTerm(id, iri, callback);
     }
 
@@ -146,27 +146,27 @@ public class TermFormPortlet extends DucPortlet
     protected void onRemoveCommand() {
         // log("DUC: Remove command invoked");
 
-        ConfirmDialog.confirm(confirm -> {
-            // log("Dialog response: " + confirm);
-
-            if (confirm == true) {
-                String id = getProjectId();
-                String iri = String.valueOf(form.getEntity().getId());
-
-                service.removeEntity(id, iri, new AsyncCallback<Void>() {
-
-                    /** {@inheritDoc} */
-                    @Override public void onSuccess(Void value) {
-                        // log("DUC: Remove success");
-                    }
-
-                    /** {@inheritDoc} */
-                    @Override public void onFailure(Throwable caught) {
-                        // log("DUC: Remove failure");
-                    }
-                });
-            }
-        });
+        // ConfirmDialog.confirm(confirm -> {
+        //     // log("Dialog response: " + confirm);
+        //
+        //     if (confirm == true) {
+        //         IRI iri = form.getEntity().getId();
+        //         String id = getProjectId();
+        //
+        //         service.removeEntity(id, iri, new AsyncCallback<Void>() {
+        //
+        //             /** {@inheritDoc} */
+        //             @Override public void onSuccess(Void value) {
+        //                 // log("DUC: Remove success");
+        //             }
+        //
+        //             /** {@inheritDoc} */
+        //             @Override public void onFailure(Throwable caught) {
+        //                 // log("DUC: Remove failure");
+        //             }
+        //         });
+        //     }
+        // });
     }
 
 
@@ -194,7 +194,6 @@ public class TermFormPortlet extends DucPortlet
      */
     private void attachHandlers() {
         attachHandler(form.addChangeHandler(e -> {
-            // log("Change: " + e);
             refreshView();
         }));
     }
@@ -210,14 +209,27 @@ public class TermFormPortlet extends DucPortlet
 
 
     /**
+     * Transforms the properties of the given entity. This convenience
+     * method currently sorts the entity relations befor editing.
+     *
+     * @param term          Object to transform
+     */
+    private void transformTerm(Term term) {
+        LocaleUtils.sortEntites(term.getParents());
+        LocaleUtils.sortRelations(term.getRelations());
+    }
+
+
+    /**
      * Reusable RPC callback. When a response is received successfully,
      * starts the edition of the object.
      */
-    private AsyncCallback callback = new AsyncCallback<Term>() {
+    private AsyncCallback<Term> callback = new AsyncCallback<Term>() {
 
         /** {@inheritDoc} */
         @Override public void onSuccess(Term term) {
             if (hasType(term, Term.class)) {
+                transformTerm(term);
                 form.edit(term);
                 form.scrollToTop();
                 label.setEntity(term);
@@ -239,7 +251,6 @@ public class TermFormPortlet extends DucPortlet
             EntityType type = entity.getType();
             return type != null && group == type.group();
         }
-
     };
 
 }

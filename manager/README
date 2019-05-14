@@ -13,6 +13,18 @@ README of DUC Manager
 
   Ontology editor for DUC.
 
+  Building the project
+  --------------------
+
+  Package for development:
+  $ mvn clean package
+
+  Package for production:
+  $ mvn clean package -P pro
+
+  Create translation templates:
+  $ mvn package -Dgwt.extraParam=true
+
   The Latest Version
   ------------------
 

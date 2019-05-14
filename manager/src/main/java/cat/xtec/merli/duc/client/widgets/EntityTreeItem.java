@@ -1,7 +1,7 @@
 package cat.xtec.merli.duc.client.widgets;
 
-import java.util.List;
 import com.google.gwt.user.client.ui.TreeItem;
+import org.semanticweb.owlapi.model.IRI;
 import cat.xtec.merli.domain.taxa.Entity;
 
 
@@ -16,15 +16,31 @@ public class EntityTreeItem extends TreeItem {
     /** This tree item's widget */
     private final EntityLabel label = new EntityLabel();
 
+    /** This tree item's entity IRI identifier */
+    private IRI iri = null;
+
 
     /**
-     * Constructs a new tree node from the given entity.
+     * Constructs a new tree node for the given entity.
+     *
+     * @param iri       Entity IRI identifier
+     * @param entity    Entity instance
      */
-    public EntityTreeItem(Entity entity) {
+    public EntityTreeItem(IRI iri, Entity entity) {
         super();
         setWidget(label);
-        setEntity(entity);
+        setEntity(iri, entity);
         getElement().addClassName(STYLE_NAME);
+    }
+
+
+    /**
+     * Obtains the IRI for this item.
+     *
+     * @return          IRI instance
+     */
+    public IRI getIRI() {
+        return this.iri;
     }
 
 
@@ -41,9 +57,11 @@ public class EntityTreeItem extends TreeItem {
     /**
      * Sets the entity associated with this item.
      *
+     * @param iri       Enity IRI identifier
      * @param entity    Entity instance
      */
-    public void setEntity(Entity entity) {
+    public void setEntity(IRI iri, Entity entity) {
+        this.iri = iri;
         label.setEntity(entity);
         setUserObject(entity);
     }
@@ -52,26 +70,14 @@ public class EntityTreeItem extends TreeItem {
     /**
      * Adds a child item to this node.
      *
-     * @param node      Entity graph vertex
+     * @param node      Entity instance
      * @return          The new item
      */
-    public TreeItem addItem(Entity node) {
-        TreeItem item = new EntityTreeItem(node);
+    public TreeItem addItem(IRI iri, Entity node) {
+        TreeItem item = new EntityTreeItem(iri, node);
         this.addItem(item);
 
         return item;
-    }
-
-
-    /**
-     * Adds multiple child items to this node.
-     *
-     * @param nodes     List of entity graph vertices
-     */
-    public void addTreeItems(List<Entity> nodes) {
-        for (Entity node : nodes) {
-            addItem(node);
-        }
     }
 
 }

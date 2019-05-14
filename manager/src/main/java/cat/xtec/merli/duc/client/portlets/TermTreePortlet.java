@@ -6,8 +6,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import edu.stanford.bmir.protege.web.shared.project.ProjectId;
 import edu.stanford.bmir.protege.web.shared.selection.SelectionModel;
 import edu.stanford.webprotege.shared.annotations.Portlet;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLEntity;
+import org.semanticweb.owlapi.model.*;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.uibinder.client.*;
@@ -27,7 +26,9 @@ public class TermTreePortlet extends DucTreePortlet
     implements InitializeHandler, SelectionHandler<OWLEntity> {
 
     /** IRI of the root element of this portlet's tree */
-    public static final String ROOT_ID = "http://merli.xtec.cat/DUC#Concept";
+    public static final IRI ROOT_ID = IRI.create(
+        "http://merli.xtec.cat/DUC#Concept"
+    );
 
     /** UiBinder instance */
     private static final Binder binder = GWT.create(Binder.class);

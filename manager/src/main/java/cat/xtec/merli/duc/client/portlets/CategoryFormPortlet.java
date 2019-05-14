@@ -7,14 +7,14 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import edu.stanford.bmir.protege.web.shared.project.ProjectId;
 import edu.stanford.bmir.protege.web.shared.selection.SelectionModel;
 import edu.stanford.webprotege.shared.annotations.Portlet;
-import org.semanticweb.owlapi.model.OWLEntity;
-import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.*;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.uibinder.client.*;
 
 import cat.xtec.merli.domain.taxa.Category;
 import cat.xtec.merli.domain.taxa.EntityType;
+import cat.xtec.merli.duc.client.LocaleUtils;
 import cat.xtec.merli.duc.client.portlets.forms.CategoryForm;
 import cat.xtec.merli.duc.client.services.DucService;
 import cat.xtec.merli.duc.client.services.DucServiceAsync;
@@ -119,8 +119,8 @@ public class CategoryFormPortlet extends DucPortlet
      * @param entity        OWL entity pointer
      */
     private void fetchCategory(OWLEntity entity) {
+        IRI iri = entity.getIRI();
         String id = getProjectId();
-        String iri = String.valueOf(entity.getIRI());
         service.fetchCategory(id, iri, callback);
     }
 
@@ -174,14 +174,27 @@ public class CategoryFormPortlet extends DucPortlet
 
 
     /**
+     * Transforms the properties of the given entity. This convenience
+     * method currently sorts the entity relations befor editing.
+     *
+     * @param category      Object to transform
+     */
+    private void transformCategory(Category category) {
+        LocaleUtils.sortEntites(category.getParents());
+        LocaleUtils.sortEntites(category.getKeywords());
+    }
+
+
+    /**
      * Reusable RPC callback. When a response is received successfully,
      * starts the edition of the object.
      */
-    private AsyncCallback callback = new AsyncCallback<Category>() {
+    private AsyncCallback<Category> callback = new AsyncCallback<Category>() {
 
         /** {@inheritDoc} */
         @Override public void onSuccess(Category category) {
             if (hasType(category, Category.class)) {
+                transformCategory(category);
                 form.edit(category);
                 form.scrollToTop();
                 label.setEntity(category);
@@ -203,7 +216,6 @@ public class CategoryFormPortlet extends DucPortlet
             EntityType type = entity.getType();
             return type != null && group == type.group();
         }
-
     };
 
 }

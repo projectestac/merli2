@@ -1,8 +1,8 @@
 package cat.xtec.merli.duc.client.widgets;
 
-import java.util.List;
 import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.TreeItem;
+import org.semanticweb.owlapi.model.IRI;
 import cat.xtec.merli.domain.taxa.Entity;
 
 
@@ -30,23 +30,11 @@ public class EntityTree extends Tree {
      * @param node      Entity graph vertex
      * @return          The new item
      */
-    public TreeItem addItem(Entity node) {
-        TreeItem item = new EntityTreeItem(node);
+    public TreeItem addItem(IRI iri, Entity node) {
+        TreeItem item = new EntityTreeItem(iri, node);
         this.addItem(item);
 
         return item;
-    }
-
-
-    /**
-     * Adds multiple items to the root of the tree.
-     *
-     * @param nodes     List of entity graph vertices
-     */
-    public void addTreeItems(List<Entity> nodes) {
-        for (Entity node : nodes) {
-            addItem(node);
-        }
     }
 
 }

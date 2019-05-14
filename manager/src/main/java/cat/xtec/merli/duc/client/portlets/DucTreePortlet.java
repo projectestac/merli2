@@ -10,8 +10,10 @@ import com.google.gwt.user.client.ui.ScrollPanel;
 import edu.stanford.bmir.protege.web.shared.DataFactory;
 import edu.stanford.bmir.protege.web.shared.project.ProjectId;
 import edu.stanford.bmir.protege.web.shared.selection.SelectionModel;
+import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLEntity;
 
+import cat.xtec.merli.duc.client.LocaleUtils;
 import cat.xtec.merli.domain.taxa.Entity;
 import cat.xtec.merli.duc.client.services.DucService;
 import cat.xtec.merli.duc.client.services.DucServiceAsync;
@@ -53,13 +55,12 @@ public abstract class DucTreePortlet extends DucPortlet {
      * Fetches the children of an OWL entity from the server and sets
      * them as the roots of this portlet's tree.
      *
-     * @param iri       An OWL entity IRI identifier
+     * @param iri       Root entity IRI identifier
      */
-    public void populateRoots(String iri) {
-        String id = this.getProjectId();
-
+    public void populateRoots(IRI iri) {
+        String project = getProjectId();
         setViewState(STATE_WORKING);
-        service.fetchChildren(id, iri, callback);
+        service.fetchChildren(project, iri, callback);
     }
 
 
@@ -71,12 +72,13 @@ public abstract class DucTreePortlet extends DucPortlet {
      * @param item      Tree item instance
      */
     public void expandTreeItem(EntityTreeItem item) {
-        String id = this.getProjectId();
-        String iri = item.getEntity().getId().getString();
+        IRI iri = item.getIRI();
+        String project = getProjectId();
 
-        service.fetchChildren(id, iri, new AsyncCallback<List<Entity>>() {
+        service.fetchChildren(project, iri, new AsyncCallback<List<Entity>>() {
             @Override public void onFailure(Throwable caught) {}
             @Override public void onSuccess(List<Entity> nodes) {
+                LocaleUtils.sortEntites(nodes);
                 setVertices(item, nodes);
             }
         });
@@ -104,10 +106,8 @@ public abstract class DucTreePortlet extends DucPortlet {
      * @param item      Tree item instance
      */
     public void emitTreeItem(EntityTreeItem item) {
-        Entity entity = item.getEntity();
-        String iri = entity.getId().getString();
+        IRI iri = item.getIRI();
         OWLEntity instance = DataFactory.getOWLClass(iri);
-
         this.emitSelectedEntity(instance);
     }
 
@@ -118,10 +118,10 @@ public abstract class DucTreePortlet extends DucPortlet {
      * @param widget        Target widget
      * @param node          Node to add
      */
-    private void addEntity(HasTreeItems widget, Entity node) {
-        TreeItem item = new EntityTreeItem(node);
+    private void addEntity(HasTreeItems widget, IRI iri, Entity node) {
+        TreeItem item = new EntityTreeItem(iri, node);
 
-        if (!node.hasFlag(HAS_CHILDREN)) {
+        if (node.hasFlag(HAS_CHILDREN)) {
             item.addItem(PLACEHOLDER);
         }
 
@@ -140,13 +140,14 @@ public abstract class DucTreePortlet extends DucPortlet {
         widget.removeItems();
 
         for (Entity node : nodes) {
-            addEntity(widget, node);
+            String id = String.valueOf(node.getId());
+            addEntity(widget, IRI.create(id), node);
         }
     }
 
 
     /**
-     * Attached the event handlers for the entities tree.
+     * Attach the event handlers for the entities tree.
      */
     private void attachTreeHandlers() {
         attachHandler(tree.addOpenHandler(event -> {
@@ -179,6 +180,7 @@ public abstract class DucTreePortlet extends DucPortlet {
 
         /** {@inheritDoc} */
         @Override public void onSuccess(List<Entity> nodes) {
+            LocaleUtils.sortEntites(nodes);
             setVertices(tree, nodes);
             setViewState(STATE_EDITING);
         }

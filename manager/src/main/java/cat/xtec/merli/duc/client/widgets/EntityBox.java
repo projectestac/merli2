@@ -9,13 +9,13 @@ import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.event.dom.client.HasFocusHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.SuggestBox.*;
 import com.google.gwt.user.client.ui.SuggestOracle.*;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.user.client.ui.*;
 
+import cat.xtec.merli.duc.client.LocaleUtils;
 import cat.xtec.merli.domain.taxa.Entity;
 import cat.xtec.merli.domain.type.LangString;
 import cat.xtec.merli.domain.UID;
@@ -35,7 +35,7 @@ public class EntityBox extends Composite implements Focusable,
     public static final String STYLE_NAME = "duc-EntityBox";
 
     /** Nil entity value */
-    private static final Entity NIL_VALUE = new Entity();
+    private static final Entity NIL_VALUE = new Entity(null);
 
     /** Input box instance */
     private InputBox input = new InputBox();
@@ -169,7 +169,7 @@ public class EntityBox extends Composite implements Focusable,
      * Refreshes this widget's view properties.
      */
     protected void refreshView() {
-        String text = getTextFor(entity);
+        String text = LocaleUtils.getStringFor(entity);
         suggestBox.setText(text);
     }
 
@@ -247,11 +247,11 @@ public class EntityBox extends Composite implements Focusable,
             if (e.getNativeKeyCode() != KeyCodes.KEY_TAB && e.getNativeKeyCode() != KeyCodes.KEY_ENTER) {
                 String name = input.getText();
 
-                if (Objects.equals(name, getTextFor(entity))) {
+                if (Objects.equals(name, LocaleUtils.getStringFor(entity))) {
                     return;
                 }
 
-                if (Objects.equals(name, getTextFor(value))) {
+                if (Objects.equals(name, LocaleUtils.getStringFor(value))) {
                     if (entity != value) {
                         entity = value;
                         SelectionEvent.fire(this, entity);
@@ -282,33 +282,6 @@ public class EntityBox extends Composite implements Focusable,
                 }
             }
         });
-    }
-
-
-    private static String getTextFor(Entity entity) {
-        if (entity instanceof Entity) {
-            String code = getGUILocaleCode();
-            LangString label = entity.getLabel(code);
-
-            if (label instanceof LangString) {
-                return label.getText();
-            }
-        }
-
-        return LangString.EMPTY_TEXT;
-    }
-
-
-    /**
-     * Obtains the currently active locale code of the graphical user
-     * interface. This method may return "default" if the interface
-     * locale was not set explicitly.
-     *
-     * @return      Locale code
-     */
-    private static String getGUILocaleCode() {
-        LocaleInfo locale = LocaleInfo.getCurrentLocale();
-        return locale.getLocaleName();
     }
 
 

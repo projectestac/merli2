@@ -78,6 +78,6 @@
         </dw:LabelPanel>
       </g:HTMLPanel>
     </g:DisclosurePanel>
-  </g:HTMLPanel>
 
+  </g:HTMLPanel>
 </ui:UiBinder>

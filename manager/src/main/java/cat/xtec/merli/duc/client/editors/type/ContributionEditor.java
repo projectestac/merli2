@@ -1,18 +1,21 @@
 package cat.xtec.merli.duc.client.editors.type;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.client.*;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.ui.*;
 
-import cat.xtec.merli.domain.type.Contribution;
+import cat.xtec.merli.duc.client.editors.lists.LeafEditorWidget;
 import cat.xtec.merli.duc.client.editors.voc.ContributorRoleEditor;
+import cat.xtec.merli.domain.type.Contribution;
 
 
 /**
  * Contribution to the state of a learning object.
  */
-public class ContributionEditor extends Composite implements Editor<Contribution> {
+public class ContributionEditor extends Composite
+    implements LeafEditorWidget<Contribution> {
 
     /** Primary CSS style for this widget */
     public static final String STYLE_NAME = "duc-ContributionEditor";
@@ -42,6 +45,42 @@ public class ContributionEditor extends Composite implements Editor<Contribution
 
         initWidget(widget);
         setStylePrimaryName(STYLE_NAME);
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Contribution getValue() {
+        return null; // TODO:
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setValue(Contribution value) {
+        // TODO:
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public HandlerRegistration addSelectionHandler(SelectionHandler<Contribution> handler) {
+        return addHandler(handler, SelectionEvent.getType());
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Contribution> handler) {
+        return addHandler(handler, ValueChangeEvent.getType());
     }
 
 }

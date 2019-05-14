@@ -2,6 +2,7 @@ package cat.xtec.merli.duc.client.services;
 
 import java.util.List;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import org.semanticweb.owlapi.model.IRI;
 
 import cat.xtec.merli.domain.lom.Resource;
 import cat.xtec.merli.domain.taxa.Category;
@@ -14,10 +15,10 @@ import cat.xtec.merli.domain.taxa.Term;
  * @see cat.xtec.merli.duc.client.services.DucService
  */
 public interface DucServiceAsync {
-    void fetchCategory(String id, String iri, AsyncCallback<Category> callback);
-    void fetchEntity(String id, String iri, AsyncCallback<Entity> callback);
-    void fetchResource(String id, String iri, AsyncCallback<Resource> callback);
-    void fetchTerm(String id, String iri, AsyncCallback<Term> callback);
-    void fetchChildren(String id, String iri, AsyncCallback<List<Entity>> callback);
-    void removeEntity(String id, String iri, AsyncCallback<Void> callback);
+    void fetchCategory(String id, IRI iri, AsyncCallback<Category> callback);
+    void fetchEntity(String id, IRI iri, AsyncCallback<Entity> callback);
+    void fetchResource(String id, IRI iri, AsyncCallback<Resource> callback);
+    void fetchTerm(String id, IRI iri, AsyncCallback<Term> callback);
+    void fetchChildren(String id, IRI iri, AsyncCallback<List<Entity>> callback);
+    void removeEntity(String id, IRI iri, AsyncCallback<Void> callback);
 }

@@ -3,6 +3,7 @@ package cat.xtec.merli.duc.client.services;
 import java.util.List;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import org.semanticweb.owlapi.model.IRI;
 
 import cat.xtec.merli.domain.lom.Resource;
 import cat.xtec.merli.domain.taxa.Category;
@@ -24,7 +25,7 @@ public interface DucService extends RemoteService {
      *
      * @return      Category instance
      */
-    Category fetchCategory(String id, String iri);
+    Category fetchCategory(String id, IRI iri);
 
 
     /**
@@ -35,7 +36,7 @@ public interface DucService extends RemoteService {
      *
      * @return      Entity instance
      */
-    Entity fetchEntity(String id, String iri);
+    Entity fetchEntity(String id, IRI iri);
 
 
     /**
@@ -46,7 +47,7 @@ public interface DucService extends RemoteService {
      *
      * @return      Resource instance
      */
-    Resource fetchResource(String id, String iri);
+    Resource fetchResource(String id, IRI iri);
 
 
     /**
@@ -57,7 +58,7 @@ public interface DucService extends RemoteService {
      *
      * @return      Term instance
      */
-    Term fetchTerm(String id, String iri);
+    Term fetchTerm(String id, IRI iri);
 
 
     /**
@@ -69,7 +70,7 @@ public interface DucService extends RemoteService {
      *
      * @return      Entity nodes list
      */
-    List<Entity> fetchChildren(String id, String iri);
+    List<Entity> fetchChildren(String id, IRI iri);
 
 
     /**
@@ -79,6 +80,6 @@ public interface DucService extends RemoteService {
      * @param id    Project identifier
      * @param iri   Entity IRI
      */
-    void removeEntity(String id, String iri);
+    void removeEntity(String id, IRI iri);
 
 }

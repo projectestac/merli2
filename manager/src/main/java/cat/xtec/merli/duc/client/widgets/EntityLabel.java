@@ -1,9 +1,9 @@
 package cat.xtec.merli.duc.client.widgets;
 
 import com.google.gwt.user.client.Element;
-import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.ui.Label;
 
+import cat.xtec.merli.duc.client.LocaleUtils;
 import cat.xtec.merli.domain.taxa.Entity;
 import cat.xtec.merli.domain.taxa.EntityType;
 import cat.xtec.merli.domain.type.LangString;
@@ -20,7 +20,7 @@ public class EntityLabel extends Label {
     public static final String STYLE_NAME = "duc-EntityLabel";
 
     /** Nil entity value */
-    private static final Entity NIL_VALUE = new Entity();
+    private static final Entity NIL_VALUE = new Entity(null);
 
     /** Nil entity label value */
     private static final LangString NIL_TITLE = new LangString();
@@ -77,7 +77,7 @@ public class EntityLabel extends Label {
      */
     private void setLanguage(Language language) {
         Element element = getElement();
-        String active = getGUILocaleCode();
+        String active = LocaleUtils.getGUILocaleCode();
 
         if (language instanceof Language == false) {
             element.removeAttribute("lang");
@@ -91,30 +91,14 @@ public class EntityLabel extends Label {
 
 
     /**
-     * Obtains the currently active locale code of the graphical user
-     * interface. This method may return "default" if the interface
-     * locale was not set explicitly.
-     *
-     * @return      Locale code
-     */
-    private static String getGUILocaleCode() {
-        LocaleInfo locale = LocaleInfo.getCurrentLocale();
-        return locale.getLocaleName();
-    }
-
-
-    /**
      * Returns a language string for the given entity.
      *
      * @param entity    Entity instance
      * @return          Language string
      */
     public static LangString getTitleFor(Entity entity) {
-        final String code = getGUILocaleCode();
-        final LangString title = entity.getLabel(code);
-
-        return (title instanceof LangString) ?
-            title : NIL_TITLE;
+        LangString title = LocaleUtils.getLabelFor(entity);
+        return (title != null) ? title : NIL_TITLE;
     }
 
 

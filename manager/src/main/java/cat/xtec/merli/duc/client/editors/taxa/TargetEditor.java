@@ -25,7 +25,7 @@ public class TargetEditor extends Composite
     public static final String STYLE_NAME = "duc-TargetEditor";
 
     /** Nil entity value */
-    private static final Entity NIL_VALUE = new Entity();
+    private static final Entity NIL_VALUE = new Entity(null);
 
     /** UiBinder instance */
     private static final Binder binder = GWT.create(Binder.class);

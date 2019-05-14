@@ -8,6 +8,7 @@
   xmlns:voc="urn:import:cat.xtec.merli.duc.client.editors.voc"
   xmlns:lom="urn:import:cat.xtec.merli.duc.client.editors.lom"
   xmlns:taxa="urn:import:cat.xtec.merli.duc.client.editors.taxa"
+  xmlns:type="urn:import:cat.xtec.merli.duc.client.editors.type"
   ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
   ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
   ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
