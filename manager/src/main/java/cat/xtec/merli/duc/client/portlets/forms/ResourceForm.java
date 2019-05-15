@@ -81,8 +81,8 @@ public class ResourceForm extends ScrollPanel
     /**
      * Saves the form data.
      */
-    public void store() {
-        Resource resource = driver.flush();
+    public Resource flush() {
+        return driver.flush();
     }
 
 

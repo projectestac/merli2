@@ -15,7 +15,7 @@ import com.google.gwt.uibinder.client.*;
 import cat.xtec.merli.domain.taxa.Term;
 import cat.xtec.merli.domain.taxa.EntityType;
 import cat.xtec.merli.duc.client.LocaleUtils;
-import cat.xtec.merli.duc.client.dialogs.ConfirmDialog;
+import cat.xtec.merli.duc.client.dialogs.RemoveDialog;
 import cat.xtec.merli.duc.client.portlets.forms.TermForm;
 import cat.xtec.merli.duc.client.services.TermService;
 import cat.xtec.merli.duc.client.services.TermServiceAsync;
@@ -131,34 +131,18 @@ public class TermFormPortlet extends DucPortlet
     @UiHandler("store")
     protected void onSaveClick(ClickEvent event) {
         if (form.isDirty()) {
-            form.store();
+            Term term = form.flush();
             refreshView();
         }
     }
 
 
     /**
-     *
+     * Removes the current entity from the ontology.
      */
     protected void onRemoveCommand() {
-        ConfirmDialog.confirm(confirm -> {
-            if (confirm == true) {
-                // IRI iri = IRI.create(String.valueOf(form.getEntity().getId()));
-                // String id = getProjectId();
-                //
-                // service.remove(id, iri, new AsyncCallback<Void>() {
-                //
-                //     /** {@inheritDoc} */
-                //     @Override public void onSuccess(Void value) {
-                //         // log("DUC: Remove success");
-                //     }
-                //
-                //     /** {@inheritDoc} */
-                //     @Override public void onFailure(Throwable caught) {
-                //         // log("DUC: Remove failure");
-                //     }
-                // });
-            }
+        RemoveDialog.confirm(confirm -> {
+            if (confirm == true) {}
         });
     }
 
@@ -197,7 +181,6 @@ public class TermFormPortlet extends DucPortlet
      */
     private void refreshView() {
         indicator.setVisible(form.isDirty());
-        form.visit(); // WA
     }
 
 

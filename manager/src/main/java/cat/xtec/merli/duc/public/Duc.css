@@ -23,3 +23,16 @@
   opacity: 1;
   color: rgb(155, 155, 155);
 }
+
+/* Dialogs */
+
+.duc-Dialog .duc-DialogButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 1rem;
+}
+
+.duc-Dialog .dialogContent {
+  font-size: .875rem;
+}

@@ -15,6 +15,7 @@ import com.google.gwt.uibinder.client.*;
 import cat.xtec.merli.domain.taxa.Category;
 import cat.xtec.merli.domain.taxa.EntityType;
 import cat.xtec.merli.duc.client.LocaleUtils;
+import cat.xtec.merli.duc.client.dialogs.RemoveDialog;
 import cat.xtec.merli.duc.client.portlets.forms.CategoryForm;
 import cat.xtec.merli.duc.client.services.CategoryService;
 import cat.xtec.merli.duc.client.services.CategoryServiceAsync;
@@ -130,9 +131,19 @@ public class CategoryFormPortlet extends DucPortlet
     @UiHandler("store")
     protected void onSaveClick(ClickEvent event) {
         if (form.isDirty()) {
-            form.store();
+            Category category = form.flush();
             refreshView();
         }
+    }
+
+
+    /**
+     * Removes the current entity from the ontology.
+     */
+    protected void onRemoveCommand() {
+        RemoveDialog.confirm(confirm -> {
+            if (confirm == true) {}
+        });
     }
 
 
@@ -151,6 +162,7 @@ public class CategoryFormPortlet extends DucPortlet
      */
     private void initMenuCommands() {
         reset.setScheduledCommand(() -> onResetCommand());
+        remove.setScheduledCommand(() -> onRemoveCommand());
     }
 
 

@@ -16,10 +16,6 @@ import com.google.gwt.user.client.ui.Widget;
 import cat.xtec.merli.domain.taxa.Term;
 import cat.xtec.merli.duc.client.editors.taxa.TermEditor;
 
-// WA
-import com.google.gwt.editor.client.EditorVisitor;
-import com.google.gwt.editor.client.EditorContext;
-
 
 /**
  * Controller for the term editor.
@@ -70,11 +66,6 @@ public class TermForm extends ScrollPanel
     }
 
 
-    public Term getEntity() {
-        return term;
-    }
-
-
     /**
      * Fills the form with the given object data.
      *
@@ -89,8 +80,8 @@ public class TermForm extends ScrollPanel
     /**
      * Saves the form data.
      */
-    public void store() {
-        Term term = driver.flush();
+    public Term flush() {
+        return driver.flush();
     }
 
 
@@ -108,15 +99,6 @@ public class TermForm extends ScrollPanel
     @Override
     public HandlerRegistration addChangeHandler(ChangeHandler handler) {
         return form.addDomHandler(handler, ChangeEvent.getType());
-    }
-
-
-    public void visit() {
-        driver.accept(new EditorVisitor() {
-            public boolean visit(EditorContext context) {
-                return true;
-            }
-        });
     }
 
 }

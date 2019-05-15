@@ -80,8 +80,8 @@ public class CategoryForm extends ScrollPanel
     /**
      * Saves the form data.
      */
-    public void store() {
-        Category category = driver.flush();
+    public Category flush() {
+        return driver.flush();
     }
 
 
