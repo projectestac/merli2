@@ -33,10 +33,21 @@ public class DucContextListener implements ServletContextListener {
         DucComponent duc = DaggerDucComponent.builder()
             .applicationComponent(app).build();
 
-        // Register the DUC module services
+        // Register the module's RPC service servlets. Notice that we
+        // must register them using the dagger component in order for
+        // the servlets to get injected correcly.
 
-        context.addServlet("DucService", duc.getServiceServlet())
-            .addMapping("/webprotege/duc-service");
+        context.addServlet("EntityService", duc.getEntityServlet())
+               .addMapping("/webprotege/duc/entities");
+
+        context.addServlet("CategoryService", duc.getCategoryServlet())
+               .addMapping("/webprotege/duc/categories");
+
+        context.addServlet("ResourceService", duc.getResourceServlet())
+               .addMapping("/webprotege/duc/resources");
+
+        context.addServlet("TermService", duc.getTermServlet())
+               .addMapping("/webprotege/duc/terms");
     }
 
 

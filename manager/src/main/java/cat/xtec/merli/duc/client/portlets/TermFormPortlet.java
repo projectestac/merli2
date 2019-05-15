@@ -17,8 +17,8 @@ import cat.xtec.merli.domain.taxa.EntityType;
 import cat.xtec.merli.duc.client.LocaleUtils;
 import cat.xtec.merli.duc.client.dialogs.ConfirmDialog;
 import cat.xtec.merli.duc.client.portlets.forms.TermForm;
-import cat.xtec.merli.duc.client.services.DucService;
-import cat.xtec.merli.duc.client.services.DucServiceAsync;
+import cat.xtec.merli.duc.client.services.TermService;
+import cat.xtec.merli.duc.client.services.TermServiceAsync;
 import cat.xtec.merli.duc.client.widgets.EntityLabel;
 import cat.xtec.merli.duc.client.widgets.ToolBar;
 import static cat.xtec.merli.duc.client.portlets.DucPortletState.*;
@@ -39,7 +39,7 @@ public class TermFormPortlet extends DucPortlet
     private final TermForm form = new TermForm();
 
     /** RPC service for this portlet */
-    private final DucServiceAsync service = GWT.create(DucService.class);
+    private final TermServiceAsync service = GWT.create(TermService.class);
 
     /** UiBinder instance */
     private static final Binder binder = GWT.create(Binder.class);
@@ -59,9 +59,6 @@ public class TermFormPortlet extends DucPortlet
 
     /** Store class action */
     @UiField Button store;
-
-    /** Export class action */
-    @UiField MenuItem export;
 
     /** Remove class action */
     @UiField MenuItem remove;
@@ -122,7 +119,7 @@ public class TermFormPortlet extends DucPortlet
     private void fetchTerm(OWLEntity entity) {
         IRI iri = entity.getIRI();
         String id = getProjectId();
-        service.fetchTerm(id, iri, callback);
+        service.fetch(id, iri, callback);
     }
 
 
@@ -144,29 +141,25 @@ public class TermFormPortlet extends DucPortlet
      *
      */
     protected void onRemoveCommand() {
-        // log("DUC: Remove command invoked");
-
-        // ConfirmDialog.confirm(confirm -> {
-        //     // log("Dialog response: " + confirm);
-        //
-        //     if (confirm == true) {
-        //         IRI iri = form.getEntity().getId();
-        //         String id = getProjectId();
-        //
-        //         service.removeEntity(id, iri, new AsyncCallback<Void>() {
-        //
-        //             /** {@inheritDoc} */
-        //             @Override public void onSuccess(Void value) {
-        //                 // log("DUC: Remove success");
-        //             }
-        //
-        //             /** {@inheritDoc} */
-        //             @Override public void onFailure(Throwable caught) {
-        //                 // log("DUC: Remove failure");
-        //             }
-        //         });
-        //     }
-        // });
+        ConfirmDialog.confirm(confirm -> {
+            if (confirm == true) {
+                // IRI iri = IRI.create(String.valueOf(form.getEntity().getId()));
+                // String id = getProjectId();
+                //
+                // service.remove(id, iri, new AsyncCallback<Void>() {
+                //
+                //     /** {@inheritDoc} */
+                //     @Override public void onSuccess(Void value) {
+                //         // log("DUC: Remove success");
+                //     }
+                //
+                //     /** {@inheritDoc} */
+                //     @Override public void onFailure(Throwable caught) {
+                //         // log("DUC: Remove failure");
+                //     }
+                // });
+            }
+        });
     }
 
 

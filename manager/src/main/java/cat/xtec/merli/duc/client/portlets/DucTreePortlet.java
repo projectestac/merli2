@@ -15,8 +15,8 @@ import org.semanticweb.owlapi.model.OWLEntity;
 
 import cat.xtec.merli.duc.client.LocaleUtils;
 import cat.xtec.merli.domain.taxa.Entity;
-import cat.xtec.merli.duc.client.services.DucService;
-import cat.xtec.merli.duc.client.services.DucServiceAsync;
+import cat.xtec.merli.duc.client.services.EntityService;
+import cat.xtec.merli.duc.client.services.EntityServiceAsync;
 import cat.xtec.merli.duc.client.widgets.EntityTree;
 import cat.xtec.merli.duc.client.widgets.EntityTreeItem;
 import static cat.xtec.merli.domain.taxa.EntityFlag.*;
@@ -24,7 +24,7 @@ import static cat.xtec.merli.duc.client.portlets.DucPortletState.*;
 
 
 /**
- * This is the base class for the tree portlets.
+ * This is the base class for the entities hierarchy portlets.
  */
 public abstract class DucTreePortlet extends DucPortlet {
 
@@ -38,7 +38,7 @@ public abstract class DucTreePortlet extends DucPortlet {
     protected ScrollPanel container = new ScrollPanel(tree.asWidget());
 
     /** RPC service for this portlet */
-    protected DucServiceAsync service = GWT.create(DucService.class);
+    protected EntityServiceAsync service = GWT.create(EntityService.class);
 
 
     /**
@@ -60,7 +60,7 @@ public abstract class DucTreePortlet extends DucPortlet {
     public void populateRoots(IRI iri) {
         String project = getProjectId();
         setViewState(STATE_WORKING);
-        service.fetchChildren(project, iri, callback);
+        service.children(project, iri, callback);
     }
 
 
@@ -75,7 +75,7 @@ public abstract class DucTreePortlet extends DucPortlet {
         IRI iri = item.getIRI();
         String project = getProjectId();
 
-        service.fetchChildren(project, iri, new AsyncCallback<List<Entity>>() {
+        service.children(project, iri, new AsyncCallback<List<Entity>>() {
             @Override public void onFailure(Throwable caught) {}
             @Override public void onSuccess(List<Entity> nodes) {
                 LocaleUtils.sortEntites(nodes);

@@ -165,12 +165,14 @@
         <executions>
           <execution>
             <goals>
+              <goal>generateAsync</goal>
               <goal>compile</goal>
             </goals>
           </execution>
         </executions>
         <configuration>
           <runTarget>WebProtege.jsp</runTarget>
+          <servicePattern>cat/xtec/**/*Service.java</servicePattern>
           <extraJvmArgs>-Xms1G -Xmx4G</extraJvmArgs>
           <localWorkers>1</localWorkers>
           <modules>

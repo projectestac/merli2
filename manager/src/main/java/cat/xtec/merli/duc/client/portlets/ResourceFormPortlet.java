@@ -16,8 +16,8 @@ import cat.xtec.merli.domain.lom.Resource;
 import cat.xtec.merli.domain.taxa.EntityType;
 import cat.xtec.merli.duc.client.LocaleUtils;
 import cat.xtec.merli.duc.client.portlets.forms.ResourceForm;
-import cat.xtec.merli.duc.client.services.DucService;
-import cat.xtec.merli.duc.client.services.DucServiceAsync;
+import cat.xtec.merli.duc.client.services.ResourceService;
+import cat.xtec.merli.duc.client.services.ResourceServiceAsync;
 import cat.xtec.merli.duc.client.widgets.EntityLabel;
 import cat.xtec.merli.duc.client.widgets.ToolBar;
 import static cat.xtec.merli.duc.client.portlets.DucPortletState.*;
@@ -38,7 +38,7 @@ public class ResourceFormPortlet extends DucPortlet
     private final ResourceForm form = new ResourceForm();
 
     /** RPC service for this portlet */
-    private final DucServiceAsync service = GWT.create(DucService.class);
+    private final ResourceServiceAsync service = GWT.create(ResourceService.class);
 
     /** UiBinder instance */
     private static final Binder binder = GWT.create(Binder.class);
@@ -58,9 +58,6 @@ public class ResourceFormPortlet extends DucPortlet
 
     /** Store class action */
     @UiField Button store;
-
-    /** Export class action */
-    @UiField MenuItem export;
 
     /** Remove class action */
     @UiField MenuItem remove;
@@ -121,7 +118,7 @@ public class ResourceFormPortlet extends DucPortlet
     private void fetchResource(OWLEntity entity) {
         IRI iri = entity.getIRI();
         String id = getProjectId();
-        service.fetchResource(id, iri, callback);
+        service.fetch(id, iri, callback);
     }
 
 

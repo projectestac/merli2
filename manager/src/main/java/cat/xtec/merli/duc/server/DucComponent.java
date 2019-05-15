@@ -5,6 +5,7 @@ import edu.stanford.bmir.protege.web.server.access.AccessManager;
 import edu.stanford.bmir.protege.web.server.dispatch.DispatchServiceExecutor;
 import edu.stanford.bmir.protege.web.server.inject.ApplicationComponent;
 import edu.stanford.bmir.protege.web.server.project.ProjectManager;
+import cat.xtec.merli.duc.server.servlets.*;
 
 
 /**
@@ -19,8 +20,17 @@ public interface DucComponent {
 
     /* Component bindings */
 
-    /** RPC service servlet */
-    DucServiceServlet getServiceServlet();
+    /** RPC categories servlet */
+    CategoryServlet getCategoryServlet();
+
+    /** RPC entities servlet */
+    EntityServlet getEntityServlet();
+
+    /** RPC resources servlet */
+    ResourceServlet getResourceServlet();
+
+    /** RPC terms servlet */
+    TermServlet getTermServlet();
 
     /* Inherited bindings */
 

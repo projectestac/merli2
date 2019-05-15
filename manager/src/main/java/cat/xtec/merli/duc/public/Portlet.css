@@ -140,10 +140,11 @@
 .duc-CheckBoxEditor,
 .duc-RadioButtonEditor {
   display: flex;
+  align-content: flex-start;
   flex-direction: column;
   flex-wrap: wrap;
   overflow-x: auto;
-  max-height: 145px;
+  max-height: 124px;
   max-width: 100%;
   width: 100%;
 }

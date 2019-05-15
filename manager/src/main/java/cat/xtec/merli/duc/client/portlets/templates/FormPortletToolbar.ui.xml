@@ -44,10 +44,6 @@
         <i class="fas fa-ellipsis-v"/>
         <ui:attribute name="title"/>
         <g:MenuBar vertical="true">
-          <g:MenuItem ui:field="export">
-            <ui:msg>Export entity</ui:msg>
-          </g:MenuItem>
-          <g:MenuItemSeparator/>
           <g:MenuItem ui:field="reset">
             <ui:msg>Undo all changes</ui:msg>
           </g:MenuItem>

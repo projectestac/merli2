@@ -16,8 +16,8 @@ import cat.xtec.merli.domain.taxa.Category;
 import cat.xtec.merli.domain.taxa.EntityType;
 import cat.xtec.merli.duc.client.LocaleUtils;
 import cat.xtec.merli.duc.client.portlets.forms.CategoryForm;
-import cat.xtec.merli.duc.client.services.DucService;
-import cat.xtec.merli.duc.client.services.DucServiceAsync;
+import cat.xtec.merli.duc.client.services.CategoryService;
+import cat.xtec.merli.duc.client.services.CategoryServiceAsync;
 import cat.xtec.merli.duc.client.widgets.EntityLabel;
 import cat.xtec.merli.duc.client.widgets.ToolBar;
 import static cat.xtec.merli.duc.client.portlets.DucPortletState.*;
@@ -38,7 +38,7 @@ public class CategoryFormPortlet extends DucPortlet
     private final CategoryForm form = new CategoryForm();
 
     /** RPC service for this portlet */
-    private final DucServiceAsync service = GWT.create(DucService.class);
+    private final CategoryServiceAsync service = GWT.create(CategoryService.class);
 
     /** UiBinder instance */
     private static final Binder binder = GWT.create(Binder.class);
@@ -58,9 +58,6 @@ public class CategoryFormPortlet extends DucPortlet
 
     /** Store class action */
     @UiField Button store;
-
-    /** Export class action */
-    @UiField MenuItem export;
 
     /** Remove class action */
     @UiField MenuItem remove;
@@ -121,7 +118,7 @@ public class CategoryFormPortlet extends DucPortlet
     private void fetchCategory(OWLEntity entity) {
         IRI iri = entity.getIRI();
         String id = getProjectId();
-        service.fetchCategory(id, iri, callback);
+        service.fetch(id, iri, callback);
     }
 
 
