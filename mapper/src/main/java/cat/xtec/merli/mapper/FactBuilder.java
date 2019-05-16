@@ -9,9 +9,10 @@ import cat.xtec.merli.mapper.OWLStore;
 
 
 /**
- * TODO: REFACTOR, RENAME
+ * Provides methods to convert {@code OWLAxiom} instances to {@code DucFact}
+ * objects using a predefined set of conversions.
  */
-class Axioms {
+class FactBuilder {
 
     /** */
     private OWLStore store;
@@ -21,31 +22,36 @@ class Axioms {
 
 
     /**
+     * Builder constructor.
      *
+     * @param store     Store instance
      */
-    private Axioms(OWLStore store) {
+    private FactBuilder(OWLStore store) {
         this.store = store;
         this.context = store.context;
     }
 
 
     /**
+     * Creates a new instance of the builder.
      *
+     * @param store     Store instance
      */
-    public static Axioms newInstance(OWLStore store) {
-        return new Axioms(store);
+    public static FactBuilder newInstance(OWLStore store) {
+        return new FactBuilder(store);
     }
 
 
     /**
-     * Converts an OWL axiom into a fact instance.
+     * Creates a new fact that represents the given OWL axiom for
+     * a domain entity type.
      *
      * @param type          Domain type
      * @param axiom         OWL axiom
      *
      * @return              New fact instance
      */
-    public DucFact convert(Class<?> type, OWLAxiom axiom) throws Exception {
+    public DucFact create(Class<?> type, OWLAxiom axiom) throws Exception {
         DucVocabulary predicate = Predicates.from(axiom);
         DucProperty property = context.getProperty(type, predicate);
 
@@ -64,18 +70,45 @@ class Axioms {
     }
 
 
+    /**
+     * Fetch a new object for the provided value's IRI identifier
+     * and the property data type.
+     *
+     * @param property      Property instance
+     * @param value         Value of the property
+     *
+     * @return              New object instance
+     */
     private Object fetchObject(DucProperty property, Object value) {
         IRI iri = ((HasIRI) value).getIRI();
         return store.fetch(iri, property.getDataType());
     }
 
 
+    /**
+     * Fetch a new object for the provided value's IRI identifier
+     * and the property's relation target type.
+     *
+     * @param property      Property instance
+     * @param value         Value of the property
+     *
+     * @return              New object instance
+     */
     private Object fetchTarget(DucProperty property, Object value) {
         IRI iri = ((HasIRI) value).getIRI();
         return store.fetch(iri, property.getTargetType());
     }
 
 
+    /**
+     * Instantiates a new object from the given explicit relation.
+     *
+     * @param property      Property instance
+     * @param predicate     Predicate of the relation
+     * @param value         Value of the property
+     *
+     * @return              New object instance
+     */
     private Object fromTarget(DucProperty property, DucVocabulary predicate, Object value) throws Exception {
         Class<?> type = property.getDataType();
         DucFactory factory = context.getFactory(type);
@@ -85,6 +118,14 @@ class Axioms {
     }
 
 
+    /**
+     * Instantiates a new object from the given axiom value.
+     *
+     * @param property      Property instance
+     * @param value         Value of the property
+     *
+     * @return              New object instance
+     */
     private Object fromObject(DucProperty property, Object value) throws Exception {
         Class<?> type = property.getDataType();
         DucFactory factory = context.getFactory(type);
@@ -95,6 +136,14 @@ class Axioms {
     }
 
 
+    /**
+     * Instantiates a new object from the given literal value.
+     *
+     * @param factory       Factory instance
+     * @param value         A literal value
+     *
+     * @return              New object instance
+     */
     private Object fromLiteral(DucFactory factory, OWLLiteral value) throws Exception {
         String string = value.getLiteral();
         String locale = value.getLang();

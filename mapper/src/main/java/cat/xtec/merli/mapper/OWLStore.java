@@ -31,10 +31,10 @@ public class OWLStore {
     protected Set<OWLOntology> ontologies;
 
     /** Converts facts to axioms */
-    protected Axioms axiomConverter;
+    protected FactBuilder factBuilder;
 
     /** Converts axioms to facts */
-    protected Facts factConverter;
+    protected AxiomBuilder axiomBuilder;
 
     /** Application logger reference */
     private static Logger logger = Mapper.getLogger();
@@ -50,8 +50,8 @@ public class OWLStore {
         this.root = root;
         this.ontologies = root.getImportsClosure();
         this.context = DucContext.newInstance(types);
-        this.axiomConverter = Axioms.newInstance(this);
-        this.factConverter = Facts.newInstance(this);
+        this.factBuilder = FactBuilder.newInstance(this);
+        this.axiomBuilder = AxiomBuilder.newInstance(this);
         this.parser = context.createParser();
     }
 
@@ -382,7 +382,7 @@ public class OWLStore {
      * @return              New fact instance
      */
     private DucFact fromAxiom(Class<?> type, OWLAxiom axiom) throws Exception {
-        return axiomConverter.convert(type, axiom);
+        return factBuilder.create(type, axiom);
     }
 
 
@@ -394,7 +394,7 @@ public class OWLStore {
      * @return              New OWL axiom
      */
     private OWLAxiom fromFact(IRI id, Class<?> type, DucFact fact) throws Exception {
-        return factConverter.convert(id, type, fact);
+        return axiomBuilder.create(id, type, fact);
     }
 
 

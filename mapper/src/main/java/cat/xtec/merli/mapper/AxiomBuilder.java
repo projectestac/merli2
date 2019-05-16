@@ -9,9 +9,10 @@ import static cat.xtec.merli.bind.DucVocabulary.*;
 
 
 /**
- * TODO: REFACTOR, RENAME, IMPLEMENTAR FACTORIES!
+ * Provides methods to convert {@code DucFact} instances to OWL axioms
+ * using a predefined set of conversions.
  */
-class Facts {
+class AxiomBuilder {
 
     /** Domain context */
     private DucContext context;
@@ -20,7 +21,12 @@ class Facts {
     private OWLDataFactory builder;
 
 
-    private Facts(OWLStore store) {
+    /**
+     * Builder constructor.
+     *
+     * @param store     Store instance
+     */
+    private AxiomBuilder(OWLStore store) {
         OWLOntology root = store.root;
         OWLOntologyManager manager = root.getOWLOntologyManager();
         this.context = store.context;
@@ -29,15 +35,18 @@ class Facts {
 
 
     /**
+     * Creates a new instance of the builder.
      *
+     * @param store     Store instance
      */
-    public static Facts newInstance(OWLStore store) {
-        return new Facts(store);
+    public static AxiomBuilder newInstance(OWLStore store) {
+        return new AxiomBuilder(store);
     }
 
 
     /**
-     * Converts...
+     * Creates a new OWL axiom that represents the given fact for
+     * a domain entity type.
      *
      * @param id            Entity identifier
      * @param type          Domain type
@@ -45,7 +54,7 @@ class Facts {
      *
      * @return              New fact instance
      */
-    public OWLAxiom convert(IRI id, Class<?> type, DucFact fact) {
+    public OWLAxiom create(IRI id, Class<?> type, DucFact fact) {
         DucVocabulary kind = getEntityKind(type);
         DucVocabulary predicate = fact.getPredicate();
         DucProperty property = context.getProperty(type, predicate);
@@ -67,6 +76,16 @@ class Facts {
     }
 
 
+    /**
+     * Instantiates a new axiom for the given relation property.
+     *
+     * @param id            Predicate IRI identifier
+     * @param property      Property instance
+     * @param kind          INDIVIDUAL | CLASS
+     * @param value         Value of the relation property
+     *
+     * @return              New axiom instance
+     */
     public OWLAxiom toRelation(IRI id, DucProperty property, DucVocabulary kind, Object value) {
         IRI object = toIdentifier(property, value);
         IRI vocab = toPredicate(property, value);
@@ -88,6 +107,15 @@ class Facts {
     }
 
 
+    /**
+     * Instantiates a new axiom for the given identifier property.
+     *
+     * @param id            Predicate IRI identifier
+     * @param property      Property instance
+     * @param kind          INDIVIDUAL | CLASS
+     *
+     * @return              New axiom instance
+     */
     public OWLAxiom toDeclaration(IRI id, DucProperty property, DucVocabulary kind) {
         return INDIVIDUAL.equals(kind) ?
             newInstanceDeclaration(id) :
@@ -95,6 +123,15 @@ class Facts {
     }
 
 
+    /**
+     * Instantiates a new axiom for the given annotation property.
+     *
+     * @param id            Predicate IRI identifier
+     * @param property      Property instance
+     * @param value         Value of the property
+     *
+     * @return              New axiom instance
+     */
     public OWLAxiom toAnnotation(IRI id, DucProperty property, Object value) {
         Class<?> type = property.getDataType();
         DucFactory factory = context.getFactory(type);
@@ -105,6 +142,15 @@ class Facts {
     }
 
 
+    /**
+     * Instantiates a new axiom for the given attribute property.
+     *
+     * @param id            Predicate IRI identifier
+     * @param property      Property instance
+     * @param value         Value of the property
+     *
+     * @return              New axiom instance
+     */
     public OWLAxiom toAttribute(IRI id, DucProperty property, Object value) {
         Class<?> type = property.getDataType();
         DucFactory factory = context.getFactory(type);
@@ -115,6 +161,14 @@ class Facts {
     }
 
 
+    /**
+     * Instantiates a new entity IRI from the given value.
+     *
+     * @param property      Property instance
+     * @param value         Value of the property
+     *
+     * @return              New IRI identifier
+     */
     public IRI toIdentifier(DucProperty property, Object value) {
         Class<?> type = property.getDataType();
         DucFactory factory = context.getFactory(type);
@@ -122,16 +176,27 @@ class Facts {
     }
 
 
+    /**
+     * Instantiates a new predicate IRI from the given value.
+     *
+     * @param property      Property instance
+     * @param value         Value of the property
+     *
+     * @return              New IRI identifier
+     */
     public IRI toPredicate(DucProperty property, Object value) {
         return IRI.create(property.getPredicate(value).value());
     }
 
 
-    public DucVocabulary getEntityKind(Class<?> type) {
-        return type.getAnnotation(DucEntity.class).value();
-    }
-
-
+    /**
+     * Instantiates a new OWL literal from the given value.
+     *
+     * @param factory       Factory instance
+     * @param value         An object value
+     *
+     * @return              New literal instance
+     */
     public OWLLiteral toLiteral(DucFactory factory, Object value) {
         String string = factory.getString(value);
         String locale = factory.getLocale(value);
@@ -143,7 +208,19 @@ class Facts {
 
 
     /**
+     * Obtains the OWL type of a domain class. Thtat is, the predicate
+     * which is annotated with {@code DucEntity} on the class.
      *
+     * @param type          Domian entity type
+     * @return              Vocabulary value
+     */
+    public DucVocabulary getEntityKind(Class<?> type) {
+        return type.getAnnotation(DucEntity.class).value();
+    }
+
+
+    /**
+     * Creates a new declaration axiom for a class.
      *
      * @param subject       Subject identifier
      * @return              New axiom instance
@@ -155,7 +232,7 @@ class Facts {
 
 
     /**
-     *
+     * Creates a new declaration axiom for an individual.
      *
      * @param subject       Subject identifier
      * @return              New axiom instance
@@ -167,7 +244,7 @@ class Facts {
 
 
     /**
-     *
+     * Creates a new subclass-of assertion axiom for a class.
      *
      * @param subject       Subject identifier
      * @param object        Object identifier
@@ -182,7 +259,7 @@ class Facts {
 
 
     /**
-     *
+     * Creates a new class assertion axiom for an individual.
      *
      * @param subject       Subject identifier
      * @param object        Object identifier
@@ -197,7 +274,7 @@ class Facts {
 
 
     /**
-     *
+     * Creates a new class assertion axiom for a relation.
      *
      * @param subject       Subject identifier
      * @param predicate     Predicate identifier
@@ -216,7 +293,7 @@ class Facts {
 
 
     /**
-     *
+     * Creates a new subclass-of assertion axiom for a relation.
      *
      * @param subject       Subject identifier
      * @param predicate     Predicate identifier
@@ -235,7 +312,7 @@ class Facts {
 
 
     /**
-     *
+     * Creates a new annotation assertion axiom.
      *
      * @param subject       Subject identifier
      * @param predicate     Predicate identifier
@@ -252,7 +329,7 @@ class Facts {
 
 
     /**
-     *
+     * Creates a new data property assertion axiom.
      *
      * @param subject       Subject identifier
      * @param predicate     Predicate identifier
