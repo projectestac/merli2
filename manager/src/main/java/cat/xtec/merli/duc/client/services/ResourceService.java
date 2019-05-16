@@ -8,4 +8,4 @@ import cat.xtec.merli.domain.lom.Resource;
  * RPC service to manage learning objects.
  */
 @RemoteServiceRelativePath("duc/resources")
-public interface ResourceService extends AbstractServiceIn<Resource> {}
+public interface ResourceService extends DucServiceAbstract<Resource> {}

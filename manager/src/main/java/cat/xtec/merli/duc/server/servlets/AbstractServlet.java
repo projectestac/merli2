@@ -18,7 +18,8 @@ import cat.xtec.merli.domain.taxa.Entity;
 import cat.xtec.merli.domain.taxa.EntityFlag;
 import cat.xtec.merli.domain.taxa.Term;
 import cat.xtec.merli.mapper.OWLStore;
-import cat.xtec.merli.duc.client.services.AbstractServiceIn;
+import cat.xtec.merli.duc.client.services.DucServiceAbstract;
+import cat.xtec.merli.duc.client.services.DucServiceException;
 
 
 /**
@@ -27,7 +28,7 @@ import cat.xtec.merli.duc.client.services.AbstractServiceIn;
  * TODO: REFACTOR
  */
 public abstract class AbstractServlet<T>
-    extends WebProtegeRemoteServiceServlet implements AbstractServiceIn<T> {
+    extends WebProtegeRemoteServiceServlet implements DucServiceAbstract<T> {
 
     /** This class version number */
     static final long serialVersionUID = 1L;
@@ -73,7 +74,7 @@ public abstract class AbstractServlet<T>
     /**
      * {@inheritDoc}
      */
-    public T fetch(String id, IRI iri) {
+    public T fetch(String id, IRI iri) throws DucServiceException {
         OWLStore store = null;
 
         if (stores.containsKey(id)) {
@@ -94,28 +95,37 @@ public abstract class AbstractServlet<T>
     /**
      * {@inheritDoc}
      */
-    public void persist(String id, IRI iri, T object) {
+    public void persist(String id, IRI iri, T object) throws DucServiceException {
         // TODO: Implement
+        // TODO: Send changes to DispatchServiceExecutor
+        // TODO: Ensure a parent is set for the type
+
+        System.out.println("WAS SAVED: " + iri);
+        throw new DucServiceException("Woah!");
     }
 
 
     /**
      * {@inheritDoc}
      */
-    public void remove(String id, IRI iri) {
+    public void remove(String id, IRI iri) throws DucServiceException {
         // TODO: Implement
+        // TODO: Change parent of children before removal
+        // TODO: Send changes to DispatchServiceExecutor
+
         Project project = getProjectById(id);
         OWLOntology root = project.getRootOntology();
         OWLStore store = OWLStore.newInstance(root, DOMAIN_TYPES);
 
         store.remove(iri);
+        System.out.println("WAS REMOVED: " + iri);
     }
 
 
     /**
      * {@inheritDoc}
      */
-    public List<T> search(String text, String id, IRI iri) {
+    public List<T> search(String text, String id, IRI iri) throws DucServiceException {
         return Collections.emptyList(); // TODO: Implement
     }
 
@@ -123,7 +133,7 @@ public abstract class AbstractServlet<T>
     /**
      * {@inheritDoc}
      */
-    public List<T> children(String id, IRI iri) {
+    public List<T> children(String id, IRI iri) throws DucServiceException {
         Project project = getProjectById(id);
         OWLOntology root = project.getRootOntology();
         OWLStore store = OWLStore.newInstance(root, DOMAIN_TYPES);

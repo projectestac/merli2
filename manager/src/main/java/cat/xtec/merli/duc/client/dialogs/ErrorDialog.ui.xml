@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:dw="urn:import:cat.xtec.merli.duc.client.widgets"
+  ui:baseMessagesInterface="cat.xtec.merli.duc.client.messages.DucMessages"
+  ui:generateFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+  ui:generateKeys="com.google.gwt.i18n.server.keygen.MD5KeyGenerator"
+  ui:generateLocales="en">
+
+  <g:DialogBox autoHide="false" modal="true">
+    <g:caption>
+      <ui:msg>Unexpected error</ui:msg>
+    </g:caption>
+    <g:HTMLPanel>
+      <ui:msg>Sorry, an unexpected error has occurred trying to process your request.</ui:msg>
+      <g:FlowPanel addStyleNames="duc-DialogButtons">
+        <g:Button ui:field='confirm' addStyleNames="wp-btn wp-btn--accept">
+          <ui:msg>Close</ui:msg>
+        </g:Button>
+      </g:FlowPanel>
+    </g:HTMLPanel>
+  </g:DialogBox>
+
+</ui:UiBinder>

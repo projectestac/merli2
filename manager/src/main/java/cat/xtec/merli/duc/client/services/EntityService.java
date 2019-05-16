@@ -8,4 +8,4 @@ import cat.xtec.merli.domain.taxa.Entity;
  * RPC service to manage generic entities.
  */
 @RemoteServiceRelativePath("duc/entities")
-public interface EntityService extends AbstractServiceIn<Entity> {}
+public interface EntityService extends DucServiceAbstract<Entity> {}

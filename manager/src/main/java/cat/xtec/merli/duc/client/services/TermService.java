@@ -8,4 +8,4 @@ import cat.xtec.merli.domain.taxa.Term;
  * RPC service to manage vocabulary terms.
  */
 @RemoteServiceRelativePath("duc/terms")
-public interface TermService extends AbstractServiceIn<Term> {}
+public interface TermService extends DucServiceAbstract<Term> {}

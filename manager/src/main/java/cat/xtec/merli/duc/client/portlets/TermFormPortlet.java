@@ -7,21 +7,20 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import edu.stanford.bmir.protege.web.shared.project.ProjectId;
 import edu.stanford.bmir.protege.web.shared.selection.SelectionModel;
 import edu.stanford.webprotege.shared.annotations.Portlet;
-import org.semanticweb.owlapi.model.*;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.uibinder.client.*;
+import org.semanticweb.owlapi.model.*;
 
-import cat.xtec.merli.domain.taxa.Term;
 import cat.xtec.merli.domain.taxa.EntityType;
 import cat.xtec.merli.duc.client.LocaleUtils;
-import cat.xtec.merli.duc.client.dialogs.RemoveDialog;
-import cat.xtec.merli.duc.client.portlets.forms.TermForm;
-import cat.xtec.merli.duc.client.services.TermService;
-import cat.xtec.merli.duc.client.services.TermServiceAsync;
-import cat.xtec.merli.duc.client.widgets.EntityLabel;
-import cat.xtec.merli.duc.client.widgets.ToolBar;
+import cat.xtec.merli.duc.client.widgets.*;
+import cat.xtec.merli.duc.client.dialogs.*;
+import cat.xtec.merli.duc.client.services.*;
 import static cat.xtec.merli.duc.client.portlets.DucPortletState.*;
+
+import cat.xtec.merli.domain.taxa.Term;
+import cat.xtec.merli.duc.client.portlets.forms.TermForm;
 
 
 /**
@@ -50,6 +49,12 @@ public class TermFormPortlet extends DucPortlet
 
     /** Toolbar for this portlet */
     private ToolBar toolbar = binder.createAndBindUi(this);
+
+    /** Current project identifier */
+    private String project;
+
+    /** Current entity identifier */
+    private IRI iri;
 
     /** Label for the current entity */
     @UiField EntityLabel label;
@@ -100,7 +105,7 @@ public class TermFormPortlet extends DucPortlet
         if (entity instanceof OWLClass) {
             setViewState(STATE_WORKING);
             setSelectedEntity(entity);
-            fetchTerm(entity);
+            fetch(entity);
         } else if (entity == null) {
             setSelectedEntity(null);
             setViewState(STATE_WAITING);
@@ -111,15 +116,34 @@ public class TermFormPortlet extends DucPortlet
 
 
     /**
-     * Fetches the term object for the given entry. The object is
-     * fetched asynchronously from the server.
+     * Fetches an object for the given entity from the server.
      *
      * @param entity        OWL entity pointer
      */
-    private void fetchTerm(OWLEntity entity) {
-        IRI iri = entity.getIRI();
-        String id = getProjectId();
-        service.fetch(id, iri, callback);
+    private void fetch(OWLEntity entity) {
+        this.iri = entity.getIRI();
+        this.project = getProjectId();
+        service.fetch(project, iri, fetchCallback);
+    }
+
+
+    /**
+     * Transforms the properties of the given entity. This convenience
+     * method currently sorts the entity relations befor editing.
+     *
+     * @param term          Object to transform
+     */
+    private void transform(Term term) {
+        LocaleUtils.sortEntites(term.getParents());
+        LocaleUtils.sortRelations(term.getRelations());
+    }
+
+
+    /**
+     * Refreshes this portlet's view properties.
+     */
+    private void refreshView() {
+        indicator.setVisible(form.isDirty());
     }
 
 
@@ -130,9 +154,13 @@ public class TermFormPortlet extends DucPortlet
      */
     @UiHandler("store")
     protected void onSaveClick(ClickEvent event) {
-        if (form.isDirty()) {
-            Term term = form.flush();
-            refreshView();
+        if (form.isDirty() == true) {
+            Term object = form.flush();
+
+            service.persist(project, iri, object, asynch(() -> {
+                form.edit(object);
+                refreshView();
+            }));
         }
     }
 
@@ -142,7 +170,11 @@ public class TermFormPortlet extends DucPortlet
      */
     protected void onRemoveCommand() {
         RemoveDialog.confirm(confirm -> {
-            if (confirm == true) {}
+            if (confirm == true) {
+                service.remove(project, iri, asynch(() -> {
+                    setViewState(STATE_WAITING);
+                }));
+            }
         });
     }
 
@@ -177,22 +209,25 @@ public class TermFormPortlet extends DucPortlet
 
 
     /**
-     * Refreshes this portlet's view properties.
-     */
-    private void refreshView() {
-        indicator.setVisible(form.isDirty());
-    }
-
-
-    /**
-     * Transforms the properties of the given entity. This convenience
-     * method currently sorts the entity relations befor editing.
+     * Invokes a runnable inside a new asynchronous callback. The
+     * runnable will be called on a success response; otherwise an
+     * error dialog will be shown to the user.
      *
-     * @param term          Object to transform
+     * @param runnable      Runnable to execute on success
+     * @retun               New callback instance
      */
-    private void transformTerm(Term term) {
-        LocaleUtils.sortEntites(term.getParents());
-        LocaleUtils.sortRelations(term.getRelations());
+    private AsyncCallback<Void> asynch(Runnable runnable) {
+        return new AsyncCallback<Void>() {
+
+            @Override public void onSuccess(Void value) {
+                runnable.run();
+            }
+
+            @Override public void onFailure(Throwable caught) {
+                ErrorDialog.show();
+            }
+
+        };
     }
 
 
@@ -200,12 +235,12 @@ public class TermFormPortlet extends DucPortlet
      * Reusable RPC callback. When a response is received successfully,
      * starts the edition of the object.
      */
-    private AsyncCallback<Term> callback = new AsyncCallback<Term>() {
+    private AsyncCallback<Term> fetchCallback = new AsyncCallback<Term>() {
 
         /** {@inheritDoc} */
         @Override public void onSuccess(Term term) {
             if (hasType(term, Term.class)) {
-                transformTerm(term);
+                transform(term);
                 form.edit(term);
                 form.scrollToTop();
                 label.setEntity(term);
@@ -220,6 +255,7 @@ public class TermFormPortlet extends DucPortlet
         @Override public void onFailure(Throwable caught) {
             refreshView();
             setViewState(STATE_FAILURE);
+            ErrorDialog.show();
         }
 
         /** Checks if the entity belongs to a type group */

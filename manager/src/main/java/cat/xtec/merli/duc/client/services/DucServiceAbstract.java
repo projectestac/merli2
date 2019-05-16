@@ -10,7 +10,7 @@ import org.semanticweb.owlapi.model.IRI;
  * entities on a project from the client. This methods will be invoked
  * on the server service implementing this interface.
  */
-public interface AbstractServiceIn<T> extends RemoteService {
+public interface DucServiceAbstract<T> extends RemoteService {
 
     /**
      * Fetches a domain entity from a project.
@@ -21,7 +21,7 @@ public interface AbstractServiceIn<T> extends RemoteService {
      *
      * @return          Entity instance
      */
-    T fetch(String id, IRI iri);
+    T fetch(String id, IRI iri) throws DucServiceException;
 
 
     /**
@@ -31,7 +31,7 @@ public interface AbstractServiceIn<T> extends RemoteService {
      * @param iri       Entity IRI identifier
      * @param type      Domain type to persist
      */
-    void persist(String id, IRI iri, T object);
+    void persist(String id, IRI iri, T object) throws DucServiceException;
 
 
     /**
@@ -46,7 +46,7 @@ public interface AbstractServiceIn<T> extends RemoteService {
      *
      * @return          A list of entities
      */
-    List<T> search(String text, String id, IRI iri);
+    List<T> search(String text, String id, IRI iri) throws DucServiceException;
 
 
     /**
@@ -59,7 +59,7 @@ public interface AbstractServiceIn<T> extends RemoteService {
      *
      * @return          A list of entities
      */
-    List<T> children(String id, IRI iri);
+    List<T> children(String id, IRI iri) throws DucServiceException;
 
 
     /**
@@ -68,6 +68,6 @@ public interface AbstractServiceIn<T> extends RemoteService {
      * @param id        Project identifier
      * @param iri       Entity IRI identifier
      */
-    void remove(String id, IRI iri);
+    void remove(String id, IRI iri) throws DucServiceException;
 
 }

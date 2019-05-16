@@ -7,21 +7,20 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import edu.stanford.bmir.protege.web.shared.project.ProjectId;
 import edu.stanford.bmir.protege.web.shared.selection.SelectionModel;
 import edu.stanford.webprotege.shared.annotations.Portlet;
-import org.semanticweb.owlapi.model.*;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.uibinder.client.*;
+import org.semanticweb.owlapi.model.*;
 
-import cat.xtec.merli.domain.taxa.Category;
 import cat.xtec.merli.domain.taxa.EntityType;
 import cat.xtec.merli.duc.client.LocaleUtils;
-import cat.xtec.merli.duc.client.dialogs.RemoveDialog;
-import cat.xtec.merli.duc.client.portlets.forms.CategoryForm;
-import cat.xtec.merli.duc.client.services.CategoryService;
-import cat.xtec.merli.duc.client.services.CategoryServiceAsync;
-import cat.xtec.merli.duc.client.widgets.EntityLabel;
-import cat.xtec.merli.duc.client.widgets.ToolBar;
+import cat.xtec.merli.duc.client.widgets.*;
+import cat.xtec.merli.duc.client.dialogs.*;
+import cat.xtec.merli.duc.client.services.*;
 import static cat.xtec.merli.duc.client.portlets.DucPortletState.*;
+
+import cat.xtec.merli.domain.taxa.Category;
+import cat.xtec.merli.duc.client.portlets.forms.CategoryForm;
 
 
 /**
@@ -50,6 +49,12 @@ public class CategoryFormPortlet extends DucPortlet
 
     /** Toolbar for this portlet */
     private ToolBar toolbar = binder.createAndBindUi(this);
+
+    /** Current project identifier */
+    private String project;
+
+    /** Current entity identifier */
+    private IRI iri;
 
     /** Label for the current entity */
     @UiField EntityLabel label;
@@ -100,7 +105,7 @@ public class CategoryFormPortlet extends DucPortlet
         if (entity instanceof OWLClass) {
             setViewState(STATE_WORKING);
             setSelectedEntity(entity);
-            fetchCategory(entity);
+            fetch(entity);
         } else if (entity == null) {
             setSelectedEntity(null);
             setViewState(STATE_WAITING);
@@ -111,15 +116,34 @@ public class CategoryFormPortlet extends DucPortlet
 
 
     /**
-     * Fetches the category object for the given entry. The object is
-     * fetched asynchronously from the server.
+     * Fetches an object for the given entity from the server.
      *
      * @param entity        OWL entity pointer
      */
-    private void fetchCategory(OWLEntity entity) {
-        IRI iri = entity.getIRI();
-        String id = getProjectId();
-        service.fetch(id, iri, callback);
+    private void fetch(OWLEntity entity) {
+        this.iri = entity.getIRI();
+        this.project = getProjectId();
+        service.fetch(project, iri, fetchCallback);
+    }
+
+
+    /**
+     * Transforms the properties of the given entity. This convenience
+     * method currently sorts the entity relations befor editing.
+     *
+     * @param category      Object to transform
+     */
+    private void transform(Category category) {
+        LocaleUtils.sortEntites(category.getParents());
+        LocaleUtils.sortEntites(category.getKeywords());
+    }
+
+
+    /**
+     * Refreshes this portlet's view properties.
+     */
+    private void refreshView() {
+        indicator.setVisible(form.isDirty());
     }
 
 
@@ -130,9 +154,13 @@ public class CategoryFormPortlet extends DucPortlet
      */
     @UiHandler("store")
     protected void onSaveClick(ClickEvent event) {
-        if (form.isDirty()) {
-            Category category = form.flush();
-            refreshView();
+        if (form.isDirty() == true) {
+            Category object = form.flush();
+
+            service.persist(project, iri, object, asynch(() -> {
+                form.edit(object);
+                refreshView();
+            }));
         }
     }
 
@@ -142,7 +170,11 @@ public class CategoryFormPortlet extends DucPortlet
      */
     protected void onRemoveCommand() {
         RemoveDialog.confirm(confirm -> {
-            if (confirm == true) {}
+            if (confirm == true) {
+                service.remove(project, iri, asynch(() -> {
+                    setViewState(STATE_WAITING);
+                }));
+            }
         });
     }
 
@@ -175,22 +207,25 @@ public class CategoryFormPortlet extends DucPortlet
 
 
     /**
-     * Refreshes this portlet's view properties.
-     */
-    private void refreshView() {
-        indicator.setVisible(form.isDirty());
-    }
-
-
-    /**
-     * Transforms the properties of the given entity. This convenience
-     * method currently sorts the entity relations befor editing.
+     * Invokes a runnable inside a new asynchronous callback. The
+     * runnable will be called on a success response; otherwise an
+     * error dialog will be shown to the user.
      *
-     * @param category      Object to transform
+     * @param runnable      Runnable to execute on success
+     * @retun               New callback instance
      */
-    private void transformCategory(Category category) {
-        LocaleUtils.sortEntites(category.getParents());
-        LocaleUtils.sortEntites(category.getKeywords());
+    private AsyncCallback<Void> asynch(Runnable runnable) {
+        return new AsyncCallback<Void>() {
+
+            @Override public void onSuccess(Void value) {
+                runnable.run();
+            }
+
+            @Override public void onFailure(Throwable caught) {
+                ErrorDialog.show();
+            }
+
+        };
     }
 
 
@@ -198,12 +233,12 @@ public class CategoryFormPortlet extends DucPortlet
      * Reusable RPC callback. When a response is received successfully,
      * starts the edition of the object.
      */
-    private AsyncCallback<Category> callback = new AsyncCallback<Category>() {
+    private AsyncCallback<Category> fetchCallback = new AsyncCallback<Category>() {
 
         /** {@inheritDoc} */
         @Override public void onSuccess(Category category) {
             if (hasType(category, Category.class)) {
-                transformCategory(category);
+                transform(category);
                 form.edit(category);
                 form.scrollToTop();
                 label.setEntity(category);
@@ -218,6 +253,7 @@ public class CategoryFormPortlet extends DucPortlet
         @Override public void onFailure(Throwable caught) {
             refreshView();
             setViewState(STATE_FAILURE);
+            ErrorDialog.show();
         }
 
         /** Checks if the entity belongs to a type group */

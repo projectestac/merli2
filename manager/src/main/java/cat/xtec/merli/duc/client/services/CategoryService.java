@@ -8,4 +8,4 @@ import cat.xtec.merli.domain.taxa.Category;
  * RPC service to manage categories.
  */
 @RemoteServiceRelativePath("duc/categories")
-public interface CategoryService extends AbstractServiceIn<Category> {}
+public interface CategoryService extends DucServiceAbstract<Category> {}
