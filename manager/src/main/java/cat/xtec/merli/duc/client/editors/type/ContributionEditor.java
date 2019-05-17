@@ -8,11 +8,13 @@ import com.google.gwt.user.client.ui.*;
 
 import cat.xtec.merli.duc.client.editors.lists.LeafEditorWidget;
 import cat.xtec.merli.duc.client.editors.voc.ContributorRoleEditor;
+import cat.xtec.merli.duc.client.widgets.InputBox;
 import cat.xtec.merli.domain.type.Contribution;
 
 
 /**
  * Contribution to the state of a learning object.
+ * TODO: REFACTOR
  */
 public class ContributionEditor extends Composite
     implements LeafEditorWidget<Contribution> {
@@ -30,11 +32,12 @@ public class ContributionEditor extends Composite
     /** Type of contribution */
     @UiField ContributorRoleEditor role;
 
-    /** List of contributors */
-    @UiField ContactEditor entity;
-
     /** Date of the contribution */
     @UiField TimePointEditor timePoint;
+
+    /** Author of the contribution */
+    @UiField InputBox entity;
+
 
 
     /**

@@ -11,6 +11,7 @@ import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.uibinder.client.*;
 
+import cat.xtec.merli.duc.client.DucConcepts;
 import cat.xtec.merli.duc.client.widgets.ToolBar;
 
 
@@ -26,9 +27,7 @@ public class TermTreePortlet extends DucTreePortlet
     implements InitializeHandler, SelectionHandler<OWLEntity> {
 
     /** IRI of the root element of this portlet's tree */
-    public static final IRI ROOT_ID = IRI.create(
-        "http://merli.xtec.cat/DUC#Concept"
-    );
+    public static final IRI ROOT_ID = DucConcepts.CONCEPT;
 
     /** UiBinder instance */
     private static final Binder binder = GWT.create(Binder.class);

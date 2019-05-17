@@ -18,7 +18,41 @@ public class CatalogEditor extends ListBoxEditor<Catalog> {
      */
     public CatalogEditor() {
         super(Catalog.class);
-        setStylePrimaryName(STYLE_NAME);
+        this.refreshView();
+        options.addChangeHandler(e -> refreshView());
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setValue(Catalog value) {
+        super.setValue(value);
+        this.refreshView();
+    }
+
+
+    /**
+     * Refreshes this editor's view properties.
+     */
+    protected void refreshView() {
+        Catalog value = getValue();
+
+        setStyleName(STYLE_NAME);
+        addStyleName(getStyleNameFor(value));
+    }
+
+
+    /**
+     * Returns a style name for the given relation type.
+     *
+     * @param type      Relation type
+     * @return          Style name
+     */
+    protected String getStyleNameFor(Catalog type) {
+        return (type instanceof Catalog) ?
+            "duc-CATALOG" : "duc-EDIT_BOX";
     }
 
 }

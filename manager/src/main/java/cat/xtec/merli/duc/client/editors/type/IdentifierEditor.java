@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.*;
 
 import cat.xtec.merli.duc.client.editors.lists.LeafEditorWidget;
 import cat.xtec.merli.duc.client.editors.voc.CatalogEditor;
-import cat.xtec.merli.duc.client.widgets.InputBox;
+import cat.xtec.merli.duc.client.widgets.StringBox;
 import cat.xtec.merli.domain.type.Identifier;
 import cat.xtec.merli.domain.voc.Catalog;
 
@@ -34,7 +34,7 @@ public class IdentifierEditor extends Composite
     interface Binder extends UiBinder<Widget, IdentifierEditor> {}
 
     /** Identifier entry */
-    @UiField InputBox entry;
+    @UiField StringBox entry;
 
     /** Identifier catalog */
     @UiField CatalogEditor catalog;
@@ -57,8 +57,8 @@ public class IdentifierEditor extends Composite
      * Constructs a new entry editor.
      */
     @UiFactory
-    public InputBox makeEditorForEntry() {
-        return new InputBox();
+    public StringBox makeEditorForEntry() {
+        return new StringBox();
     }
 
 
@@ -272,13 +272,6 @@ public class IdentifierEditor extends Composite
         // Fire selection events whenever a new catalog is selected
         // and refresh the entry editor state.
 
-        /* TODO: La selecció s'hauria de llençar només si 'entry'
-           té algun valor??? Només si té un valor vàlid (clar que
-           no puc validar-los tots!) */
-
-        /* TODO: Validar el text de entry? Enviar els canvis quan
-           sigui un ID vàlid?? */
-
         catalog.addSelectionHandler(event -> {
             Catalog catalog = event.getSelectedItem();
             refreshEditors(catalog);
@@ -290,10 +283,6 @@ public class IdentifierEditor extends Composite
                 SelectionEvent.fire(this, null);
             }
         });
-
-        /* TODO: Llançar 1 cop per KeyUp + 1 a cada blur?
-           (Hauria de de-registrar per no creator??)...
-           Tampoc s'hauria de llençar si ja té un text?? */
 
         entry.addKeyUpHandler(event -> {
             if (fired == true) {

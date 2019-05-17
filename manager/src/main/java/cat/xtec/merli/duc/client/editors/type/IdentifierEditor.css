@@ -3,6 +3,7 @@
 @external .duc-InputBox;
 @external .duc-SelectBox;
 @external .duc-SelectBoxWrapper;
+@external .duc-StringBox;
 @external .duc-EMPTY;
 
 .duc-IdentifierEditor {
@@ -19,6 +20,12 @@
 
 .duc-IdentifierEditor .duc-InputBox {
   flex: 1;
+}
+
+.duc-IdentifierEditor .duc-StringBox {
+  background-repeat: no-repeat;
+  background-position: 3px center;
+  padding-left: 28px !important;
 }
 
 .duc-IdentifierEditor .duc-CatalogEditor .duc-SelectBox {

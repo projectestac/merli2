@@ -21,7 +21,7 @@ public class Identifier extends UID {
 
     /** Name of the catalog */
     @XmlElement(name = "catalog", required = true)
-    protected Catalog catalog = DEFAULT_CATALOG;
+    protected Catalog catalog;
 
     /** Value of the entry within the catalog */
     @XmlElement(name = "entry", required = true)
@@ -111,7 +111,8 @@ public class Identifier extends UID {
      * string of the form "urn:<catalog>:<entry>".
      */
     private void updateString() {
-        this.string = "urn:" + catalog.value() + ":" + entry;
+        Catalog c = (catalog == null) ? DEFAULT_CATALOG : catalog;
+        this.string = "urn:" + c.value() + ":" + entry;
     }
 
 
@@ -131,7 +132,7 @@ public class Identifier extends UID {
      * @param value     Catalog value
      */
     public void setCatalog(Catalog value) {
-        this.catalog = (value == null) ? DEFAULT_CATALOG : value;
+        this.catalog = value;
         this.updateString();
     }
 

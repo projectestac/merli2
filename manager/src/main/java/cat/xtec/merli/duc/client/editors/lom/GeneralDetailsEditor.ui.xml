@@ -25,16 +25,16 @@
 
     <dw:LabelPanel>
       <g:Label>
-        <ui:msg>Name of the learning object</ui:msg>
+        <ui:msg>Catalog entries</ui:msg>
       </g:Label>
-      <lists:LangStringListEditor ui:field="titles"/>
+      <lists:IdentifierListEditor ui:field="identifiers"/>
     </dw:LabelPanel>
 
     <dw:LabelPanel>
       <g:Label>
-        <ui:msg>Catalog entries</ui:msg>
+        <ui:msg>Name of the learning object</ui:msg>
       </g:Label>
-      <lists:IdentifierListEditor ui:field="identifiers"/>
+      <lists:LangStringListEditor ui:field="titles"/>
     </dw:LabelPanel>
 
     <dw:LabelPanel>

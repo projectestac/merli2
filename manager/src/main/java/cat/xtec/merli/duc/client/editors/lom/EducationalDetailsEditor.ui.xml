@@ -19,16 +19,16 @@
   <g:HTMLPanel>
     <dw:LabelPanel>
       <g:Label>
-        <ui:msg>How the learning object is to be used</ui:msg>
+        <ui:msg>User's natural languages</ui:msg>
       </g:Label>
-      <lists:LangStringListEditor ui:field="descriptions"/>
+      <lists:LanguageListEditor ui:field="languages"/>
     </dw:LabelPanel>
 
     <dw:LabelPanel>
       <g:Label>
-        <ui:msg>User's natural languages</ui:msg>
+        <ui:msg>How the learning object is to be used</ui:msg>
       </g:Label>
-      <lists:LanguageListEditor ui:field="languages"/>
+      <lists:LangStringListEditor ui:field="descriptions"/>
     </dw:LabelPanel>
 
     <dw:FieldsetPanel>

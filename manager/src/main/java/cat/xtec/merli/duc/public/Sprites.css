@@ -66,8 +66,16 @@
   background-image: url('icons/ANY_TYPE.svg');
 }
 
+.duc-CATALOG {
+  background-image: url('icons/CATALOG.svg');
+}
+
 .duc-RELATION {
   background-image: url('icons/RELATION.svg');
+}
+
+.duc-STRING {
+  background-image: url('icons/STRING.svg');
 }
 
 .duc-EDIT_BOX {

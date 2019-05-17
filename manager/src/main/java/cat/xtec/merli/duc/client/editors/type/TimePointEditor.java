@@ -9,7 +9,7 @@ import cat.xtec.merli.domain.type.TimePoint;
 
 
 /**
- * A user business card.
+ * TODO: REFACTOR
  */
 public class TimePointEditor extends Composite implements Editor<TimePoint> {
 

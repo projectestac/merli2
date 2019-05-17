@@ -17,9 +17,9 @@
 
   <g:HTMLPanel>
     <voc:CatalogEditor ui:field="catalog"/>
-    <dw:InputBox ui:field="entry" placeholder="Catalog identifier">
+    <dw:StringBox ui:field="entry" placeholder="Catalog identifier">
       <ui:attribute name="placeholder"/>
-    </dw:InputBox>
+    </dw:StringBox>
   </g:HTMLPanel>
 
 </ui:UiBinder>

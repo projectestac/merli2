@@ -9,7 +9,7 @@ import cat.xtec.merli.domain.type.TimePeriod;
 
 
 /**
- * A user business card.
+ * TODO: REFACTOR
  */
 public class TimePeriodEditor extends Composite implements Editor<TimePeriod> {
 

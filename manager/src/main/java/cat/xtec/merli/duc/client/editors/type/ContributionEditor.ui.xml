@@ -17,26 +17,9 @@
   <!-- Editor panel -->
 
   <g:HTMLPanel>
-    <dw:LabelPanel>
-      <g:Label>
-        <ui:msg>Type of contribution</ui:msg>
-      </g:Label>
-      <voc:ContributorRoleEditor ui:field="role"/>
-    </dw:LabelPanel>
-
-    <dw:LabelPanel>
-      <g:Label>
-        <ui:msg>Date of the contribution</ui:msg>
-      </g:Label>
-      <type:TimePointEditor ui:field="timePoint"/>
-    </dw:LabelPanel>
-
-    <dw:LabelPanel>
-      <g:Label>
-        <ui:msg>List of contributors</ui:msg>
-      </g:Label>
-      <type:ContactEditor ui:field="entity"/>
-    </dw:LabelPanel>
+    <voc:ContributorRoleEditor ui:field="role"/>
+    <type:TimePointEditor ui:field="timePoint"/>
+    <dw:InputBox ui:field="entity"/>
   </g:HTMLPanel>
 
 </ui:UiBinder>
